@@ -29,6 +29,66 @@ type ThemeDefinition = {
   semanticTokenColors: Record<string, SemanticTokenRule>;
 };
 
+type Base30Palette = {
+  white: string;
+  darkerBlack: string;
+  black: string;
+  black2: string;
+  oneBg: string;
+  oneBg2: string;
+  oneBg3: string;
+  grey: string;
+  greyFg: string;
+  greyFg2: string;
+  lightGrey: string;
+  red: string;
+  babyPink: string;
+  pink: string;
+  line: string;
+  green: string;
+  vibrantGreen: string;
+  nordBlue: string;
+  blue: string;
+  yellow: string;
+  sun: string;
+  purple: string;
+  darkPurple: string;
+  teal: string;
+  orange: string;
+  cyan: string;
+  statuslineBg: string;
+  lightBg: string;
+  pmenuBg: string;
+  folderBg: string;
+};
+
+type Base16Palette = {
+  base00: string;
+  base01: string;
+  base02: string;
+  base03: string;
+  base04: string;
+  base05: string;
+  base06: string;
+  base07: string;
+  base08: string;
+  base09: string;
+  base0A: string;
+  base0B: string;
+  base0C: string;
+  base0D: string;
+  base0E: string;
+  base0F: string;
+};
+
+export type ThemeSpec = {
+  id: string;
+  displayName: string;
+  author: string;
+  base30: Base30Palette;
+  base16: Base16Palette;
+};
+
 type ZedSyntaxRule = {
   color: string;
   font_style: "italic" | "normal" | null;
@@ -55,63 +115,69 @@ const alpha = (hex: string, opacity: number) => {
   return `${hex}${channel}`;
 };
 
-export const rxyhnPalette = {
-  base30: {
-    white: "#D9D7D6",
-    darkerBlack: "#000a0e",
-    black: "#061115",
-    black2: "#0d181c",
-    oneBg: "#131e22",
-    oneBg2: "#1c272b",
-    oneBg3: "#242f33",
-    grey: "#313c40",
-    greyFg: "#3b464a",
-    greyFg2: "#455054",
-    lightGrey: "#4f5a5e",
-    red: "#DF5B61",
-    babyPink: "#EE6A70",
-    pink: "#F16269",
-    line: "#222d31",
-    green: "#78B892",
-    vibrantGreen: "#8CD7AA",
-    nordBlue: "#5A84BC",
-    blue: "#6791C9",
-    yellow: "#ecd28b",
-    sun: "#f6dc95",
-    purple: "#C488EC",
-    darkPurple: "#BC83E3",
-    teal: "#7ACFE4",
-    orange: "#E89982",
-    cyan: "#67AFC1",
-    statuslineBg: "#0A1519",
-    lightBg: "#1a2529",
-    pmenuBg: "#78B892",
-    folderBg: "#6791C9"
-  },
-  base16: {
-    base00: "#061115",
-    base01: "#0C171B",
-    base02: "#101B1F",
-    base03: "#192428",
-    base04: "#212C30",
-    base05: "#D9D7D6",
-    base06: "#E3E1E0",
-    base07: "#EDEBEA",
-    base08: "#f26e74",
-    base09: "#ecd28b",
-    base0A: "#E9967E",
-    base0B: "#82c29c",
-    base0C: "#6791C9",
-    base0D: "#79AAEB",
-    base0E: "#C488EC",
-    base0F: "#F16269"
+export const themeCatalog: ThemeSpec[] = [
+  {
+    id: "rxyhn",
+    displayName: "NvChad Rxyhn Theme",
+    author: "kitsunekode",
+    base30: {
+      white: "#D9D7D6",
+      darkerBlack: "#000a0e",
+      black: "#061115",
+      black2: "#0d181c",
+      oneBg: "#131e22",
+      oneBg2: "#1c272b",
+      oneBg3: "#242f33",
+      grey: "#313c40",
+      greyFg: "#3b464a",
+      greyFg2: "#455054",
+      lightGrey: "#4f5a5e",
+      red: "#DF5B61",
+      babyPink: "#EE6A70",
+      pink: "#F16269",
+      line: "#222d31",
+      green: "#78B892",
+      vibrantGreen: "#8CD7AA",
+      nordBlue: "#5A84BC",
+      blue: "#6791C9",
+      yellow: "#ecd28b",
+      sun: "#f6dc95",
+      purple: "#C488EC",
+      darkPurple: "#BC83E3",
+      teal: "#7ACFE4",
+      orange: "#E89982",
+      cyan: "#67AFC1",
+      statuslineBg: "#0A1519",
+      lightBg: "#1a2529",
+      pmenuBg: "#78B892",
+      folderBg: "#6791C9"
+    },
+    base16: {
+      base00: "#061115",
+      base01: "#0C171B",
+      base02: "#101B1F",
+      base03: "#192428",
+      base04: "#212C30",
+      base05: "#D9D7D6",
+      base06: "#E3E1E0",
+      base07: "#EDEBEA",
+      base08: "#f26e74",
+      base09: "#ecd28b",
+      base0A: "#E9967E",
+      base0B: "#82c29c",
+      base0C: "#6791C9",
+      base0D: "#79AAEB",
+      base0E: "#C488EC",
+      base0F: "#F16269"
+    }
   }
-} as const;
+];
 
-const base = rxyhnPalette.base30;
-const syntax = rxyhnPalette.base16;
+const buildTokenColors = (theme: ThemeSpec): TokenColorRule[] => {
+  const base = theme.base30;
+  const syntax = theme.base16;
 
-const tokenColors: TokenColorRule[] = [
+  return [
   {
     name: "Comments",
     scope: ["comment", "punctuation.definition.comment"],
@@ -275,40 +341,50 @@ const tokenColors: TokenColorRule[] = [
     scope: ["markup.changed"],
     settings: { foreground: base.lightGrey }
   }
-];
-
-const semanticTokenColors: Record<string, SemanticTokenRule> = {
-  comment: base.greyFg,
-  string: syntax.base0B,
-  regexp: syntax.base0F,
-  number: syntax.base09,
-  boolean: syntax.base09,
-  keyword: syntax.base0E,
-  operator: syntax.base05,
-  namespace: syntax.base08,
-  type: syntax.base0A,
-  typeParameter: syntax.base0A,
-  class: syntax.base0E,
-  interface: syntax.base0E,
-  enum: syntax.base0A,
-  enumMember: syntax.base09,
-  struct: syntax.base0E,
-  function: syntax.base0D,
-  method: syntax.base0D,
-  decorator: syntax.base0D,
-  macro: syntax.base08,
-  variable: syntax.base05,
-  parameter: syntax.base08,
-  property: syntax.base08,
-  label: syntax.base0A,
-  event: syntax.base08,
-  modifier: syntax.base08,
-  "variable.defaultLibrary": syntax.base09,
-  "variable.readonly.defaultLibrary": syntax.base09,
-  "type.defaultLibrary": syntax.base0A
+  ];
 };
 
-const colors: Record<string, string> = {
+const buildSemanticTokenColors = (theme: ThemeSpec): Record<string, SemanticTokenRule> => {
+  const base = theme.base30;
+  const syntax = theme.base16;
+
+  return {
+    comment: base.greyFg,
+    string: syntax.base0B,
+    regexp: syntax.base0F,
+    number: syntax.base09,
+    boolean: syntax.base09,
+    keyword: syntax.base0E,
+    operator: syntax.base05,
+    namespace: syntax.base08,
+    type: syntax.base0A,
+    typeParameter: syntax.base0A,
+    class: syntax.base0E,
+    interface: syntax.base0E,
+    enum: syntax.base0A,
+    enumMember: syntax.base09,
+    struct: syntax.base0E,
+    function: syntax.base0D,
+    method: syntax.base0D,
+    decorator: syntax.base0D,
+    macro: syntax.base08,
+    variable: syntax.base05,
+    parameter: syntax.base08,
+    property: syntax.base08,
+    label: syntax.base0A,
+    event: syntax.base08,
+    modifier: syntax.base08,
+    "variable.defaultLibrary": syntax.base09,
+    "variable.readonly.defaultLibrary": syntax.base09,
+    "type.defaultLibrary": syntax.base0A
+  };
+};
+
+const buildVsCodeColors = (theme: ThemeSpec): Record<string, string> => {
+  const base = theme.base30;
+  const syntax = theme.base16;
+
+  return {
   "foreground": base.white,
   "disabledForeground": base.lightGrey,
   "errorForeground": base.red,
@@ -582,21 +658,16 @@ const colors: Record<string, string> = {
   "settings.numberInputBorder": base.line,
   "settings.textInputBackground": base.black2,
   "settings.textInputForeground": base.white,
-  "settings.textInputBorder": base.line
+    "settings.textInputBorder": base.line
+  };
 };
 
-export const buildTheme = (): ThemeDefinition => ({
-  $schema: "vscode://schemas/color-theme",
-  name: "NvChad Rxyhn Theme",
-  type: "dark",
-  semanticHighlighting: true,
-  colors,
-  tokenColors,
-  semanticTokenColors
-});
+const buildZedSyntax = (theme: ThemeSpec): Record<string, ZedSyntaxRule> => {
+  const base = theme.base30;
+  const syntax = theme.base16;
 
-const zedSyntax: Record<string, ZedSyntaxRule> = {
-  "attribute": { color: syntax.base0A, font_style: null, font_weight: null },
+  return {
+    "attribute": { color: syntax.base0A, font_style: null, font_weight: null },
   "boolean": { color: syntax.base09, font_style: null, font_weight: null },
   "character": { color: syntax.base0C, font_style: null, font_weight: null },
   "character.special": { color: syntax.base0F, font_style: null, font_weight: null },
@@ -660,16 +731,31 @@ const zedSyntax: Record<string, ZedSyntaxRule> = {
   "variable.member": { color: syntax.base08, font_style: null, font_weight: null },
   "variable.parameter": { color: syntax.base08, font_style: null, font_weight: null },
   "variable.special": { color: syntax.base08, font_style: "italic", font_weight: null },
-  "variant": { color: syntax.base0C, font_style: null, font_weight: null }
+    "variant": { color: syntax.base0C, font_style: null, font_weight: null }
+  };
 };
 
-export const buildZedTheme = (): ZedThemeDefinition => ({
+export const buildTheme = (theme: ThemeSpec = themeCatalog[0]): ThemeDefinition => ({
+  $schema: "vscode://schemas/color-theme",
+  name: theme.displayName,
+  type: "dark",
+  semanticHighlighting: true,
+  colors: buildVsCodeColors(theme),
+  tokenColors: buildTokenColors(theme),
+  semanticTokenColors: buildSemanticTokenColors(theme)
+});
+
+export const buildZedTheme = (theme: ThemeSpec = themeCatalog[0]): ZedThemeDefinition => {
+  const base = theme.base30;
+  const syntax = theme.base16;
+
+  return ({
   $schema: "https://zed.dev/schema/themes/v0.2.0.json",
-  name: "NvChad Rxyhn Theme",
-  author: "kitsunekode",
+  name: theme.displayName,
+  author: theme.author,
   themes: [
     {
-      name: "NvChad Rxyhn Theme",
+      name: theme.displayName,
       appearance: "dark",
       style: {
         "accents": [base.blue, base.green, base.teal, base.yellow, base.orange, base.purple, base.red],
@@ -784,7 +870,7 @@ export const buildZedTheme = (): ZedThemeDefinition => ({
         "success.background": alpha(base.green, 0.14),
         "success.border": base.green,
         "surface.background": base.black2,
-        "syntax": zedSyntax,
+        "syntax": buildZedSyntax(theme),
         "tab.active_background": base.black,
         "tab.inactive_background": base.black2,
         "tab_bar.background": base.statuslineBg,
@@ -859,4 +945,5 @@ export const buildZedTheme = (): ZedThemeDefinition => ({
       }
     }
   ]
-});
+  });
+};

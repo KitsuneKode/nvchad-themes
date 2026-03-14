@@ -12,11 +12,13 @@
   - `themes/rxyhn-color-theme.json`
   - `zed/rxyhn-theme.json`
   - `nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix`
+- The committed VSIX is intended to stay in the repo so users can download and install it without building locally.
 
 ## Important Files
 
 - `src/theme.ts`: shared palette, VS Code mappings, and Zed mappings
 - `scripts/build-theme.ts`: regenerates both theme JSON files
+- `scripts/build-theme.ts`: also syncs `package.json` theme contributions from `themeCatalog`
 - `scripts/package-theme.ts`: packages the VS Code / Cursor VSIX
 - `scripts/install-zed-theme.ts`: copies the generated Zed theme into `~/.config/zed/themes`
 - `README.md`: user-facing install and usage steps
@@ -25,6 +27,7 @@
 
 - Do not hand-edit generated JSON files unless debugging output.
 - Make palette or mapping changes in `src/theme.ts`, then run `bun run build`.
+- New themes should be added by inserting a new `themeCatalog` entry with `id`, `displayName`, `base30`, and `base16`.
 - If you change VS Code packaging behavior, verify the archive contents with:
   - `unzip -l nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix`
 - If you change the Zed output, reinstall it with:

@@ -42,6 +42,7 @@ run(["unzip", "-oq", vsixPath, "-d", unpackDir]);
 
 copyFileSync(resolve(rootDir, "package.json"), resolve(extensionDir, "package.json"));
 copyFileSync(resolve(rootDir, "README.md"), resolve(extensionDir, "readme.md"));
+copyFileSync(resolve(rootDir, "LICENSE"), resolve(extensionDir, "LICENSE"));
 mkdirSync(resolve(extensionDir, "themes"), { recursive: true });
 cpSync(resolve(rootDir, "themes", "rxyhn-color-theme.json"), resolve(extensionDir, "themes", "rxyhn-color-theme.json"));
 

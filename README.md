@@ -14,6 +14,34 @@ Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, and Zed, wi
 
 ## Install From GitHub
 
+### Fastest Option For Users
+
+If you do not want to build anything, download the committed VSIX directly from this repo:
+
+- [nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix](./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix)
+
+Then install it manually:
+
+```bash
+code --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
+cursor --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
+```
+
+Or use `Extensions: Install from VSIX...` in VS Code or Cursor.
+
+For Zed, users can download the generated local theme file directly:
+
+- [zed/rxyhn-theme.json](./zed/rxyhn-theme.json)
+
+Then copy it into:
+
+```bash
+mkdir -p ~/.config/zed/themes
+cp ./rxyhn-theme.json ~/.config/zed/themes/rxyhn-theme.json
+```
+
+Restart Zed and choose `NvChad Rxyhn Theme`.
+
 Clone the repo:
 
 ```bash
@@ -75,6 +103,26 @@ Zed users can download `zed/rxyhn-theme.json` from the repo or a release and pla
 - Zed local theme JSON: `zed/rxyhn-theme.json`
 
 All generated artifacts come from the shared palette and mappings in `src/theme.ts`.
+
+## Adding Another Theme Later
+
+This codebase is now set up so you can add more themes without rewriting the VS Code and Zed mapping logic.
+
+The workflow is:
+
+1. Add a new theme entry to `themeCatalog` in `src/theme.ts`
+2. Give it a unique `id`, `displayName`, `base30`, and `base16`
+3. Run:
+
+```bash
+bun run build
+```
+
+That will automatically:
+
+- generate `themes/<id>-color-theme.json`
+- generate `zed/<id>-theme.json`
+- sync `package.json` so the VS Code extension contributes the new theme
 
 ## Build
 

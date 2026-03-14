@@ -1,12 +1,21 @@
 import { copyFileSync, existsSync, mkdirSync, rmSync } from "node:fs";
 import { homedir } from "node:os";
 import { resolve } from "node:path";
+import { themeCatalog } from "../src/theme.ts";
 
 const rootDir = resolve(".");
-const sourcePath = resolve(rootDir, "zed", "rxyhn-theme.json");
 const targetDir = resolve(homedir(), ".config", "zed", "themes");
-const targetPath = resolve(targetDir, "rxyhn-theme.json");
 const legacyTargetPath = resolve(targetDir, "nvchad-rxyhn.json");
+const requestedThemeId = process.argv[2] ?? themeCatalog[0].id;
+const theme = themeCatalog.find((entry) => entry.id === requestedThemeId);
+
+if (!theme) {
+  console.error(`Unknown theme id: ${requestedThemeId}`);
+  process.exit(1);
+}
+
+const sourcePath = resolve(rootDir, "zed", `${theme.id}-theme.json`);
+const targetPath = resolve(targetDir, `${theme.id}-theme.json`);
 
 const buildResult = Bun.spawnSync({
   cmd: ["bun", "run", "build"],
