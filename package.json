@@ -1,12 +1,39 @@
 {
-  "name": "vscode-rxyhn-theme",
-  "module": "index.ts",
+  "name": "nvchad-rxyhn-theme",
+  "displayName": "NvChad Rxyhn",
+  "description": "Palette-faithful VS Code and Cursor port of NvChad's rxyhn theme.",
+  "version": "0.1.0",
+  "publisher": "kitsunekode",
   "type": "module",
-  "private": true,
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "color-theme",
+    "nvchad",
+    "rxyhn",
+    "cursor"
+  ],
+  "scripts": {
+    "build": "bun run scripts/build-theme.ts",
+    "install:zed": "bun run scripts/install-zed-theme.ts",
+    "package": "bun run scripts/package-theme.ts",
+    "vscode:prepublish": "bun run build"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "NvChad Rxyhn",
+        "uiTheme": "vs-dark",
+        "path": "./themes/rxyhn-color-theme.json"
+      }
+    ]
+  },
   "devDependencies": {
     "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
   }
 }
