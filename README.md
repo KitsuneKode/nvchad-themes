@@ -2,6 +2,62 @@
 
 Palette-faithful VS Code, Cursor, and Zed port of NvChad's `rxyhn` theme.
 
+## Install From GitHub
+
+Clone the repo:
+
+```bash
+git clone <your-github-repo-url>
+cd vscode-extension-rxyhn-theme
+bun install
+```
+
+### VS Code
+
+Build the VSIX and install it:
+
+```bash
+bun run package
+code --install-extension ./nvchad-rxyhn-theme-0.1.0.vsix
+```
+
+Then open the theme picker and choose `NvChad Rxyhn`.
+
+### Cursor
+
+Build the VSIX and install it:
+
+```bash
+bun run package
+cursor --install-extension ./nvchad-rxyhn-theme-0.1.0.vsix
+```
+
+Then open the theme picker and choose `NvChad Rxyhn`.
+
+### Zed
+
+Build the local Zed theme file and install it:
+
+```bash
+bun run build
+mkdir -p ~/.config/zed/themes
+cp ./zed/nvchad-rxyhn.json ~/.config/zed/themes/nvchad-rxyhn.json
+```
+
+Then restart Zed and choose `NvChad Rxyhn` from the theme picker.
+
+If you prefer the helper script:
+
+```bash
+bun run install:zed
+```
+
+## Release-Friendly Option
+
+If you publish GitHub Releases, attach `nvchad-rxyhn-theme-0.1.0.vsix` to a release. That gives VS Code and Cursor users a simple download-and-install path without building locally.
+
+Zed users can download `zed/nvchad-rxyhn.json` from the repo or a release and place it in `~/.config/zed/themes`.
+
 ## Outputs
 
 - VS Code / Cursor theme JSON: `themes/rxyhn-color-theme.json`
@@ -21,7 +77,7 @@ This regenerates both:
 - `themes/rxyhn-color-theme.json`
 - `zed/nvchad-rxyhn.json`
 
-## Install In VS Code Or Cursor
+## Local Dev Workflow
 
 Build or rebuild the extension package:
 
@@ -29,7 +85,7 @@ Build or rebuild the extension package:
 bun run package
 ```
 
-Install from the CLI:
+Install the VSIX locally:
 
 ```bash
 code --install-extension ./nvchad-rxyhn-theme-0.1.0.vsix
@@ -39,8 +95,6 @@ cursor --install-extension ./nvchad-rxyhn-theme-0.1.0.vsix
 Or install manually with `Extensions: Install from VSIX...`.
 
 After installation, choose `NvChad Rxyhn` from the color theme picker.
-
-## Install In Zed
 
 Generate the Zed theme file:
 

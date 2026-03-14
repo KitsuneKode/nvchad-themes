@@ -5,6 +5,7 @@
 - This repo generates a shared `NvChad Rxyhn` theme for:
   - VS Code / Cursor extension packaging
   - Zed local theme installation
+- The repo now includes an MIT `LICENSE` and a GitHub-oriented README with install steps for all three editors.
 - The single source of truth is `src/theme.ts`.
 - Generated outputs are:
   - `themes/rxyhn-color-theme.json`
@@ -37,5 +38,5 @@
 ## Known Caveats
 
 - `vsce` in this environment emits a minimal archive first, so `scripts/package-theme.ts` rebuilds the final VSIX payload after packaging.
-- A `LICENSE` file is still missing, so marketplace publication is not fully polished yet.
+- No Git remote is configured locally right now, so README clone instructions intentionally use a placeholder repo URL instead of guessing one.
 - Zed support is currently delivered as a local theme file, not a Zed extension.

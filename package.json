@@ -4,6 +4,8 @@
   "description": "Palette-faithful VS Code and Cursor port of NvChad's rxyhn theme.",
   "version": "0.1.0",
   "publisher": "kitsunekode",
+  "author": "kitsunekode",
+  "license": "MIT",
   "type": "module",
   "engines": {
     "vscode": "^1.74.0"
@@ -16,7 +18,8 @@
     "color-theme",
     "nvchad",
     "rxyhn",
-    "cursor"
+    "cursor",
+    "zed"
   ],
   "scripts": {
     "build": "bun run scripts/build-theme.ts",
