@@ -84,6 +84,27 @@ And set the theme in `~/.gemini/settings.json`:
 }
 ```
 
+For Gemini CLI, users can download the theme JSON directly:
+
+- [gemini/rxyhn.json](./gemini/rxyhn.json)
+
+Then copy it into:
+
+```bash
+mkdir -p ~/.gemini/themes
+cp ./gemini/rxyhn.json ~/.gemini/themes/rxyhn.json
+```
+
+And set the theme in `~/.gemini/settings.json`:
+
+```jsonc
+{
+  "ui": {
+    "theme": "~/.gemini/themes/rxyhn.json"
+  }
+}
+```
+
 Clone the repo:
 
 ```bash
