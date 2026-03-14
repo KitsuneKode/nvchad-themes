@@ -1,6 +1,6 @@
-# NvChad Rxyhn Theme for VS Code, Cursor, and Zed
+# NvChad Rxyhn Theme for VS Code, Cursor, Zed, and OpenCode
 
-Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, and Zed, with `NvChad` in the project name for stronger discoverability.
+Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, Zed, and OpenCode, with `NvChad` in the project name for stronger discoverability.
 
 ## Preview
 
@@ -11,6 +11,10 @@ Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, and Zed, wi
 ### Zed
 
 ![Zed preview](./public/zed.png)
+
+### OpenCode
+
+OpenCode uses a JSON theme file. This repo now generates one at `opencode/rxyhn.json`.
 
 ## Install From GitHub
 
@@ -41,6 +45,19 @@ cp ./rxyhn-theme.json ~/.config/zed/themes/rxyhn-theme.json
 ```
 
 Restart Zed and choose `NvChad Rxyhn Theme`.
+
+For OpenCode, users can download the theme JSON directly:
+
+- [opencode/rxyhn.json](./opencode/rxyhn.json)
+
+Then copy it into:
+
+```bash
+mkdir -p ~/.config/opencode/themes
+cp ./opencode/rxyhn.json ~/.config/opencode/themes/rxyhn.json
+```
+
+Restart OpenCode and select the theme (or set it in your OpenCode config file).
 
 Clone the repo:
 
@@ -101,6 +118,7 @@ Zed users can download `zed/rxyhn-theme.json` from the repo or a release and pla
 - VS Code / Cursor theme JSON: `themes/rxyhn-color-theme.json`
 - VS Code / Cursor VSIX: `nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix`
 - Zed local theme JSON: `zed/rxyhn-theme.json`
+- OpenCode theme JSON: `opencode/rxyhn.json`
 
 All generated artifacts come from the shared palette and mappings in `src/theme.ts`.
 
@@ -122,6 +140,7 @@ That will automatically:
 
 - generate `themes/<id>-color-theme.json`
 - generate `zed/<id>-theme.json`
+- generate `opencode/<id>.json`
 - sync `package.json` so the VS Code extension contributes the new theme
 
 ## Build
@@ -134,6 +153,7 @@ This regenerates both:
 
 - `themes/rxyhn-color-theme.json`
 - `zed/rxyhn-theme.json`
+- `opencode/rxyhn.json`
 
 ## Local Dev Workflow
 
@@ -174,6 +194,29 @@ cp ./zed/rxyhn-theme.json ~/.config/zed/themes/rxyhn-theme.json
 ```
 
 Then restart Zed and select `NvChad Rxyhn Theme` from the theme picker.
+
+### OpenCode
+
+Generate the OpenCode theme file:
+
+```bash
+bun run build
+```
+
+Install it into your local OpenCode themes directory:
+
+```bash
+bun run install:opencode
+```
+
+Manual alternative:
+
+```bash
+mkdir -p ~/.config/opencode/themes
+cp ./opencode/rxyhn.json ~/.config/opencode/themes/rxyhn.json
+```
+
+Restart OpenCode and select the theme in its settings.
 
 If you want to pin it in `~/.config/zed/settings.json`, use:
 

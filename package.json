@@ -27,6 +27,7 @@
   ],
   "scripts": {
     "build": "bun run scripts/build-theme.ts",
+    "install:opencode": "bun run scripts/install-opencode-theme.ts",
     "install:zed": "bun run scripts/install-zed-theme.ts",
     "package": "bun run scripts/package-theme.ts",
     "vscode:prepublish": "bun run build"
