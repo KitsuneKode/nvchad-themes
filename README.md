@@ -1,6 +1,6 @@
-# NvChad Rxyhn Theme for VS Code, Cursor, Zed, and OpenCode
+# NvChad Rxyhn Theme for VS Code, Cursor, Zed, OpenCode, and Gemini CLI
 
-Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, Zed, and OpenCode, with `NvChad` in the project name for stronger discoverability.
+Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, Zed, OpenCode, and Gemini CLI, with `NvChad` in the project name for stronger discoverability.
 
 ## Preview
 
@@ -15,6 +15,10 @@ Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, Zed, and Op
 ### OpenCode
 
 OpenCode uses a JSON theme file. This repo now generates one at `opencode/rxyhn.json`.
+
+### Gemini CLI
+
+Gemini CLI uses a JSON theme file. This repo now generates one at `gemini/rxyhn.json`.
 
 ## Install From GitHub
 
@@ -58,6 +62,27 @@ cp ./opencode/rxyhn.json ~/.config/opencode/themes/rxyhn.json
 ```
 
 Restart OpenCode and select the theme (or set it in your OpenCode config file).
+
+For Gemini CLI, users can download the theme JSON directly:
+
+- [gemini/rxyhn.json](./gemini/rxyhn.json)
+
+Then copy it into:
+
+```bash
+mkdir -p ~/.gemini/themes
+cp ./gemini/rxyhn.json ~/.gemini/themes/rxyhn.json
+```
+
+And set the theme in `~/.gemini/settings.json`:
+
+```jsonc
+{
+  "ui": {
+    "theme": "~/.gemini/themes/rxyhn.json"
+  }
+}
+```
 
 Clone the repo:
 
@@ -119,6 +144,7 @@ Zed users can download `zed/rxyhn-theme.json` from the repo or a release and pla
 - VS Code / Cursor VSIX: `nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix`
 - Zed local theme JSON: `zed/rxyhn-theme.json`
 - OpenCode theme JSON: `opencode/rxyhn.json`
+- Gemini CLI theme JSON: `gemini/rxyhn.json`
 
 All generated artifacts come from the shared palette and mappings in `src/theme.ts`.
 
@@ -141,6 +167,7 @@ That will automatically:
 - generate `themes/<id>-color-theme.json`
 - generate `zed/<id>-theme.json`
 - generate `opencode/<id>.json`
+- generate `gemini/<id>.json`
 - sync `package.json` so the VS Code extension contributes the new theme
 
 ## Build
@@ -154,6 +181,7 @@ This regenerates both:
 - `themes/rxyhn-color-theme.json`
 - `zed/rxyhn-theme.json`
 - `opencode/rxyhn.json`
+- `gemini/rxyhn.json`
 
 ## Local Dev Workflow
 
@@ -217,6 +245,29 @@ cp ./opencode/rxyhn.json ~/.config/opencode/themes/rxyhn.json
 ```
 
 Restart OpenCode and select the theme in its settings.
+
+### Gemini CLI
+
+Generate the Gemini CLI theme file:
+
+```bash
+bun run build
+```
+
+Install it into your local Gemini CLI themes directory:
+
+```bash
+bun run install:gemini
+```
+
+Manual alternative:
+
+```bash
+mkdir -p ~/.gemini/themes
+cp ./gemini/rxyhn.json ~/.gemini/themes/rxyhn.json
+```
+
+Then set `ui.theme` in `~/.gemini/settings.json` to `~/.gemini/themes/rxyhn.json`.
 
 If you want to pin it in `~/.config/zed/settings.json`, use:
 

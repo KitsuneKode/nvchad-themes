@@ -112,6 +112,26 @@ type OpenCodeThemeDefinition = {
   theme: Record<string, { dark: string; light: string }>;
 };
 
+type GeminiThemeDefinition = {
+  name: string;
+  type: "custom";
+  Background: string;
+  Foreground: string;
+  LightBlue: string;
+  AccentBlue: string;
+  AccentPurple: string;
+  AccentCyan: string;
+  AccentGreen: string;
+  AccentYellow: string;
+  AccentRed: string;
+  Comment: string;
+  Gray: string;
+  DiffAdded?: string;
+  DiffRemoved?: string;
+  DiffModified?: string;
+  GradientColors?: string[];
+};
+
 const alpha = (hex: string, opacity: number) => {
   const clamped = Math.max(0, Math.min(1, opacity));
   const channel = Math.round(clamped * 255)
@@ -1069,5 +1089,30 @@ export const buildOpenCodeTheme = (theme: ThemeSpec = themeCatalog[0]): OpenCode
       syntaxOperator: openCodeColor("syntax_operator"),
       syntaxPunctuation: openCodeColor("syntax_punctuation")
     }
+  };
+};
+
+export const buildGeminiTheme = (theme: ThemeSpec = themeCatalog[0]): GeminiThemeDefinition => {
+  const base = theme.base30;
+  const syntax = theme.base16;
+
+  return {
+    name: theme.displayName,
+    type: "custom",
+    Background: base.black,
+    Foreground: base.white,
+    LightBlue: syntax.base0D,
+    AccentBlue: base.blue,
+    AccentPurple: base.purple,
+    AccentCyan: base.teal,
+    AccentGreen: base.green,
+    AccentYellow: base.yellow,
+    AccentRed: base.red,
+    Comment: base.greyFg,
+    Gray: base.grey,
+    DiffAdded: base.green,
+    DiffRemoved: base.red,
+    DiffModified: base.yellow,
+    GradientColors: [base.blue, base.purple, base.orange]
   };
 };
