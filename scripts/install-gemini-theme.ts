@@ -39,14 +39,16 @@ try {
   settings = {};
 }
 
+const themeJson = JSON.parse(readFileSync(targetPath, "utf8")) as Record<string, unknown>;
+const themeName = themeJson.name as string;
+
 const ui = (settings.ui ?? {}) as Record<string, unknown>;
-if (!("theme" in ui)) {
-  ui.theme = targetPath;
-  settings.ui = ui;
-  writeFileSync(settingsPath, `${JSON.stringify(settings, null, 2)}\n`);
-  console.log(`Updated ${settingsPath} with theme path.`);
-} else {
-  console.log(`Theme path not changed because ui.theme is already set in ${settingsPath}.`);
-}
+const customThemes = (ui.customThemes ?? {}) as Record<string, unknown>;
+customThemes[themeName] = themeJson;
+ui.customThemes = customThemes;
+ui.theme = themeName;
+settings.ui = ui;
+writeFileSync(settingsPath, `${JSON.stringify(settings, null, 2)}\n`);
+console.log(`Updated ${settingsPath} with custom theme "${themeName}".`);
 
 console.log(`Installed ${targetPath}`);

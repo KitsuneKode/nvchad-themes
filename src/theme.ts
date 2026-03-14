@@ -115,21 +115,33 @@ type OpenCodeThemeDefinition = {
 type GeminiThemeDefinition = {
   name: string;
   type: "custom";
-  Background: string;
-  Foreground: string;
-  LightBlue: string;
-  AccentBlue: string;
-  AccentPurple: string;
-  AccentCyan: string;
-  AccentGreen: string;
-  AccentYellow: string;
-  AccentRed: string;
-  Comment: string;
-  Gray: string;
-  DiffAdded?: string;
-  DiffRemoved?: string;
-  DiffModified?: string;
-  GradientColors?: string[];
+  background: {
+    primary: string;
+    diff: {
+      added: string;
+      removed: string;
+    };
+  };
+  text: {
+    primary: string;
+    secondary: string;
+    link: string;
+    accent: string;
+  };
+  border: {
+    default: string;
+    focused: string;
+  };
+  status: {
+    success: string;
+    warning: string;
+    error: string;
+  };
+  ui: {
+    comment: string;
+    symbol: string;
+    gradient: string[];
+  };
 };
 
 const alpha = (hex: string, opacity: number) => {
@@ -1092,27 +1104,58 @@ export const buildOpenCodeTheme = (theme: ThemeSpec = themeCatalog[0]): OpenCode
   };
 };
 
+/**
+ * Mix two hex colors by a given ratio (0 = pure base, 1 = pure blend).
+ */
+const mixColors = (base: string, blend: string, ratio: number): string => {
+  const parse = (hex: string) => [
+    parseInt(hex.slice(1, 3), 16),
+    parseInt(hex.slice(3, 5), 16),
+    parseInt(hex.slice(5, 7), 16),
+  ];
+  const b = parse(base);
+  const m = parse(blend);
+  const r = b.map((c, i) => Math.round(c + (m[i] - c) * ratio));
+  return `#${r.map((c) => c.toString(16).padStart(2, "0")).join("")}`;
+};
+
 export const buildGeminiTheme = (theme: ThemeSpec = themeCatalog[0]): GeminiThemeDefinition => {
   const base = theme.base30;
   const syntax = theme.base16;
 
+  // Diff backgrounds: mix the accent color into the background at low opacity
+  const diffAddedBg = mixColors(base.black, base.green, 0.15);
+  const diffRemovedBg = mixColors(base.black, base.red, 0.15);
+
   return {
     name: theme.displayName,
     type: "custom",
-    Background: base.black,
-    Foreground: base.white,
-    LightBlue: syntax.base0D,
-    AccentBlue: base.blue,
-    AccentPurple: base.purple,
-    AccentCyan: base.teal,
-    AccentGreen: base.green,
-    AccentYellow: base.yellow,
-    AccentRed: base.red,
-    Comment: base.greyFg,
-    Gray: base.grey,
-    DiffAdded: base.green,
-    DiffRemoved: base.red,
-    DiffModified: base.yellow,
-    GradientColors: [base.blue, base.purple, base.orange]
+    background: {
+      primary: base.black,
+      diff: {
+        added: diffAddedBg,
+        removed: diffRemovedBg,
+      },
+    },
+    text: {
+      primary: base.white,
+      secondary: base.lightGrey,
+      link: syntax.base0D,
+      accent: base.purple,
+    },
+    border: {
+      default: base.oneBg3,
+      focused: base.blue,
+    },
+    status: {
+      success: base.green,
+      warning: base.yellow,
+      error: base.red,
+    },
+    ui: {
+      comment: base.greyFg2,
+      symbol: base.teal,
+      gradient: [base.blue, base.purple, base.orange],
+    },
   };
 };

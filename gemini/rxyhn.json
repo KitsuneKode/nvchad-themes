@@ -1,23 +1,35 @@
 {
   "name": "NvChad Rxyhn Theme",
   "type": "custom",
-  "Background": "#061115",
-  "Foreground": "#D9D7D6",
-  "LightBlue": "#79AAEB",
-  "AccentBlue": "#6791C9",
-  "AccentPurple": "#C488EC",
-  "AccentCyan": "#7ACFE4",
-  "AccentGreen": "#78B892",
-  "AccentYellow": "#ecd28b",
-  "AccentRed": "#DF5B61",
-  "Comment": "#3b464a",
-  "Gray": "#313c40",
-  "DiffAdded": "#78B892",
-  "DiffRemoved": "#DF5B61",
-  "DiffModified": "#ecd28b",
-  "GradientColors": [
-    "#6791C9",
-    "#C488EC",
-    "#E89982"
-  ]
+  "background": {
+    "primary": "#061115",
+    "diff": {
+      "added": "#172a28",
+      "removed": "#271c20"
+    }
+  },
+  "text": {
+    "primary": "#D9D7D6",
+    "secondary": "#4f5a5e",
+    "link": "#79AAEB",
+    "accent": "#C488EC"
+  },
+  "border": {
+    "default": "#242f33",
+    "focused": "#6791C9"
+  },
+  "status": {
+    "success": "#78B892",
+    "warning": "#ecd28b",
+    "error": "#DF5B61"
+  },
+  "ui": {
+    "comment": "#455054",
+    "symbol": "#7ACFE4",
+    "gradient": [
+      "#6791C9",
+      "#C488EC",
+      "#E89982"
+    ]
+  }
 }
