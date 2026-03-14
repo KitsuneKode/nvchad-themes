@@ -587,7 +587,7 @@ const colors: Record<string, string> = {
 
 export const buildTheme = (): ThemeDefinition => ({
   $schema: "vscode://schemas/color-theme",
-  name: "NvChad Rxyhn",
+  name: "NvChad Rxyhn Theme",
   type: "dark",
   semanticHighlighting: true,
   colors,
@@ -665,11 +665,11 @@ const zedSyntax: Record<string, ZedSyntaxRule> = {
 
 export const buildZedTheme = (): ZedThemeDefinition => ({
   $schema: "https://zed.dev/schema/themes/v0.2.0.json",
-  name: "NvChad Rxyhn",
+  name: "NvChad Rxyhn Theme",
   author: "kitsunekode",
   themes: [
     {
-      name: "NvChad Rxyhn",
+      name: "NvChad Rxyhn Theme",
       appearance: "dark",
       style: {
         "accents": [base.blue, base.green, base.teal, base.yellow, base.orange, base.purple, base.red],

@@ -1,42 +1,46 @@
 {
-  "name": "nvchad-rxyhn-theme",
-  "displayName": "NvChad Rxyhn",
-  "description": "Palette-faithful VS Code and Cursor port of NvChad's rxyhn theme.",
-  "version": "0.1.0",
-  "publisher": "kitsunekode",
-  "author": "kitsunekode",
-  "license": "MIT",
-  "type": "module",
-  "engines": {
-    "vscode": "^1.74.0"
-  },
-  "categories": [
-    "Themes"
-  ],
-  "keywords": [
-    "theme",
-    "color-theme",
-    "nvchad",
-    "rxyhn",
-    "cursor",
-    "zed"
-  ],
-  "scripts": {
-    "build": "bun run scripts/build-theme.ts",
-    "install:zed": "bun run scripts/install-zed-theme.ts",
-    "package": "bun run scripts/package-theme.ts",
-    "vscode:prepublish": "bun run build"
-  },
-  "contributes": {
-    "themes": [
-      {
-        "label": "NvChad Rxyhn",
-        "uiTheme": "vs-dark",
-        "path": "./themes/rxyhn-color-theme.json"
-      }
-    ]
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  }
+	"name": "nvchad-rxyhn-theme-vscode-cursor-zed",
+	"displayName": "NvChad Rxyhn Theme",
+	"description": "NvChad Rxyhn theme for VS Code, Cursor, and Zed, inspired by Base46.",
+	"version": "0.1.0",
+	"publisher": "kitsunekode",
+	"author": "kitsunekode",
+	"license": "MIT",
+	"type": "module",
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"theme",
+		"color-theme",
+		"rxyhn",
+		"neovim",
+		"nvchad",
+		"base46",
+		"vscode-theme",
+		"cursor",
+		"zed",
+		"zed-theme"
+	],
+	"scripts": {
+		"build": "bun run scripts/build-theme.ts",
+		"install:zed": "bun run scripts/install-zed-theme.ts",
+		"package": "bun run scripts/package-theme.ts",
+		"vscode:prepublish": "bun run build"
+	},
+	"contributes": {
+		"themes": [
+			{
+				"label": "NvChad Rxyhn Theme",
+				"uiTheme": "vs-dark",
+				"path": "./themes/rxyhn-color-theme.json"
+			}
+		]
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	}
 }

@@ -2,15 +2,16 @@
 
 ## Current Status
 
-- This repo generates a shared `NvChad Rxyhn` theme for:
+- This repo generates a shared `NvChad Rxyhn Theme` for:
   - VS Code / Cursor extension packaging
   - Zed local theme installation
+- Public-facing name preference is `NvChad Rxyhn Theme` and the recommended GitHub repo name is `nvchad-rxyhn-theme-vscode-cursor-zed`.
 - The repo now includes an MIT `LICENSE` and a GitHub-oriented README with install steps for all three editors.
 - The single source of truth is `src/theme.ts`.
 - Generated outputs are:
   - `themes/rxyhn-color-theme.json`
-  - `zed/nvchad-rxyhn.json`
-  - `nvchad-rxyhn-theme-0.1.0.vsix`
+  - `zed/rxyhn-theme.json`
+  - `nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix`
 
 ## Important Files
 
@@ -25,7 +26,7 @@
 - Do not hand-edit generated JSON files unless debugging output.
 - Make palette or mapping changes in `src/theme.ts`, then run `bun run build`.
 - If you change VS Code packaging behavior, verify the archive contents with:
-  - `unzip -l nvchad-rxyhn-theme-0.1.0.vsix`
+  - `unzip -l nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix`
 - If you change the Zed output, reinstall it with:
   - `bun run install:zed`
 

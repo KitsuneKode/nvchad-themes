@@ -3,7 +3,7 @@ import { dirname, resolve } from "node:path";
 import { buildTheme, buildZedTheme } from "../src/theme.ts";
 
 const vscodeThemePath = resolve("themes/rxyhn-color-theme.json");
-const zedThemePath = resolve("zed/nvchad-rxyhn.json");
+const zedThemePath = resolve("zed/rxyhn-theme.json");
 
 mkdirSync(dirname(vscodeThemePath), { recursive: true });
 mkdirSync(dirname(zedThemePath), { recursive: true });

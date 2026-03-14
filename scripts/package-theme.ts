@@ -30,7 +30,7 @@ const packageJson = JSON.parse(readFileSync(resolve(rootDir, "package.json"), "u
 };
 const vsixName = `${packageJson.name}-${packageJson.version}.vsix`;
 const vsixPath = resolve(rootDir, vsixName);
-const tempDir = mkdtempSync(resolve(tmpdir(), "nvchad-rxyhn-theme-"));
+const tempDir = mkdtempSync(resolve(tmpdir(), "rxyhn-theme-"));
 const unpackDir = resolve(tempDir, "vsix");
 const extensionDir = resolve(unpackDir, "extension");
 

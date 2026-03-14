@@ -1,6 +1,16 @@
-# NvChad Rxyhn
+# NvChad Rxyhn Theme for VS Code, Cursor, and Zed
 
-Palette-faithful VS Code, Cursor, and Zed port of NvChad's `rxyhn` theme.
+Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, and Zed, with `NvChad` in the project name for stronger discoverability.
+
+## Preview
+
+### Cursor / VS Code
+
+![Cursor preview](./public/cursor.png)
+
+### Zed
+
+![Zed preview](./public/zed.png)
 
 ## Install From GitHub
 
@@ -8,7 +18,7 @@ Clone the repo:
 
 ```bash
 git clone <your-github-repo-url>
-cd vscode-extension-rxyhn-theme
+cd nvchad-rxyhn-theme-vscode-cursor-zed
 bun install
 ```
 
@@ -18,10 +28,10 @@ Build the VSIX and install it:
 
 ```bash
 bun run package
-code --install-extension ./nvchad-rxyhn-theme-0.1.0.vsix
+code --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
 ```
 
-Then open the theme picker and choose `NvChad Rxyhn`.
+Then open the theme picker and choose `NvChad Rxyhn Theme`.
 
 ### Cursor
 
@@ -29,10 +39,10 @@ Build the VSIX and install it:
 
 ```bash
 bun run package
-cursor --install-extension ./nvchad-rxyhn-theme-0.1.0.vsix
+cursor --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
 ```
 
-Then open the theme picker and choose `NvChad Rxyhn`.
+Then open the theme picker and choose `NvChad Rxyhn Theme`.
 
 ### Zed
 
@@ -41,10 +51,10 @@ Build the local Zed theme file and install it:
 ```bash
 bun run build
 mkdir -p ~/.config/zed/themes
-cp ./zed/nvchad-rxyhn.json ~/.config/zed/themes/nvchad-rxyhn.json
+cp ./zed/rxyhn-theme.json ~/.config/zed/themes/rxyhn-theme.json
 ```
 
-Then restart Zed and choose `NvChad Rxyhn` from the theme picker.
+Then restart Zed and choose `NvChad Rxyhn Theme` from the theme picker.
 
 If you prefer the helper script:
 
@@ -54,15 +64,15 @@ bun run install:zed
 
 ## Release-Friendly Option
 
-If you publish GitHub Releases, attach `nvchad-rxyhn-theme-0.1.0.vsix` to a release. That gives VS Code and Cursor users a simple download-and-install path without building locally.
+If you publish GitHub Releases, attach `nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix` to a release. That gives VS Code and Cursor users a simple download-and-install path without building locally.
 
-Zed users can download `zed/nvchad-rxyhn.json` from the repo or a release and place it in `~/.config/zed/themes`.
+Zed users can download `zed/rxyhn-theme.json` from the repo or a release and place it in `~/.config/zed/themes`.
 
 ## Outputs
 
 - VS Code / Cursor theme JSON: `themes/rxyhn-color-theme.json`
-- VS Code / Cursor VSIX: `nvchad-rxyhn-theme-0.1.0.vsix`
-- Zed local theme JSON: `zed/nvchad-rxyhn.json`
+- VS Code / Cursor VSIX: `nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix`
+- Zed local theme JSON: `zed/rxyhn-theme.json`
 
 All generated artifacts come from the shared palette and mappings in `src/theme.ts`.
 
@@ -75,7 +85,7 @@ bun run build
 This regenerates both:
 
 - `themes/rxyhn-color-theme.json`
-- `zed/nvchad-rxyhn.json`
+- `zed/rxyhn-theme.json`
 
 ## Local Dev Workflow
 
@@ -88,13 +98,13 @@ bun run package
 Install the VSIX locally:
 
 ```bash
-code --install-extension ./nvchad-rxyhn-theme-0.1.0.vsix
-cursor --install-extension ./nvchad-rxyhn-theme-0.1.0.vsix
+code --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
+cursor --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
 ```
 
 Or install manually with `Extensions: Install from VSIX...`.
 
-After installation, choose `NvChad Rxyhn` from the color theme picker.
+After installation, choose `NvChad Rxyhn Theme` from the color theme picker.
 
 Generate the Zed theme file:
 
@@ -112,10 +122,10 @@ Manual alternative:
 
 ```bash
 mkdir -p ~/.config/zed/themes
-cp ./zed/nvchad-rxyhn.json ~/.config/zed/themes/nvchad-rxyhn.json
+cp ./zed/rxyhn-theme.json ~/.config/zed/themes/rxyhn-theme.json
 ```
 
-Then restart Zed and select `NvChad Rxyhn` from the theme picker.
+Then restart Zed and select `NvChad Rxyhn Theme` from the theme picker.
 
 If you want to pin it in `~/.config/zed/settings.json`, use:
 
@@ -123,7 +133,7 @@ If you want to pin it in `~/.config/zed/settings.json`, use:
 {
   "theme": {
     "mode": "system",
-    "dark": "NvChad Rxyhn",
+    "dark": "NvChad Rxyhn Theme",
     "light": "Catppuccin Mocha"
   }
 }
@@ -137,7 +147,7 @@ VS Code / Cursor:
 
 ```jsonc
 {
-  "workbench.colorTheme": "NvChad Rxyhn",
+  "workbench.colorTheme": "NvChad Rxyhn Theme",
   "editor.semanticHighlighting.enabled": true,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
@@ -155,7 +165,7 @@ Zed:
   "vim_mode": true,
   "theme": {
     "mode": "system",
-    "dark": "NvChad Rxyhn",
+    "dark": "NvChad Rxyhn Theme",
     "light": "Catppuccin Mocha"
   }
 }
