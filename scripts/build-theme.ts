@@ -1,32 +1,44 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
-import { buildGeminiTheme, buildOpenCodeTheme, buildTheme, buildZedTheme, themeCatalog } from "../src/theme.ts";
+import {
+  buildCodexTheme,
+  buildGeminiTheme,
+  buildOpenCodeTheme,
+  buildTheme,
+  buildZedTheme,
+  themeCatalog
+} from "../src/theme.ts";
 
 for (const theme of themeCatalog) {
   const vscodeThemePath = resolve("themes", `${theme.id}-color-theme.json`);
   const zedThemePath = resolve("zed", `${theme.id}-theme.json`);
   const openCodeThemePath = resolve("opencode", `${theme.id}.json`);
   const geminiThemePath = resolve("gemini", `${theme.id}.json`);
+  const codexThemePath = resolve("codex", `${theme.id}.tmTheme`);
 
   mkdirSync(dirname(vscodeThemePath), { recursive: true });
   mkdirSync(dirname(zedThemePath), { recursive: true });
   mkdirSync(dirname(openCodeThemePath), { recursive: true });
   mkdirSync(dirname(geminiThemePath), { recursive: true });
+  mkdirSync(dirname(codexThemePath), { recursive: true });
 
   const vscodeOutput = `${JSON.stringify(buildTheme(theme), null, 2)}\n`;
   const zedOutput = `${JSON.stringify(buildZedTheme(theme), null, 2)}\n`;
   const openCodeOutput = `${JSON.stringify(buildOpenCodeTheme(theme), null, 2)}\n`;
   const geminiOutput = `${JSON.stringify(buildGeminiTheme(theme), null, 2)}\n`;
+  const codexOutput = `${buildCodexTheme(theme)}\n`;
 
   await Bun.write(vscodeThemePath, vscodeOutput);
   await Bun.write(zedThemePath, zedOutput);
   await Bun.write(openCodeThemePath, openCodeOutput);
   await Bun.write(geminiThemePath, geminiOutput);
+  await Bun.write(codexThemePath, codexOutput);
 
   console.log(`Generated ${vscodeThemePath}`);
   console.log(`Generated ${zedThemePath}`);
   console.log(`Generated ${openCodeThemePath}`);
   console.log(`Generated ${geminiThemePath}`);
+  console.log(`Generated ${codexThemePath}`);
 }
 
 const packagePath = resolve("package.json");

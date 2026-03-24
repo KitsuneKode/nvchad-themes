@@ -144,6 +144,12 @@ type GeminiThemeDefinition = {
   };
 };
 
+type CodexThemeRule = {
+  name?: string;
+  scope?: string;
+  settings: Record<string, string>;
+};
+
 const alpha = (hex: string, opacity: number) => {
   const clamped = Math.max(0, Math.min(1, opacity));
   const channel = Math.round(clamped * 255)
@@ -1117,6 +1123,104 @@ const mixColors = (base: string, blend: string, ratio: number): string => {
   const m = parse(blend);
   const r = b.map((c, i) => Math.round(c + (m[i] - c) * ratio));
   return `#${r.map((c) => c.toString(16).padStart(2, "0")).join("")}`;
+};
+
+const escapeXml = (value: string): string => value
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll("\"", "&quot;")
+  .replaceAll("'", "&apos;");
+
+const plistIndent = (level: number): string => "  ".repeat(level);
+
+const renderPlistValue = (value: string | number | boolean | Record<string, unknown> | Array<unknown>, level: number): string => {
+  if (Array.isArray(value)) {
+    if (value.length === 0) {
+      return `${plistIndent(level)}<array/>`;
+    }
+
+    return [
+      `${plistIndent(level)}<array>`,
+      ...value.map((entry) => renderPlistValue(entry as string | number | boolean | Record<string, unknown> | Array<unknown>, level + 1)),
+      `${plistIndent(level)}</array>`
+    ].join("\n");
+  }
+
+  if (typeof value === "object" && value !== null) {
+    const entries = Object.entries(value);
+
+    if (entries.length === 0) {
+      return `${plistIndent(level)}<dict/>`;
+    }
+
+    const lines = [`${plistIndent(level)}<dict>`];
+
+    for (const [key, entry] of entries) {
+      lines.push(`${plistIndent(level + 1)}<key>${escapeXml(key)}</key>`);
+      lines.push(renderPlistValue(entry as string | number | boolean | Record<string, unknown> | Array<unknown>, level + 1));
+    }
+
+    lines.push(`${plistIndent(level)}</dict>`);
+    return lines.join("\n");
+  }
+
+  if (typeof value === "boolean") {
+    return `${plistIndent(level)}<${value ? "true" : "false"}/>`;
+  }
+
+  if (typeof value === "number") {
+    return `${plistIndent(level)}<integer>${value}</integer>`;
+  }
+
+  return `${plistIndent(level)}<string>${escapeXml(value)}</string>`;
+};
+
+const buildCodexThemeRules = (theme: ThemeSpec): CodexThemeRule[] => {
+  const base = theme.base30;
+
+  return [
+    {
+      settings: {
+        background: base.black,
+        gutter: base.black2,
+        gutterForeground: base.greyFg,
+        foreground: base.white,
+        caret: base.white,
+        invisibles: base.greyFg,
+        lineHighlight: mixColors(base.black, base.white, 0.04),
+        selection: mixColors(base.black, base.blue, 0.22),
+        inactiveSelection: mixColors(base.black, base.oneBg3, 0.68),
+        selectionBorder: base.blue,
+        guide: base.line,
+        activeGuide: base.lightGrey,
+        findHighlight: mixColors(base.black, base.green, 0.28),
+        highlight: mixColors(base.black, base.teal, 0.16)
+      }
+    },
+    ...buildTokenColors(theme).map((rule) => ({
+      name: rule.name,
+      scope: Array.isArray(rule.scope) ? rule.scope.join(", ") : rule.scope,
+      settings: Object.fromEntries(
+        Object.entries(rule.settings).filter(([, value]) => value !== undefined)
+      ) as Record<string, string>
+    }))
+  ];
+};
+
+export const buildCodexTheme = (theme: ThemeSpec = themeCatalog[0]): string => {
+  const plist = {
+    name: theme.displayName,
+    settings: buildCodexThemeRules(theme)
+  };
+
+  return [
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">",
+    "<plist version=\"1.0\">",
+    renderPlistValue(plist, 1),
+    "</plist>"
+  ].join("\n");
 };
 
 export const buildGeminiTheme = (theme: ThemeSpec = themeCatalog[0]): GeminiThemeDefinition => {

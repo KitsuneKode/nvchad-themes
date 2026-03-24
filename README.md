@@ -1,6 +1,6 @@
-# NvChad Rxyhn Theme for VS Code, Cursor, Zed, OpenCode, and Gemini CLI
+# NvChad Rxyhn Theme for VS Code, Cursor, Zed, OpenCode, Gemini CLI, and Codex
 
-Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, Zed, OpenCode, and Gemini CLI, with `NvChad` in the project name for stronger discoverability.
+Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, Zed, OpenCode, Gemini CLI, and Codex, with `NvChad` in the project name for stronger discoverability.
 
 ## Preview
 
@@ -19,6 +19,12 @@ Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, Zed, OpenCo
 ### Gemini CLI
 
 ![Gemini CLI preview](./public/gemini.png)
+
+### Codex
+
+![Codex preview](./public/codex.png)
+
+Codex support is generated as a TextMate `.tmTheme` file that the Codex TUI can load from `~/.codex/themes`.
 
 ## Install From GitHub
 
@@ -88,6 +94,39 @@ And register the theme in `~/.gemini/settings.json`:
   }
 }
 ```
+
+Or use the automated installer (see below).
+
+For Codex, users can download the generated TextMate theme directly:
+
+- [codex/rxyhn.tmTheme](./codex/rxyhn.tmTheme)
+
+Codex custom themes are file-based, so they may not show up like an extension install flow in other editors.
+
+If you do not have the Codex CLI installed yet, install it first and launch it once:
+
+```bash
+npm i -g @openai/codex
+codex
+```
+
+The first launch will prompt you to sign in.
+
+Then copy it into:
+
+```bash
+mkdir -p ~/.codex/themes
+cp ./codex/rxyhn.tmTheme ~/.codex/themes/rxyhn.tmTheme
+```
+
+And set the theme in `~/.codex/config.toml`:
+
+```toml
+[tui]
+theme = "rxyhn"
+```
+
+Restart `codex` after saving the config.
 
 Or use the automated installer (see below).
 
@@ -179,11 +218,49 @@ cp ./gemini/rxyhn.json ~/.gemini/themes/rxyhn.json
 
 Then add the theme to `~/.gemini/settings.json` under `ui.customThemes` (see the install section above for the JSON structure).
 
+### Codex
+
+Build and install the Codex theme:
+
+```bash
+bun run build
+bun run install:codex
+```
+
+This copies `codex/rxyhn.tmTheme` into `~/.codex/themes/` and updates `~/.codex/config.toml` to use `theme = "rxyhn"`.
+
+Manual alternative:
+
+```bash
+mkdir -p ~/.codex/themes
+cp ./codex/rxyhn.tmTheme ~/.codex/themes/rxyhn.tmTheme
+```
+
+Then set the active theme in `~/.codex/config.toml`:
+
+```toml
+[tui]
+theme = "rxyhn"
+```
+
+Restart `codex` after saving the file.
+
+## Codex CLI Notes
+
+- This target is for the Codex CLI / TUI.
+- The custom theme name must match the file name without the extension, so `~/.codex/themes/rxyhn.tmTheme` pairs with `theme = "rxyhn"`.
+- Custom Codex themes are configured through `~/.codex/config.toml`; they do not install like a VSIX.
+- If Codex is running and you do not see the new theme, that usually means it still needs the `theme = "rxyhn"` entry in `~/.codex/config.toml`.
+- If the theme does not appear, fully quit and reopen `codex` after updating the file and config.
+- If `codex` is not available in your terminal at all, first confirm the CLI is installed by running `codex --version`.
+
 ## Release-Friendly Option
 
 If you publish GitHub Releases, attach `nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix` to a release. That gives VS Code and Cursor users a simple download-and-install path without building locally.
 
 Zed users can download `zed/rxyhn-theme.json` from the repo or a release and place it in `~/.config/zed/themes`.
+
+Codex users can download `codex/rxyhn.tmTheme` from the repo or a release, place it in `~/.codex/themes`, and set `theme = "rxyhn"` in `~/.codex/config.toml`.
 
 ## Outputs
 
@@ -192,6 +269,7 @@ Zed users can download `zed/rxyhn-theme.json` from the repo or a release and pla
 - Zed local theme JSON: `zed/rxyhn-theme.json`
 - OpenCode theme JSON: `opencode/rxyhn.json`
 - Gemini CLI theme JSON: `gemini/rxyhn.json`
+- Codex theme file: `codex/rxyhn.tmTheme`
 
 All generated artifacts come from the shared palette and mappings in `src/theme.ts`.
 
@@ -215,6 +293,7 @@ That will automatically:
 - generate `zed/<id>-theme.json`
 - generate `opencode/<id>.json`
 - generate `gemini/<id>.json`
+- generate `codex/<id>.tmTheme`
 - sync `package.json` so the VS Code extension contributes the new theme
 
 ## Build
@@ -229,6 +308,7 @@ This regenerates:
 - `zed/rxyhn-theme.json`
 - `opencode/rxyhn.json`
 - `gemini/rxyhn.json`
+- `codex/rxyhn.tmTheme`
 
 ## Local Dev Workflow
 

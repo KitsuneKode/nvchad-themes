@@ -1,7 +1,7 @@
 {
   "name": "nvchad-rxyhn-theme-vscode-cursor-zed",
   "displayName": "NvChad Rxyhn Theme",
-  "description": "NvChad Rxyhn theme for VS Code, Cursor, and Zed, inspired by Base46.",
+  "description": "NvChad Rxyhn theme for VS Code, Cursor, Zed, OpenCode, Gemini CLI, and Codex, inspired by Base46.",
   "version": "0.1.0",
   "publisher": "kitsunekode",
   "author": "kitsunekode",
@@ -23,10 +23,15 @@
     "vscode-theme",
     "cursor",
     "zed",
-    "zed-theme"
+    "zed-theme",
+    "opencode",
+    "gemini-cli",
+    "codex",
+    "tmtheme"
   ],
   "scripts": {
     "build": "bun run scripts/build-theme.ts",
+    "install:codex": "bun run scripts/install-codex-theme.ts",
     "install:gemini": "bun run scripts/install-gemini-theme.ts",
     "install:opencode": "bun run scripts/install-opencode-theme.ts",
     "install:zed": "bun run scripts/install-zed-theme.ts",
