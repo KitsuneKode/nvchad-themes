@@ -709,6 +709,7 @@ const buildVsCodeColors = (theme: ThemeSpec): Record<string, string> => {
 const buildZedSyntax = (theme: ThemeSpec): Record<string, ZedSyntaxRule> => {
   const base = theme.base30;
   const syntax = theme.base16;
+  const mutedHint = base.lightGrey;
 
   return {
     "attribute": { color: syntax.base0A, font_style: null, font_weight: null },
@@ -728,7 +729,7 @@ const buildZedSyntax = (theme: ThemeSpec): Record<string, ZedSyntaxRule> => {
   "function.macro": { color: syntax.base08, font_style: null, font_weight: null },
   "function.method": { color: syntax.base0D, font_style: null, font_weight: null },
   "function.method.call": { color: syntax.base0D, font_style: null, font_weight: null },
-  "hint": { color: base.purple, font_style: null, font_weight: null },
+  "hint": { color: mutedHint, font_style: "italic", font_weight: null },
   "keyword": { color: syntax.base0E, font_style: null, font_weight: null },
   "keyword.conditional": { color: syntax.base0E, font_style: null, font_weight: null },
   "keyword.control": { color: syntax.base0E, font_style: null, font_weight: null },
@@ -792,6 +793,7 @@ export const buildTheme = (theme: ThemeSpec = themeCatalog[0]): ThemeDefinition 
 export const buildZedTheme = (theme: ThemeSpec = themeCatalog[0]): ZedThemeDefinition => {
   const base = theme.base30;
   const syntax = theme.base16;
+  const mutedHint = base.lightGrey;
 
   return ({
   $schema: "https://zed.dev/schema/themes/v0.2.0.json",
@@ -856,9 +858,9 @@ export const buildZedTheme = (theme: ThemeSpec = themeCatalog[0]): ZedThemeDefin
         "hidden": base.lightGrey,
         "hidden.background": base.black2,
         "hidden.border": base.lightGrey,
-        "hint": base.purple,
-        "hint.background": alpha(base.purple, 0.14),
-        "hint.border": base.purple,
+        "hint": mutedHint,
+        "hint.background": alpha(mutedHint, 0.12),
+        "hint.border": alpha(mutedHint, 0.35),
         "icon": base.white,
         "icon.accent": base.teal,
         "icon.disabled": base.greyFg2,
