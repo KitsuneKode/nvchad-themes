@@ -26,12 +26,14 @@ bun run previews
 
 ### Download the extension zip
 
-Get [`nvchad-themes-zed-extension-1.0.0.zip`](../dist/nvchad-themes-zed-extension-1.0.0.zip) from [`dist/`](../dist/) or [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest).
+Get [`nvchad-themes-zed-extension-1.0.1.zip`](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip) from [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest).
+
+Full steps: [INSTALL.md](../INSTALL.md)
 
 1. **Extract** the zip. The folder you pick in Zed must contain **`extension.toml`** at its root:
 
    ```
-   nvchad-themes-zed-extension-1.0.0/
+   nvchad-themes-zed-extension-1.0.1/
      extension.toml
      LICENSE
      README.md
@@ -46,11 +48,17 @@ Get [`nvchad-themes-zed-extension-1.0.0.zip`](../dist/nvchad-themes-zed-extensio
 4. **`zed: reload`** or restart Zed.
 5. Theme picker → search **NvChad** → e.g. **NvChad Tokyonight**.
 
-Verify checksum: `sha256sum -c ../dist/checksums.sha256` (from `dist/`).
+Verify checksum:
+
+```bash
+curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/checksums.sha256
+curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip
+sha256sum -c checksums.sha256
+```
 
 ### Alternative: user theme JSON only
 
-Copy [`nvchad-themes-zed-user-1.0.0.json`](../dist/nvchad-themes-zed-user-1.0.0.json) to:
+Download [`nvchad-themes-zed-user-1.0.1.json`](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-user-1.0.1.json) and copy to:
 
 - Linux: `~/.config/zed/themes/`
 - macOS: `~/Library/Application Support/Zed/themes/`
@@ -92,7 +100,7 @@ zed-extension/
   extension.toml          # id = "nvchad-themes"
   LICENSE
   README.md
-  screenshots/            # hero PNG previews (bundled in dist zip)
+  screenshots/            # hero PNG previews (bundled in release zip)
   themes/
     nvchad-themes.json    # one family, 94 variants
     {id}-theme.json       # Theme Builder import
@@ -128,7 +136,7 @@ Zed auto-discovers every `.json` in `themes/`. Theme-only extensions need no Rus
 ```bash
 bun run build
 bun run previews          # optional: refresh screenshots/
-bun run package           # dist zip includes themes/ + screenshots/
+bun run package           # release zip includes themes/ + screenshots/
 ```
 
 ## Publishing

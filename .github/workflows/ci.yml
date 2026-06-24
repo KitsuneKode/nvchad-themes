@@ -18,7 +18,12 @@ jobs:
       - run: bun test
       - run: bun run goldens --check
       - run: bun run package
+      - run: bun run previews:check
       - run: bun run verify
+      - name: CI artifact summary
+        run: |
+          echo "Distribution artifact: nvchad-themes-dist (download from Actions run summary)"
+          ls -la dist/
       - run: unzip -l dist/*.vsix | grep -c "color-theme.json"
       - uses: actions/upload-artifact@v4
         with:

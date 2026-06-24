@@ -20,12 +20,16 @@ jobs:
       - run: bun run import:base46 --check
       - run: bun run build
       - run: bun test
+      - run: bun run goldens:check
       - run: bun run previews
+      - run: bun run previews:check
       - run: bun run package
       - run: bun run verify
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          body_path: INSTALL.md
           files: |
             dist/*
-          generate_release_notes: true
+          fail_on_unmatched_files: true
+          generate_release_notes: false

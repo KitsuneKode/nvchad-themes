@@ -2,7 +2,7 @@
   "name": "nvchad-themes",
   "displayName": "NvChad Themes",
   "description": "All 94 NvChad base46 themes — Nord, Catppuccin, Tokyo Night, Rxyhn, Gruvbox, and more. Faithful ports from NvChad for VS Code and Cursor.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "kitsunekode",
   "author": {
     "name": "kitsunekode",
@@ -62,6 +62,7 @@
     "goldens:check": "bun run scripts/generate-golden-extracts.ts --check",
     "previews": "bun run scripts/run-previews.ts",
     "previews:raster": "bun run scripts/render-preview-raster.ts",
+    "previews:check": "bun run scripts/previews-check.ts",
     "verify": "bun run scripts/verify-extensions.ts",
     "publish:vscode": "bun run package && bunx @vscode/vsce publish",
     "publish:vscode:ovsx": "bun run package && bunx ovsx publish dist/*.vsix",

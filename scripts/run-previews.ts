@@ -12,3 +12,4 @@ const run = (args: string[]): void => {
 run(["run", "build"]);
 run(["run", "scripts/generate-previews.ts", ...extraArgs]);
 run(["run", "scripts/render-preview-raster.ts", ...extraArgs]);
+run(["run", "scripts/previews-check.ts"]);

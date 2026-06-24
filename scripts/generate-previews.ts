@@ -1,6 +1,6 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
-import { createHighlighter, type ThemeRegistration } from "shiki";
+import { createHighlighter, type ThemeRegistration, type ThemedToken } from "shiki";
 import { themeCatalog } from "../src/index.ts";
 import { CODE_SAMPLE } from "../samples/code-sample.ts";
 import { HERO_THEME_IDS } from "../src/references/hero-themes.ts";
@@ -11,22 +11,47 @@ const LANG = "typescript";
 
 const heroesOnly = process.argv.includes("--heroes-only");
 
-const escapeHtml = (value: string): string =>
+const PREVIEW_WIDTH = 720;
+const PREVIEW_HEIGHT = 420;
+const FONT_SIZE = 13;
+const LINE_HEIGHT = 19.5;
+const PADDING = 16;
+
+const escapeXml = (value: string): string =>
   value
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll("\"", "&quot;");
 
-const wrapSvg = (plain: string, width = 720, height = 420): string =>
-  `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-  <rect width="100%" height="100%" fill="#111318"/>
-  <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:ui-monospace,monospace;font-size:13px;line-height:1.5;padding:16px;background:#111318;color:#e6e6e6;overflow:hidden;">
-      <pre style="margin:0;white-space:pre-wrap;">${escapeHtml(plain)}</pre>
-    </div>
-  </foreignObject>
+const editorBackground = (theme: ThemeRegistration): string => {
+  const colors = theme.colors as Record<string, string> | undefined;
+  return colors?.["editor.background"] ?? "#111318";
+};
+
+const buildTokenSvg = (tokens: ThemedToken[][], background: string): string => {
+  const lineSpans = tokens.map((line, lineIndex) => {
+    const dy = lineIndex === 0 ? PADDING + FONT_SIZE : LINE_HEIGHT;
+    const tokenSpans = line
+      .map((token) => {
+        if (!token.content) {
+          return "";
+        }
+        const color = token.color ?? "#e6e6e6";
+        return `<tspan fill="${color}">${escapeXml(token.content)}</tspan>`;
+      })
+      .join("");
+
+    return `<tspan x="${PADDING}" dy="${dy}">${tokenSpans}</tspan>`;
+  });
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${PREVIEW_WIDTH}" height="${PREVIEW_HEIGHT}" viewBox="0 0 ${PREVIEW_WIDTH} ${PREVIEW_HEIGHT}">
+  <rect width="100%" height="100%" fill="${background}"/>
+  <text font-family="ui-monospace,Menlo,Consolas,monospace" font-size="${FONT_SIZE}">
+    ${lineSpans.join("\n    ")}
+  </text>
 </svg>`;
+};
 
 const loadVsCodeTheme = (id: string): ThemeRegistration => {
   const themeJson = JSON.parse(
@@ -41,11 +66,12 @@ const run = async () => {
   const renderTheme = async (id: string, outputPath: string) => {
     const theme = loadVsCodeTheme(id);
     const html = highlighter.codeToHtml(CODE_SAMPLE, { lang: LANG, theme });
-    const plain = html.replace(/<[^>]+>/g, "");
+    const { tokens } = highlighter.codeToTokens(CODE_SAMPLE, { lang: LANG, theme });
+    const svg = buildTokenSvg(tokens, editorBackground(theme));
 
     mkdirSync(dirname(outputPath), { recursive: true });
     writeFileSync(outputPath, html);
-    writeFileSync(outputPath.replace(/\.html$/, ".svg"), wrapSvg(plain));
+    writeFileSync(outputPath.replace(/\.html$/, ".svg"), svg);
     console.log(`Wrote ${outputPath}`);
   };
 

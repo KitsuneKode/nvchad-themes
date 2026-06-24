@@ -13,6 +13,13 @@ import {
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import { createHash } from "node:crypto";
+import {
+  artifactNames,
+  readPackageMeta,
+  releaseDownloadUrl,
+  REPO_URL,
+  RELEASES_LATEST
+} from "./lib/release-urls.ts";
 import { validateZedExtensionDir, ZED_EXTENSION_BUNDLE } from "./lib/validate-zed.ts";
 
 const run = (cmd: string[], cwd = resolve(".")) => {
@@ -31,18 +38,11 @@ const run = (cmd: string[], cwd = resolve(".")) => {
 
 const rootDir = resolve(".");
 const distDir = resolve(rootDir, "dist");
-const packageJson = JSON.parse(readFileSync(resolve(rootDir, "package.json"), "utf8")) as {
-  name: string;
-  version: string;
-  displayName: string;
-};
+const packageJson = readPackageMeta(rootDir);
 
 const version = packageJson.version;
-const repoUrl = "https://github.com/KitsuneKode/nvchad-themes";
-const releaseUrl = `${repoUrl}/releases/latest/download`;
-const vsixName = `${packageJson.name}-${version}.vsix`;
-const zedExtensionZipName = `${packageJson.name}-zed-extension-${version}.zip`;
-const zedUserThemeName = `${packageJson.name}-zed-user-${version}.json`;
+const { vsix: vsixName, zedExtensionZip: zedExtensionZipName, zedUserTheme: zedUserThemeName } =
+  artifactNames(version, packageJson.name);
 
 const hashFile = (filePath: string): string => {
   const hash = createHash("sha256");
@@ -118,7 +118,7 @@ const installMd = `# NvChad Themes — Install Packages
 
 Version **${version}**. Pre-built files for VS Code, Cursor, and Zed.
 
-**Repository:** ${repoUrl}
+**Repository:** ${REPO_URL} · **Latest release:** [${RELEASES_LATEST}](${RELEASES_LATEST})
 
 No clone or build tools required — download the artifacts below and install.
 
@@ -126,11 +126,10 @@ No clone or build tools required — download the artifacts below and install.
 
 | Platform | Release URL |
 |----------|-------------|
-| VS Code / Cursor | [\`${vsixName}\`](${releaseUrl}/${vsixName}) |
-| Zed extension | [\`${zedExtensionZipName}\`](${releaseUrl}/${zedExtensionZipName}) |
-| Zed user theme | [\`${zedUserThemeName}\`](${releaseUrl}/${zedUserThemeName}) |
-
-Files in this \`dist/\` folder match the release assets above.
+| VS Code / Cursor | [\`${vsixName}\`](${releaseDownloadUrl(vsixName)}) |
+| Zed extension | [\`${zedExtensionZipName}\`](${releaseDownloadUrl(zedExtensionZipName)}) |
+| Zed user theme | [\`${zedUserThemeName}\`](${releaseDownloadUrl(zedUserThemeName)}) |
+| Checksums | [\`checksums.sha256\`](${releaseDownloadUrl("checksums.sha256")}) |
 
 ## Try these themes first
 
@@ -144,20 +143,21 @@ Files in this \`dist/\` folder match the release assets above.
 
 ## VS Code / Cursor / Devin Desktop
 
-**File:** [\`${vsixName}\`](./${vsixName})
+**File:** [\`${vsixName}\`](${releaseDownloadUrl(vsixName)})
 
-1. Download the \`.vsix\`
+1. Download the \`.vsix\` from the release page
 2. Command palette → **Extensions: Install from VSIX...**
 3. **Preferences: Color Theme** → search **NvChad**
 
 \`\`\`bash
+curl -LO ${releaseDownloadUrl(vsixName)}
 code --install-extension ${vsixName}
 cursor --install-extension ${vsixName}
 \`\`\`
 
 ## Zed — Dev extension (all 94 themes, recommended)
 
-**File:** [\`${zedExtensionZipName}\`](./${zedExtensionZipName})
+**File:** [\`${zedExtensionZipName}\`](${releaseDownloadUrl(zedExtensionZipName)})
 
 1. Download and extract the zip. You should see \`extension.toml\` at the top level of the extracted folder (along with \`themes/\` and \`screenshots/\`).
 2. In Zed: **zed: install dev extension**
@@ -168,8 +168,9 @@ cursor --install-extension ${vsixName}
 The project panel colors git status: modified files use yellow/orange labels, gitignored paths are dimmer than normal files. Ensure \`project_panel.git_colors\` is \`true\` in Zed settings (default).
 
 \`\`\`bash
+curl -LO ${releaseDownloadUrl(zedExtensionZipName)}
+curl -LO ${releaseDownloadUrl("checksums.sha256")}
 unzip ${zedExtensionZipName}
-# → cd into the folder that contains extension.toml
 sha256sum -c checksums.sha256
 \`\`\`
 
@@ -182,13 +183,17 @@ bun run install:zed-dev
 
 ## Zed — User theme file
 
-**File:** [\`${zedUserThemeName}\`](./${zedUserThemeName})
+**File:** [\`${zedUserThemeName}\`](${releaseDownloadUrl(zedUserThemeName)})
 
 Copy to \`~/.config/zed/themes/\` (macOS: \`~/Library/Application Support/Zed/themes/\`).
 
 ## Verify
 
 \`\`\`bash
+curl -LO ${releaseDownloadUrl("checksums.sha256")}
+curl -LO ${releaseDownloadUrl(vsixName)}
+curl -LO ${releaseDownloadUrl(zedExtensionZipName)}
+curl -LO ${releaseDownloadUrl(zedUserThemeName)}
 sha256sum -c checksums.sha256
 \`\`\`
 
@@ -202,6 +207,7 @@ bun run package
 `;
 
 writeFileSync(resolve(distDir, "INSTALL.md"), installMd);
+writeFileSync(resolve(rootDir, "INSTALL.md"), installMd);
 
 const artifacts = [vsixName, zedExtensionZipName, zedUserThemeName];
 const checksumLines = artifacts.map((name) => {
