@@ -39,17 +39,29 @@ code --install-extension nvchad-themes-1.0.0.vsix
 cursor --install-extension nvchad-themes-1.0.0.vsix
 ```
 
-## Zed — Dev extension (all 94 themes)
+## Zed — Dev extension (all 94 themes, recommended)
 
 **File:** [`nvchad-themes-zed-extension-1.0.0.zip`](./nvchad-themes-zed-extension-1.0.0.zip)
 
-1. Download and extract
-2. **zed: install dev extension** → select extracted folder (not the repo root)
-3. Theme picker → search **NvChad**
+1. Download and extract the zip. You should see `extension.toml` at the top level of the extracted folder (along with `themes/` and `screenshots/`).
+2. In Zed: **zed: install dev extension**
+3. Select the **extracted folder** — the one that contains `extension.toml`, not the repo root and not only `themes/`.
+4. Run **zed: reload** (or restart Zed).
+5. Open the theme picker and search **NvChad** (e.g. **NvChad Tokyonight**, **NvChad Kanagawa**).
+
+The project panel colors git status: modified files use yellow/orange labels, gitignored paths are dimmer than normal files. Ensure `project_panel.git_colors` is `true` in Zed settings (default).
 
 ```bash
-# Optional: verify checksum after download
+unzip nvchad-themes-zed-extension-1.0.0.zip
+# → cd into the folder that contains extension.toml
 sha256sum -c checksums.sha256
+```
+
+**From a git clone (contributors):**
+
+```bash
+bun run install:zed-dev
+# Zed: zed: install dev extension → select zed-extension/ in this repo
 ```
 
 ## Zed — User theme file
