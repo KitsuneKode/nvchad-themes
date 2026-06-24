@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+  <rect width="100%" height="100%" fill="#111318"/>
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:ui-monospace,monospace;font-size:13px;line-height:1.5;padding:16px;background:#111318;color:#e6e6e6;overflow:hidden;">
+      <pre style="margin:0;white-space:pre-wrap;">// NvChad theme preview sample
+import { ThemeSpec } from &quot;./types&quot;;
+
+/** Greets the user with syntax-rich highlighting */
+export function greet(name: string, count = 1): string {
+  const message = `Hello, ${name}!`;
+  if (count &gt; 1) {
+    return Array(count).fill(message).join(&quot; &quot;);
+  }
+  return message;
+}
+
+const numbers = [1, 2.5, 0xff];
+const pattern = /^[a-z]+$/;
+const ok: boolean = numbers.length &gt; 0;
+
+class ThemeBuilder {
+  readonly id: string;
+
+  constructor(id: string) {
+    this.id = id;
+  }
+
+  build(theme: ThemeSpec): Record&amp;#x3C;string, string&gt; {
+    return { background: theme.base30.black };
+  }
+}
+
+export default new ThemeBuilder(&quot;kanagawa&quot;);
+</pre>
+    </div>
+  </foreignObject>
+</svg>

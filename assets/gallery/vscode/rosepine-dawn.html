@@ -1,0 +1,30 @@
+<pre class="shiki NvChad Rosepine Dawn" style="background-color:#faf4ed;color:#575279" tabindex="0"><code><span class="line"><span style="color:#A39EAD;font-style:italic">// NvChad theme preview sample</span></span>
+<span class="line"><span style="color:#EA9D34">import</span><span style="color:#575279"> { ThemeSpec } </span><span style="color:#EA9D34">from</span><span style="color:#56949F"> "./types"</span><span style="color:#575279">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A39EAD;font-style:italic">/**</span><span style="color:#9893A4;font-style:italic"> Greets the user with syntax-rich highlighting </span><span style="color:#A39EAD;font-style:italic">*/</span></span>
+<span class="line"><span style="color:#EA9D34">export</span><span style="color:#3E8FB0;font-weight:bold"> function</span><span style="color:#907AA9;font-style:italic"> greet</span><span style="color:#575279">(</span><span style="color:#907AA9">name</span><span style="color:#575279">: </span><span style="color:#3E8FB0;font-weight:bold">string</span><span style="color:#575279">, </span><span style="color:#907AA9">count</span><span style="color:#575279"> = </span><span style="color:#EA9D34">1</span><span style="color:#575279">): </span><span style="color:#3E8FB0;font-weight:bold">string</span><span style="color:#575279"> {</span></span>
+<span class="line"><span style="color:#3E8FB0;font-weight:bold">  const</span><span style="color:#575279"> message = </span><span style="color:#56949F">`Hello, ${</span><span style="color:#575279">name</span><span style="color:#56949F">}!`</span><span style="color:#575279">;</span></span>
+<span class="line"><span style="color:#EA9D34">  if</span><span style="color:#575279"> (count > </span><span style="color:#EA9D34">1</span><span style="color:#575279">) {</span></span>
+<span class="line"><span style="color:#EA9D34">    return</span><span style="color:#907AA9;font-style:italic"> Array</span><span style="color:#575279">(count)</span><span style="color:#575279;font-style:italic">.</span><span style="color:#907AA9;font-style:italic">fill</span><span style="color:#575279">(message)</span><span style="color:#575279;font-style:italic">.</span><span style="color:#907AA9;font-style:italic">join</span><span style="color:#575279">(</span><span style="color:#56949F">" "</span><span style="color:#575279">);</span></span>
+<span class="line"><span style="color:#575279">  }</span></span>
+<span class="line"><span style="color:#EA9D34">  return</span><span style="color:#575279"> message;</span></span>
+<span class="line"><span style="color:#575279">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#3E8FB0;font-weight:bold">const</span><span style="color:#575279"> numbers = [</span><span style="color:#EA9D34">1</span><span style="color:#575279">, </span><span style="color:#EA9D34">2.5</span><span style="color:#575279">, </span><span style="color:#EA9D34">0xff</span><span style="color:#575279">];</span></span>
+<span class="line"><span style="color:#3E8FB0;font-weight:bold">const</span><span style="color:#575279"> pattern =</span><span style="color:#286983"> /</span><span style="color:#EA9D34">^[a-z]</span><span style="color:#575279">+</span><span style="color:#EA9D34">$</span><span style="color:#286983">/</span><span style="color:#575279">;</span></span>
+<span class="line"><span style="color:#3E8FB0;font-weight:bold">const</span><span style="color:#575279"> ok: </span><span style="color:#3E8FB0;font-weight:bold">boolean</span><span style="color:#575279"> = numbers.length > </span><span style="color:#EA9D34">0</span><span style="color:#575279">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#3E8FB0;font-weight:bold">class</span><span style="color:#3E8FB0;font-weight:bold"> ThemeBuilder</span><span style="color:#575279"> {</span></span>
+<span class="line"><span style="color:#EA9D34">  readonly</span><span style="color:#575279"> id: </span><span style="color:#3E8FB0;font-weight:bold">string</span><span style="color:#575279">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#3E8FB0;font-weight:bold">  constructor</span><span style="color:#575279">(</span><span style="color:#907AA9">id</span><span style="color:#575279">: </span><span style="color:#3E8FB0;font-weight:bold">string</span><span style="color:#575279">) {</span></span>
+<span class="line"><span style="color:#EA9D34">    this</span><span style="color:#575279">.</span><span style="color:#B4637A">id</span><span style="color:#575279"> = id;</span></span>
+<span class="line"><span style="color:#575279">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#907AA9;font-style:italic">  build</span><span style="color:#575279">(</span><span style="color:#907AA9">theme</span><span style="color:#575279">: </span><span style="color:#3E8FB0;font-weight:bold">ThemeSpec</span><span style="color:#575279">): </span><span style="color:#3E8FB0;font-weight:bold">Record</span><span style="color:#575279">&#x3C;</span><span style="color:#3E8FB0;font-weight:bold">string</span><span style="color:#575279">, </span><span style="color:#3E8FB0;font-weight:bold">string</span><span style="color:#575279">> {</span></span>
+<span class="line"><span style="color:#EA9D34">    return</span><span style="color:#575279"> { </span><span style="color:#B4637A">background</span><span style="color:#575279">: theme.base30.</span><span style="color:#B4637A">black</span><span style="color:#575279"> };</span></span>
+<span class="line"><span style="color:#575279">  }</span></span>
+<span class="line"><span style="color:#575279">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#EA9D34">export</span><span style="color:#EA9D34"> default</span><span style="color:#575279"> new </span><span style="color:#907AA9;font-style:italic">ThemeBuilder</span><span style="color:#575279">(</span><span style="color:#56949F">"kanagawa"</span><span style="color:#575279">);</span></span>
+<span class="line"></span></code></pre>

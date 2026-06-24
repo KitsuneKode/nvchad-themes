@@ -1,0 +1,30 @@
+<pre class="shiki NvChad Neofusion" style="background-color:#06101E;color:#66def9" tabindex="0"><code><span class="line"><span style="color:#164080;font-style:italic">// NvChad theme preview sample</span></span>
+<span class="line"><span style="color:#66DEF9">import { </span><span style="color:#E8E5B5">ThemeSpec</span><span style="color:#66DEF9"> } from </span><span style="color:#01ECA7">"./types"</span><span style="color:#66DEF9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#164080;font-style:italic">/**</span><span style="color:#184686;font-style:italic"> Greets the user with syntax-rich highlighting </span><span style="color:#164080;font-style:italic">*/</span></span>
+<span class="line"><span style="color:#66DEF9">export </span><span style="color:#FD5E3A">function</span><span style="color:#35B5FF;font-style:italic"> greet</span><span style="color:#66DEF9">(name</span><span style="color:#E8E5B5">:</span><span style="color:#FD5E3A"> string</span><span style="color:#66DEF9">, count </span><span style="color:#E8E5B5">=</span><span style="color:#FD5E3A"> 1</span><span style="color:#66DEF9">)</span><span style="color:#E8E5B5">:</span><span style="color:#FD5E3A"> string</span><span style="color:#66DEF9"> {</span></span>
+<span class="line"><span style="color:#FD5E3A">  const</span><span style="color:#E8E5B5"> message</span><span style="color:#E8E5B5"> =</span><span style="color:#01ECA7"> `Hello, ${</span><span style="color:#E8E5B5">name</span><span style="color:#01ECA7">}!`</span><span style="color:#66DEF9">;</span></span>
+<span class="line"><span style="color:#66DEF9">  if (</span><span style="color:#E8E5B5">count</span><span style="color:#E8E5B5"> ></span><span style="color:#FD5E3A"> 1</span><span style="color:#66DEF9">) {</span></span>
+<span class="line"><span style="color:#66DEF9">    return </span><span style="color:#35B5FF;font-style:italic">Array</span><span style="color:#66DEF9">(</span><span style="color:#E8E5B5">count</span><span style="color:#66DEF9">)</span><span style="color:#E8E5B5;font-style:italic">.</span><span style="color:#35B5FF;font-style:italic">fill</span><span style="color:#66DEF9">(</span><span style="color:#E8E5B5">message</span><span style="color:#66DEF9">)</span><span style="color:#E8E5B5;font-style:italic">.</span><span style="color:#35B5FF;font-style:italic">join</span><span style="color:#66DEF9">(</span><span style="color:#01ECA7">" "</span><span style="color:#66DEF9">);</span></span>
+<span class="line"><span style="color:#66DEF9">  }</span></span>
+<span class="line"><span style="color:#66DEF9">  return </span><span style="color:#E8E5B5">message</span><span style="color:#66DEF9">;</span></span>
+<span class="line"><span style="color:#66DEF9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FD5E3A">const</span><span style="color:#E8E5B5"> numbers</span><span style="color:#E8E5B5"> =</span><span style="color:#66DEF9"> [</span><span style="color:#FD5E3A">1</span><span style="color:#66DEF9">, </span><span style="color:#FD5E3A">2.5</span><span style="color:#66DEF9">, </span><span style="color:#FD5E3A">0xff</span><span style="color:#66DEF9">];</span></span>
+<span class="line"><span style="color:#FD5E3A">const</span><span style="color:#E8E5B5"> pattern</span><span style="color:#E8E5B5"> =</span><span style="color:#FD5E3A"> /</span><span style="color:#66DEF9">^</span><span style="color:#FC9487">[a-z]</span><span style="color:#E8E5B5">+</span><span style="color:#66DEF9">$</span><span style="color:#FD5E3A">/</span><span style="color:#66DEF9">;</span></span>
+<span class="line"><span style="color:#FD5E3A">const</span><span style="color:#E8E5B5"> ok:</span><span style="color:#FD5E3A"> boolean</span><span style="color:#E8E5B5"> =</span><span style="color:#E8E5B5"> numbers.length</span><span style="color:#E8E5B5"> ></span><span style="color:#FD5E3A"> 0</span><span style="color:#66DEF9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FD5E3A">class</span><span style="color:#FD5E3A"> ThemeBuilder</span><span style="color:#66DEF9"> {</span></span>
+<span class="line"><span style="color:#66DEF9">  readonly </span><span style="color:#E8E5B5">id:</span><span style="color:#FD5E3A"> string</span><span style="color:#66DEF9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FD5E3A">  constructor</span><span style="color:#66DEF9">(id</span><span style="color:#E8E5B5">:</span><span style="color:#FD5E3A"> string</span><span style="color:#66DEF9">) {</span></span>
+<span class="line"><span style="color:#FD5E3A">    this</span><span style="color:#E8E5B5">.</span><span style="color:#66DEF9">id </span><span style="color:#E8E5B5">=</span><span style="color:#E8E5B5"> id</span><span style="color:#66DEF9">;</span></span>
+<span class="line"><span style="color:#66DEF9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#35B5FF;font-style:italic">  build</span><span style="color:#66DEF9">(theme</span><span style="color:#E8E5B5">:</span><span style="color:#FD5E3A"> ThemeSpec</span><span style="color:#66DEF9">)</span><span style="color:#E8E5B5">:</span><span style="color:#FD5E3A"> Record</span><span style="color:#66DEF9">&#x3C;</span><span style="color:#FD5E3A">string</span><span style="color:#66DEF9">, </span><span style="color:#FD5E3A">string</span><span style="color:#66DEF9">> {</span></span>
+<span class="line"><span style="color:#66DEF9">    return { background: </span><span style="color:#E8E5B5">theme.base30.</span><span style="color:#66DEF9">black };</span></span>
+<span class="line"><span style="color:#66DEF9">  }</span></span>
+<span class="line"><span style="color:#66DEF9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66DEF9">export default </span><span style="color:#E8E5B5">new</span><span style="color:#35B5FF;font-style:italic"> ThemeBuilder</span><span style="color:#66DEF9">(</span><span style="color:#01ECA7">"kanagawa"</span><span style="color:#66DEF9">);</span></span>
+<span class="line"></span></code></pre>
