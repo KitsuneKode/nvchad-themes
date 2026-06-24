@@ -58,6 +58,10 @@
     "install:gemini": "bun run scripts/install-gemini-theme.ts",
     "install:opencode": "bun run scripts/install-opencode-theme.ts",
     "test": "bun test",
+    "goldens": "bun run scripts/generate-golden-extracts.ts",
+    "goldens:check": "bun run scripts/generate-golden-extracts.ts --check",
+    "previews": "bun run scripts/run-previews.ts",
+    "previews:raster": "bun run scripts/render-preview-raster.ts",
     "verify": "bun run scripts/verify-extensions.ts",
     "publish:vscode": "bun run package && bunx @vscode/vsce publish",
     "publish:vscode:ovsx": "bun run package && bunx ovsx publish dist/*.vsix",
@@ -538,6 +542,8 @@
     ]
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "sharp": "^0.35.2",
+    "shiki": "^3.2.1"
   }
 }

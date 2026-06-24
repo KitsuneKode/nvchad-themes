@@ -16,6 +16,7 @@ jobs:
       - run: bun run import:base46 --check
       - run: bun run build
       - run: bun test
+      - run: bun run goldens --check
       - run: bun run package
       - run: bun run verify
       - run: unzip -l dist/*.vsix | grep -c "color-theme.json"
