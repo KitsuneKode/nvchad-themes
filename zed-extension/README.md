@@ -2,140 +2,135 @@
 
 All 94 [NvChad base46](https://github.com/NvChad/base46) themes in one Zed theme extension.
 
-This folder follows the [Zed theme extension layout](https://zed.dev/docs/extensions/themes):
-
-```
-zed-extension/
-  extension.toml
-  LICENSE
-  screenshots/          # hero preview HTML (open in browser)
-  themes/
-    nvchad-themes.json  # one theme family, 94 variants
-    {id}-theme.json     # per-theme import for Theme Builder
-```
-
-Zed auto-discovers every `.json` file in `themes/` when the extension loads. No Rust code is required for theme-only extensions.
-
 ## Screenshots
 
-Hero preview cards (Shiki-rendered syntax samples) live in `screenshots/`:
+Syntax previews (Shiki + this repo's theme engine):
 
-- `kanagawa.html` / `.svg` — open in a browser for a quick visual check
-- Same for `nord`, `catppuccin`, `rxyhn`, `onedark`, `tokyonight`, `gruvbox`, `everforest`
+| Tokyonight | Kanagawa |
+| :---: | :---: |
+| ![NvChad Tokyonight](./screenshots/tokyonight.png) | ![NvChad Kanagawa](./screenshots/kanagawa.png) |
 
-Regenerate after theme changes:
+| Nord | Catppuccin |
+| :---: | :---: |
+| ![NvChad Nord](./screenshots/nord.png) | ![NvChad Catppuccin](./screenshots/catppuccin.png) |
+
+More heroes: `screenshots/{tokyonight,kanagawa,nord,catppuccin,rxyhn,onedark,gruvbox,everforest}.png`
+
+Regenerate after theme changes (from repo root):
 
 ```bash
 bun run previews
 ```
 
-## Install (recommended): Dev extension
+## Install (end users)
 
-From the repo root:
+### Download the extension zip
+
+Get [`nvchad-themes-zed-extension-1.0.0.zip`](../dist/nvchad-themes-zed-extension-1.0.0.zip) from [`dist/`](../dist/) or [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest).
+
+1. **Extract** the zip. The folder you pick in Zed must contain **`extension.toml`** at its root:
+
+   ```
+   nvchad-themes-zed-extension-1.0.0/
+     extension.toml
+     LICENSE
+     README.md
+     themes/
+       nvchad-themes.json    # all 94 variants
+       tokyonight-theme.json # per-theme imports
+     screenshots/
+   ```
+
+2. In Zed: **`zed: install dev extension`**
+3. Select the **extracted folder** (not `themes/` alone, not the git repo root unless you cloned).
+4. **`zed: reload`** or restart Zed.
+5. Theme picker → search **NvChad** → e.g. **NvChad Tokyonight**.
+
+Verify checksum: `sha256sum -c ../dist/checksums.sha256` (from `dist/`).
+
+### Alternative: user theme JSON only
+
+Copy [`nvchad-themes-zed-user-1.0.0.json`](../dist/nvchad-themes-zed-user-1.0.0.json) to:
+
+- Linux: `~/.config/zed/themes/`
+- macOS: `~/Library/Application Support/Zed/themes/`
+
+No `extension.toml` needed; Zed watches that directory for JSON theme families.
+
+```bash
+bun run install:zed --all   # from a clone
+bun run install:zed nord    # single theme
+```
+
+## Install (contributors)
 
 ```bash
 bun run install:zed-dev
 ```
 
-In Zed:
+Then **`zed: install dev extension`** → select **`zed-extension/`** in this repository.
 
-1. Open the command palette
-2. Run **`zed: install dev extension`**
-3. Select this **`zed-extension/`** directory (not the repo root)
+## Project panel & git colors
 
-All 94 themes appear in the theme picker. Search for **NvChad**.
+Zed colors file tree labels by git status when `project_panel.git_colors` is enabled (default):
 
-Per-theme JSON files (`themes/kanagawa-theme.json`, etc.) can be imported into [Zed Theme Builder](https://zed.dev/theme-builder) for visual tuning.
+| Status | Color role |
+|--------|------------|
+| Normal file | `text.muted` |
+| Gitignored | `ignored` (dimmer) |
+| Modified | `modified` (yellow/orange) |
+| Added / untracked | `created` (green) |
 
-### Troubleshooting
+Hero themes **NvChad Tokyonight** and **NvChad Kanagawa** pin chrome values from [zed-tokyo-night](https://github.com/ssaunderss/zed-tokyo-night) and [zed-kanagawa](https://github.com/ethangilmore/zed-kanagawa).
 
-**Panels look flat / same color as the editor**
+After updating themes: `bun run install:zed-dev` then **`zed: reload`**.
 
-- Confirm `surface.background` ≠ `background` — inspect `zed-extension/themes/tokyonight-theme.json` or run `zed: open log` for parse errors
-- Re-run `bun run install:zed-dev` after `bun run build` so Zed picks up fresh JSON
-- Compare with `zed/golden/tokyonight.json` surface extract
+## Layout
 
-**Wrong syntax colors (e.g. variables show `M.base_16...`)**
+```
+zed-extension/
+  extension.toml          # id = "nvchad-themes"
+  LICENSE
+  README.md
+  screenshots/            # hero PNG previews (bundled in dist zip)
+  themes/
+    nvchad-themes.json    # one family, 94 variants
+    {id}-theme.json       # Theme Builder import
+```
 
-- Run `bun run build` — usually a stale extension bundle
-- `zed: reload` or restart Zed
+Zed auto-discovers every `.json` in `themes/`. Theme-only extensions need no Rust code.
 
-**Theme not in the picker**
+## Troubleshooting
 
-- Dev extension path must be **`zed-extension/`**, not the repo root
-- Check `extension.toml` → `id = "nvchad-themes"`
-- If a marketplace build with the same ID is installed, the dev extension replaces it
+**Themes not in picker**
 
-**Prerequisites**
+- Dev extension path must contain `extension.toml`.
+- Run **`zed: reload`** after install.
+- Check **`zed: open log`** for JSON parse errors.
 
-- **Contributors:** [Bun](https://bun.sh) for `install:zed-dev` and the build pipeline
-- **End users:** download the [dist zip](../dist/nvchad-themes-zed-extension-1.0.0.zip) — no clone or Bun required
+**Flat panels / wrong syntax**
+
+- Re-run `bun run build` and reinstall the dev extension.
+- Stale bundle is the usual cause.
+
+**Git colors too subtle**
+
+- Confirm **`project_panel.git_colors`**: `true`.
+- Use an **NvChad** variant (e.g. NvChad Tokyonight), not a separate Tokyo Night extension.
 
 **Diagnostics**
 
-- **`zed: open log`** — theme parse errors
-- **`zed --foreground`** — verbose logs from a terminal
-
-Docs: [Developing Extensions](https://zed.dev/docs/extensions/developing-extensions)
-
-## Install (alternative): Manual user theme file
-
-Copy the bundled theme family into Zed's user themes directory:
-
-```bash
-bun run install:zed --all
-```
-
-This writes `~/.config/zed/themes/nvchad-themes.json`. Zed watches that folder and reloads themes when files change.
-
-Install a single theme instead:
-
-```bash
-bun run install:zed nord
-```
-
-That copies `zed/nord-theme.json` as its own one-variant theme family.
-
-## Theme Builder workflow
-
-Tune hero themes visually at [zed.dev/theme-builder](https://zed.dev/theme-builder):
-
-1. `bun run build` — generates `zed/{id}-theme.json` and `zed-extension/themes/{id}-theme.json`
-2. Import a per-theme JSON in Theme Builder
-3. Export tuned JSON and compare with `zed/golden/{id}.json` surface extracts
-
-## Theme file format
-
-Each file in `themes/` is a **theme family** per the [Zed theme schema v0.2.0](https://zed.dev/schema/themes/v0.2.0.json):
-
-```json
-{
-  "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
-  "name": "NvChad Themes",
-  "author": "NvChad",
-  "themes": [
-    { "name": "NvChad Nord", "appearance": "dark", "style": { ... } }
-  ]
-}
-```
-
-The bundle ships all 94 variants in one family (similar to Catppuccin's multi-flavor JSON files).
-
-## Publishing to the Zed extension store
-
-Theme extensions are published separately from language extensions. See [Developing Extensions — Publishing](https://zed.dev/docs/extensions/developing-extensions#publishing-your-extension):
-
-1. Host this extension in its own public Git repository
-2. Include an accepted license at the extension root (`LICENSE`)
-3. Open a PR to [zed-industries/extensions](https://github.com/zed-industries/extensions) adding a submodule and `extensions.toml` entry
+- `zed: open log`
+- `zed --foreground` from a terminal
 
 ## Regenerating
 
-From the repo root:
-
 ```bash
 bun run build
-bun run previews   # optional: hero + gallery assets
+bun run previews          # optional: refresh screenshots/
+bun run package           # dist zip includes themes/ + screenshots/
 ```
 
-This refreshes `themes/nvchad-themes.json`, `themes/{id}-theme.json`, and `zed/{id}-theme.json` from `src/palettes/` and the theme engine.
+## Publishing
+
+See [Developing Extensions — Publishing](https://zed.dev/docs/extensions/developing-extensions#publishing-your-extension) and the root [PUBLISHING.md](../PUBLISHING.md).

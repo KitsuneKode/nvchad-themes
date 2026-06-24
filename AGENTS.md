@@ -43,5 +43,7 @@
 ## Caveats
 
 - `package-dist.ts` rebuilds VSIX with only `themes/`, `package.json`, `readme.md`, `LICENSE`, `assets/icon.png`
+- Zed dist zip includes `extension.toml`, `LICENSE`, `README.md`, `themes/`, `screenshots/` (hero PNGs)
+- `bun run package` runs hero previews before zipping; release CI runs `bun run previews` first
 - Zed registry PR uses `zed-extension/` via `path` submodule field or a dedicated repo
 - Bump `package.json` and `zed-extension/extension.toml` versions together

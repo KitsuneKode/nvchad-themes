@@ -20,6 +20,7 @@ jobs:
       - run: bun run import:base46 --check
       - run: bun run build
       - run: bun test
+      - run: bun run previews
       - run: bun run package
       - run: bun run verify
       - name: Create GitHub Release

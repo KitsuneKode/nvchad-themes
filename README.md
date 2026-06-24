@@ -7,25 +7,21 @@ All **94** palettes from [NvChad base46](https://github.com/NvChad/base46) v3.0 
 [![CI](https://github.com/KitsuneKode/nvchad-themes/actions/workflows/ci.yml/badge.svg)](https://github.com/KitsuneKode/nvchad-themes/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
-## Downloads
+## Downloads (no build tools required)
 
-| Platform | File | Install |
-|----------|------|---------|
-| **VS Code / Cursor** | [nvchad-themes-1.0.0.vsix](./dist/nvchad-themes-1.0.0.vsix) | Extensions → **Install from VSIX…** |
-| **Zed (extension)** | [nvchad-themes-zed-extension-1.0.0.zip](./dist/nvchad-themes-zed-extension-1.0.0.zip) | Extract → **zed: install dev extension** |
-| **Zed (user theme)** | [nvchad-themes-zed-user-1.0.0.json](./dist/nvchad-themes-zed-user-1.0.0.json) | Copy to `~/.config/zed/themes/` |
+| Platform | Artifact | Install |
+|----------|----------|---------|
+| **VS Code / Cursor** | [`dist/nvchad-themes-1.0.0.vsix`](./dist/nvchad-themes-1.0.0.vsix) | Extensions → **Install from VSIX…** |
+| **Zed (extension)** | [`dist/nvchad-themes-zed-extension-1.0.0.zip`](./dist/nvchad-themes-zed-extension-1.0.0.zip) | Extract → **`zed: install dev extension`** |
+| **Zed (user theme)** | [`dist/nvchad-themes-zed-user-1.0.0.json`](./dist/nvchad-themes-zed-user-1.0.0.json) | Copy to `~/.config/zed/themes/` |
 
-**Latest release:** [github.com/KitsuneKode/nvchad-themes/releases/latest](https://github.com/KitsuneKode/nvchad-themes/releases/latest)
+Also on [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest). Verify: `sha256sum -c dist/checksums.sha256`
 
-Verify checksums: `sha256sum -c dist/checksums.sha256`
-
-Full install steps: [dist/INSTALL.md](./dist/INSTALL.md) · Publishing: [PUBLISHING.md](./PUBLISHING.md)
-
-**No clone required:** download artifacts from [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest) or [`dist/`](./dist/) — verify with `sha256sum -c dist/checksums.sha256`.
+Step-by-step: **[dist/INSTALL.md](./dist/INSTALL.md)** · Publishing: **[PUBLISHING.md](./PUBLISHING.md)**
 
 ## Previews
 
-Hero images are **generated from this repo's theme engine** (`bun run previews`). Gallery thumbnails for all 94 themes: [`assets/gallery/vscode/`](./assets/gallery/vscode/).
+Generated from this repo's theme engine (`bun run previews`). Full VS Code gallery: [`assets/gallery/vscode/`](./assets/gallery/vscode/).
 
 | NvChad Tokyonight | NvChad Kanagawa |
 | :---: | :---: |
@@ -39,55 +35,62 @@ Hero images are **generated from this repo's theme engine** (`bun run previews`)
 | :---: | :---: |
 | ![NvChad Rxyhn](./assets/previews/rxyhn.webp) | ![NvChad One Dark](./assets/previews/onedark.webp) |
 
-Regenerate after theme changes: `bun run previews` (full) or `bun run previews --heroes-only` (8 heroes). CI checks golden JSON with `bun run goldens:check`.
+## Try these themes first
+
+| Theme | Zed picker | VS Code label |
+|-------|------------|---------------|
+| **NvChad Tokyonight** | `tokyonight` | NvChad Tokyonight |
+| **NvChad Kanagawa** | `kanagawa` | NvChad Kanagawa |
+| **NvChad Nord** | `nord` | NvChad Nord |
+| **NvChad Catppuccin** | `catppuccin` | NvChad Catppuccin |
+| **NvChad Rxyhn** | `rxyhn` | NvChad Rxyhn |
+
+Tokyonight and Kanagawa include Zed project-panel git colors aligned with [zed-tokyo-night](https://github.com/ssaunderss/zed-tokyo-night) and [zed-kanagawa](https://github.com/ethangilmore/zed-kanagawa) (dim gitignored paths, yellow modified files).
 
 ## Quick install
 
 ### VS Code / Cursor
 
 ```bash
-# from a clone
 cursor --install-extension ./dist/nvchad-themes-1.0.0.vsix
 code --install-extension ./dist/nvchad-themes-1.0.0.vsix
 ```
 
-Open **Preferences: Color Theme** and search **NvChad**. Reload the window if themes do not appear immediately.
+**Preferences: Color Theme** → search **NvChad**. Reload the window if themes do not appear.
 
-## Try these themes first
+### Zed (extension — all 94 themes)
 
-New to NvChad? Start with one of these five — they cover the most common tastes and are used for regression testing.
+1. Download [`nvchad-themes-zed-extension-1.0.0.zip`](./dist/nvchad-themes-zed-extension-1.0.0.zip) and extract it.
+2. The folder you select must contain **`extension.toml`** at the top level:
 
-| Theme | Why try it | Zed search | VS Code label |
-|-------|------------|------------|---------------|
-| **NvChad Tokyonight** | Reference-aligned Zed port | `tokyonight` | NvChad Tokyonight |
-| **NvChad Kanagawa** | Polished warm highlights | `kanagawa` | NvChad Kanagawa |
-| **NvChad Nord** | Cool neutral baseline | `nord` | NvChad Nord |
-| **NvChad Catppuccin** | Soft, low-glare contrast | `catppuccin` | NvChad Catppuccin |
-| **NvChad Rxyhn** | Original project theme | `rxyhn` | NvChad Rxyhn |
+   ```
+   nvchad-themes-zed-extension-1.0.0/
+     extension.toml
+     themes/
+       nvchad-themes.json
+     screenshots/
+   ```
 
-**VS Code / Cursor:** install the [VSIX](./dist/nvchad-themes-1.0.0.vsix) → **Preferences: Color Theme** → search the label above.
+3. **`zed: install dev extension`** → select that extracted folder.
+4. **`zed: reload`**
+5. Theme picker → **NvChad Tokyonight** (or any NvChad variant).
 
-**Zed:** install the [extension zip](./dist/nvchad-themes-zed-extension-1.0.0.zip) or run `bun run install:zed-dev` from a clone → theme picker → search the Zed name.
-
-```bash
-bun run build && bun run package
-cursor --install-extension ./dist/nvchad-themes-1.0.0.vsix
-# Developer: Inspect Editor Tokens and Scopes — verify syntax on hero themes
-```
-
-### Zed
-
-**Extension (recommended)** — download the [Zed zip](./dist/nvchad-themes-zed-extension-1.0.0.zip), extract, then **zed: install dev extension** and select the folder.
-
-**User theme file** — download the [JSON bundle](./dist/nvchad-themes-zed-user-1.0.0.json) into `~/.config/zed/themes/`.
+**From a clone:**
 
 ```bash
-bun run install:zed-dev    # local dev: use zed-extension/ in this repo
-bun run install:zed --all  # copy user theme file to ~/.config/zed/themes/
-bun run previews           # regenerate gallery + hero preview HTML/SVG/WebP/PNG
+bun run install:zed-dev
+# Zed: zed: install dev extension → zed-extension/ in this repo
 ```
 
-**Without Bun:** download [nvchad-themes-1.0.0.vsix](./dist/nvchad-themes-1.0.0.vsix) or [nvchad-themes-zed-extension-1.0.0.zip](./dist/nvchad-themes-zed-extension-1.0.0.zip) from [`dist/`](./dist/) or [Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest). No build tools needed.
+Details: [zed-extension/README.md](./zed-extension/README.md)
+
+### Zed (user theme file only)
+
+Copy [`nvchad-themes-zed-user-1.0.0.json`](./dist/nvchad-themes-zed-user-1.0.0.json) to `~/.config/zed/themes/` (macOS: `~/Library/Application Support/Zed/themes/`).
+
+```bash
+bun run install:zed --all    # from clone
+```
 
 ### OpenCode · Gemini CLI · Codex
 
@@ -99,10 +102,11 @@ bun run install:codex nord
 
 ## What's inside
 
-- **74 dark** + **20 light** themes, synced from upstream base46
+- **74 dark** + **20 light** themes from NvChad base46
 - One VSIX with all VS Code color themes
-- One Zed extension bundle with all 94 variants
-- Generated outputs for OpenCode, Gemini CLI, and Codex
+- One Zed extension zip (`extension.toml` + `themes/` + `screenshots/`)
+- One Zed user JSON bundle for `~/.config/zed/themes/`
+- OpenCode, Gemini CLI, and Codex theme files
 
 <details>
 <summary>Full theme list</summary>
@@ -113,55 +117,41 @@ bun run install:codex nord
 
 </details>
 
-Popular picks: `onedark`, `nord`, `catppuccin`, `gruvbox`, `tokyonight`, `rosepine`, `rxyhn`, `kanagawa`, `everforest`, `poimandres`.
-
 ## Development
 
 ```bash
 bun install
-bun run import:base46    # sync palettes + polish_hl from NvChad/base46
-bun run build            # generate all platform outputs
+bun run import:base46    # sync palettes from NvChad/base46
+bun run build            # regenerate all platform outputs
 bun test
-bun run previews         # hero + gallery preview HTML/SVG/WebP/PNG assets
-bun run package          # build dist/ artifacts
+bun run previews         # hero WebP/PNG + gallery SVG
+bun run package          # build dist/ (VSIX + Zed zip + INSTALL.md)
 bun run verify
 ```
 
-### Local install (Zed)
+### Distribution layout (`dist/`)
 
-```bash
-bun run install:zed-dev          # build + validate zed-extension/
-# Zed: zed: install dev extension → select zed-extension/
-
-bun run install:zed --all          # copy user theme JSON to ~/.config/zed/themes/
-```
-
-Per-theme JSON for [Zed Theme Builder](https://zed.dev/theme-builder): `zed/{id}-theme.json` and `zed-extension/themes/{id}-theme.json`.
-
-### Local install (VS Code / Cursor)
-
-```bash
-bun run build && bun run package
-cursor --install-extension ./dist/nvchad-themes-1.0.0.vsix
-# Reload window → Preferences: Color Theme → search NvChad
-```
+| File | Contents |
+|------|----------|
+| `nvchad-themes-1.0.0.vsix` | VS Code / Cursor extension |
+| `nvchad-themes-zed-extension-1.0.0.zip` | `extension.toml`, `themes/`, `screenshots/` |
+| `nvchad-themes-zed-user-1.0.0.json` | Single JSON for `~/.config/zed/themes/` |
+| `INSTALL.md` | End-user install guide |
+| `checksums.sha256` | SHA-256 of the three artifacts above |
 
 ```
-src/palettes/       imported base46 JSON (source of truth)
-src/surfaces.ts     Zed + VS Code surface ladders
-src/syntax/         treesitter template + polish_hl engine
-src/integrations/   base46 UI recipe ports
-src/builders/       VS Code, Zed, OpenCode, Gemini, Codex emitters
-zed-extension/      Zed marketplace-ready extension (bundle + 94 per-theme JSON)
-dist/               VSIX, Zed zip, user theme JSON (distribution)
+src/palettes/       imported base46 JSON
+src/derive/         ThemeModel derivation
+src/profiles/       hero theme overrides (Tokyo Night, Kanagawa, …)
+src/builders/       VS Code, Zed, OpenCode, Gemini, Codex
+zed-extension/      Zed dev extension source (bundled into dist zip)
 ```
 
 ## Credits
 
 - Palettes: [NvChad/base46](https://github.com/NvChad/base46) (v3.0)
+- Zed reference ports: [zed-tokyo-night](https://github.com/ssaunderss/zed-tokyo-night), [zed-kanagawa](https://github.com/ethangilmore/zed-kanagawa)
 - Port & multi-editor mapping: [KitsuneKode](https://github.com/KitsuneKode)
-
-Neovim `polish_hl` overrides are imported from base46 where present and applied via the syntax engine.
 
 ## License
 
