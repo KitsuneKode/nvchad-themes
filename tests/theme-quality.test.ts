@@ -190,23 +190,44 @@ describe("zed project panel git status colors", () => {
     expect(style.created).toBe(git.added);
     expect(style.deleted).toBe(git.deleted);
 
-    // ignored must be visibly lighter than the editor well on dark themes
     expect(relativeLuminance(style.ignored!)).toBeGreaterThan(
       relativeLuminance(style.background!) + 0.02
     );
   });
 
-  test("tokyonight uses yellow modified and distinct ignored status", () => {
-    const theme = getThemeById("tokyonight")!;
-    const style = buildZedTheme(theme).themes[0]!.style as Record<string, string>;
+  test("gitignored is darker than text.muted on every dark theme", () => {
+    for (const theme of themeCatalog.filter((t) => t.type === "dark")) {
+      const style = buildZedTheme(theme).themes[0]!.style as Record<string, string>;
+      const mutedLum = relativeLuminance(style["text.muted"]!);
+      const ignoredLum = relativeLuminance(style.ignored!);
+      expect(ignoredLum).toBeLessThan(mutedLum - 0.04);
+    }
+  });
+
+  test("tokyonight matches zed-tokyo-night git chrome tiers", () => {
+    const style = buildZedTheme(getThemeById("tokyonight")!).themes[0]!.style as Record<
+      string,
+      string
+    >;
 
     expect(style.modified).toBe("#e0af68");
-    expect(style["version_control.modified"]).toBe("#e0af68");
-    expect(style["version_control.added_background"]).toBe("#1a1b26");
-    expect(style.ignored).not.toBe(style.text);
-    expect(relativeLuminance(style.ignored!)).toBeGreaterThan(
-      relativeLuminance(style.background!) + 0.02
-    );
+    expect(style["text.muted"]).toBe("#787c99");
+    expect(style.ignored).toBe("#515670");
+    expect(style.hidden).toBe("#787c99");
+    expect(style["version_control.ignored"]).toBe("#787c99");
+    expect(style.icon).toBe("#787c99");
+  });
+
+  test("kanagawa matches zed-kanagawa git chrome tiers", () => {
+    const style = buildZedTheme(getThemeById("kanagawa")!).themes[0]!.style as Record<
+      string,
+      string
+    >;
+
+    expect(style["text.muted"]).toBe("#727169");
+    expect(style.ignored).toBe("#4F4F66");
+    expect(style.modified).toBe("#FF9E3B");
+    expect(style.icon).toBe("#DCD7BA");
   });
 });
 

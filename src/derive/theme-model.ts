@@ -74,6 +74,25 @@ export const deriveThemeModel = (
 
   const integrations = integrationHints(theme, surfaces);
 
+  if (profile.git?.textMuted) {
+    zedUi = {
+      ...zedUi,
+      textMuted: profile.git.textMuted,
+      textPlaceholder: profile.git.textMuted,
+      iconMuted: profile.git.textMuted
+    };
+  }
+  if (profile.git?.icon) {
+    zedUi = { ...zedUi, icon: profile.git.icon };
+  }
+  if (profile.git?.textMuted || profile.git?.statusIgnored) {
+    integrations.git = {
+      ...integrations.git,
+      ...(profile.git.textMuted ? { ignored: profile.git.textMuted } : {}),
+      ...(profile.git.statusIgnored ? { statusIgnored: profile.git.statusIgnored } : {})
+    };
+  }
+
   let syntax = treesitterTemplate(theme);
   syntax = applyProfileSyntax(theme, syntax, profile);
 

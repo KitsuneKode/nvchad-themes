@@ -25,4 +25,10 @@ export type ZedProfileOverride = {
     comment: string;
     indentGuide: string;
   }>;
+  /** Project-panel chrome: normal rows use text.muted; gitignored rows use status.ignored (darker). */
+  git?: Partial<{
+    textMuted: string;
+    statusIgnored: string;
+    icon: string;
+  }>;
 };

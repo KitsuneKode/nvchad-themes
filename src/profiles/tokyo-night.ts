@@ -11,20 +11,10 @@ export const tokyoNightProfile: ZedProfileOverride = {
     punctuation: "#89ddff",
     comment: "#51597d",
     indentGuide: "#363b54"
+  },
+  git: {
+    textMuted: "#787c99",
+    statusIgnored: "#515670",
+    icon: "#787c99"
   }
-};
-
-export const kanagawaProfile: ZedProfileOverride = {
-  id: "kanagawa",
-  syntax: {
-    number: undefined as unknown as string
-  }
-};
-
-export const defaultDarkProfile: ZedProfileOverride = {
-  id: "default-dark"
-};
-
-export const defaultLightProfile: ZedProfileOverride = {
-  id: "default-light"
 };

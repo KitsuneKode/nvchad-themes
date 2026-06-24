@@ -1,4 +1,5 @@
 import type { ThemeSpec } from "./types.ts";
+import { zedChromeMuted } from "./zed-chrome.ts";
 import { mixColors } from "./utils.ts";
 import { zedLadder } from "./surfaces.ts";
 
@@ -84,18 +85,18 @@ export const zedUiTokens = (theme: ThemeSpec): ZedUiTokens => {
   const border = mixColors(ladder.surface, "#000000", 0.28);
   const indentGuide = mixColors(ladder.background, ladder.surface, 0.62);
   const documentHighlight = mixColors(ladder.background, base.oneBg2, 0.55);
+  const chromeMuted = zedChromeMuted(theme);
 
   return {
     ladder,
     border,
     borderFocused: alphaBorder(base.lightGrey, 0.2),
     text: b16.base05,
-    // base04 is often too dark on the editor well; Tokyo Night uses ~#787c99 for text.muted.
-    textMuted: base.lightGrey,
-    textPlaceholder: base.lightGrey,
+    textMuted: chromeMuted,
+    textPlaceholder: chromeMuted,
     textDisabled: base.greyFg2,
-    icon: b16.base04,
-    iconMuted: base.lightGrey,
+    icon: chromeMuted,
+    iconMuted: chromeMuted,
     iconPlaceholder: base.greyFg,
     elementHover: base.greyFg,
     elementActive: base.oneBg3,
