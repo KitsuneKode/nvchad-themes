@@ -113,3 +113,29 @@ export const formatThemeName = (id: string): string =>
     .join(" ");
 
 export const isHexColor = (value: string): boolean => /^#[0-9A-Fa-f]{6}$/.test(value);
+
+const hexToRgb = (hex: string): [number, number, number] => {
+  const normalized = hex.length === 9 ? hex.slice(0, 7) : hex;
+  return [
+    parseInt(normalized.slice(1, 3), 16),
+    parseInt(normalized.slice(3, 5), 16),
+    parseInt(normalized.slice(5, 7), 16)
+  ];
+};
+
+const channelLuminance = (channel: number): number => {
+  const c = channel / 255;
+  return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+};
+
+export const relativeLuminance = (hex: string): number => {
+  const [r, g, b] = hexToRgb(hex);
+  return 0.2126 * channelLuminance(r) + 0.7152 * channelLuminance(g) + 0.0722 * channelLuminance(b);
+};
+
+export const alphaFromHex = (hex: string): number => {
+  if (hex.length !== 9) {
+    return 1;
+  }
+  return parseInt(hex.slice(7, 9), 16) / 255;
+};
