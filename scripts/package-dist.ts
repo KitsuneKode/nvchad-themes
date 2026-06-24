@@ -85,10 +85,29 @@ const packageVsix = () => {
 
 mkdirSync(distDir, { recursive: true });
 
+const currentArtifacts = new Set([vsixName, zedExtensionZipName, zedUserThemeName]);
+for (const entry of readdirSync(distDir)) {
+  if (!/^nvchad-themes/.test(entry) || currentArtifacts.has(entry)) {
+    continue;
+  }
+  if (/\.(vsix|zip|json)$/.test(entry)) {
+    rmSync(resolve(distDir, entry), { force: true });
+    console.log(`Removed stale dist artifact: ${entry}`);
+  }
+}
+
+for (const entry of readdirSync(rootDir)) {
+  if (/^nvchad.*\.vsix$/.test(entry) && entry !== vsixName) {
+    rmSync(resolve(rootDir, entry), { force: true });
+    console.log(`Removed stray VSIX at repo root: ${entry}`);
+  }
+}
+
 run(["bun", "run", "build"]);
 
-// Hero syntax previews for README + Zed extension screenshots (bundled in dist zip)
+// Hero previews: manual Zed screenshots + syntax fallbacks (bundled in dist zip)
 run(["bun", "run", "scripts/generate-previews.ts", "--heroes-only"]);
+run(["bun", "run", "scripts/sync-editor-screenshots.ts"]);
 run(["bun", "run", "scripts/render-preview-raster.ts"]);
 
 const zedExtensionDir = resolve(rootDir, "zed-extension");
