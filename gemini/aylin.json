@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Aylin",
+  "type": "custom",
+  "background": {
+    "primary": "#24262E",
+    "diff": {
+      "added": "#364033",
+      "removed": "#453743"
+    }
+  },
+  "text": {
+    "primary": "#ffffff",
+    "secondary": "#606c7e",
+    "link": "#7fdbca",
+    "accent": "#d9b6f0"
+  },
+  "border": {
+    "default": "#424956",
+    "focused": "#9fd4ff"
+  },
+  "status": {
+    "success": "#9fd54d",
+    "warning": "#becf00",
+    "error": "#FD98B9"
+  },
+  "ui": {
+    "comment": "#5a6576",
+    "symbol": "#7fdbca",
+    "gradient": [
+      "#9fd4ff",
+      "#d9b6f0",
+      "#ecc48d"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Melange",
+  "type": "custom",
+  "background": {
+    "primary": "#2A2520",
+    "diff": {
+      "added": "#383834",
+      "removed": "#3f2d2a"
+    }
+  },
+  "text": {
+    "primary": "#ECE1D7",
+    "secondary": "#75706b",
+    "link": "#EBC06D",
+    "accent": "#c47fd5"
+  },
+  "border": {
+    "default": "#4d4843",
+    "focused": "#9AACCE"
+  },
+  "status": {
+    "success": "#86A3A3",
+    "warning": "#e3b865",
+    "error": "#B65C60"
+  },
+  "ui": {
+    "comment": "#6b6661",
+    "symbol": "#697893",
+    "gradient": [
+      "#9AACCE",
+      "#c47fd5",
+      "#E49B5D"
+    ]
+  }
+}

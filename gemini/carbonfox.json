@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Carbonfox",
+  "type": "custom",
+  "background": {
+    "primary": "#161616",
+    "diff": {
+      "added": "#182f23",
+      "removed": "#361f29"
+    }
+  },
+  "text": {
+    "primary": "#dfdfe0",
+    "secondary": "#636363",
+    "link": "#FF7EB6",
+    "accent": "#BE95FF"
+  },
+  "border": {
+    "default": "#323232",
+    "focused": "#78A9FF"
+  },
+  "status": {
+    "success": "#25be6a",
+    "warning": "#ffe731",
+    "error": "#EE5396"
+  },
+  "ui": {
+    "comment": "#5c5c5c",
+    "symbol": "#33B1FF",
+    "gradient": [
+      "#78A9FF",
+      "#BE95FF",
+      "#ffa332"
+    ]
+  }
+}

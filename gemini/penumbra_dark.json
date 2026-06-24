@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Penumbra Dark",
+  "type": "custom",
+  "background": {
+    "primary": "#303338",
+    "diff": {
+      "added": "#354743",
+      "removed": "#473c43"
+    }
+  },
+  "text": {
+    "primary": "#FFFDFB",
+    "secondary": "#7d8085",
+    "link": "#7A9BEC",
+    "accent": "#ac78bd"
+  },
+  "border": {
+    "default": "#515459",
+    "focused": "#8C96EC"
+  },
+  "status": {
+    "success": "#4EB67F",
+    "warning": "#c1ad4b",
+    "error": "#CA7081"
+  },
+  "ui": {
+    "comment": "#72757a",
+    "symbol": "#00a6c8",
+    "gradient": [
+      "#8C96EC",
+      "#ac78bd",
+      "#CE9042"
+    ]
+  }
+}

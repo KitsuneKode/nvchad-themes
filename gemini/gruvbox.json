@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Gruvbox",
+  "type": "custom",
+  "background": {
+    "primary": "#282828",
+    "diff": {
+      "added": "#3e3e28",
+      "removed": "#482d2a"
+    }
+  },
+  "text": {
+    "primary": "#ebdbb2",
+    "secondary": "#656565",
+    "link": "#83a598",
+    "accent": "#b4bbc8"
+  },
+  "border": {
+    "default": "#444444",
+    "focused": "#458588"
+  },
+  "status": {
+    "success": "#b8bb26",
+    "warning": "#d79921",
+    "error": "#fb4934"
+  },
+  "ui": {
+    "comment": "#505050",
+    "symbol": "#749689",
+    "gradient": [
+      "#458588",
+      "#b4bbc8",
+      "#e78a4e"
+    ]
+  }
+}

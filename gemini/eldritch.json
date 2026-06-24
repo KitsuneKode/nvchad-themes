@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Eldritch",
+  "type": "custom",
+  "background": {
+    "primary": "#171928",
+    "diff": {
+      "added": "#1c3a39",
+      "removed": "#382534"
+    }
+  },
+  "text": {
+    "primary": "#EBFAFA",
+    "secondary": "#6770AA",
+    "link": "#7081D0",
+    "accent": "#A48CF2"
+  },
+  "border": {
+    "default": "#323758",
+    "focused": "#04D1F9"
+  },
+  "status": {
+    "success": "#37F499",
+    "warning": "#F1FC79",
+    "error": "#F16C75"
+  },
+  "ui": {
+    "comment": "#4C5488",
+    "symbol": "#33C57F",
+    "gradient": [
+      "#04D1F9",
+      "#A48CF2",
+      "#F7C67F"
+    ]
+  }
+}

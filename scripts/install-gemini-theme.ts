@@ -1,7 +1,7 @@
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { resolve } from "node:path";
-import { themeCatalog } from "../src/theme.ts";
+import { themeCatalog } from "../src/index.ts";
 
 const rootDir = resolve(".");
 const requestedThemeId = process.argv[2] ?? themeCatalog[0].id;

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Scaryforest",
+  "type": "custom",
+  "background": {
+    "primary": "#121f1d",
+    "diff": {
+      "added": "#23342b",
+      "removed": "#19372f"
+    }
+  },
+  "text": {
+    "primary": "#dde5e0",
+    "secondary": "#5c7068",
+    "link": "#77beb4",
+    "accent": "#8c9f87"
+  },
+  "border": {
+    "default": "#2b3e39",
+    "focused": "#77beb4"
+  },
+  "status": {
+    "success": "#83aa7c",
+    "warning": "#c0b283",
+    "error": "#3ec195"
+  },
+  "ui": {
+    "comment": "#50645c",
+    "symbol": "#88bdaa",
+    "gradient": [
+      "#77beb4",
+      "#8c9f87",
+      "#c2a97d"
+    ]
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "defs": {
+    "bg": "#101010",
+    "bg_panel": "#181818",
+    "bg_element": "#1e1e1e",
+    "bg_element_alt": "#252525",
+    "bg_element_strong": "#2c2c2c",
+    "fg": "#cccdd1",
+    "fg_muted": "#4d4d4d",
+    "border": "#2c2c2c",
+    "border_active": "#29adff",
+    "border_subtle": "#363636",
+    "primary": "#29adff",
+    "secondary": "#5c6ab2",
+    "accent": "#0b925c",
+    "error": "#ff1a67",
+    "warning": "#fff024",
+    "success": "#00e756",
+    "info": "#29adff",
+    "diff_added": "#00e756",
+    "diff_removed": "#ff1a67",
+    "diff_context": "#3d3d3d",
+    "diff_hunk": "#454545",
+    "diff_bg_added": "#252525",
+    "diff_bg_removed": "#252525",
+    "diff_bg_context": "#1e1e1e",
+    "markdown_text": "#cccdd1",
+    "markdown_heading": "#c54bcf",
+    "markdown_link": "#0b925c",
+    "markdown_link_text": "#be620a",
+    "markdown_code": "#00e756",
+    "markdown_blockquote": "#2c2c2c",
+    "markdown_emph": "#ff4394",
+    "markdown_strong": "#be620a",
+    "markdown_rule": "#2c2c2c",
+    "markdown_list_item": "#be620a",
+    "markdown_list_enum": "#ff4394",
+    "markdown_image": "#29adff",
+    "markdown_image_text": "#be620a",
+    "markdown_code_block": "#181818",
+    "syntax_comment": "#3d3d3d",
+    "syntax_keyword": "#ff4394",
+    "syntax_function": "#c54bcf",
+    "syntax_variable": "#d8d9dd",
+    "syntax_string": "#00e756",
+    "syntax_number": "#ff004d",
+    "syntax_type": "#be620a",
+    "syntax_operator": "#d8d9dd",
+    "syntax_punctuation": "#ffccaa"
+  },
+  "theme": {
+    "primary": {
+      "dark": "primary",
+      "light": "primary"
+    },
+    "secondary": {
+      "dark": "secondary",
+      "light": "secondary"
+    },
+    "accent": {
+      "dark": "accent",
+      "light": "accent"
+    },
+    "error": {
+      "dark": "error",
+      "light": "error"
+    },
+    "warning": {
+      "dark": "warning",
+      "light": "warning"
+    },
+    "success": {
+      "dark": "success",
+      "light": "success"
+    },
+    "info": {
+      "dark": "info",
+      "light": "info"
+    },
+    "text": {
+      "dark": "fg",
+      "light": "fg"
+    },
+    "textMuted": {
+      "dark": "fg_muted",
+      "light": "fg_muted"
+    },
+    "background": {
+      "dark": "bg",
+      "light": "bg"
+    },
+    "backgroundPanel": {
+      "dark": "bg_panel",
+      "light": "bg_panel"
+    },
+    "backgroundElement": {
+      "dark": "bg_element",
+      "light": "bg_element"
+    },
+    "border": {
+      "dark": "border",
+      "light": "border"
+    },
+    "borderActive": {
+      "dark": "border_active",
+      "light": "border_active"
+    },
+    "borderSubtle": {
+      "dark": "border_subtle",
+      "light": "border_subtle"
+    },
+    "diffAdded": {
+      "dark": "diff_added",
+      "light": "diff_added"
+    },
+    "diffRemoved": {
+      "dark": "diff_removed",
+      "light": "diff_removed"
+    },
+    "diffContext": {
+      "dark": "diff_context",
+      "light": "diff_context"
+    },
+    "diffHunkHeader": {
+      "dark": "diff_hunk",
+      "light": "diff_hunk"
+    },
+    "diffHighlightAdded": {
+      "dark": "diff_added",
+      "light": "diff_added"
+    },
+    "diffHighlightRemoved": {
+      "dark": "diff_removed",
+      "light": "diff_removed"
+    },
+    "diffAddedBg": {
+      "dark": "diff_bg_added",
+      "light": "diff_bg_added"
+    },
+    "diffRemovedBg": {
+      "dark": "diff_bg_removed",
+      "light": "diff_bg_removed"
+    },
+    "diffContextBg": {
+      "dark": "diff_bg_context",
+      "light": "diff_bg_context"
+    },
+    "diffLineNumber": {
+      "dark": "diff_context",
+      "light": "diff_context"
+    },
+    "diffAddedLineNumberBg": {
+      "dark": "diff_bg_added",
+      "light": "diff_bg_added"
+    },
+    "diffRemovedLineNumberBg": {
+      "dark": "diff_bg_removed",
+      "light": "diff_bg_removed"
+    },
+    "markdownText": {
+      "dark": "markdown_text",
+      "light": "markdown_text"
+    },
+    "markdownHeading": {
+      "dark": "markdown_heading",
+      "light": "markdown_heading"
+    },
+    "markdownLink": {
+      "dark": "markdown_link",
+      "light": "markdown_link"
+    },
+    "markdownLinkText": {
+      "dark": "markdown_link_text",
+      "light": "markdown_link_text"
+    },
+    "markdownCode": {
+      "dark": "markdown_code",
+      "light": "markdown_code"
+    },
+    "markdownBlockQuote": {
+      "dark": "markdown_blockquote",
+      "light": "markdown_blockquote"
+    },
+    "markdownEmph": {
+      "dark": "markdown_emph",
+      "light": "markdown_emph"
+    },
+    "markdownStrong": {
+      "dark": "markdown_strong",
+      "light": "markdown_strong"
+    },
+    "markdownHorizontalRule": {
+      "dark": "markdown_rule",
+      "light": "markdown_rule"
+    },
+    "markdownListItem": {
+      "dark": "markdown_list_item",
+      "light": "markdown_list_item"
+    },
+    "markdownListEnumeration": {
+      "dark": "markdown_list_enum",
+      "light": "markdown_list_enum"
+    },
+    "markdownImage": {
+      "dark": "markdown_image",
+      "light": "markdown_image"
+    },
+    "markdownImageText": {
+      "dark": "markdown_image_text",
+      "light": "markdown_image_text"
+    },
+    "markdownCodeBlock": {
+      "dark": "markdown_code_block",
+      "light": "markdown_code_block"
+    },
+    "syntaxComment": {
+      "dark": "syntax_comment",
+      "light": "syntax_comment"
+    },
+    "syntaxKeyword": {
+      "dark": "syntax_keyword",
+      "light": "syntax_keyword"
+    },
+    "syntaxFunction": {
+      "dark": "syntax_function",
+      "light": "syntax_function"
+    },
+    "syntaxVariable": {
+      "dark": "syntax_variable",
+      "light": "syntax_variable"
+    },
+    "syntaxString": {
+      "dark": "syntax_string",
+      "light": "syntax_string"
+    },
+    "syntaxNumber": {
+      "dark": "syntax_number",
+      "light": "syntax_number"
+    },
+    "syntaxType": {
+      "dark": "syntax_type",
+      "light": "syntax_type"
+    },
+    "syntaxOperator": {
+      "dark": "syntax_operator",
+      "light": "syntax_operator"
+    },
+    "syntaxPunctuation": {
+      "dark": "syntax_punctuation",
+      "light": "syntax_punctuation"
+    }
+  }
+}

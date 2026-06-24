@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Obsidian Ember",
+  "type": "custom",
+  "background": {
+    "primary": "#1e1e1e",
+    "diff": {
+      "added": "#2b3140",
+      "removed": "#402929"
+    }
+  },
+  "text": {
+    "primary": "#d3d3d3",
+    "secondary": "#565656",
+    "link": "#eeeeee",
+    "accent": "#555555"
+  },
+  "border": {
+    "default": "#3a3a3a",
+    "focused": "#eeeeee"
+  },
+  "status": {
+    "success": "#729cff",
+    "warning": "#ffcc00",
+    "error": "#ff6464"
+  },
+  "ui": {
+    "comment": "#4f4f4f",
+    "symbol": "#729cff",
+    "gradient": [
+      "#eeeeee",
+      "#555555",
+      "#cd6316"
+    ]
+  }
+}

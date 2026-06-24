@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Horizon",
+  "type": "custom",
+  "background": {
+    "primary": "#1D1F27",
+    "diff": {
+      "added": "#1f3b38",
+      "removed": "#3c2733"
+    }
+  },
+  "text": {
+    "primary": "#D5D8DA",
+    "secondary": "#757b99",
+    "link": "#59C2FF",
+    "accent": "#B877DB"
+  },
+  "border": {
+    "default": "#43485b",
+    "focused": "#25B2BC"
+  },
+  "status": {
+    "success": "#27D796",
+    "warning": "#FAC29A",
+    "error": "#E95678"
+  },
+  "ui": {
+    "comment": "#676c8b",
+    "symbol": "#21BFC2",
+    "gradient": [
+      "#25B2BC",
+      "#B877DB",
+      "#F09383"
+    ]
+  }
+}

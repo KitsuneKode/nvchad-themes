@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Vscode Light",
+  "type": "custom",
+  "background": {
+    "primary": "#FFFFFF",
+    "diff": {
+      "added": "#d9ecd9",
+      "removed": "#ffd9d9"
+    }
+  },
+  "text": {
+    "primary": "#343434",
+    "secondary": "#afafaf",
+    "link": "#0000FF",
+    "accent": "#000080"
+  },
+  "border": {
+    "default": "#d7d7d7",
+    "focused": "#007ACC"
+  },
+  "status": {
+    "success": "#008000",
+    "warning": "#795E26",
+    "error": "#FF0000"
+  },
+  "ui": {
+    "comment": "#bfbfbf",
+    "symbol": "#16825D",
+    "gradient": [
+      "#007ACC",
+      "#000080",
+      "#C72E0F"
+    ]
+  }
+}

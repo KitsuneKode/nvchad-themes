@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Everforest",
+  "type": "custom",
+  "background": {
+    "primary": "#2b3339",
+    "diff": {
+      "added": "#384846",
+      "removed": "#473e44"
+    }
+  },
+  "text": {
+    "primary": "#D3C6AA",
+    "secondary": "#656d73",
+    "link": "#a7c080",
+    "accent": "#ecafcc"
+  },
+  "border": {
+    "default": "#3a4248",
+    "focused": "#7393b3"
+  },
+  "status": {
+    "success": "#83c092",
+    "warning": "#dbbc7f",
+    "error": "#e67e80"
+  },
+  "ui": {
+    "comment": "#626a70",
+    "symbol": "#69a59d",
+    "gradient": [
+      "#7393b3",
+      "#ecafcc",
+      "#e69875"
+    ]
+  }
+}

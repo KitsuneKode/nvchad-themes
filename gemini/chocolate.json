@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Chocolate",
+  "type": "custom",
+  "background": {
+    "primary": "#252221",
+    "diff": {
+      "added": "#343631",
+      "removed": "#3d2b2a"
+    }
+  },
+  "text": {
+    "primary": "#cdc0ad",
+    "secondary": "#6b6867",
+    "link": "#7d92a2",
+    "accent": "#998396"
+  },
+  "border": {
+    "default": "#43403f",
+    "focused": "#7d92a2"
+  },
+  "status": {
+    "success": "#8ca589",
+    "warning": "#d9b27c",
+    "error": "#c65f5f"
+  },
+  "ui": {
+    "comment": "#615e5d",
+    "symbol": "#749689",
+    "gradient": [
+      "#7d92a2",
+      "#998396",
+      "#d08b65"
+    ]
+  }
+}

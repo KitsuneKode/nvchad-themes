@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Wombat",
+  "type": "custom",
+  "background": {
+    "primary": "#222222",
+    "diff": {
+      "added": "#373f2e",
+      "removed": "#433230"
+    }
+  },
+  "text": {
+    "primary": "#e4e0d7",
+    "secondary": "#646464",
+    "link": "#88B8F6",
+    "accent": "#dc8cff"
+  },
+  "border": {
+    "default": "#414141",
+    "focused": "#88B8F6"
+  },
+  "status": {
+    "success": "#AEE474",
+    "warning": "#efdeab",
+    "error": "#FF8F7E"
+  },
+  "ui": {
+    "comment": "#5a5a5a",
+    "symbol": "#7EB6BC",
+    "gradient": [
+      "#88B8F6",
+      "#dc8cff",
+      "#FFCC66"
+    ]
+  }
+}

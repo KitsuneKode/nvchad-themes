@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Kanagawa Dragon",
+  "type": "custom",
+  "background": {
+    "primary": "#181616",
+    "diff": {
+      "added": "#292a25",
+      "removed": "#322423"
+    }
+  },
+  "text": {
+    "primary": "#adada4",
+    "secondary": "#5e5c5c",
+    "link": "#8ba4b0",
+    "accent": "#a292a3"
+  },
+  "border": {
+    "default": "#343232",
+    "focused": "#8ba4b0"
+  },
+  "status": {
+    "success": "#8a9a7b",
+    "warning": "#c4b28a",
+    "error": "#c4746e"
+  },
+  "ui": {
+    "comment": "#575555",
+    "symbol": "#949fb5",
+    "gradient": [
+      "#8ba4b0",
+      "#a292a3",
+      "#b6927b"
+    ]
+  }
+}

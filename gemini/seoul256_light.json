@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Seoul256 Light",
+  "type": "custom",
+  "background": {
+    "primary": "#e0e0e0",
+    "diff": {
+      "added": "#cdd3cd",
+      "removed": "#d9cdcd"
+    }
+  },
+  "text": {
+    "primary": "#4e4e4e",
+    "secondary": "#989898",
+    "link": "#5F87AE",
+    "accent": "#875F87"
+  },
+  "border": {
+    "default": "#b8b8b8",
+    "focused": "#5F87AE"
+  },
+  "status": {
+    "success": "#5F885F",
+    "warning": "#AF8760",
+    "error": "#AF5F5F"
+  },
+  "ui": {
+    "comment": "#a0a0a0",
+    "symbol": "#5F8787",
+    "gradient": [
+      "#5F87AE",
+      "#875F87",
+      "#AF8760"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Flouromachine",
+  "type": "custom",
+  "background": {
+    "primary": "#262335",
+    "diff": {
+      "added": "#314249",
+      "removed": "#462839"
+    }
+  },
+  "text": {
+    "primary": "#ffffff",
+    "secondary": "#605c88",
+    "link": "#FFCC00",
+    "accent": "#AF6DF9"
+  },
+  "border": {
+    "default": "#3e3b59",
+    "focused": "#61E2FF"
+  },
+  "status": {
+    "success": "#72F1B8",
+    "warning": "#FFCC00",
+    "error": "#FE4450"
+  },
+  "ui": {
+    "comment": "#5a567f",
+    "symbol": "#61E2FF",
+    "gradient": [
+      "#61E2FF",
+      "#AF6DF9",
+      "#FF8B39"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Vscode Dark",
+  "type": "custom",
+  "background": {
+    "primary": "#1E1E1E",
+    "diff": {
+      "added": "#353833",
+      "removed": "#392929"
+    }
+  },
+  "text": {
+    "primary": "#dee1e6",
+    "secondary": "#626262",
+    "link": "#DCDCAA",
+    "accent": "#c68aee"
+  },
+  "border": {
+    "default": "#3a3a3a",
+    "focused": "#569CD6"
+  },
+  "status": {
+    "success": "#B5CEA8",
+    "warning": "#D7BA7D",
+    "error": "#D16969"
+  },
+  "ui": {
+    "comment": "#585858",
+    "symbol": "#4294D6",
+    "gradient": [
+      "#569CD6",
+      "#c68aee",
+      "#d3967d"
+    ]
+  }
+}

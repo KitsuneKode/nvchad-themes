@@ -1,58 +1,38 @@
 # AGENTS.md
 
-## Current Status
+## Project
 
-- This repo generates a shared `NvChad Rxyhn Theme` for:
-  - VS Code / Cursor extension packaging
-  - Zed local theme installation
-  - OpenCode local theme installation
-  - Gemini CLI local theme installation
-  - Codex local theme installation
-- Public-facing name preference is `NvChad Rxyhn Theme` and the recommended GitHub repo name is `nvchad-rxyhn-theme-vscode-cursor-zed`.
-- The repo now includes an MIT `LICENSE` and a GitHub-oriented README with install steps for all supported editors and CLIs.
-- The single source of truth is `src/theme.ts`.
-- Generated outputs are:
-  - `themes/rxyhn-color-theme.json`
-  - `zed/rxyhn-theme.json`
-  - `opencode/rxyhn.json`
-  - `gemini/rxyhn.json`
-  - `codex/rxyhn.tmTheme`
-  - `nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix`
-- The committed VSIX is intended to stay in the repo so users can download and install it without building locally.
+**NvChad Themes** (`nvchad-themes`) — all 94 [NvChad/base46](https://github.com/NvChad/base46) v3.0 themes for VS Code, Cursor, Zed, OpenCode, Gemini CLI, and Codex.
 
-## Important Files
+- GitHub: `https://github.com/KitsuneKode/nvchad-themes`
+- VS Code extension ID: `kitsunekode.nvchad-themes`
+- Zed extension ID: `nvchad-themes`
 
-- `src/theme.ts`: shared palette, VS Code mappings, and Zed mappings
-- `scripts/build-theme.ts`: regenerates both theme JSON files
-- `scripts/build-theme.ts`: also syncs `package.json` theme contributions from `themeCatalog`
-- `scripts/package-theme.ts`: packages the VS Code / Cursor VSIX
-- `scripts/install-zed-theme.ts`: copies the generated Zed theme into `~/.config/zed/themes`
-- `scripts/install-opencode-theme.ts`: copies the generated OpenCode theme into `~/.config/opencode/themes`
-- `scripts/install-gemini-theme.ts`: copies the generated Gemini CLI theme into `~/.gemini/themes`
-- `scripts/install-codex-theme.ts`: copies the generated Codex theme into `~/.codex/themes` and updates `~/.codex/config.toml`
-- `README.md`: user-facing install and usage steps
+## Generated outputs
 
-## Agent Workflow
+- `themes/<id>-color-theme.json` — VS Code
+- `dist/nvchad-themes-<version>.vsix` — VS Code / Cursor distribution
+- `dist/nvchad-themes-zed-extension-<version>.zip` — Zed distribution
+- `zed-extension/` — Zed dev extension / marketplace path
+- `opencode/`, `gemini/`, `codex/` — CLI targets
 
-- Do not hand-edit generated JSON files unless debugging output.
-- Make palette or mapping changes in `src/theme.ts`, then run `bun run build`.
-- New themes should be added by inserting a new `themeCatalog` entry with `id`, `displayName`, `base30`, and `base16`.
-- If you change VS Code packaging behavior, verify the archive contents with:
-  - `unzip -l nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix`
-- If you change the Zed output, reinstall it with:
-  - `bun run install:zed`
+## Workflow
+
+- Palettes: `bun run import:base46` → `src/palettes/*.json`
+- Mappings: edit `src/builders/`, then `bun run build`
+- Distribution: `bun run package` → `dist/`
+- Verify: `bun run verify`
+- Publishing: see [PUBLISHING.md](./PUBLISHING.md)
 
 ## Commands
 
-- `bun run build`
-- `bun run package`
-- `bun run install:zed`
-- `bun run install:opencode`
-- `bun run install:gemini`
-- `bun run install:codex`
+- `bun run import:base46 [--check]`
+- `bun run build` · `bun test` · `bun run package` · `bun run verify`
+- `bun run publish:vscode` — Marketplace (requires `vsce login`)
+- `bun run install:zed-dev` · `bun run install:zed [--all] [id]`
 
-## Known Caveats
+## Caveats
 
-- `vsce` in this environment emits a minimal archive first, so `scripts/package-theme.ts` rebuilds the final VSIX payload after packaging.
-- No Git remote is configured locally right now, so README clone instructions intentionally use a placeholder repo URL instead of guessing one.
-- Zed support is currently delivered as a local theme file, not a Zed extension.
+- `package-dist.ts` rebuilds VSIX with only `themes/`, `package.json`, `readme.md`, `LICENSE`, `assets/icon.png`
+- Zed registry PR uses `zed-extension/` via `path` submodule field or a dedicated repo
+- Bump `package.json` and `zed-extension/extension.toml` versions together

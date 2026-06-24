@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Ashes",
+  "type": "custom",
+  "background": {
+    "primary": "#1c2023",
+    "diff": {
+      "added": "#323934",
+      "removed": "#363234"
+    }
+  },
+  "text": {
+    "primary": "#c7ccd1",
+    "secondary": "#565a5d",
+    "link": "#ae95c7",
+    "accent": "#ae95c7"
+  },
+  "border": {
+    "default": "#3a3e41",
+    "focused": "#95aec7"
+  },
+  "status": {
+    "success": "#aec795",
+    "warning": "#c7c795",
+    "error": "#c79595"
+  },
+  "ui": {
+    "comment": "#515558",
+    "symbol": "#8fb4b5",
+    "gradient": [
+      "#95aec7",
+      "#ae95c7",
+      "#c7ae95"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Monochrome",
+  "type": "custom",
+  "background": {
+    "primary": "#101010",
+    "diff": {
+      "added": "#2c2d1e",
+      "removed": "#312222"
+    }
+  },
+  "text": {
+    "primary": "#D8DEE9",
+    "secondary": "#677777",
+    "link": "#ced4df",
+    "accent": "#e1bee9"
+  },
+  "border": {
+    "default": "#383838",
+    "focused": "#8abae1"
+  },
+  "status": {
+    "success": "#c9d36a",
+    "warning": "#ffe6b5",
+    "error": "#ec8989"
+  },
+  "ui": {
+    "comment": "#606060",
+    "symbol": "#6484a4",
+    "gradient": [
+      "#8abae1",
+      "#e1bee9",
+      "#efb6a0"
+    ]
+  }
+}

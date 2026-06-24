@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Neofusion",
+  "type": "custom",
+  "background": {
+    "primary": "#06101E",
+    "diff": {
+      "added": "#053133",
+      "removed": "#2b242e"
+    }
+  },
+  "text": {
+    "primary": "#66def9",
+    "secondary": "#184686",
+    "link": "#35b5ff",
+    "accent": "#ec30ac"
+  },
+  "border": {
+    "default": "#102e5a",
+    "focused": "#35b5ff"
+  },
+  "status": {
+    "success": "#01eca7",
+    "warning": "#fd5e3a",
+    "error": "#fc9487"
+  },
+  "ui": {
+    "comment": "#184686",
+    "symbol": "#66def9",
+    "gradient": [
+      "#35b5ff",
+      "#ec30ac",
+      "#fd5e3a"
+    ]
+  }
+}

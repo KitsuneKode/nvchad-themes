@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Flexoki",
+  "type": "custom",
+  "background": {
+    "primary": "#100F0F",
+    "diff": {
+      "added": "#222415",
+      "removed": "#2d1817"
+    }
+  },
+  "text": {
+    "primary": "#CECDC3",
+    "secondary": "#6a6363",
+    "link": "#4385BE",
+    "accent": "#8B7EC8"
+  },
+  "border": {
+    "default": "#373434",
+    "focused": "#4385BE"
+  },
+  "status": {
+    "success": "#879A39",
+    "warning": "#D0A215",
+    "error": "#D14D41"
+  },
+  "ui": {
+    "comment": "#5f5959",
+    "symbol": "#519ABA",
+    "gradient": [
+      "#4385BE",
+      "#8B7EC8",
+      "#DA702C"
+    ]
+  }
+}

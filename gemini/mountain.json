@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Mountain",
+  "type": "custom",
+  "background": {
+    "primary": "#0f0f0f",
+    "diff": {
+      "added": "#212722",
+      "removed": "#272122"
+    }
+  },
+  "text": {
+    "primary": "#F0f0f0",
+    "secondary": "#535353",
+    "link": "#a5a0c2",
+    "accent": "#C49EC4"
+  },
+  "border": {
+    "default": "#2a2a2a",
+    "focused": "#9691b3"
+  },
+  "status": {
+    "success": "#8aac8b",
+    "warning": "#ACA98A",
+    "error": "#ac8a8c"
+  },
+  "ui": {
+    "comment": "#4b4b4b",
+    "symbol": "#8fb4b5",
+    "gradient": [
+      "#9691b3",
+      "#C49EC4",
+      "#9d9a7b"
+    ]
+  }
+}

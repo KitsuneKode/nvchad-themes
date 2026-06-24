@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Oxocarbon",
+  "type": "custom",
+  "background": {
+    "primary": "#161616",
+    "diff": {
+      "added": "#1d2f22",
+      "removed": "#361f29"
+    }
+  },
+  "text": {
+    "primary": "#f2f4f8",
+    "secondary": "#5f5f5f",
+    "link": "#42be65",
+    "accent": "#d0a9e5"
+  },
+  "border": {
+    "default": "#3c3c3c",
+    "focused": "#33b1ff"
+  },
+  "status": {
+    "success": "#42be65",
+    "warning": "#FAE3B0",
+    "error": "#ee5396"
+  },
+  "ui": {
+    "comment": "#555555",
+    "symbol": "#B5E8E0",
+    "gradient": [
+      "#33b1ff",
+      "#d0a9e5",
+      "#F8BD96"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Oceanic Next",
+  "type": "custom",
+  "background": {
+    "primary": "#1B2B34",
+    "diff": {
+      "added": "#2e4242",
+      "removed": "#3a333c"
+    }
+  },
+  "text": {
+    "primary": "#D8DEE9",
+    "secondary": "#5f6f78",
+    "link": "#6699CC",
+    "accent": "#C594C5"
+  },
+  "border": {
+    "default": "#36464f",
+    "focused": "#6699CC"
+  },
+  "status": {
+    "success": "#99C794",
+    "warning": "#FAC863",
+    "error": "#EC5F67"
+  },
+  "ui": {
+    "comment": "#576770",
+    "symbol": "#50a4a4",
+    "gradient": [
+      "#6699CC",
+      "#C594C5",
+      "#F99157"
+    ]
+  }
+}

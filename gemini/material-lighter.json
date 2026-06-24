@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Material Lighter",
+  "type": "custom",
+  "background": {
+    "primary": "#fafafa",
+    "diff": {
+      "added": "#eaf0e2",
+      "removed": "#f7dddc"
+    }
+  },
+  "text": {
+    "primary": "#435862",
+    "secondary": "#B3B3B3",
+    "link": "#6182B8",
+    "accent": "#7c4dff"
+  },
+  "border": {
+    "default": "#D9D9D9",
+    "focused": "#6182b8"
+  },
+  "status": {
+    "success": "#91b859",
+    "warning": "#F59717",
+    "error": "#e53935"
+  },
+  "ui": {
+    "comment": "#BDBDBD",
+    "symbol": "#39ADB5",
+    "gradient": [
+      "#6182b8",
+      "#7c4dff",
+      "#f76d47"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run import:base46 --check
+      - run: bun run build
+      - run: bun test
+      - run: bun run package
+      - run: bun run verify
+      - run: unzip -l dist/*.vsix | grep -c "color-theme.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nvchad-themes-dist
+          path: dist/

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Dark Horizon",
+  "type": "custom",
+  "background": {
+    "primary": "#0e0e0e",
+    "diff": {
+      "added": "#252c17",
+      "removed": "#2d1b1f"
+    }
+  },
+  "text": {
+    "primary": "#FFFFFF",
+    "secondary": "#525252",
+    "link": "#32d5e3",
+    "accent": "#da70d6"
+  },
+  "border": {
+    "default": "#292929",
+    "focused": "#25B0BC"
+  },
+  "status": {
+    "success": "#AAD84C",
+    "warning": "#fdb830",
+    "error": "#db627e"
+  },
+  "ui": {
+    "comment": "#4a4a4a",
+    "symbol": "#749689",
+    "gradient": [
+      "#25B0BC",
+      "#da70d6",
+      "#FFA500"
+    ]
+  }
+}

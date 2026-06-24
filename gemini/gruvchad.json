@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Gruvchad",
+  "type": "custom",
+  "background": {
+    "primary": "#1e2122",
+    "diff": {
+      "added": "#2e3730",
+      "removed": "#3d2c2c"
+    }
+  },
+  "text": {
+    "primary": "#c7b89d",
+    "secondary": "#606364",
+    "link": "#7daea3",
+    "accent": "#9385b4"
+  },
+  "border": {
+    "default": "#404344",
+    "focused": "#6d8dad"
+  },
+  "status": {
+    "success": "#89b482",
+    "warning": "#d6b676",
+    "error": "#ec6b64"
+  },
+  "ui": {
+    "comment": "#545758",
+    "symbol": "#749689",
+    "gradient": [
+      "#6d8dad",
+      "#9385b4",
+      "#e78a4e"
+    ]
+  }
+}

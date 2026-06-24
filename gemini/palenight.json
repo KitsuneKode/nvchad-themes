@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Palenight",
+  "type": "custom",
+  "background": {
+    "primary": "#292D3E",
+    "diff": {
+      "added": "#40494a",
+      "removed": "#473747"
+    }
+  },
+  "text": {
+    "primary": "#ffffff",
+    "secondary": "#6d7182",
+    "link": "#82aaff",
+    "accent": "#c792ea"
+  },
+  "border": {
+    "default": "#444859",
+    "focused": "#82aaff"
+  },
+  "status": {
+    "success": "#c3e88d",
+    "warning": "#ffcb6b",
+    "error": "#f07178"
+  },
+  "ui": {
+    "comment": "#65697a",
+    "symbol": "#89ffe6",
+    "gradient": [
+      "#82aaff",
+      "#c792ea",
+      "#ffa282"
+    ]
+  }
+}

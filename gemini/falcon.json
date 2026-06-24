@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Falcon",
+  "type": "custom",
+  "background": {
+    "primary": "#020222",
+    "diff": {
+      "added": "#19203a",
+      "removed": "#281321"
+    }
+  },
+  "text": {
+    "primary": "#F8F8FF",
+    "secondary": "#5c5c7c",
+    "link": "#FFC552",
+    "accent": "#99A4BC"
+  },
+  "border": {
+    "default": "#2a2a4a",
+    "focused": "#6699cc"
+  },
+  "status": {
+    "success": "#9BCCBF",
+    "warning": "#FFC552",
+    "error": "#FF761A"
+  },
+  "ui": {
+    "comment": "#4d4d6d",
+    "symbol": "#34BFA4",
+    "gradient": [
+      "#6699cc",
+      "#99A4BC",
+      "#f99157"
+    ]
+  }
+}

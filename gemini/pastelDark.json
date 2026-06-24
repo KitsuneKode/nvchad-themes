@@ -1,0 +1,35 @@
+{
+  "name": "NvChad PastelDark",
+  "type": "custom",
+  "background": {
+    "primary": "#131a21",
+    "diff": {
+      "added": "#283939",
+      "removed": "#342b32"
+    }
+  },
+  "text": {
+    "primary": "#b5bcc9",
+    "secondary": "#545b62",
+    "link": "#a3b8ef",
+    "accent": "#c2a2e3"
+  },
+  "border": {
+    "default": "#363d44",
+    "focused": "#99aee5"
+  },
+  "status": {
+    "success": "#9fe8c3",
+    "warning": "#fbdf90",
+    "error": "#ef8891"
+  },
+  "ui": {
+    "comment": "#51585f",
+    "symbol": "#92dbb6",
+    "gradient": [
+      "#99aee5",
+      "#c2a2e3",
+      "#EDA685"
+    ]
+  }
+}

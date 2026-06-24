@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Zenburn",
+  "type": "custom",
+  "background": {
+    "primary": "#383838",
+    "diff": {
+      "added": "#3e433e",
+      "removed": "#514848"
+    }
+  },
+  "text": {
+    "primary": "#ffffff",
+    "secondary": "#707070",
+    "link": "#7cb8bb",
+    "accent": "#BC98EC"
+  },
+  "border": {
+    "default": "#545454",
+    "focused": "#7cb8bb"
+  },
+  "status": {
+    "success": "#5f7f5f",
+    "warning": "#e0cf9f",
+    "error": "#dca3a3"
+  },
+  "ui": {
+    "comment": "#696969",
+    "symbol": "#93e0e3",
+    "gradient": [
+      "#7cb8bb",
+      "#BC98EC",
+      "#dfaf8f"
+    ]
+  }
+}

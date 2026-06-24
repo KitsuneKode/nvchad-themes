@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Chadtain",
+  "type": "custom",
+  "background": {
+    "primary": "#1a2026",
+    "diff": {
+      "added": "#2b3535",
+      "removed": "#303035"
+    }
+  },
+  "text": {
+    "primary": "#b0b0b0",
+    "secondary": "#565c62",
+    "link": "#7797b7",
+    "accent": "#a39ec4"
+  },
+  "border": {
+    "default": "#2e343a",
+    "focused": "#6b8bab"
+  },
+  "status": {
+    "success": "#8aac8b",
+    "warning": "#c4c19e",
+    "error": "#ac8a8c"
+  },
+  "ui": {
+    "comment": "#50565c",
+    "symbol": "#7c9cbc",
+    "gradient": [
+      "#6b8bab",
+      "#a39ec4",
+      "#C9938A"
+    ]
+  }
+}

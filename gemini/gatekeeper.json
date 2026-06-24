@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Gatekeeper",
+  "type": "custom",
+  "background": {
+    "primary": "#101010",
+    "diff": {
+      "added": "#0e301b",
+      "removed": "#34121d"
+    }
+  },
+  "text": {
+    "primary": "#cccdd1",
+    "secondary": "#4d4d4d",
+    "link": "#c54bcf",
+    "accent": "#a79ac0"
+  },
+  "border": {
+    "default": "#2c2c2c",
+    "focused": "#29adff"
+  },
+  "status": {
+    "success": "#00e756",
+    "warning": "#fff024",
+    "error": "#ff1a67"
+  },
+  "ui": {
+    "comment": "#454545",
+    "symbol": "#0b925c",
+    "gradient": [
+      "#29adff",
+      "#a79ac0",
+      "#ffa300"
+    ]
+  }
+}

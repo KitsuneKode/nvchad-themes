@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Blossom Light",
+  "type": "custom",
+  "background": {
+    "primary": "#e6dfdc",
+    "diff": {
+      "added": "#d4d1c9",
+      "removed": "#ded1cb"
+    }
+  },
+  "text": {
+    "primary": "#695d57",
+    "secondary": "#a09996",
+    "link": "#b3816a",
+    "accent": "#a685a6"
+  },
+  "border": {
+    "default": "#c0b9b6",
+    "focused": "#5f7d9b"
+  },
+  "status": {
+    "success": "#6c805c",
+    "warning": "#a9a29f",
+    "error": "#b28069"
+  },
+  "ui": {
+    "comment": "#aaa3a0",
+    "symbol": "#4b6987",
+    "gradient": [
+      "#5f7d9b",
+      "#a685a6",
+      "#cc836c"
+    ]
+  }
+}

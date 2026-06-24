@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Onedark",
+  "type": "custom",
+  "background": {
+    "primary": "#1e222a",
+    "diff": {
+      "added": "#303a36",
+      "removed": "#3b2d35"
+    }
+  },
+  "text": {
+    "primary": "#abb2bf",
+    "secondary": "#6f737b",
+    "link": "#61afef",
+    "accent": "#de98fd"
+  },
+  "border": {
+    "default": "#373b43",
+    "focused": "#61afef"
+  },
+  "status": {
+    "success": "#98c379",
+    "warning": "#e7c787",
+    "error": "#e06c75"
+  },
+  "ui": {
+    "comment": "#6f737b",
+    "symbol": "#519ABA",
+    "gradient": [
+      "#61afef",
+      "#de98fd",
+      "#fca2aa"
+    ]
+  }
+}

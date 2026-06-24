@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Penumbra Light",
+  "type": "custom",
+  "background": {
+    "primary": "#FFF7ED",
+    "diff": {
+      "added": "#e2ebdc",
+      "removed": "#f7e3dd"
+    }
+  },
+  "text": {
+    "primary": "#3E4044",
+    "secondary": "#b0a89e",
+    "link": "#4380bc",
+    "accent": "#ac78bd"
+  },
+  "border": {
+    "default": "#dad2c8",
+    "focused": "#6E8DD5"
+  },
+  "status": {
+    "success": "#3ea57b",
+    "warning": "#92963a",
+    "error": "#ca7081"
+  },
+  "ui": {
+    "comment": "#bab2a8",
+    "symbol": "#22839b",
+    "gradient": [
+      "#6E8DD5",
+      "#ac78bd",
+      "#BA823A"
+    ]
+  }
+}

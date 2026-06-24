@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Rosepine",
+  "type": "custom",
+  "background": {
+    "primary": "#191724",
+    "diff": {
+      "added": "#2f3739",
+      "removed": "#392435"
+    }
+  },
+  "text": {
+    "primary": "#e0def4",
+    "secondary": "#5d5b68",
+    "link": "#c4a7e7",
+    "accent": "#c4a7e7"
+  },
+  "border": {
+    "default": "#353340",
+    "focused": "#8bbec7"
+  },
+  "status": {
+    "success": "#ABE9B3",
+    "warning": "#f6c177",
+    "error": "#eb6f92"
+  },
+  "ui": {
+    "comment": "#514f5c",
+    "symbol": "#6aadc8",
+    "gradient": [
+      "#8bbec7",
+      "#c4a7e7",
+      "#f6c177"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Default Light",
+  "type": "custom",
+  "background": {
+    "primary": "#f8f8f8",
+    "diff": {
+      "added": "#e9ece0",
+      "removed": "#ecdddd"
+    }
+  },
+  "text": {
+    "primary": "#181818",
+    "secondary": "#a8a8a8",
+    "link": "#71a8bd",
+    "accent": "#b481a8"
+  },
+  "border": {
+    "default": "#d0d0d0",
+    "focused": "#71a8bd"
+  },
+  "status": {
+    "success": "#93a956",
+    "warning": "#f1a02e",
+    "error": "#ab4642"
+  },
+  "ui": {
+    "comment": "#b0b0b0",
+    "symbol": "#70b5ad",
+    "gradient": [
+      "#71a8bd",
+      "#b481a8",
+      "#d98e49"
+    ]
+  }
+}

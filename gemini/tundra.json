@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Tundra",
+  "type": "custom",
+  "background": {
+    "primary": "#111827",
+    "diff": {
+      "added": "#2a373c",
+      "removed": "#342d3a"
+    }
+  },
+  "text": {
+    "primary": "#FFFFFF",
+    "secondary": "#5f6675",
+    "link": "#BAE6FD",
+    "accent": "#BDB0E4"
+  },
+  "border": {
+    "default": "#323948",
+    "focused": "#A5B4FC"
+  },
+  "status": {
+    "success": "#B5E8B0",
+    "warning": "#E8D4B0",
+    "error": "#FCA5A5"
+  },
+  "ui": {
+    "comment": "#545b6a",
+    "symbol": "#719bd3",
+    "gradient": [
+      "#A5B4FC",
+      "#BDB0E4",
+      "#FBC19D"
+    ]
+  }
+}

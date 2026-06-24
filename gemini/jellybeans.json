@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Jellybeans",
+  "type": "custom",
+  "background": {
+    "primary": "#151515",
+    "diff": {
+      "added": "#292c22",
+      "removed": "#31221d"
+    }
+  },
+  "text": {
+    "primary": "#e8e8d3",
+    "secondary": "#525252",
+    "link": "#8fa5cd",
+    "accent": "#ea94ea"
+  },
+  "border": {
+    "default": "#3a3a3a",
+    "focused": "#8197bf"
+  },
+  "status": {
+    "success": "#99ad6a",
+    "warning": "#fad07a",
+    "error": "#cf6a4c"
+  },
+  "ui": {
+    "comment": "#4c4c4c",
+    "symbol": "#668799",
+    "gradient": [
+      "#8197bf",
+      "#ea94ea",
+      "#e78a4e"
+    ]
+  }
+}

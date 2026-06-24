@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Nightowl",
+  "type": "custom",
+  "background": {
+    "primary": "#011627",
+    "diff": {
+      "added": "#073536",
+      "removed": "#262831"
+    }
+  },
+  "text": {
+    "primary": "#d6deeb",
+    "secondary": "#495e6f",
+    "link": "#82aaff",
+    "accent": "#c792ea"
+  },
+  "border": {
+    "default": "#253a4b",
+    "focused": "#82aaff"
+  },
+  "status": {
+    "success": "#29E68E",
+    "warning": "#ffcb8b",
+    "error": "#f78c6c"
+  },
+  "ui": {
+    "comment": "#3c5162",
+    "symbol": "#96CEB4",
+    "gradient": [
+      "#82aaff",
+      "#c792ea",
+      "#FFAD60"
+    ]
+  }
+}

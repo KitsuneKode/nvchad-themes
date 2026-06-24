@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Github Light",
+  "type": "custom",
+  "background": {
+    "primary": "#ffffff",
+    "diff": {
+      "added": "#dce8e4",
+      "removed": "#fadfe0"
+    }
+  },
+  "text": {
+    "primary": "#24292e",
+    "secondary": "#a6a8aa",
+    "link": "#005cc5",
+    "accent": "#8263EB"
+  },
+  "border": {
+    "default": "#d7d9db",
+    "focused": "#0D7FDD"
+  },
+  "status": {
+    "success": "#18654B",
+    "warning": "#dbab09",
+    "error": "#DE2C2E"
+  },
+  "ui": {
+    "comment": "#b1b3b5",
+    "symbol": "#22839b",
+    "gradient": [
+      "#0D7FDD",
+      "#8263EB",
+      "#d15704"
+    ]
+  }
+}

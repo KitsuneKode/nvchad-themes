@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Yoru",
+  "type": "custom",
+  "background": {
+    "primary": "#0c0e0f",
+    "diff": {
+      "added": "#1c2823",
+      "removed": "#2c1a1b"
+    }
+  },
+  "text": {
+    "primary": "#edeff0",
+    "secondary": "#505253",
+    "link": "#709ad2",
+    "accent": "#c58cec"
+  },
+  "border": {
+    "default": "#27292a",
+    "focused": "#6791C9"
+  },
+  "status": {
+    "success": "#78B892",
+    "warning": "#ecd28b",
+    "error": "#DF5B61"
+  },
+  "ui": {
+    "comment": "#484a4b",
+    "symbol": "#70b8ca",
+    "gradient": [
+      "#6791C9",
+      "#c58cec",
+      "#E89982"
+    ]
+  }
+}

@@ -1,390 +1,114 @@
-# NvChad Rxyhn Theme for VS Code, Cursor, Zed, OpenCode, Gemini CLI, and Codex
+# NvChad Themes
 
-Search-friendly port of the famous `rxyhn` look for VS Code, Cursor, Zed, OpenCode, Gemini CLI, and Codex, with `NvChad` in the project name for stronger discoverability.
+**The complete NvChad theme pack for VS Code, Cursor, and Zed.**
 
-## Preview
+All **94** palettes from [NvChad base46](https://github.com/NvChad/base46) v3.0 — Nord, Catppuccin, Tokyo Night, Gruvbox, Poimandres, **Rxyhn**, and every other upstream theme — ported faithfully to modern editors and CLIs.
 
-### Cursor / VS Code
+[![CI](https://github.com/KitsuneKode/nvchad-themes/actions/workflows/ci.yml/badge.svg)](https://github.com/KitsuneKode/nvchad-themes/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
-![Cursor preview](./public/cursor.png)
+## Downloads
+
+| Platform | File | Install |
+|----------|------|---------|
+| **VS Code / Cursor** | [nvchad-themes-1.0.0.vsix](./dist/nvchad-themes-1.0.0.vsix) | Extensions → **Install from VSIX…** |
+| **Zed (extension)** | [nvchad-themes-zed-extension-1.0.0.zip](./dist/nvchad-themes-zed-extension-1.0.0.zip) | Extract → **zed: install dev extension** |
+| **Zed (user theme)** | [nvchad-themes-zed-user-1.0.0.json](./dist/nvchad-themes-zed-user-1.0.0.json) | Copy to `~/.config/zed/themes/` |
+
+**Latest release:** [github.com/KitsuneKode/nvchad-themes/releases/latest](https://github.com/KitsuneKode/nvchad-themes/releases/latest)
+
+Verify checksums: `sha256sum -c dist/checksums.sha256`
+
+Full install steps: [dist/INSTALL.md](./dist/INSTALL.md) · Publishing: [PUBLISHING.md](./PUBLISHING.md)
+
+## Previews
+
+Screenshots from the [NvChad theme gallery](https://nvchad.com/themes) — the same palettes shipped here.
+
+| NvChad Nord | NvChad One Dark |
+| :---: | :---: |
+| ![NvChad Nord](./assets/previews/nord.webp) | ![NvChad One Dark](./assets/previews/onedark.webp) |
+
+| NvChad Catppuccin | NvChad Rxyhn |
+| :---: | :---: |
+| ![NvChad Catppuccin](./assets/previews/catppuccin.webp) | ![NvChad Rxyhn](./assets/previews/rxyhn.webp) |
+
+*Preview images © [NvChad](https://nvchad.com/themes). Rxyhn is the theme this project grew from.*
+
+## Quick install
+
+### VS Code / Cursor
+
+```bash
+# from a clone
+cursor --install-extension ./dist/nvchad-themes-1.0.0.vsix
+code --install-extension ./dist/nvchad-themes-1.0.0.vsix
+```
+
+Open **Preferences: Color Theme** and search **NvChad**.
 
 ### Zed
 
-![Zed preview](./public/zed.png)
+**Extension (recommended)** — download the [Zed zip](./dist/nvchad-themes-zed-extension-1.0.0.zip), extract, then **zed: install dev extension** and select the folder.
 
-### OpenCode
-
-![OpenCode preview](./public/opencode.png)
-
-### Gemini CLI
-
-![Gemini CLI preview](./public/gemini.png)
-
-### Codex
-
-![Codex preview](./public/codex.png)
-
-Codex support is generated as a TextMate `.tmTheme` file that the Codex TUI can load from `~/.codex/themes`.
-
-## Install From GitHub
-
-### Fastest Option For Users
-
-If you do not want to build anything, download the committed VSIX directly from this repo:
-
-- [nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix](./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix)
-
-Then install it manually:
+**User theme file** — download the [JSON bundle](./dist/nvchad-themes-zed-user-1.0.0.json) into `~/.config/zed/themes/`.
 
 ```bash
-code --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
-cursor --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
+bun run install:zed-dev    # local dev: use zed-extension/ in this repo
+bun run install:zed --all  # copy user theme file to ~/.config/zed/themes/
 ```
 
-Or use `Extensions: Install from VSIX...` in VS Code or Cursor.
-
-For Zed, users can download the generated local theme file directly:
-
-- [zed/rxyhn-theme.json](./zed/rxyhn-theme.json)
-
-Then copy it into:
+### OpenCode · Gemini CLI · Codex
 
 ```bash
-mkdir -p ~/.config/zed/themes
-cp ./rxyhn-theme.json ~/.config/zed/themes/rxyhn-theme.json
+bun run install:opencode nord
+bun run install:gemini nord
+bun run install:codex nord
 ```
 
-Restart Zed and choose `NvChad Rxyhn Theme`.
+## What's inside
 
-For OpenCode, users can download the theme JSON directly:
+- **74 dark** + **20 light** themes, synced from upstream base46
+- One VSIX with all VS Code color themes
+- One Zed extension bundle with all 94 variants
+- Generated outputs for OpenCode, Gemini CLI, and Codex
 
-- [opencode/rxyhn.json](./opencode/rxyhn.json)
+<details>
+<summary>Full theme list</summary>
 
-Then copy it into:
+**Dark:** `aquarium`, `ashes`, `aylin`, `ayu_dark`, `bearded-arc`, `carbonfox`, `catppuccin`, `chadracula`, `chadracula-evondev`, `chadtain`, `chocolate`, `darcula-dark`, `dark_horizon`, `decay`, `default-dark`, `doomchad`, `eldritch`, `embark`, `everblush`, `everforest`, `falcon`, `flexoki`, `flouromachine`, `gatekeeper`, `github_dark`, `gruvbox`, `gruvchad`, `hiberbee`, `horizon`, `jabuti`, `jellybeans`, `kanagawa`, `kanagawa-dragon`, `material-darker`, `material-deep-ocean`, `melange`, `midnight_breeze`, `mito-laser`, `monekai`, `monochrome`, `mountain`, `neofusion`, `nightfox`, `nightlamp`, `nightowl`, `nord`, `obsidian-ember`, `oceanic-next`, `onedark`, `onenord`, `oxocarbon`, `palenight`, `pastelDark`, `pastelbeans`, `penumbra_dark`, `poimandres`, `radium`, `rosepine`, `rxyhn`, `scaryforest`, `seoul256_dark`, `solarized_dark`, `solarized_osaka`, `starlight`, `sweetpastel`, `tokyodark`, `tokyonight`, `tomorrow_night`, `tundra`, `vesper`, `vscode_dark`, `wombat`, `yoru`, `zenburn`
+
+**Light:** `ayu_light`, `blossom_light`, `catppuccin-latte`, `default-light`, `everforest_light`, `flex-light`, `flexoki-light`, `github_light`, `gruvbox_light`, `material-lighter`, `nano-light`, `oceanic-light`, `one_light`, `onenord_light`, `penumbra_light`, `rosepine-dawn`, `seoul256_light`, `solarized_light`, `sunrise_breeze`, `vscode_light`
+
+</details>
+
+Popular picks: `onedark`, `nord`, `catppuccin`, `gruvbox`, `tokyonight`, `rosepine`, `rxyhn`, `kanagawa`, `everforest`, `poimandres`.
+
+## Development
 
 ```bash
-mkdir -p ~/.config/opencode/themes
-cp ./opencode/rxyhn.json ~/.config/opencode/themes/rxyhn.json
-```
-
-Restart OpenCode and select the theme (or set it in your OpenCode config file).
-
-For Gemini CLI, users can download the theme JSON directly:
-
-- [gemini/rxyhn.json](./gemini/rxyhn.json)
-
-Then copy it into:
-
-```bash
-mkdir -p ~/.gemini/themes
-cp ./gemini/rxyhn.json ~/.gemini/themes/rxyhn.json
-```
-
-And register the theme in `~/.gemini/settings.json`:
-
-```jsonc
-{
-  "ui": {
-    "theme": "NvChad Rxyhn Theme",
-    "customThemes": {
-      "NvChad Rxyhn Theme": {
-        // paste the contents of gemini/rxyhn.json here
-      }
-    }
-  }
-}
-```
-
-Or use the automated installer (see below).
-
-For Codex, users can download the generated TextMate theme directly:
-
-- [codex/rxyhn.tmTheme](./codex/rxyhn.tmTheme)
-
-Codex custom themes are file-based, so they may not show up like an extension install flow in other editors.
-
-If you do not have the Codex CLI installed yet, install it first and launch it once:
-
-```bash
-npm i -g @openai/codex
-codex
-```
-
-The first launch will prompt you to sign in.
-
-Then copy it into:
-
-```bash
-mkdir -p ~/.codex/themes
-cp ./codex/rxyhn.tmTheme ~/.codex/themes/rxyhn.tmTheme
-```
-
-And set the theme in `~/.codex/config.toml`:
-
-```toml
-[tui]
-theme = "rxyhn"
-```
-
-Restart `codex` after saving the config.
-
-Or use the automated installer (see below).
-
-### Build From Source
-
-Clone the repo:
-
-```bash
-git clone <your-github-repo-url>
-cd nvchad-rxyhn-theme-vscode-cursor-zed
 bun install
+bun run import:base46    # sync palettes from NvChad/base46
+bun run build            # generate all platform outputs
+bun test
+bun run package          # build dist/ artifacts
+bun run verify
 ```
 
-### VS Code
-
-Build the VSIX and install it:
-
-```bash
-bun run package
-code --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
+```
+src/palettes/     imported base46 JSON (source of truth)
+src/builders/     VS Code, Zed, OpenCode, Gemini, Codex mappers
+zed-extension/    Zed marketplace-ready extension
+dist/             VSIX, Zed zip, user theme JSON (distribution)
 ```
 
-Then open the theme picker and choose `NvChad Rxyhn Theme`.
+## Credits
 
-### Cursor
+- Palettes: [NvChad/base46](https://github.com/NvChad/base46) (v3.0)
+- Port & multi-editor mapping: [KitsuneKode](https://github.com/KitsuneKode)
 
-Build the VSIX and install it:
+Neovim-only `polish_hl` overrides are not ported — only `base_30` + `base_16` palettes.
 
-```bash
-bun run package
-cursor --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
-```
+## License
 
-Then open the theme picker and choose `NvChad Rxyhn Theme`.
-
-### Zed
-
-Build the local Zed theme file and install it:
-
-```bash
-bun run build
-mkdir -p ~/.config/zed/themes
-cp ./zed/rxyhn-theme.json ~/.config/zed/themes/rxyhn-theme.json
-```
-
-Then restart Zed and choose `NvChad Rxyhn Theme` from the theme picker.
-
-If you prefer the helper script:
-
-```bash
-bun run install:zed
-```
-
-### OpenCode
-
-Build and install the OpenCode theme:
-
-```bash
-bun run build
-bun run install:opencode
-```
-
-Manual alternative:
-
-```bash
-mkdir -p ~/.config/opencode/themes
-cp ./opencode/rxyhn.json ~/.config/opencode/themes/rxyhn.json
-```
-
-Restart OpenCode and select the theme in its settings.
-
-### Gemini CLI
-
-Build and install the Gemini CLI theme:
-
-```bash
-bun run build
-bun run install:gemini
-```
-
-This copies the theme to `~/.gemini/themes/` and registers it under `ui.customThemes` in `~/.gemini/settings.json`.
-
-Manual alternative:
-
-```bash
-mkdir -p ~/.gemini/themes
-cp ./gemini/rxyhn.json ~/.gemini/themes/rxyhn.json
-```
-
-Then add the theme to `~/.gemini/settings.json` under `ui.customThemes` (see the install section above for the JSON structure).
-
-### Codex
-
-Build and install the Codex theme:
-
-```bash
-bun run build
-bun run install:codex
-```
-
-This copies `codex/rxyhn.tmTheme` into `~/.codex/themes/` and updates `~/.codex/config.toml` to use `theme = "rxyhn"`.
-
-Manual alternative:
-
-```bash
-mkdir -p ~/.codex/themes
-cp ./codex/rxyhn.tmTheme ~/.codex/themes/rxyhn.tmTheme
-```
-
-Then set the active theme in `~/.codex/config.toml`:
-
-```toml
-[tui]
-theme = "rxyhn"
-```
-
-Restart `codex` after saving the file.
-
-## Codex CLI Notes
-
-- This target is for the Codex CLI / TUI.
-- The custom theme name must match the file name without the extension, so `~/.codex/themes/rxyhn.tmTheme` pairs with `theme = "rxyhn"`.
-- Custom Codex themes are configured through `~/.codex/config.toml`; they do not install like a VSIX.
-- If Codex is running and you do not see the new theme, that usually means it still needs the `theme = "rxyhn"` entry in `~/.codex/config.toml`.
-- If the theme does not appear, fully quit and reopen `codex` after updating the file and config.
-- If `codex` is not available in your terminal at all, first confirm the CLI is installed by running `codex --version`.
-
-## Release-Friendly Option
-
-If you publish GitHub Releases, attach `nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix` to a release. That gives VS Code and Cursor users a simple download-and-install path without building locally.
-
-Zed users can download `zed/rxyhn-theme.json` from the repo or a release and place it in `~/.config/zed/themes`.
-
-Codex users can download `codex/rxyhn.tmTheme` from the repo or a release, place it in `~/.codex/themes`, and set `theme = "rxyhn"` in `~/.codex/config.toml`.
-
-## Outputs
-
-- VS Code / Cursor theme JSON: `themes/rxyhn-color-theme.json`
-- VS Code / Cursor VSIX: `nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix`
-- Zed local theme JSON: `zed/rxyhn-theme.json`
-- OpenCode theme JSON: `opencode/rxyhn.json`
-- Gemini CLI theme JSON: `gemini/rxyhn.json`
-- Codex theme file: `codex/rxyhn.tmTheme`
-
-All generated artifacts come from the shared palette and mappings in `src/theme.ts`.
-
-## Adding Another Theme Later
-
-This codebase is now set up so you can add more themes without rewriting the VS Code and Zed mapping logic.
-
-The workflow is:
-
-1. Add a new theme entry to `themeCatalog` in `src/theme.ts`
-2. Give it a unique `id`, `displayName`, `base30`, and `base16`
-3. Run:
-
-```bash
-bun run build
-```
-
-That will automatically:
-
-- generate `themes/<id>-color-theme.json`
-- generate `zed/<id>-theme.json`
-- generate `opencode/<id>.json`
-- generate `gemini/<id>.json`
-- generate `codex/<id>.tmTheme`
-- sync `package.json` so the VS Code extension contributes the new theme
-
-## Build
-
-```bash
-bun run build
-```
-
-This regenerates:
-
-- `themes/rxyhn-color-theme.json`
-- `zed/rxyhn-theme.json`
-- `opencode/rxyhn.json`
-- `gemini/rxyhn.json`
-- `codex/rxyhn.tmTheme`
-
-## Local Dev Workflow
-
-Build or rebuild the extension package:
-
-```bash
-bun run package
-```
-
-Install the VSIX locally:
-
-```bash
-code --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
-cursor --install-extension ./nvchad-rxyhn-theme-vscode-cursor-zed-0.1.0.vsix
-```
-
-Or install manually with `Extensions: Install from VSIX...`.
-
-After installation, choose `NvChad Rxyhn Theme` from the color theme picker.
-
-Generate the Zed theme file:
-
-```bash
-bun run build
-```
-
-Install it into your local Zed themes directory:
-
-```bash
-bun run install:zed
-```
-
-Manual alternative:
-
-```bash
-mkdir -p ~/.config/zed/themes
-cp ./zed/rxyhn-theme.json ~/.config/zed/themes/rxyhn-theme.json
-```
-
-Then restart Zed and select `NvChad Rxyhn Theme` from the theme picker.
-
-## Recommended Settings
-
-Some parts of a full editor rice are not themeable by extensions or local theme files. These settings get the editors closer to the intended feel.
-
-VS Code / Cursor:
-
-```jsonc
-{
-  "workbench.colorTheme": "NvChad Rxyhn Theme",
-  "editor.semanticHighlighting.enabled": true,
-  "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": "active",
-  "editor.cursorSmoothCaretAnimation": "off",
-  "editor.renderLineHighlight": "gutter",
-  "terminal.integrated.minimumContrastRatio": 1
-}
-```
-
-Zed:
-
-```jsonc
-{
-  "relative_line_numbers": "enabled",
-  "vim_mode": true,
-  "theme": {
-    "mode": "system",
-    "dark": "NvChad Rxyhn Theme",
-    "light": "Catppuccin Mocha"
-  }
-}
-```
-
-Set your preferred Nerd Font separately if you want the rest of your setup to visually track your NvChad environment.
-
-## Attribution
-
-The palette is based on NvChad Base46's `rxyhn` theme and the original `rxyhn` rice credits noted upstream.
-Review upstream licensing and attribution requirements before publishing to a marketplace or extension registry.
+MIT — see [LICENSE](./LICENSE).

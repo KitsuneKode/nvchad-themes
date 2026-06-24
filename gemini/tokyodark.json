@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Tokyodark",
+  "type": "custom",
+  "background": {
+    "primary": "#11121D",
+    "diff": {
+      "added": "#252d2b",
+      "removed": "#32202d"
+    }
+  },
+  "text": {
+    "primary": "#A0A8CD",
+    "secondary": "#545560",
+    "link": "#95c561",
+    "accent": "#a485dd"
+  },
+  "border": {
+    "default": "#252631",
+    "focused": "#7199ee"
+  },
+  "status": {
+    "success": "#98c379",
+    "warning": "#d7a65f",
+    "error": "#ee6d85"
+  },
+  "ui": {
+    "comment": "#4e4f5a",
+    "symbol": "#519aba",
+    "gradient": [
+      "#7199ee",
+      "#a485dd",
+      "#f6955b"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Embark",
+  "type": "custom",
+  "background": {
+    "primary": "#1E1C31",
+    "diff": {
+      "added": "#323c49",
+      "removed": "#3e2d44"
+    }
+  },
+  "text": {
+    "primary": "#cbe3e7",
+    "secondary": "#555394",
+    "link": "#91ddff",
+    "accent": "#d4bfff"
+  },
+  "border": {
+    "default": "#37355e",
+    "focused": "#91ddff"
+  },
+  "status": {
+    "success": "#a1efd3",
+    "warning": "#ffb378",
+    "error": "#f48fb1"
+  },
+  "ui": {
+    "comment": "#504e8b",
+    "symbol": "#aaffe4",
+    "gradient": [
+      "#91ddff",
+      "#d4bfff",
+      "#ffb378"
+    ]
+  }
+}

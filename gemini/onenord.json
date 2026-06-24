@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Onenord",
+  "type": "custom",
+  "background": {
+    "primary": "#2a303c",
+    "diff": {
+      "added": "#3c4548",
+      "removed": "#443b46"
+    }
+  },
+  "text": {
+    "primary": "#D8DEE9",
+    "secondary": "#606672",
+    "link": "#81A1C1",
+    "accent": "#aab1be"
+  },
+  "border": {
+    "default": "#484e5a",
+    "focused": "#7797b7"
+  },
+  "status": {
+    "success": "#A3BE8C",
+    "warning": "#EBCB8B",
+    "error": "#d57780"
+  },
+  "ui": {
+    "comment": "#595f6b",
+    "symbol": "#6484a4",
+    "gradient": [
+      "#7797b7",
+      "#aab1be",
+      "#e39a83"
+    ]
+  }
+}

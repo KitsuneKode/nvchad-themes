@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Vesper",
+  "type": "custom",
+  "background": {
+    "primary": "#101010",
+    "diff": {
+      "added": "#253430",
+      "removed": "#342121"
+    }
+  },
+  "text": {
+    "primary": "#FFFFFF",
+    "secondary": "#7E7E7E",
+    "link": "#FFC799",
+    "accent": "#FBADFF"
+  },
+  "border": {
+    "default": "#343434",
+    "focused": "#FFC799"
+  },
+  "status": {
+    "success": "#99FFE4",
+    "warning": "#FFC799",
+    "error": "#FF8080"
+  },
+  "ui": {
+    "comment": "#6e6e6e",
+    "symbol": "#99FFE4",
+    "gradient": [
+      "#FFC799",
+      "#FBADFF",
+      "#FFC799"
+    ]
+  }
+}

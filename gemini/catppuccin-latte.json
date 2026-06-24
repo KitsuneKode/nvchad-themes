@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Catppuccin Latte",
+  "type": "custom",
+  "background": {
+    "primary": "#EFF1F5",
+    "diff": {
+      "added": "#d5e5d7",
+      "removed": "#eed7dd"
+    }
+  },
+  "text": {
+    "primary": "#7287FD",
+    "secondary": "#8b97b9",
+    "link": "#1E66F5",
+    "accent": "#8839EF"
+  },
+  "border": {
+    "default": "#bdc4d7",
+    "focused": "#04A5E5"
+  },
+  "status": {
+    "success": "#40A02B",
+    "warning": "#DF8E1D",
+    "error": "#E64553"
+  },
+  "ui": {
+    "comment": "#9fa9c5",
+    "symbol": "#179299",
+    "gradient": [
+      "#04A5E5",
+      "#8839EF",
+      "#FE640B"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Mito Laser",
+  "type": "custom",
+  "background": {
+    "primary": "#201947",
+    "diff": {
+      "added": "#2f2c3c",
+      "removed": "#41164f"
+    }
+  },
+  "text": {
+    "primary": "#eee8d5",
+    "secondary": "#6d5dc6",
+    "link": "#268bd2",
+    "accent": "#7E74CC"
+  },
+  "border": {
+    "default": "#3e318a",
+    "focused": "#268bd2"
+  },
+  "status": {
+    "success": "#859900",
+    "warning": "#b58900",
+    "error": "#ff047d"
+  },
+  "ui": {
+    "comment": "#5442bb",
+    "symbol": "#74c5aa",
+    "gradient": [
+      "#268bd2",
+      "#7E74CC",
+      "#c85106"
+    ]
+  }
+}

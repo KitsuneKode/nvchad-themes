@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Radium",
+  "type": "custom",
+  "background": {
+    "primary": "#101317",
+    "diff": {
+      "added": "#16312b",
+      "removed": "#332124"
+    }
+  },
+  "text": {
+    "primary": "#d4d4d5",
+    "secondary": "#525559",
+    "link": "#5fb0fc",
+    "accent": "#c397d8"
+  },
+  "border": {
+    "default": "#33363a",
+    "focused": "#7ab0df"
+  },
+  "status": {
+    "success": "#37d99e",
+    "warning": "#ffe59e",
+    "error": "#f87070"
+  },
+  "ui": {
+    "comment": "#4a4d51",
+    "symbol": "#63b3ad",
+    "gradient": [
+      "#7ab0df",
+      "#c397d8",
+      "#f0a988"
+    ]
+  }
+}

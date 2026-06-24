@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Gruvbox Light",
+  "type": "custom",
+  "background": {
+    "primary": "#F2E5BC",
+    "diff": {
+      "added": "#e0d4a2",
+      "removed": "#eed1a2"
+    }
+  },
+  "text": {
+    "primary": "#504945",
+    "secondary": "#a2956c",
+    "link": "#076678",
+    "accent": "#8f3f71"
+  },
+  "border": {
+    "default": "#cabd94",
+    "focused": "#458588"
+  },
+  "status": {
+    "success": "#79740e",
+    "warning": "#d79921",
+    "error": "#d65d0e"
+  },
+  "ui": {
+    "comment": "#ac9f76",
+    "symbol": "#749689",
+    "gradient": [
+      "#458588",
+      "#8f3f71",
+      "#b57614"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Onenord Light",
+  "type": "custom",
+  "background": {
+    "primary": "#D8DEE9",
+    "diff": {
+      "added": "#c9d2d4",
+      "removed": "#d0c7d2"
+    }
+  },
+  "text": {
+    "primary": "#2a303c",
+    "secondary": "#8b919c",
+    "link": "#3f5f7f",
+    "accent": "#9c87c7"
+  },
+  "border": {
+    "default": "#b3b9c4",
+    "focused": "#3f5f7f"
+  },
+  "status": {
+    "success": "#75905e",
+    "warning": "#c18401",
+    "error": "#a3454e"
+  },
+  "ui": {
+    "comment": "#959ba6",
+    "symbol": "#395979",
+    "gradient": [
+      "#3f5f7f",
+      "#9c87c7",
+      "#b46b54"
+    ]
+  }
+}

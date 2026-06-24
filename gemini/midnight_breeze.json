@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Midnight Breeze",
+  "type": "custom",
+  "background": {
+    "primary": "#0d1117",
+    "diff": {
+      "added": "#182e23",
+      "removed": "#311f24"
+    }
+  },
+  "text": {
+    "primary": "#c9d1d9",
+    "secondary": "#8b949e",
+    "link": "#58a6ff",
+    "accent": "#bc8cff"
+  },
+  "border": {
+    "default": "#21262d",
+    "focused": "#58a6ff"
+  },
+  "status": {
+    "success": "#56d364",
+    "warning": "#ffdf5d",
+    "error": "#fb6f6f"
+  },
+  "ui": {
+    "comment": "#4f5969",
+    "symbol": "#39c5cf",
+    "gradient": [
+      "#58a6ff",
+      "#bc8cff",
+      "#ffab70"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Rosepine Dawn",
+  "type": "custom",
+  "background": {
+    "primary": "#faf4ed",
+    "diff": {
+      "added": "#dbdfdd",
+      "removed": "#f0dedc"
+    }
+  },
+  "text": {
+    "primary": "#575279",
+    "secondary": "#908B9D",
+    "link": "#907aa9",
+    "accent": "#907aa9"
+  },
+  "border": {
+    "default": "#DEC7B3",
+    "focused": "#56949f"
+  },
+  "status": {
+    "success": "#286983",
+    "warning": "#ea9d34",
+    "error": "#b4637a"
+  },
+  "ui": {
+    "comment": "#9893A4",
+    "symbol": "#3e8fb0",
+    "gradient": [
+      "#56949f",
+      "#907aa9",
+      "#ea9d34"
+    ]
+  }
+}

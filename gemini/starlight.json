@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Starlight",
+  "type": "custom",
+  "background": {
+    "primary": "#242424",
+    "diff": {
+      "added": "#293a21",
+      "removed": "#44252c"
+    }
+  },
+  "text": {
+    "primary": "#E6E6E6",
+    "secondary": "#5c5c5c",
+    "link": "#24ACD4",
+    "accent": "#B877DB"
+  },
+  "border": {
+    "default": "#404040",
+    "focused": "#24ACD4"
+  },
+  "status": {
+    "success": "#47B413",
+    "warning": "#E3C401",
+    "error": "#F62B5A"
+  },
+  "ui": {
+    "comment": "#555555",
+    "symbol": "#21BFC2",
+    "gradient": [
+      "#24ACD4",
+      "#B877DB",
+      "#F09383"
+    ]
+  }
+}

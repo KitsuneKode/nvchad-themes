@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Darcula Dark",
+  "type": "custom",
+  "background": {
+    "primary": "#2B2B2B",
+    "diff": {
+      "added": "#343932",
+      "removed": "#492d31"
+    }
+  },
+  "text": {
+    "primary": "#eeeeee",
+    "secondary": "#727272",
+    "link": "#AD9E7D",
+    "accent": "#9876AA"
+  },
+  "border": {
+    "default": "#474747",
+    "focused": "#6FAFBD"
+  },
+  "status": {
+    "success": "#6A8759",
+    "warning": "#ffc24b",
+    "error": "#f43753"
+  },
+  "ui": {
+    "comment": "#6b6b6b",
+    "symbol": "#6897BB",
+    "gradient": [
+      "#6FAFBD",
+      "#9876AA",
+      "#dc9656"
+    ]
+  }
+}

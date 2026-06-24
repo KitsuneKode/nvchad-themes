@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Jabuti",
+  "type": "custom",
+  "background": {
+    "primary": "#292A37",
+    "diff": {
+      "added": "#2c4447",
+      "removed": "#463443"
+    }
+  },
+  "text": {
+    "primary": "#d9e0ee",
+    "secondary": "#67698a",
+    "link": "#3FC6DE",
+    "accent": "#be95ff"
+  },
+  "border": {
+    "default": "#45475d",
+    "focused": "#78a9ff"
+  },
+  "status": {
+    "success": "#3FDAA4",
+    "warning": "#e1c697",
+    "error": "#ec6a88"
+  },
+  "ui": {
+    "comment": "#606281",
+    "symbol": "#09deda",
+    "gradient": [
+      "#78a9ff",
+      "#be95ff",
+      "#efb993"
+    ]
+  }
+}

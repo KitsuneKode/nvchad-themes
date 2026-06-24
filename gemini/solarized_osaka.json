@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Solarized Osaka",
+  "type": "custom",
+  "background": {
+    "primary": "#011219",
+    "diff": {
+      "added": "#152615",
+      "removed": "#22171c"
+    }
+  },
+  "text": {
+    "primary": "#9eabac",
+    "secondary": "#586E75",
+    "link": "#268bd2",
+    "accent": "#29a298"
+  },
+  "border": {
+    "default": "#044A67",
+    "focused": "#268bd3"
+  },
+  "status": {
+    "success": "#849900",
+    "warning": "#b28500",
+    "error": "#db302d"
+  },
+  "ui": {
+    "comment": "#4F6369",
+    "symbol": "#519ABA",
+    "gradient": [
+      "#268bd3",
+      "#29a298",
+      "#C84C16"
+    ]
+  }
+}

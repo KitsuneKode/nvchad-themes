@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Poimandres",
+  "type": "custom",
+  "background": {
+    "primary": "#1b1e28",
+    "diff": {
+      "added": "#25343a",
+      "removed": "#36293a"
+    }
+  },
+  "text": {
+    "primary": "#E4F0FB",
+    "secondary": "#657096",
+    "link": "#ADD7FF",
+    "accent": "#A6ACCD"
+  },
+  "border": {
+    "default": "#3b4258",
+    "focused": "#89DDFF"
+  },
+  "status": {
+    "success": "#5FB3A1",
+    "warning": "#FFFAC2",
+    "error": "#D0679D"
+  },
+  "ui": {
+    "comment": "#5d678a",
+    "symbol": "#5DE4C7",
+    "gradient": [
+      "#89DDFF",
+      "#A6ACCD",
+      "#91B4D5"
+    ]
+  }
+}

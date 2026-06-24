@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Ayu Dark",
+  "type": "custom",
+  "background": {
+    "primary": "#0B0E14",
+    "diff": {
+      "added": "#232c1c",
+      "removed": "#2d1d23"
+    }
+  },
+  "text": {
+    "primary": "#ced4df",
+    "secondary": "#54575d",
+    "link": "#F07174",
+    "accent": "#c79bf4"
+  },
+  "border": {
+    "default": "#2b2e34",
+    "focused": "#36A3D9"
+  },
+  "status": {
+    "success": "#AAD84C",
+    "warning": "#E7C547",
+    "error": "#F07178"
+  },
+  "ui": {
+    "comment": "#46494f",
+    "symbol": "#74c5aa",
+    "gradient": [
+      "#36A3D9",
+      "#c79bf4",
+      "#ffa455"
+    ]
+  }
+}

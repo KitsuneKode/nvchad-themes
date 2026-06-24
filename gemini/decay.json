@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Decay",
+  "type": "custom",
+  "background": {
+    "primary": "#171B20",
+    "diff": {
+      "added": "#263835",
+      "removed": "#35272e"
+    }
+  },
+  "text": {
+    "primary": "#dee1e6",
+    "secondary": "#5a5e63",
+    "link": "#86aaec",
+    "accent": "#c68aee"
+  },
+  "border": {
+    "default": "#373b40",
+    "focused": "#86aaec"
+  },
+  "status": {
+    "success": "#78DBA9",
+    "warning": "#ecd3a0",
+    "error": "#e26c7c"
+  },
+  "ui": {
+    "comment": "#505459",
+    "symbol": "#7ddac5",
+    "gradient": [
+      "#86aaec",
+      "#c68aee",
+      "#e9a180"
+    ]
+  }
+}

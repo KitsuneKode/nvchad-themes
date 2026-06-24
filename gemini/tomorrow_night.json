@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Tomorrow Night",
+  "type": "custom",
+  "background": {
+    "primary": "#1d1f21",
+    "diff": {
+      "added": "#313632",
+      "removed": "#372a2b"
+    }
+  },
+  "text": {
+    "primary": "#C5C8C2",
+    "secondary": "#676e7b",
+    "link": "#81a2be",
+    "accent": "#b4bbc8"
+  },
+  "border": {
+    "default": "#30343c",
+    "focused": "#6f8dab"
+  },
+  "status": {
+    "success": "#a4b595",
+    "warning": "#d7bd8d",
+    "error": "#cc6666"
+  },
+  "ui": {
+    "comment": "#616875",
+    "symbol": "#8abdb6",
+    "gradient": [
+      "#6f8dab",
+      "#b4bbc8",
+      "#DE935F"
+    ]
+  }
+}

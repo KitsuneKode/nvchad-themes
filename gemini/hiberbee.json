@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Hiberbee",
+  "type": "custom",
+  "background": {
+    "primary": "#121110",
+    "diff": {
+      "added": "#252f13",
+      "removed": "#33201c"
+    }
+  },
+  "text": {
+    "primary": "#fffefd",
+    "secondary": "#5a504f",
+    "link": "#7fdbca",
+    "accent": "#9380ff"
+  },
+  "border": {
+    "default": "#3a3433",
+    "focused": "#409cff"
+  },
+  "status": {
+    "success": "#92D923",
+    "warning": "#ffb900",
+    "error": "#ee7762"
+  },
+  "ui": {
+    "comment": "#524948",
+    "symbol": "#00b7c3",
+    "gradient": [
+      "#409cff",
+      "#9380ff",
+      "#f59762"
+    ]
+  }
+}

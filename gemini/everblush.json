@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Everblush",
+  "type": "custom",
+  "background": {
+    "primary": "#141b1e",
+    "diff": {
+      "added": "#26362c",
+      "removed": "#33282b"
+    }
+  },
+  "text": {
+    "primary": "#dadada",
+    "secondary": "#50575a",
+    "link": "#67b0e8",
+    "accent": "#c47fd5"
+  },
+  "border": {
+    "default": "#2f3639",
+    "focused": "#67b0e8"
+  },
+  "status": {
+    "success": "#8ccf7e",
+    "warning": "#e5c76b",
+    "error": "#e57474"
+  },
+  "ui": {
+    "comment": "#50575a",
+    "symbol": "#9bdead",
+    "gradient": [
+      "#67b0e8",
+      "#c47fd5",
+      "#fcb163"
+    ]
+  }
+}

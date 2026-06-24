@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Bearded Arc",
+  "type": "custom",
+  "background": {
+    "primary": "#1c2433",
+    "diff": {
+      "added": "#21423f",
+      "removed": "#3e3040"
+    }
+  },
+  "text": {
+    "primary": "#ABB7C1",
+    "secondary": "#626a79",
+    "link": "#69C3FF",
+    "accent": "#bd93ff"
+  },
+  "border": {
+    "default": "#3a4251",
+    "focused": "#69C3FF"
+  },
+  "status": {
+    "success": "#3CEC85",
+    "warning": "#EACD61",
+    "error": "#FF738A"
+  },
+  "ui": {
+    "comment": "#58606f",
+    "symbol": "#12c7c4",
+    "gradient": [
+      "#69C3FF",
+      "#bd93ff",
+      "#FF955C"
+    ]
+  }
+}

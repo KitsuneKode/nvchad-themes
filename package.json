@@ -1,11 +1,29 @@
 {
-  "name": "nvchad-rxyhn-theme-vscode-cursor-zed",
-  "displayName": "NvChad Rxyhn Theme",
-  "description": "NvChad Rxyhn theme for VS Code, Cursor, Zed, OpenCode, Gemini CLI, and Codex, inspired by Base46.",
-  "version": "0.1.0",
+  "name": "nvchad-themes",
+  "displayName": "NvChad Themes",
+  "description": "All 94 NvChad base46 themes — Nord, Catppuccin, Tokyo Night, Rxyhn, Gruvbox, and more. Faithful ports from NvChad for VS Code and Cursor.",
+  "version": "1.0.0",
   "publisher": "kitsunekode",
-  "author": "kitsunekode",
+  "author": {
+    "name": "kitsunekode",
+    "url": "https://github.com/KitsuneKode"
+  },
   "license": "MIT",
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#061115",
+    "theme": "dark"
+  },
+  "homepage": "https://github.com/KitsuneKode/nvchad-themes#readme",
+  "bugs": {
+    "url": "https://github.com/KitsuneKode/nvchad-themes/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KitsuneKode/nvchad-themes.git"
+  },
+  "qna": "marketplace",
+  "preview": false,
   "type": "module",
   "engines": {
     "vscode": "^1.74.0"
@@ -16,10 +34,10 @@
   "keywords": [
     "theme",
     "color-theme",
-    "rxyhn",
     "neovim",
     "nvchad",
     "base46",
+    "theme-pack",
     "vscode-theme",
     "cursor",
     "zed",
@@ -31,19 +49,491 @@
   ],
   "scripts": {
     "build": "bun run scripts/build-theme.ts",
+    "import:base46": "bun run scripts/import-base46.ts",
+    "package": "bun run scripts/package-dist.ts",
+    "package:vsix": "bun run scripts/package-theme.ts",
+    "install:zed": "bun run scripts/install-zed-theme.ts",
+    "install:zed-dev": "bun run scripts/install-zed-dev.ts",
     "install:codex": "bun run scripts/install-codex-theme.ts",
     "install:gemini": "bun run scripts/install-gemini-theme.ts",
     "install:opencode": "bun run scripts/install-opencode-theme.ts",
-    "install:zed": "bun run scripts/install-zed-theme.ts",
-    "package": "bun run scripts/package-theme.ts",
+    "test": "bun test",
+    "verify": "bun run scripts/verify-extensions.ts",
+    "publish:vscode": "bun run package && bunx @vscode/vsce publish",
+    "publish:vscode:ovsx": "bun run package && bunx ovsx publish dist/*.vsix",
     "vscode:prepublish": "bun run build"
   },
   "contributes": {
     "themes": [
       {
-        "label": "NvChad Rxyhn Theme",
+        "label": "NvChad Aquarium",
+        "uiTheme": "vs-dark",
+        "path": "./themes/aquarium-color-theme.json"
+      },
+      {
+        "label": "NvChad Ashes",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ashes-color-theme.json"
+      },
+      {
+        "label": "NvChad Aylin",
+        "uiTheme": "vs-dark",
+        "path": "./themes/aylin-color-theme.json"
+      },
+      {
+        "label": "NvChad Ayu Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ayu_dark-color-theme.json"
+      },
+      {
+        "label": "NvChad Ayu Light",
+        "uiTheme": "vs",
+        "path": "./themes/ayu_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Bearded Arc",
+        "uiTheme": "vs-dark",
+        "path": "./themes/bearded-arc-color-theme.json"
+      },
+      {
+        "label": "NvChad Blossom Light",
+        "uiTheme": "vs",
+        "path": "./themes/blossom_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Carbonfox",
+        "uiTheme": "vs-dark",
+        "path": "./themes/carbonfox-color-theme.json"
+      },
+      {
+        "label": "NvChad Catppuccin",
+        "uiTheme": "vs-dark",
+        "path": "./themes/catppuccin-color-theme.json"
+      },
+      {
+        "label": "NvChad Catppuccin Latte",
+        "uiTheme": "vs",
+        "path": "./themes/catppuccin-latte-color-theme.json"
+      },
+      {
+        "label": "NvChad Chadracula",
+        "uiTheme": "vs-dark",
+        "path": "./themes/chadracula-color-theme.json"
+      },
+      {
+        "label": "NvChad Chadracula Evondev",
+        "uiTheme": "vs-dark",
+        "path": "./themes/chadracula-evondev-color-theme.json"
+      },
+      {
+        "label": "NvChad Chadtain",
+        "uiTheme": "vs-dark",
+        "path": "./themes/chadtain-color-theme.json"
+      },
+      {
+        "label": "NvChad Chocolate",
+        "uiTheme": "vs-dark",
+        "path": "./themes/chocolate-color-theme.json"
+      },
+      {
+        "label": "NvChad Darcula Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/darcula-dark-color-theme.json"
+      },
+      {
+        "label": "NvChad Dark Horizon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/dark_horizon-color-theme.json"
+      },
+      {
+        "label": "NvChad Decay",
+        "uiTheme": "vs-dark",
+        "path": "./themes/decay-color-theme.json"
+      },
+      {
+        "label": "NvChad Default Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/default-dark-color-theme.json"
+      },
+      {
+        "label": "NvChad Default Light",
+        "uiTheme": "vs",
+        "path": "./themes/default-light-color-theme.json"
+      },
+      {
+        "label": "NvChad Doomchad",
+        "uiTheme": "vs-dark",
+        "path": "./themes/doomchad-color-theme.json"
+      },
+      {
+        "label": "NvChad Eldritch",
+        "uiTheme": "vs-dark",
+        "path": "./themes/eldritch-color-theme.json"
+      },
+      {
+        "label": "NvChad Embark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/embark-color-theme.json"
+      },
+      {
+        "label": "NvChad Everblush",
+        "uiTheme": "vs-dark",
+        "path": "./themes/everblush-color-theme.json"
+      },
+      {
+        "label": "NvChad Everforest",
+        "uiTheme": "vs-dark",
+        "path": "./themes/everforest-color-theme.json"
+      },
+      {
+        "label": "NvChad Everforest Light",
+        "uiTheme": "vs",
+        "path": "./themes/everforest_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Falcon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/falcon-color-theme.json"
+      },
+      {
+        "label": "NvChad Flex Light",
+        "uiTheme": "vs",
+        "path": "./themes/flex-light-color-theme.json"
+      },
+      {
+        "label": "NvChad Flexoki",
+        "uiTheme": "vs-dark",
+        "path": "./themes/flexoki-color-theme.json"
+      },
+      {
+        "label": "NvChad Flexoki Light",
+        "uiTheme": "vs",
+        "path": "./themes/flexoki-light-color-theme.json"
+      },
+      {
+        "label": "NvChad Flouromachine",
+        "uiTheme": "vs-dark",
+        "path": "./themes/flouromachine-color-theme.json"
+      },
+      {
+        "label": "NvChad Gatekeeper",
+        "uiTheme": "vs-dark",
+        "path": "./themes/gatekeeper-color-theme.json"
+      },
+      {
+        "label": "NvChad Github Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/github_dark-color-theme.json"
+      },
+      {
+        "label": "NvChad Github Light",
+        "uiTheme": "vs",
+        "path": "./themes/github_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Gruvbox",
+        "uiTheme": "vs-dark",
+        "path": "./themes/gruvbox-color-theme.json"
+      },
+      {
+        "label": "NvChad Gruvbox Light",
+        "uiTheme": "vs",
+        "path": "./themes/gruvbox_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Gruvchad",
+        "uiTheme": "vs-dark",
+        "path": "./themes/gruvchad-color-theme.json"
+      },
+      {
+        "label": "NvChad Hiberbee",
+        "uiTheme": "vs-dark",
+        "path": "./themes/hiberbee-color-theme.json"
+      },
+      {
+        "label": "NvChad Horizon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/horizon-color-theme.json"
+      },
+      {
+        "label": "NvChad Jabuti",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jabuti-color-theme.json"
+      },
+      {
+        "label": "NvChad Jellybeans",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jellybeans-color-theme.json"
+      },
+      {
+        "label": "NvChad Kanagawa",
+        "uiTheme": "vs-dark",
+        "path": "./themes/kanagawa-color-theme.json"
+      },
+      {
+        "label": "NvChad Kanagawa Dragon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/kanagawa-dragon-color-theme.json"
+      },
+      {
+        "label": "NvChad Material Darker",
+        "uiTheme": "vs-dark",
+        "path": "./themes/material-darker-color-theme.json"
+      },
+      {
+        "label": "NvChad Material Deep Ocean",
+        "uiTheme": "vs-dark",
+        "path": "./themes/material-deep-ocean-color-theme.json"
+      },
+      {
+        "label": "NvChad Material Lighter",
+        "uiTheme": "vs",
+        "path": "./themes/material-lighter-color-theme.json"
+      },
+      {
+        "label": "NvChad Melange",
+        "uiTheme": "vs-dark",
+        "path": "./themes/melange-color-theme.json"
+      },
+      {
+        "label": "NvChad Midnight Breeze",
+        "uiTheme": "vs-dark",
+        "path": "./themes/midnight_breeze-color-theme.json"
+      },
+      {
+        "label": "NvChad Mito Laser",
+        "uiTheme": "vs-dark",
+        "path": "./themes/mito-laser-color-theme.json"
+      },
+      {
+        "label": "NvChad Monekai",
+        "uiTheme": "vs-dark",
+        "path": "./themes/monekai-color-theme.json"
+      },
+      {
+        "label": "NvChad Monochrome",
+        "uiTheme": "vs-dark",
+        "path": "./themes/monochrome-color-theme.json"
+      },
+      {
+        "label": "NvChad Mountain",
+        "uiTheme": "vs-dark",
+        "path": "./themes/mountain-color-theme.json"
+      },
+      {
+        "label": "NvChad Nano Light",
+        "uiTheme": "vs",
+        "path": "./themes/nano-light-color-theme.json"
+      },
+      {
+        "label": "NvChad Neofusion",
+        "uiTheme": "vs-dark",
+        "path": "./themes/neofusion-color-theme.json"
+      },
+      {
+        "label": "NvChad Nightfox",
+        "uiTheme": "vs-dark",
+        "path": "./themes/nightfox-color-theme.json"
+      },
+      {
+        "label": "NvChad Nightlamp",
+        "uiTheme": "vs-dark",
+        "path": "./themes/nightlamp-color-theme.json"
+      },
+      {
+        "label": "NvChad Nightowl",
+        "uiTheme": "vs-dark",
+        "path": "./themes/nightowl-color-theme.json"
+      },
+      {
+        "label": "NvChad Nord",
+        "uiTheme": "vs-dark",
+        "path": "./themes/nord-color-theme.json"
+      },
+      {
+        "label": "NvChad Obsidian Ember",
+        "uiTheme": "vs-dark",
+        "path": "./themes/obsidian-ember-color-theme.json"
+      },
+      {
+        "label": "NvChad Oceanic Light",
+        "uiTheme": "vs",
+        "path": "./themes/oceanic-light-color-theme.json"
+      },
+      {
+        "label": "NvChad Oceanic Next",
+        "uiTheme": "vs-dark",
+        "path": "./themes/oceanic-next-color-theme.json"
+      },
+      {
+        "label": "NvChad One Light",
+        "uiTheme": "vs",
+        "path": "./themes/one_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Onedark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/onedark-color-theme.json"
+      },
+      {
+        "label": "NvChad Onenord",
+        "uiTheme": "vs-dark",
+        "path": "./themes/onenord-color-theme.json"
+      },
+      {
+        "label": "NvChad Onenord Light",
+        "uiTheme": "vs",
+        "path": "./themes/onenord_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Oxocarbon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/oxocarbon-color-theme.json"
+      },
+      {
+        "label": "NvChad Palenight",
+        "uiTheme": "vs-dark",
+        "path": "./themes/palenight-color-theme.json"
+      },
+      {
+        "label": "NvChad Pastelbeans",
+        "uiTheme": "vs-dark",
+        "path": "./themes/pastelbeans-color-theme.json"
+      },
+      {
+        "label": "NvChad PastelDark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/pastelDark-color-theme.json"
+      },
+      {
+        "label": "NvChad Penumbra Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/penumbra_dark-color-theme.json"
+      },
+      {
+        "label": "NvChad Penumbra Light",
+        "uiTheme": "vs",
+        "path": "./themes/penumbra_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Poimandres",
+        "uiTheme": "vs-dark",
+        "path": "./themes/poimandres-color-theme.json"
+      },
+      {
+        "label": "NvChad Radium",
+        "uiTheme": "vs-dark",
+        "path": "./themes/radium-color-theme.json"
+      },
+      {
+        "label": "NvChad Rosepine",
+        "uiTheme": "vs-dark",
+        "path": "./themes/rosepine-color-theme.json"
+      },
+      {
+        "label": "NvChad Rosepine Dawn",
+        "uiTheme": "vs",
+        "path": "./themes/rosepine-dawn-color-theme.json"
+      },
+      {
+        "label": "NvChad Rxyhn",
         "uiTheme": "vs-dark",
         "path": "./themes/rxyhn-color-theme.json"
+      },
+      {
+        "label": "NvChad Scaryforest",
+        "uiTheme": "vs-dark",
+        "path": "./themes/scaryforest-color-theme.json"
+      },
+      {
+        "label": "NvChad Seoul256 Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/seoul256_dark-color-theme.json"
+      },
+      {
+        "label": "NvChad Seoul256 Light",
+        "uiTheme": "vs",
+        "path": "./themes/seoul256_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Solarized Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/solarized_dark-color-theme.json"
+      },
+      {
+        "label": "NvChad Solarized Light",
+        "uiTheme": "vs",
+        "path": "./themes/solarized_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Solarized Osaka",
+        "uiTheme": "vs-dark",
+        "path": "./themes/solarized_osaka-color-theme.json"
+      },
+      {
+        "label": "NvChad Starlight",
+        "uiTheme": "vs-dark",
+        "path": "./themes/starlight-color-theme.json"
+      },
+      {
+        "label": "NvChad Sunrise Breeze",
+        "uiTheme": "vs",
+        "path": "./themes/sunrise_breeze-color-theme.json"
+      },
+      {
+        "label": "NvChad Sweetpastel",
+        "uiTheme": "vs-dark",
+        "path": "./themes/sweetpastel-color-theme.json"
+      },
+      {
+        "label": "NvChad Tokyodark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tokyodark-color-theme.json"
+      },
+      {
+        "label": "NvChad Tokyonight",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tokyonight-color-theme.json"
+      },
+      {
+        "label": "NvChad Tomorrow Night",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tomorrow_night-color-theme.json"
+      },
+      {
+        "label": "NvChad Tundra",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tundra-color-theme.json"
+      },
+      {
+        "label": "NvChad Vesper",
+        "uiTheme": "vs-dark",
+        "path": "./themes/vesper-color-theme.json"
+      },
+      {
+        "label": "NvChad Vscode Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/vscode_dark-color-theme.json"
+      },
+      {
+        "label": "NvChad Vscode Light",
+        "uiTheme": "vs",
+        "path": "./themes/vscode_light-color-theme.json"
+      },
+      {
+        "label": "NvChad Wombat",
+        "uiTheme": "vs-dark",
+        "path": "./themes/wombat-color-theme.json"
+      },
+      {
+        "label": "NvChad Yoru",
+        "uiTheme": "vs-dark",
+        "path": "./themes/yoru-color-theme.json"
+      },
+      {
+        "label": "NvChad Zenburn",
+        "uiTheme": "vs-dark",
+        "path": "./themes/zenburn-color-theme.json"
       }
     ]
   },

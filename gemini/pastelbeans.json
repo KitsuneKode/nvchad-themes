@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Pastelbeans",
+  "type": "custom",
+  "background": {
+    "primary": "#151515",
+    "diff": {
+      "added": "#31362b",
+      "removed": "#38292a"
+    }
+  },
+  "text": {
+    "primary": "#e8e8d3",
+    "secondary": "#525252",
+    "link": "#bbdaff",
+    "accent": "#ebbbff"
+  },
+  "border": {
+    "default": "#3a3a3a",
+    "focused": "#bbdaff"
+  },
+  "status": {
+    "success": "#d1f1a9",
+    "warning": "#f5d595",
+    "error": "#ff9da4"
+  },
+  "ui": {
+    "comment": "#4c4c4c",
+    "symbol": "#668799",
+    "gradient": [
+      "#bbdaff",
+      "#ebbbff",
+      "#ffb964"
+    ]
+  }
+}

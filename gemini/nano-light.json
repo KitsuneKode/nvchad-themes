@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Nano Light",
+  "type": "custom",
+  "background": {
+    "primary": "#FFFfff",
+    "diff": {
+      "added": "#e8f5e9",
+      "removed": "#fde5e5"
+    }
+  },
+  "text": {
+    "primary": "#37474F",
+    "secondary": "#848484",
+    "link": "#263238",
+    "accent": "#673AB7"
+  },
+  "border": {
+    "default": "#d4d4d4",
+    "focused": "#42A5F5"
+  },
+  "status": {
+    "success": "#66BB6A",
+    "warning": "#d0b22b",
+    "error": "#EF5350"
+  },
+  "ui": {
+    "comment": "#a3a3a3",
+    "symbol": "#008080",
+    "gradient": [
+      "#42A5F5",
+      "#673AB7",
+      "#FF6F00"
+    ]
+  }
+}

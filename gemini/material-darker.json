@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Material Darker",
+  "type": "custom",
+  "background": {
+    "primary": "#212121",
+    "diff": {
+      "added": "#393f31",
+      "removed": "#402d2e"
+    }
+  },
+  "text": {
+    "primary": "#eeffff",
+    "secondary": "#6B6B6B",
+    "link": "#82aaff",
+    "accent": "#c792ea"
+  },
+  "border": {
+    "default": "#404040",
+    "focused": "#82aaff"
+  },
+  "status": {
+    "success": "#c3e88d",
+    "warning": "#ffcb6b",
+    "error": "#f07178"
+  },
+  "ui": {
+    "comment": "#5E5E5E",
+    "symbol": "#abcf76",
+    "gradient": [
+      "#82aaff",
+      "#c792ea",
+      "#f78c6c"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Monekai",
+  "type": "custom",
+  "background": {
+    "primary": "#272822",
+    "diff": {
+      "added": "#383f2c",
+      "removed": "#43322f"
+    }
+  },
+  "text": {
+    "primary": "#f5f4f1",
+    "secondary": "#64655F",
+    "link": "#66d9ef",
+    "accent": "#c885d7"
+  },
+  "border": {
+    "default": "#464741",
+    "focused": "#51afef"
+  },
+  "status": {
+    "success": "#96c367",
+    "warning": "#e6c181",
+    "error": "#e36d76"
+  },
+  "ui": {
+    "comment": "#5D5E58",
+    "symbol": "#34bfd0",
+    "gradient": [
+      "#51afef",
+      "#c885d7",
+      "#d39467"
+    ]
+  }
+}

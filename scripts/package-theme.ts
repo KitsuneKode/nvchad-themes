@@ -4,6 +4,7 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
+  readdirSync,
   rmSync
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -30,7 +31,7 @@ const packageJson = JSON.parse(readFileSync(resolve(rootDir, "package.json"), "u
 };
 const vsixName = `${packageJson.name}-${packageJson.version}.vsix`;
 const vsixPath = resolve(rootDir, vsixName);
-const tempDir = mkdtempSync(resolve(tmpdir(), "rxyhn-theme-"));
+const tempDir = mkdtempSync(resolve(tmpdir(), "nvchad-themes-"));
 const unpackDir = resolve(tempDir, "vsix");
 const extensionDir = resolve(unpackDir, "extension");
 
@@ -40,11 +41,14 @@ run(["bunx", "@vscode/vsce", "package", "--allow-missing-repository"]);
 mkdirSync(extensionDir, { recursive: true });
 run(["unzip", "-oq", vsixPath, "-d", unpackDir]);
 
+for (const entry of readdirSync(extensionDir)) {
+  rmSync(resolve(extensionDir, entry), { recursive: true, force: true });
+}
+
 copyFileSync(resolve(rootDir, "package.json"), resolve(extensionDir, "package.json"));
 copyFileSync(resolve(rootDir, "README.md"), resolve(extensionDir, "readme.md"));
 copyFileSync(resolve(rootDir, "LICENSE"), resolve(extensionDir, "LICENSE"));
-mkdirSync(resolve(extensionDir, "themes"), { recursive: true });
-cpSync(resolve(rootDir, "themes", "rxyhn-color-theme.json"), resolve(extensionDir, "themes", "rxyhn-color-theme.json"));
+cpSync(resolve(rootDir, "themes"), resolve(extensionDir, "themes"), { recursive: true });
 
 const rebuiltVsixPath = resolve(tempDir, vsixName);
 run(["zip", "-qr", rebuiltVsixPath, "[Content_Types].xml", "extension.vsixmanifest", "extension"], unpackDir);

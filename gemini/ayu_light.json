@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Ayu Light",
+  "type": "custom",
+  "background": {
+    "primary": "#fafafa",
+    "diff": {
+      "added": "#e5f1df",
+      "removed": "#f7e1e1"
+    }
+  },
+  "text": {
+    "primary": "#26292f",
+    "secondary": "#a0a0a0",
+    "link": "#55B4D4",
+    "accent": "#9F40FF"
+  },
+  "border": {
+    "default": "#d7d7d7",
+    "focused": "#399EE6"
+  },
+  "status": {
+    "success": "#6CBF43",
+    "warning": "#E6BA7E",
+    "error": "#E65050"
+  },
+  "ui": {
+    "comment": "#acacac",
+    "symbol": "#74c5aa",
+    "gradient": [
+      "#399EE6",
+      "#9F40FF",
+      "#FA8D3E"
+    ]
+  }
+}

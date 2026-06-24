@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Default Dark",
+  "type": "custom",
+  "background": {
+    "primary": "#181818",
+    "diff": {
+      "added": "#2d3025",
+      "removed": "#2e1f1e"
+    }
+  },
+  "text": {
+    "primary": "#f8f8f8",
+    "secondary": "#656565",
+    "link": "#7cafc2",
+    "accent": "#ba8baf"
+  },
+  "border": {
+    "default": "#3b3b3b",
+    "focused": "#7cafc2"
+  },
+  "status": {
+    "success": "#a1b56c",
+    "warning": "#f7ca88",
+    "error": "#ab4642"
+  },
+  "ui": {
+    "comment": "#5e5e5e",
+    "symbol": "#6cb598",
+    "gradient": [
+      "#7cafc2",
+      "#ba8baf",
+      "#a16946"
+    ]
+  }
+}

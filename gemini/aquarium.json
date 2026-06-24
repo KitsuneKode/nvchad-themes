@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Aquarium",
+  "type": "custom",
+  "background": {
+    "primary": "#20202A",
+    "diff": {
+      "added": "#363c3c",
+      "removed": "#3e373f"
+    }
+  },
+  "text": {
+    "primary": "#ced4df",
+    "secondary": "#5a5a64",
+    "link": "#a3b8ef",
+    "accent": "#f6bbe7"
+  },
+  "border": {
+    "default": "#3e3e48",
+    "focused": "#CDDBF9"
+  },
+  "status": {
+    "success": "#b1dba4",
+    "warning": "#E6DFB8",
+    "error": "#ebb9b9"
+  },
+  "ui": {
+    "comment": "#54545e",
+    "symbol": "#AEDCB7",
+    "gradient": [
+      "#CDDBF9",
+      "#f6bbe7",
+      "#E8CCA7"
+    ]
+  }
+}

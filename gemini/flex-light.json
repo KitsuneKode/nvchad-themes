@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Flex Light",
+  "type": "custom",
+  "background": {
+    "primary": "#FFFCF0",
+    "diff": {
+      "added": "#ededd5",
+      "removed": "#f8e2d6"
+    }
+  },
+  "text": {
+    "primary": "#2a2929",
+    "secondary": "#94928b",
+    "link": "#4385BE",
+    "accent": "#8B7EC8"
+  },
+  "border": {
+    "default": "#c7c5bb",
+    "focused": "#4385BE"
+  },
+  "status": {
+    "success": "#879A39",
+    "warning": "#D0A215",
+    "error": "#D14D41"
+  },
+  "ui": {
+    "comment": "#a3a19a",
+    "symbol": "#008080",
+    "gradient": [
+      "#4385BE",
+      "#8B7EC8",
+      "#DA702C"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Solarized Dark",
+  "type": "custom",
+  "background": {
+    "primary": "#002b36",
+    "diff": {
+      "added": "#143c2e",
+      "removed": "#212c35"
+    }
+  },
+  "text": {
+    "primary": "#abb2bf",
+    "secondary": "#446f7a",
+    "link": "#268bd2",
+    "accent": "#6c71c4"
+  },
+  "border": {
+    "default": "#1b4651",
+    "focused": "#268bd2"
+  },
+  "status": {
+    "success": "#859900",
+    "warning": "#b58900",
+    "error": "#dc322f"
+  },
+  "ui": {
+    "comment": "#3c6772",
+    "symbol": "#519ABA",
+    "gradient": [
+      "#268bd2",
+      "#6c71c4",
+      "#cb4b16"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Nord",
+  "type": "custom",
+  "background": {
+    "primary": "#2E3440",
+    "diff": {
+      "added": "#40494b",
+      "removed": "#443b46"
+    }
+  },
+  "text": {
+    "primary": "#abb2bf",
+    "secondary": "#646a76",
+    "link": "#81A1C1",
+    "accent": "#B48EAD"
+  },
+  "border": {
+    "default": "#494f5b",
+    "focused": "#7797b7"
+  },
+  "status": {
+    "success": "#A3BE8C",
+    "warning": "#EBCB8B",
+    "error": "#BF616A"
+  },
+  "ui": {
+    "comment": "#606672",
+    "symbol": "#6484a4",
+    "gradient": [
+      "#7797b7",
+      "#B48EAD",
+      "#e39a83"
+    ]
+  }
+}

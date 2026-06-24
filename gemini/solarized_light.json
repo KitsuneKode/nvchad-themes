@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Solarized Light",
+  "type": "custom",
+  "background": {
+    "primary": "#fdf6e3",
+    "diff": {
+      "added": "#ebe8c1",
+      "removed": "#f8d9c8"
+    }
+  },
+  "text": {
+    "primary": "#002b36",
+    "secondary": "#9b8e80",
+    "link": "#268bd2",
+    "accent": "#6c71c4"
+  },
+  "border": {
+    "default": "#ddd6be",
+    "focused": "#268bd2"
+  },
+  "status": {
+    "success": "#859900",
+    "warning": "#b58900",
+    "error": "#dc322f"
+  },
+  "ui": {
+    "comment": "#a89b8d",
+    "symbol": "#2aa198",
+    "gradient": [
+      "#268bd2",
+      "#6c71c4",
+      "#cb4b16"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Kanagawa",
+  "type": "custom",
+  "background": {
+    "primary": "#1F1F28",
+    "diff": {
+      "added": "#313632",
+      "removed": "#3b2932"
+    }
+  },
+  "text": {
+    "primary": "#DCD7BA",
+    "secondary": "#5c5c65",
+    "link": "#7e9cd8",
+    "accent": "#a48ec7"
+  },
+  "border": {
+    "default": "#363646",
+    "focused": "#7FB4CA"
+  },
+  "status": {
+    "success": "#98BB6C",
+    "warning": "#FF9E3B",
+    "error": "#d8616b"
+  },
+  "ui": {
+    "comment": "#53535c",
+    "symbol": "#7AA89F",
+    "gradient": [
+      "#7FB4CA",
+      "#a48ec7",
+      "#fa9b61"
+    ]
+  }
+}

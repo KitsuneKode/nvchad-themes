@@ -1,10 +1,10 @@
 {
   "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
-  "name": "NvChad Rxyhn Theme",
-  "author": "kitsunekode",
+  "name": "NvChad Rxyhn",
+  "author": "NvChad",
   "themes": [
     {
-      "name": "NvChad Rxyhn Theme",
+      "name": "NvChad Rxyhn",
       "appearance": "dark",
       "style": {
         "accents": [
@@ -483,6 +483,8 @@
           }
         },
         "tab.active_background": "#061115",
+        "tab.active_border_top": "#6791C9",
+        "tab.hover_background": "#1c272bb8",
         "tab.inactive_background": "#0d181c",
         "tab_bar.background": "#0A1519",
         "terminal.ansi.background": "#061115",
@@ -522,6 +524,7 @@
         "title_bar.background": "#0d181c",
         "title_bar.inactive_background": "#0A1519",
         "toolbar.background": "#0d181c",
+        "toolbar.hover_background": "#242f33e6",
         "unreachable": "#DF5B61",
         "unreachable.background": "#DF5B6124",
         "unreachable.border": "#DF5B61",

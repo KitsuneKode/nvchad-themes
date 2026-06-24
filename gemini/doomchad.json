@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Doomchad",
+  "type": "custom",
+  "background": {
+    "primary": "#282c34",
+    "diff": {
+      "added": "#39423b",
+      "removed": "#48353a"
+    }
+  },
+  "text": {
+    "primary": "#bbc2cf",
+    "secondary": "#676b73",
+    "link": "#dc8ef3",
+    "accent": "#dc8ef3"
+  },
+  "border": {
+    "default": "#41454d",
+    "focused": "#51afef"
+  },
+  "status": {
+    "success": "#98be65",
+    "warning": "#ECBE7B",
+    "error": "#ff6b5a"
+  },
+  "ui": {
+    "comment": "#5d6169",
+    "symbol": "#4db5bd",
+    "gradient": [
+      "#51afef",
+      "#dc8ef3",
+      "#ea9558"
+    ]
+  }
+}

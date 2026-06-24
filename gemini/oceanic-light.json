@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Oceanic Light",
+  "type": "custom",
+  "background": {
+    "primary": "#d8dee9",
+    "diff": {
+      "added": "#c5d4dc",
+      "removed": "#d3bec9"
+    }
+  },
+  "text": {
+    "primary": "#26292f",
+    "secondary": "#9197a2",
+    "link": "#526f93",
+    "accent": "#896a98"
+  },
+  "border": {
+    "default": "#bac0cb",
+    "focused": "#526f93"
+  },
+  "status": {
+    "success": "#5b9c90",
+    "warning": "#fdb830",
+    "error": "#b40b11"
+  },
+  "ui": {
+    "comment": "#999faa",
+    "symbol": "#1abc9c",
+    "gradient": [
+      "#526f93",
+      "#896a98",
+      "#f99157"
+    ]
+  }
+}

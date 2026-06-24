@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Chadracula",
+  "type": "custom",
+  "background": {
+    "primary": "#282A36",
+    "diff": {
+      "added": "#2e4940",
+      "removed": "#48353f"
+    }
+  },
+  "text": {
+    "primary": "#F8F8F2",
+    "secondary": "#73747e",
+    "link": "#50fa7b",
+    "accent": "#BD93F9"
+  },
+  "border": {
+    "default": "#565761",
+    "focused": "#a1b1e3"
+  },
+  "status": {
+    "success": "#50fa7b",
+    "warning": "#F1FA8C",
+    "error": "#ff7070"
+  },
+  "ui": {
+    "comment": "#6e6f79",
+    "symbol": "#92a2d4",
+    "gradient": [
+      "#a1b1e3",
+      "#BD93F9",
+      "#FFB86C"
+    ]
+  }
+}

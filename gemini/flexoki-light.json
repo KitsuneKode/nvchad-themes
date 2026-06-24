@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Flexoki Light",
+  "type": "custom",
+  "background": {
+    "primary": "#FFFCF0",
+    "diff": {
+      "added": "#e8e9ce",
+      "removed": "#f3ddd2"
+    }
+  },
+  "text": {
+    "primary": "#2a2929",
+    "secondary": "#94928b",
+    "link": "#205EA6",
+    "accent": "#8265c0"
+  },
+  "border": {
+    "default": "#c7c5bb",
+    "focused": "#205EA6"
+  },
+  "status": {
+    "success": "#66800B",
+    "warning": "#AD8301",
+    "error": "#AF3029"
+  },
+  "ui": {
+    "comment": "#a3a19a",
+    "symbol": "#519ABA",
+    "gradient": [
+      "#205EA6",
+      "#8265c0",
+      "#BC5215"
+    ]
+  }
+}

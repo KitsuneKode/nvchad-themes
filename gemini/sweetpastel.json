@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Sweetpastel",
+  "type": "custom",
+  "background": {
+    "primary": "#1B1F23",
+    "diff": {
+      "added": "#323c38",
+      "removed": "#393336"
+    }
+  },
+  "text": {
+    "primary": "#FFDEDE",
+    "secondary": "#5d6165",
+    "link": "#A3CBE7",
+    "accent": "#CEACE8"
+  },
+  "border": {
+    "default": "#393d41",
+    "focused": "#A3CBE7"
+  },
+  "status": {
+    "success": "#B4E3AD",
+    "warning": "#ECE3B1",
+    "error": "#e5a3a1"
+  },
+  "ui": {
+    "comment": "#54585c",
+    "symbol": "#94D2CF",
+    "gradient": [
+      "#A3CBE7",
+      "#CEACE8",
+      "#F1C192"
+    ]
+  }
+}

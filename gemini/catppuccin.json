@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Catppuccin",
+  "type": "custom",
+  "background": {
+    "primary": "#1E1D2D",
+    "diff": {
+      "added": "#333c41",
+      "removed": "#3e2e3f"
+    }
+  },
+  "text": {
+    "primary": "#D9E0EE",
+    "secondary": "#605f6f",
+    "link": "#89B4FA",
+    "accent": "#d0a9e5"
+  },
+  "border": {
+    "default": "#3e3d4d",
+    "focused": "#89B4FA"
+  },
+  "status": {
+    "success": "#ABE9B3",
+    "warning": "#FAE3B0",
+    "error": "#F38BA8"
+  },
+  "ui": {
+    "comment": "#555464",
+    "symbol": "#B5E8E0",
+    "gradient": [
+      "#89B4FA",
+      "#d0a9e5",
+      "#F8BD96"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Tokyonight",
+  "type": "custom",
+  "background": {
+    "primary": "#1a1b26",
+    "diff": {
+      "added": "#2e3630",
+      "removed": "#3b2936"
+    }
+  },
+  "text": {
+    "primary": "#c0caf5",
+    "secondary": "#545c7e",
+    "link": "#2ac3de",
+    "accent": "#bb9af7"
+  },
+  "border": {
+    "default": "#353b45",
+    "focused": "#7aa2f7"
+  },
+  "status": {
+    "success": "#9ece6a",
+    "warning": "#e0af68",
+    "error": "#f7768e"
+  },
+  "ui": {
+    "comment": "#4f5779",
+    "symbol": "#1abc9c",
+    "gradient": [
+      "#7aa2f7",
+      "#bb9af7",
+      "#ff9e64"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Material Deep Ocean",
+  "type": "custom",
+  "background": {
+    "primary": "#0F111A",
+    "diff": {
+      "added": "#2a312b",
+      "removed": "#311f28"
+    }
+  },
+  "text": {
+    "primary": "#eeffff",
+    "secondary": "#5a6ba1",
+    "link": "#82aaff",
+    "accent": "#c792ea"
+  },
+  "border": {
+    "default": "#374162",
+    "focused": "#82aaff"
+  },
+  "status": {
+    "success": "#c3e88d",
+    "warning": "#ffcb6b",
+    "error": "#f07178"
+  },
+  "ui": {
+    "comment": "#505f8f",
+    "symbol": "#80cbc4",
+    "gradient": [
+      "#82aaff",
+      "#c792ea",
+      "#f78c6c"
+    ]
+  }
+}

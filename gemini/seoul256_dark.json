@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Seoul256 Dark",
+  "type": "custom",
+  "background": {
+    "primary": "#4A4A4A",
+    "diff": {
+      "added": "#505550",
+      "removed": "#605656"
+    }
+  },
+  "text": {
+    "primary": "#DFE0E0",
+    "secondary": "#828282",
+    "link": "#96BBDC",
+    "accent": "#DFBDBC"
+  },
+  "border": {
+    "default": "#666666",
+    "focused": "#96BBDC"
+  },
+  "status": {
+    "success": "#719672",
+    "warning": "#E0BB71",
+    "error": "#DF9A98"
+  },
+  "ui": {
+    "comment": "#7b7b7b",
+    "symbol": "#7FB7BD",
+    "gradient": [
+      "#96BBDC",
+      "#DFBDBC",
+      "#ffcb88"
+    ]
+  }
+}

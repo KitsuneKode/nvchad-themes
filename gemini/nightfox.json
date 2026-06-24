@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Nightfox",
+  "type": "custom",
+  "background": {
+    "primary": "#192330",
+    "diff": {
+      "added": "#2b3a41",
+      "removed": "#332a39"
+    }
+  },
+  "text": {
+    "primary": "#cdcecf",
+    "secondary": "#646e7b",
+    "link": "#86abdc",
+    "accent": "#baa1e2"
+  },
+  "border": {
+    "default": "#3d4754",
+    "focused": "#719cd6"
+  },
+  "status": {
+    "success": "#8ebaa4",
+    "warning": "#dbc074",
+    "error": "#c94f6d"
+  },
+  "ui": {
+    "comment": "#5c6673",
+    "symbol": "#5cc6c8",
+    "gradient": [
+      "#719cd6",
+      "#baa1e2",
+      "#fe9373"
+    ]
+  }
+}

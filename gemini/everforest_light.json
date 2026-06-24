@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Everforest Light",
+  "type": "custom",
+  "background": {
+    "primary": "#fff9e8",
+    "diff": {
+      "added": "#e7ecc8",
+      "removed": "#f7e0d2"
+    }
+  },
+  "text": {
+    "primary": "#272f35",
+    "secondary": "#857F6E",
+    "link": "#87a060",
+    "accent": "#b67996"
+  },
+  "border": {
+    "default": "#C2BCAB",
+    "focused": "#3a94c5"
+  },
+  "status": {
+    "success": "#5da111",
+    "warning": "#dfa000",
+    "error": "#c85552"
+  },
+  "ui": {
+    "comment": "#948E7D",
+    "symbol": "#69a59d",
+    "gradient": [
+      "#3a94c5",
+      "#b67996",
+      "#F7954F"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "NvChad Nightlamp",
+  "type": "custom",
+  "background": {
+    "primary": "#18191f",
+    "diff": {
+      "added": "#292e2f",
+      "removed": "#2d272c"
+    }
+  },
+  "text": {
+    "primary": "#e0d6bd",
+    "secondary": "#55565c",
+    "link": "#b58385",
+    "accent": "#b8aad9"
+  },
+  "border": {
+    "default": "#33343a",
+    "focused": "#5a6986"
+  },
+  "status": {
+    "success": "#8aa387",
+    "warning": "#ccb89c",
+    "error": "#a67476"
+  },
+  "ui": {
+    "comment": "#4d4e54",
+    "symbol": "#7aacaa",
+    "gradient": [
+      "#5a6986",
+      "#b8aad9",
+      "#cd9672"
+    ]
+  }
+}
