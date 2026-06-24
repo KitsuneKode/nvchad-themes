@@ -52,5 +52,15 @@
     "base0D": "#81A1C1",
     "base0E": "#81A1C1",
     "base0F": "#B48EAD"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@punctuation.bracket": {
+        "fg": "#abb2bf"
+      },
+      "@punctuation.delimiter": {
+        "fg": "#abb2bf"
+      }
+    }
   }
 }

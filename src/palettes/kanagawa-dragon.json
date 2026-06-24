@@ -53,6 +53,33 @@
     "base0E": "#a292a3",
     "base0F": "#9e9b93"
   },
+  "polishHl": {
+    "treesitter": {
+      "@operator": {
+        "fg": "#c4746e"
+      },
+      "@constant": {
+        "fg": "#a292a3"
+      },
+      "@function.macro": {
+        "fg": "#8ba4b0"
+      },
+      "@punctuation.bracket": {
+        "fg": "#9e9b93"
+      }
+    },
+    "syntax": {
+      "Statement": {
+        "fg": "#8992a7"
+      },
+      "PreProc": {
+        "fg": "#c4746e"
+      },
+      "Include": {
+        "fg": "#c4746e"
+      }
+    }
+  },
   "base30Extras": {
     "lightgray": "#9e9b93"
   }

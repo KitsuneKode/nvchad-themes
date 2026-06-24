@@ -53,6 +53,37 @@
     "base0E": "#37474F",
     "base0F": "#8497a0"
   },
+  "polishHl": {
+    "treesitter": {
+      "@function": {
+        "bold": true
+      },
+      "@function.builtin": {
+        "bold": true
+      },
+      "@function.call": {
+        "bold": true
+      },
+      "@constructor": {
+        "fg": "#673AB7"
+      },
+      "@variable.parameter": {
+        "fg": "#37474F"
+      },
+      "@module": {
+        "fg": "#263238"
+      },
+      "@symbol": {
+        "fg": "#673AB7"
+      },
+      "@keyword": {
+        "fg": "#673AB7"
+      },
+      "@function.method.call": {
+        "bold": true
+      }
+    }
+  },
   "base30Extras": {
     "deepBlack": "#263238",
     "fadedGrey": "#8497a0",

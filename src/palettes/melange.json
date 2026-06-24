@@ -53,6 +53,27 @@
     "base0E": "#E49B5D",
     "base0F": "#8E733F"
   },
+  "polishHl": {
+    "treesitter": {
+      "@variable.member": {
+        "fg": "#ECE1D7"
+      },
+      "@variable.member.key": {
+        "fg": "#ECE1D7"
+      }
+    },
+    "syntax": {
+      "Include": {
+        "fg": "#99D59D"
+      },
+      "Operator": {
+        "fg": "#F17C64"
+      },
+      "Boolean": {
+        "fg": "#c47fd5"
+      }
+    }
+  },
   "base30Extras": {
     "firered": "#F17C64"
   }

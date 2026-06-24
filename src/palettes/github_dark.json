@@ -52,5 +52,21 @@
     "base0D": "#6AB1F0",
     "base0E": "#ff7f8d",
     "base0F": "#85e89d"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@punctuation.bracket": {
+        "fg": "#ffab70"
+      },
+      "@string": {
+        "fg": "#d3dbe3"
+      },
+      "@variable.member.key": {
+        "fg": "#d3dbe3"
+      },
+      "@constructor": {
+        "fg": "#85e89d"
+      }
+    }
   }
 }

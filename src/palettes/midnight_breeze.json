@@ -53,6 +53,129 @@
     "base0E": "#bc8cff",
     "base0F": "#85e89d"
   },
+  "polishHl": {
+    "treesitter": {
+      "@variable": {
+        "fg": "#8b949e"
+      },
+      "@variable.builtin": {
+        "fg": "#58a6ff"
+      },
+      "@variable.parameter": {
+        "fg": "#8b949e"
+      },
+      "@variable.parameter.builtin": {
+        "fg": "#58a6ff"
+      },
+      "@variable.member": {
+        "fg": "#8b949e"
+      },
+      "@constant": {
+        "fg": "#ffdf5d"
+      },
+      "@constant.builtin": {
+        "fg": "#ffdf5d"
+      },
+      "@constant.macro": {
+        "fg": "#ffdf5d"
+      },
+      "@function": {
+        "fg": "#58a6ff"
+      },
+      "@function.builtin": {
+        "fg": "#58a6ff"
+      },
+      "@function.call": {
+        "fg": "#58a6ff"
+      },
+      "@function.macro": {
+        "fg": "#fb6f6f"
+      },
+      "@function.method": {
+        "fg": "#58a6ff"
+      },
+      "@function.method.call": {
+        "fg": "#58a6ff"
+      },
+      "@constructor": {
+        "fg": "#bc8cff"
+      },
+      "@type": {
+        "fg": "#39c5cf"
+      },
+      "@type.builtin": {
+        "fg": "#39c5cf"
+      },
+      "@type.definition": {
+        "fg": "#39c5cf"
+      },
+      "@keyword": {
+        "fg": "#fb6f6f"
+      },
+      "@keyword.function": {
+        "fg": "#fb6f6f"
+      },
+      "@keyword.operator": {
+        "fg": "#fb6f6f"
+      },
+      "@keyword.conditional": {
+        "fg": "#fb6f6f"
+      },
+      "@keyword.return": {
+        "fg": "#fb6f6f"
+      },
+      "@property": {
+        "fg": "#8b949e"
+      },
+      "@attribute": {
+        "fg": "#bc8cff"
+      },
+      "@string": {
+        "fg": "#56d364"
+      },
+      "@string.documentation": {
+        "fg": "#434b59",
+        "italic": true
+      },
+      "@string.escape": {
+        "fg": "#ffab70"
+      },
+      "@string.special": {
+        "fg": "#ffdf5d"
+      },
+      "@boolean": {
+        "fg": "#ffdf5d"
+      },
+      "@number": {
+        "fg": "#ffdf5d"
+      },
+      "@comment.todo": {
+        "fg": "#ffc658",
+        "bold": true
+      },
+      "@comment.note": {
+        "fg": "#bc8cff"
+      },
+      "@markup.heading": {
+        "fg": "#58a6ff",
+        "bold": true
+      },
+      "@markup.bold": {
+        "fg": "#c9d1d9",
+        "bold": true
+      },
+      "@markup.italic": {
+        "fg": "#c9d1d9",
+        "italic": true
+      },
+      "@markup.link": {
+        "fg": "#58a6ff"
+      },
+      "@markup.list": {
+        "fg": "#8b949e"
+      }
+    }
+  },
   "base30Extras": {
     "seablue": "#39c5cf"
   }

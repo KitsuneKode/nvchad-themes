@@ -81,6 +81,21 @@ export type Base16Palette = {
   base0F: string;
 };
 
+export type PolishHlEntry = {
+  fg?: string;
+  bg?: string;
+  italic?: boolean;
+  bold?: boolean;
+  underline?: boolean;
+  strikethrough?: boolean;
+  link?: string;
+};
+
+export type PolishHl = {
+  treesitter?: Record<string, PolishHlEntry>;
+  syntax?: Record<string, PolishHlEntry>;
+};
+
 export type ThemeSpec = {
   id: string;
   displayName: string;
@@ -89,6 +104,7 @@ export type ThemeSpec = {
   base30: Base30Palette;
   base16: Base16Palette;
   base30Extras?: Record<string, string>;
+  polishHl?: PolishHl;
 };
 
 export type PaletteFile = ThemeSpec;

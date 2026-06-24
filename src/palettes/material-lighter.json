@@ -52,5 +52,53 @@
     "base0D": "#6182B8",
     "base0E": "#7C4DFF",
     "base0F": "#E53935"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@variable": {
+        "fg": "#546e7a"
+      },
+      "@module": {
+        "fg": "#546e7a"
+      },
+      "@variable.member": {
+        "fg": "#546e7a"
+      },
+      "@type.builtin": {
+        "fg": "#7c4dff"
+      },
+      "@variable.parameter": {
+        "fg": "#f76d47"
+      },
+      "@operator": {
+        "fg": "#39adb5"
+      },
+      "@punctuation.delimiter": {
+        "fg": "#39adb5"
+      },
+      "@punctuation.bracket": {
+        "fg": "#39adb5"
+      },
+      "@punctuation.special": {
+        "fg": "#39ADB5"
+      },
+      "@function.macro": {
+        "fg": "#FF5370"
+      },
+      "@keyword.storage": {
+        "fg": "#7c4dff"
+      }
+    },
+    "syntax": {
+      "StorageClass": {
+        "fg": "#7c4dff"
+      },
+      "Repeat": {
+        "fg": "#7c4dff"
+      },
+      "Define": {
+        "fg": "#6182b8"
+      }
+    }
   }
 }

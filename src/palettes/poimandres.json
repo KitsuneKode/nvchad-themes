@@ -53,6 +53,61 @@
     "base0E": "#91B4D5",
     "base0F": "#ffffff"
   },
+  "polishHl": {
+    "treesitter": {
+      "@variable": {
+        "fg": "#ffffff"
+      },
+      "@variable.builtin": {
+        "fg": "#b6d7f4"
+      },
+      "@function.call": {
+        "fg": "#A6ACCD"
+      },
+      "@keyword.return": {
+        "fg": "#5FB3A1"
+      },
+      "@operator": {
+        "fg": "#91B4D5"
+      },
+      "@keyword.operator": {
+        "fg": "#ADD7FF"
+      },
+      "@constant.builtin": {
+        "fg": "#ADD7FF"
+      },
+      "@constant": {
+        "fg": "#E4F0FB"
+      },
+      "@constructor": {
+        "fg": "#515977"
+      },
+      "@property": {
+        "fg": "#ADD7FF"
+      },
+      "@punctuation.delimiter": {
+        "fg": "#ADD7FF"
+      },
+      "@markup.list": {
+        "fg": "#A6ACCD"
+      },
+      "@punctuation.bracket": {
+        "fg": "#A6ACCD"
+      },
+      "@tag.attribute": {
+        "fg": "#A6ACCD",
+        "italic": true
+      }
+    },
+    "syntax": {
+      "Include": {
+        "fg": "#89DDFF"
+      },
+      "Type": {
+        "fg": "#A6ACCD"
+      }
+    }
+  },
   "base30Extras": {
     "ogwhite": "#ffffff",
     "seablue": "#ADD7FF"

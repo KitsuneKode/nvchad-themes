@@ -53,6 +53,30 @@
     "base0E": "#ac78bd",
     "base0F": "#ca7081"
   },
+  "polishHl": {
+    "treesitter": {
+      "@function.builtin": {
+        "fg": "#22839b"
+      },
+      "@variable.member.key": {
+        "fg": "#ca7081"
+      },
+      "@punctuation.bracket": {
+        "fg": "#8a8a8a"
+      },
+      "@variable.member": {
+        "fg": "#8a8a8a"
+      }
+    },
+    "syntax": {
+      "Constant": {
+        "fg": "#ca7081"
+      },
+      "Include": {
+        "fg": "#806db8"
+      }
+    }
+  },
   "base30Extras": {
     "coal": "#8a8a8a"
   }

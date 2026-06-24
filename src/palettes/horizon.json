@@ -52,5 +52,64 @@
     "base0D": "#59C2FF",
     "base0E": "#B877DB",
     "base0F": "#F09383"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@tag": {
+        "fg": "#E95678"
+      },
+      "@tag.attribute": {
+        "fg": "#F09383"
+      },
+      "@tag.delimiter": {
+        "fg": "#E95678"
+      },
+      "@operator.html": {
+        "fg": "#B877DB"
+      },
+      "@constant.css": {
+        "fg": "#FAC29A"
+      },
+      "@markup.strong": {
+        "fg": "#B877DB",
+        "bold": true
+      },
+      "@markup.italic": {
+        "fg": "#25B2BC",
+        "italic": true
+      },
+      "@markup.quote": {
+        "fg": "#F09383"
+      },
+      "@markup.heading": {
+        "fg": "#E95678"
+      },
+      "@markup.heading.1": {
+        "fg": "#E95678"
+      },
+      "@markup.heading.2": {
+        "fg": "#FAB795"
+      },
+      "@markup.heading.3": {
+        "fg": "#FAC29A"
+      },
+      "@markup.heading.4": {
+        "fg": "#F09383"
+      },
+      "@markup.heading.5": {
+        "fg": "#25B2BC"
+      },
+      "@markup.heading.6": {
+        "fg": "#B877DB"
+      },
+      "@punctuation.bracket": {
+        "fg": "#FAC29A"
+      }
+    },
+    "syntax": {
+      "Constant": {
+        "fg": "#F09383"
+      }
+    }
   }
 }

@@ -53,6 +53,28 @@
     "base0E": "#C586C0",
     "base0F": "#E9E9E9"
   },
+  "polishHl": {
+    "treesitter": {
+      "@variable.parameter": {
+        "fg": "#569CD6"
+      },
+      "@keyword": {
+        "fg": "#569CD6"
+      },
+      "@variable": {
+        "fg": "#9CDCFE"
+      },
+      "@variable.member.key": {
+        "fg": "#4EC994"
+      },
+      "@keyword.return": {
+        "fg": "#C586C0"
+      },
+      "@keyword.function": {
+        "fg": "#4294D6"
+      }
+    }
+  },
   "base30Extras": {
     "green1": "#4EC994"
   }

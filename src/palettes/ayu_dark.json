@@ -52,5 +52,27 @@
     "base0D": "#F07174",
     "base0E": "#FFB454",
     "base0F": "#CBA6F7"
+  },
+  "polishHl": {
+    "treesitter": {
+      "luaTSField": {
+        "fg": "#F07174"
+      },
+      "@tag.delimiter": {
+        "fg": "#95E6CB"
+      },
+      "@function": {
+        "fg": "#ffa455"
+      },
+      "@variable.parameter": {
+        "fg": "#CBA6F7"
+      },
+      "@constructor": {
+        "fg": "#56c3f9"
+      },
+      "@tag.attribute": {
+        "fg": "#ffa455"
+      }
+    }
   }
 }

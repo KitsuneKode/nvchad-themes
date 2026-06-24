@@ -53,6 +53,33 @@
     "base0E": "#d3b987",
     "base0F": "#CC7832"
   },
+  "polishHl": {
+    "treesitter": {
+      "@keyword.conditional": {
+        "fg": "#dc9656"
+      },
+      "@number": {
+        "fg": "#6897BB"
+      },
+      "@punctuation.bracket": {
+        "fg": "#eeeeee"
+      }
+    },
+    "syntax": {
+      "Number": {
+        "fg": "#6897BB"
+      },
+      "Type": {
+        "fg": "#6897BB"
+      },
+      "Conditional": {
+        "fg": "#dc9656"
+      },
+      "Include": {
+        "fg": "#CC7832"
+      }
+    }
+  },
   "base30Extras": {
     "taupe": "#AD9E7D",
     "brown": "#CC7832"

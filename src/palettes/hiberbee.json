@@ -53,6 +53,39 @@
     "base0E": "#ee7762",
     "base0F": "#0e9c9e"
   },
+  "polishHl": {
+    "treesitter": {
+      "@function.macro": {
+        "fg": "#9280ff"
+      },
+      "@function.call": {
+        "fg": "#0e9c9e"
+      },
+      "@operator": {
+        "fg": "#409cff"
+      },
+      "@number": {
+        "fg": "#409cff"
+      },
+      "@variable.member": {
+        "fg": "#7fdbca"
+      },
+      "@keyword.repeat": {
+        "fg": "#f59762"
+      },
+      "@punctuation.bracket": {
+        "fg": "#ffb900"
+      }
+    },
+    "syntax": {
+      "Special": {
+        "fg": "#f25022"
+      },
+      "Include": {
+        "fg": "#92D923"
+      }
+    }
+  },
   "base30Extras": {
     "olive": "#3d521b",
     "orange2": "#f25022",

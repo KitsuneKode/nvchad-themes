@@ -52,5 +52,32 @@
     "base0D": "#7e9cd8",
     "base0E": "#9c86bf",
     "base0F": "#d8616b"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@keyword.import": {
+        "fg": "#a48ec7"
+      },
+      "@uri": {
+        "fg": "#7FB4CA"
+      },
+      "@tag.delimiter": {
+        "fg": "#d8616b"
+      },
+      "@variable.member.key": {
+        "fg": "#DCD7BA"
+      },
+      "@punctuation.bracket": {
+        "fg": "#a48ec7"
+      },
+      "@punctuation.delimiter": {
+        "fg": "#DCD7BA"
+      }
+    },
+    "syntax": {
+      "Number": {
+        "fg": "#D27E99"
+      }
+    }
   }
 }

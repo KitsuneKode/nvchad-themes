@@ -52,5 +52,17 @@
     "base0D": "#83a598",
     "base0E": "#d3869b",
     "base0F": "#d65d0e"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@operator": {
+        "fg": "#83a598"
+      }
+    },
+    "syntax": {
+      "Operator": {
+        "fg": "#83a598"
+      }
+    }
   }
 }

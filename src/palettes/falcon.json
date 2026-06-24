@@ -53,6 +53,30 @@
     "base0E": "#8BCCBF",
     "base0F": "#DFDFE5"
   },
+  "polishHl": {
+    "treesitter": {
+      "@keyword": {
+        "fg": "#FFC552"
+      }
+    },
+    "syntax": {
+      "Statement": {
+        "fg": "#99A4BC"
+      },
+      "Type": {
+        "fg": "#DFDFE5"
+      },
+      "Include": {
+        "fg": "#CFC1B2"
+      },
+      "Keyword": {
+        "fg": "#FFC552"
+      },
+      "Operator": {
+        "fg": "#FF761A"
+      }
+    }
+  },
   "base30Extras": {
     "white2": "#DFDFE5",
     "tan": "#CFC1B2"

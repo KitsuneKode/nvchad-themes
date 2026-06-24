@@ -52,5 +52,32 @@
     "base0D": "#7A9BEC",
     "base0E": "#BE85D1",
     "base0F": "#A1A641"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@variable.member.key": {
+        "fg": "#CA7081"
+      },
+      "@punctuation.bracket": {
+        "fg": "#999999"
+      },
+      "@constructor": {
+        "fg": "#CE9042"
+      },
+      "@variable.parameter": {
+        "fg": "#CE9042"
+      },
+      "@tag.delimiter": {
+        "fg": "#999999"
+      }
+    },
+    "syntax": {
+      "Operator": {
+        "fg": "#00B3C2"
+      },
+      "Constant": {
+        "fg": "#CA7081"
+      }
+    }
   }
 }

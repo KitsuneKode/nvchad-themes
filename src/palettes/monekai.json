@@ -52,5 +52,29 @@
     "base0D": "#66d9ef",
     "base0E": "#f92672",
     "base0F": "#cc6633"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@variable.member.key": {
+        "fg": "#f5f4f1"
+      },
+      "@string": {
+        "fg": "#fce668"
+      },
+      "@boolean": {
+        "fg": "#ae81ff"
+      },
+      "@punctuation.bracket": {
+        "fg": "#fce668"
+      },
+      "@operator": {
+        "fg": "#e36d76"
+      }
+    },
+    "syntax": {
+      "Operator": {
+        "fg": "#e36d76"
+      }
+    }
   }
 }

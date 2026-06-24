@@ -53,6 +53,28 @@
     "base0E": "#6BE4E6",
     "base0F": "#d75271"
   },
+  "polishHl": {
+    "treesitter": {
+      "@property": {
+        "fg": "#6BE4E6"
+      },
+      "@tag.delimiter": {
+        "fg": "#c9c7be"
+      },
+      "@punctuation.bracket": {
+        "fg": "#fdb830"
+      },
+      "@punctuation.delimiter": {
+        "fg": "#fdb830"
+      }
+    },
+    "syntax": {
+      "Include": {
+        "fg": "#6BE4E6",
+        "bold": true
+      }
+    }
+  },
   "base30Extras": {
     "seablue": "#169AC9"
   }

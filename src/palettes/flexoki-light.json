@@ -52,5 +52,44 @@
     "base0D": "#205EA6",
     "base0E": "#AD8301",
     "base0F": "#519ABA"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@keyword": {
+        "fg": "#24837B"
+      },
+      "@variable.parameter": {
+        "fg": "#A02F6F"
+      },
+      "@tag.attribute": {
+        "fg": "#BC5215"
+      },
+      "@tag": {
+        "fg": "#205EA6"
+      },
+      "@string": {
+        "fg": "#66800B"
+      },
+      "@string.special.url": {
+        "fg": "#66800B"
+      },
+      "@markup.link.url": {
+        "fg": "#66800B"
+      },
+      "@punctuation.bracket": {
+        "fg": "#AD8301"
+      }
+    },
+    "syntax": {
+      "Keyword": {
+        "fg": "#24837B"
+      },
+      "Include": {
+        "fg": "#AD8301"
+      },
+      "Tag": {
+        "fg": "#205EA6"
+      }
+    }
   }
 }

@@ -52,5 +52,21 @@
     "base0D": "#87a060",
     "base0E": "#c85552",
     "base0F": "#c85552"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@tag": {
+        "fg": "#F7954F"
+      },
+      "@variable.member": {
+        "fg": "#495157"
+      },
+      "@keyword.import": {
+        "fg": "#5f9b93"
+      },
+      "@constructor": {
+        "fg": "#3a94c5"
+      }
+    }
   }
 }

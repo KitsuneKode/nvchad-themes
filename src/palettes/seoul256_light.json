@@ -53,6 +53,33 @@
     "base0E": "#875F87",
     "base0F": "#D8865F"
   },
+  "polishHl": {
+    "treesitter": {
+      "@module": {
+        "fg": "#6a6a6a"
+      },
+      "@keyword": {
+        "fg": "#AF5F5F"
+      },
+      "@keyword.conditional": {
+        "fg": "#008787"
+      },
+      "@punctuation.delimiter": {
+        "fg": "#6a6a6a"
+      },
+      "@punctuation.bracket": {
+        "fg": "#008787"
+      }
+    },
+    "syntax": {
+      "Include": {
+        "fg": "#AF5F5F"
+      },
+      "Boolean": {
+        "fg": "#AF8760"
+      }
+    }
+  },
   "base30Extras": {
     "brown": "#6a6a6a"
   }

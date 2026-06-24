@@ -52,5 +52,20 @@
     "base0D": "#35b5ff",
     "base0E": "#66def9",
     "base0F": "#008DA3"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@constant": {
+        "fg": "#fc9487"
+      },
+      "@variable.member": {
+        "fg": "#35b5ff"
+      }
+    },
+    "syntax": {
+      "StorageClass": {
+        "fg": "#fd5e3a"
+      }
+    }
   }
 }

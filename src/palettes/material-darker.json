@@ -52,5 +52,77 @@
     "base0D": "#82aaff",
     "base0E": "#c792ea",
     "base0F": "#f07178"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@attribute": {
+        "fg": "#c792ea"
+      },
+      "@conditional.ternary": {
+        "fg": "#89ddff"
+      },
+      "@constant": {
+        "fg": "#ffcb6b"
+      },
+      "@constructor": {
+        "fg": "#89ddff"
+      },
+      "@delimiter": {
+        "fg": "#DA70CA"
+      },
+      "@keyword.exception": {
+        "fg": "#c792ea"
+      },
+      "@variable.member": {
+        "fg": "#eeffff"
+      },
+      "@function": {
+        "fg": "#82aaff"
+      },
+      "@function.macro": {
+        "fg": "#6e98eb"
+      },
+      "@keyword": {
+        "fg": "#89ddff"
+      },
+      "@module": {
+        "fg": "#ffcb6b"
+      },
+      "@operator": {
+        "fg": "#89ddff"
+      },
+      "@punctuation.bracket": {
+        "fg": "#DA70CA"
+      },
+      "@punctuation.delimiter": {
+        "fg": "#DA70CA"
+      },
+      "@keyword.repeat": {
+        "fg": "#c792ea"
+      },
+      "@string": {
+        "fg": "#c3e88d"
+      },
+      "@type.qualifier": {
+        "fg": "#89ddff"
+      }
+    },
+    "syntax": {
+      "Identifier": {
+        "fg": "#eeffff"
+      },
+      "Include": {
+        "fg": "#c792ea"
+      },
+      "Number": {
+        "fg": "#f78c6c"
+      },
+      "Structure": {
+        "fg": "#c3e88d"
+      },
+      "Type": {
+        "fg": "#c792ea"
+      }
+    }
   }
 }

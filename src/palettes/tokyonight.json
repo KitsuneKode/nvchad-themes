@@ -52,5 +52,27 @@
     "base0D": "#2ac3de",
     "base0E": "#bb9af7",
     "base0F": "#f7768e"
+  },
+  "polishHl": {
+    "treesitter": {
+      "@variable": {
+        "fg": "#a9b1d6"
+      },
+      "@punctuation.bracket": {
+        "fg": "#bb9af7"
+      },
+      "@function.method.call": {
+        "fg": "#f7768e"
+      },
+      "@function.call": {
+        "fg": "#7aa2f7"
+      },
+      "@constant": {
+        "fg": "#ff9e64"
+      },
+      "@variable.parameter": {
+        "fg": "#ff9e64"
+      }
+    }
   }
 }
