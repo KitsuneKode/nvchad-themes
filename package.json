@@ -63,6 +63,7 @@
     "previews": "bun run scripts/run-previews.ts",
     "previews:raster": "bun run scripts/render-preview-raster.ts",
     "previews:check": "bun run scripts/previews-check.ts",
+    "previews:nvchad": "bun run scripts/sync-nvchad-preview-images.ts",
     "verify": "bun run scripts/verify-extensions.ts",
     "publish:vscode": "bun run package && bunx @vscode/vsce publish",
     "publish:vscode:ovsx": "bun run package && bunx ovsx publish dist/*.vsix",
