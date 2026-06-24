@@ -9,6 +9,8 @@ import {
 } from "../src/index.ts";
 import { buildSyntaxRules, treesitterTemplate } from "../src/syntax/index.ts";
 import { relativeLuminance, zedLadder, vscodeLadder } from "../src/surfaces.ts";
+import { buildZedThemeVariantFromModel } from "../src/builders/zed.ts";
+import { deriveThemeModel } from "../src/derive/theme-model.ts";
 import { HERO_THEME_IDS } from "../src/references/hero-themes.ts";
 
 const heroIds = HERO_THEME_IDS;
@@ -172,6 +174,40 @@ describe("golden style extracts", () => {
       }
     });
   }
+});
+
+describe("zed project panel git status colors", () => {
+  test("status tokens use git integration semantics (not invisible textMuted)", () => {
+    const theme = getThemeById("rxyhn")!;
+    const model = deriveThemeModel(theme);
+    const style = buildZedThemeVariantFromModel(model).style as Record<string, string>;
+    const git = model.integrations.git;
+
+    expect(style.modified).toBe(git.modified);
+    expect(style.ignored).toBe(git.statusIgnored);
+    expect(style["version_control.modified"]).toBe(git.modified);
+    expect(style["version_control.ignored"]).toBe(git.ignored);
+    expect(style.created).toBe(git.added);
+    expect(style.deleted).toBe(git.deleted);
+
+    // ignored must be visibly lighter than the editor well on dark themes
+    expect(relativeLuminance(style.ignored!)).toBeGreaterThan(
+      relativeLuminance(style.background!) + 0.02
+    );
+  });
+
+  test("tokyonight uses yellow modified and distinct ignored status", () => {
+    const theme = getThemeById("tokyonight")!;
+    const style = buildZedTheme(theme).themes[0]!.style as Record<string, string>;
+
+    expect(style.modified).toBe("#e0af68");
+    expect(style["version_control.modified"]).toBe("#e0af68");
+    expect(style["version_control.added_background"]).toBe("#1a1b26");
+    expect(style.ignored).not.toBe(style.text);
+    expect(relativeLuminance(style.ignored!)).toBeGreaterThan(
+      relativeLuminance(style.background!) + 0.02
+    );
+  });
 });
 
 describe("catalog polish coverage", () => {
