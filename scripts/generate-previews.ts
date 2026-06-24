@@ -3,10 +3,9 @@ import { resolve, dirname } from "node:path";
 import { createHighlighter, type ThemeRegistration, type ThemedToken } from "shiki";
 import { themeCatalog } from "../src/index.ts";
 import { CODE_SAMPLE } from "../samples/code-sample.ts";
-import { HERO_THEME_IDS } from "../src/references/hero-themes.ts";
+import { HERO_THEME_IDS, ALL_HERO_THEME_IDS } from "../src/references/hero-themes.ts";
 
-const EXTRA_HEROES = ["onedark", "gruvbox", "everforest"] as const;
-const HERO_IDS = [...new Set([...HERO_THEME_IDS, ...EXTRA_HEROES])];
+const HERO_IDS = [...ALL_HERO_THEME_IDS];
 const LANG = "typescript";
 
 const heroesOnly = process.argv.includes("--heroes-only");

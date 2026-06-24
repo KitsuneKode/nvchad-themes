@@ -1,23 +1,29 @@
 import { existsSync, statSync } from "node:fs";
 import { resolve } from "node:path";
-import { HERO_THEME_IDS } from "../src/references/hero-themes.ts";
+import { README_HERO_THEME_IDS } from "../src/references/hero-themes.ts";
+import { findEditorScreenshot } from "./lib/editor-screenshot-paths.ts";
 
 const MIN_PNG_BYTES = 5_000;
-const README_HERO_IDS = [...HERO_THEME_IDS, "onedark"] as const;
-const heroIds = [...README_HERO_IDS];
+const heroIds = [...README_HERO_THEME_IDS];
 
 const failures: string[] = [];
 
 for (const id of heroIds) {
-  const pngPath = resolve("assets", "previews", `${id}.png`);
+  const manualPath = findEditorScreenshot("cursor", id);
+  const fallbackPath = resolve("assets", "previews", `${id}.png`);
+  const pngPath = manualPath ?? fallbackPath;
+  const source = manualPath ? "cursor screenshot" : "generated syntax preview";
+
   if (!existsSync(pngPath)) {
-    failures.push(`Missing preview PNG: ${pngPath}`);
+    failures.push(
+      `Missing preview for ${id}: add assets/screenshots/cursor/${id}.png or run bun run previews`
+    );
     continue;
   }
 
   const size = statSync(pngPath).size;
   if (size < MIN_PNG_BYTES) {
-    failures.push(`Preview PNG too small (${size} B < ${MIN_PNG_BYTES} B): ${pngPath}`);
+    failures.push(`Preview too small (${size} B < ${MIN_PNG_BYTES} B) for ${id} (${source}): ${pngPath}`);
   }
 }
 
@@ -29,4 +35,7 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`Preview check passed for ${heroIds.length} hero PNG(s).`);
+const manualCount = heroIds.filter((id) => findEditorScreenshot("cursor", id)).length;
+console.log(
+  `Preview check passed for ${heroIds.length} hero image(s) (${manualCount} manual Cursor, ${heroIds.length - manualCount} generated fallback).`
+);

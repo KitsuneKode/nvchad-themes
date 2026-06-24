@@ -1,14 +1,11 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import sharp from "sharp";
-import { HERO_THEME_IDS } from "../src/references/hero-themes.ts";
-
-const EXTRA_HEROES = ["onedark", "gruvbox", "everforest"] as const;
-const README_HERO_IDS = [...HERO_THEME_IDS, "onedark"] as const;
-const ALL_HERO_IDS = [...new Set([...HERO_THEME_IDS, ...EXTRA_HEROES])];
+import { ALL_HERO_THEME_IDS, README_HERO_THEME_IDS } from "../src/references/hero-themes.ts";
+import { findEditorScreenshot } from "./lib/editor-screenshot-paths.ts";
 
 const heroesOnly = process.argv.includes("--heroes-only");
-const heroIds = heroesOnly ? [...README_HERO_IDS] : ALL_HERO_IDS;
+const heroIds = heroesOnly ? [...README_HERO_THEME_IDS] : [...ALL_HERO_THEME_IDS];
 
 const rasterizeSvg = async (svgPath: string, webpPath: string, pngPath: string): Promise<void> => {
   const svg = readFileSync(svgPath);
@@ -39,6 +36,12 @@ const run = async (): Promise<void> => {
       resolve("assets", "previews", `${id}.webp`),
       previewPngPath
     );
+
+    if (findEditorScreenshot("zed", id)) {
+      console.log(`Skip Zed raster for ${id} — manual screenshot in assets/screenshots/zed/`);
+      continue;
+    }
+
     copyFileSync(previewPngPath, zedPngPath);
   }
 

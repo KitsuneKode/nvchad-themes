@@ -61,6 +61,7 @@
     "goldens": "bun run scripts/generate-golden-extracts.ts",
     "goldens:check": "bun run scripts/generate-golden-extracts.ts --check",
     "previews": "bun run scripts/run-previews.ts",
+    "previews:sync": "bun run scripts/sync-editor-screenshots.ts",
     "previews:raster": "bun run scripts/render-preview-raster.ts",
     "previews:check": "bun run scripts/previews-check.ts",
     "previews:nvchad": "bun run scripts/sync-nvchad-preview-images.ts",

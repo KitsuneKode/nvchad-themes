@@ -26,21 +26,35 @@ Full guide (automated **and** manual steps for every platform): **[INSTALL.md](.
 
 ## Previews
 
-Hero images are from the [official NvChad theme gallery](https://nvchad.com/themes/) (same base46 palettes as this repo). Sync into the repo with `bun run previews:nvchad` → `assets/previews/nvchad-official/`.
+Drop real editor screenshots into [`assets/screenshots/`](./assets/screenshots/) — see that folder’s README for filenames. Run `bun run previews` to sync Zed shots into the release zip.
 
-Syntax-accurate editor renders (this repo's VS Code theme engine): `bun run previews` → `assets/previews/*.png` · full gallery: [`assets/gallery/vscode/`](./assets/gallery/vscode/).
+### Cursor / VS Code
 
 | NvChad Tokyonight | NvChad Kanagawa |
 | :---: | :---: |
-| ![NvChad Tokyonight](./assets/previews/nvchad-official/tokyonight.webp) | ![NvChad Kanagawa](./assets/previews/nvchad-official/kanagawa.webp) |
+| ![NvChad Tokyonight](./assets/screenshots/cursor/tokyonight.png) | ![NvChad Kanagawa](./assets/screenshots/cursor/kanagawa.png) |
 
 | NvChad Nord | NvChad Catppuccin |
 | :---: | :---: |
-| ![NvChad Nord](./assets/previews/nvchad-official/nord.webp) | ![NvChad Catppuccin](./assets/previews/nvchad-official/catppuccin.webp) |
+| ![NvChad Nord](./assets/screenshots/cursor/nord.png) | ![NvChad Catppuccin](./assets/screenshots/cursor/catppuccin.png) |
 
 | NvChad Rxyhn | NvChad One Dark |
 | :---: | :---: |
-| ![NvChad Rxyhn](./assets/previews/nvchad-official/rxyhn.webp) | ![NvChad One Dark](./assets/previews/nvchad-official/onedark.webp) |
+| ![NvChad Rxyhn](./assets/screenshots/cursor/rxyhn.png) | ![NvChad One Dark](./assets/screenshots/cursor/onedark.png) |
+
+### Zed
+
+| NvChad Tokyonight | NvChad Kanagawa |
+| :---: | :---: |
+| ![NvChad Tokyonight](./assets/screenshots/zed/tokyonight.png) | ![NvChad Kanagawa](./assets/screenshots/zed/kanagawa.png) |
+
+| NvChad Nord | NvChad Catppuccin |
+| :---: | :---: |
+| ![NvChad Nord](./assets/screenshots/zed/nord.png) | ![NvChad Catppuccin](./assets/screenshots/zed/catppuccin.png) |
+
+**All 94 themes:** [full list](#full-theme-list) · [NvChad Neovim gallery](https://nvchad.com/themes/) (same base46 palettes) · [syntax gallery](./assets/gallery/vscode/) (`bun run previews`)
+
+Official NvChad UI reference images: `assets/previews/nvchad-official/` (`bun run previews:nvchad`)
 
 ## Try these themes first
 

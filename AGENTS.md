@@ -16,7 +16,8 @@
 - `zed-extension/` — Zed dev extension / marketplace path
 - `opencode/`, `gemini/`, `codex/` — CLI targets
 - `assets/previews/nvchad-official/*.webp` — official NvChad UI shots (`bun run previews:nvchad`)
-- `assets/previews/*.png` — syntax renders for Zed zip (`bun run previews`)
+- `assets/previews/*.png` — syntax render fallbacks (`bun run previews`)
+- `assets/screenshots/cursor/`, `assets/screenshots/zed/` — **manual** editor screenshots (drop zone); `bun run previews:sync` → `zed-extension/screenshots/`
 
 ## Workflow
 
@@ -38,7 +39,7 @@
 
 - `bun run import:base46 [--check]`
 - `bun run build` · `bun test` · `bun run goldens` · `bun run goldens:check` · `bun run package` · `bun run verify`
-- `bun run previews` · `bun run previews --heroes-only` · `bun run previews:check`
+- `bun run previews` · `bun run previews --heroes-only` · `bun run previews:sync` · `bun run previews:check`
 - `bun run publish:vscode` — Marketplace (requires `vsce login`)
 - `bun run install:zed-dev` · `bun run install:zed [--all] [id]`
 

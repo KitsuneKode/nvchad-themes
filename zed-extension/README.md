@@ -4,7 +4,7 @@ All 94 [NvChad base46](https://github.com/NvChad/base46) themes in one Zed theme
 
 ## Screenshots
 
-Syntax previews (Shiki + this repo's theme engine):
+Drop PNG/WebP files into [`../assets/screenshots/zed/`](../assets/screenshots/) (see [`../assets/screenshots/README.md`](../assets/screenshots/README.md)). `bun run previews` copies them here as `{id}.png` for the release zip.
 
 | Tokyonight | Kanagawa |
 | :---: | :---: |
@@ -14,7 +14,7 @@ Syntax previews (Shiki + this repo's theme engine):
 | :---: | :---: |
 | ![NvChad Nord](./screenshots/nord.png) | ![NvChad Catppuccin](./screenshots/catppuccin.png) |
 
-More heroes: `screenshots/{tokyonight,kanagawa,nord,catppuccin,rxyhn,onedark,gruvbox,everforest}.png`
+Hero ids: `tokyonight`, `kanagawa`, `nord`, `catppuccin`, `rxyhn`, `onedark`, `gruvbox`, `everforest`
 
 Regenerate after theme changes (from repo root):
 

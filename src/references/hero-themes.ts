@@ -45,5 +45,16 @@ export const HERO_REFERENCES = {
 
 export const HERO_THEME_IDS = ["tokyonight", "kanagawa", "catppuccin", "nord", "rxyhn"] as const;
 
+/** Extra heroes rasterized for Zed zip / syntax fallbacks (not all shown in README). */
+export const EXTRA_HERO_THEME_IDS = ["onedark", "gruvbox", "everforest"] as const;
+
+/** Heroes shown in README preview grids (Cursor + Zed). */
+export const README_HERO_THEME_IDS = [...HERO_THEME_IDS, "onedark"] as const;
+
+/** All hero theme ids (README heroes + Zed zip extras). */
+export const ALL_HERO_THEME_IDS = [
+  ...new Set([...HERO_THEME_IDS, ...EXTRA_HERO_THEME_IDS])
+] as readonly string[];
+
 /** Themes with upstream Zed reference extracts in `src/references/official/`. */
 export const REFERENCE_THEME_IDS = ["tokyonight"] as const;
