@@ -4,6 +4,10 @@ import { resolve } from "node:path";
 export const REPO_URL = "https://github.com/KitsuneKode/nvchad-themes";
 export const RELEASES_LATEST = `${REPO_URL}/releases/latest`;
 export const RELEASE_DOWNLOAD_BASE = `${REPO_URL}/releases/latest/download`;
+/** Raw file URLs on the default branch (for manual install without cloning). */
+export const RAW_REPO_MAIN = "https://raw.githubusercontent.com/KitsuneKode/nvchad-themes/main";
+
+export const rawRepoFile = (repoPath: string): string => `${RAW_REPO_MAIN}/${repoPath}`;
 
 export type PackageMeta = {
   name: string;

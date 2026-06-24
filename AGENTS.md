@@ -15,7 +15,8 @@
 - [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest) — canonical VSIX, Zed zip, user JSON, checksums
 - `zed-extension/` — Zed dev extension / marketplace path
 - `opencode/`, `gemini/`, `codex/` — CLI targets
-- `assets/previews/*.png` — README hero screenshots (committed)
+- `assets/previews/nvchad-official/*.webp` — official NvChad UI shots (`bun run previews:nvchad`)
+- `assets/previews/*.png` — syntax renders for Zed zip (`bun run previews`)
 
 ## Workflow
 
@@ -24,14 +25,14 @@
 - Mappings: platform adapters in `src/builders/` consume `deriveThemeModel` output
 - Distribution: `bun run package` → `dist/` (local + CI artifact + release upload)
 - Verify: `bun run verify` · `bun run goldens:check` · `bun run previews:check`
-- Previews: `bun run previews` or `bun run previews --heroes-only`
+- Previews: `bun run previews` · `bun run previews:nvchad` (official NvChad gallery → `assets/previews/nvchad-official/`) · `bun run previews:check`
 - Publishing: see [PUBLISHING.md](./PUBLISHING.md)
 
 ## Commands
 
 | Audience | Commands |
 |----------|----------|
-| **User** | Download from [Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest); install VSIX or Zed zip — see [INSTALL.md](./INSTALL.md) |
+| **User** | [Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest) for VS Code/Zed; [INSTALL.md](./INSTALL.md) for automated + manual steps on every platform (including OpenCode/Gemini/Codex from repo) |
 | **Contributor** | `import:base46`, `build`, `test`, `package`, `verify`, `previews` |
 | **Tuner** | Zed Theme Builder + `zed/golden/` workflow — see [plans/003-golden-workflow-ci.md](./plans/003-golden-workflow-ci.md) |
 

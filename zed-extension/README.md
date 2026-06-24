@@ -28,7 +28,7 @@ bun run previews
 
 Get [`nvchad-themes-zed-extension-1.0.1.zip`](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip) from [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest).
 
-Full steps: [INSTALL.md](../INSTALL.md)
+Full steps (automated + manual): [INSTALL.md](../INSTALL.md)
 
 1. **Extract** the zip. The folder you pick in Zed must contain **`extension.toml`** at its root:
 
