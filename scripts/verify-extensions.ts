@@ -49,8 +49,12 @@ if (!zedValidation.ok) {
 
 const zedExtensionThemeFiles = readdirSync(resolve(rootDir, "zed-extension", "themes"));
 assert(
-  zedExtensionThemeFiles.length === 1 && zedExtensionThemeFiles[0] === ZED_EXTENSION_BUNDLE,
-  `Zed extension themes dir should contain only ${ZED_EXTENSION_BUNDLE}, found: ${zedExtensionThemeFiles.join(", ")}`
+  zedExtensionThemeFiles.includes(ZED_EXTENSION_BUNDLE),
+  `Zed extension themes dir must include ${ZED_EXTENSION_BUNDLE}`
+);
+assert(
+  zedExtensionThemeFiles.filter((name) => name.endsWith("-theme.json")).length === 94,
+  `Zed extension themes dir should contain 94 per-theme JSON files, found ${zedExtensionThemeFiles.filter((name) => name.endsWith("-theme.json")).length}`
 );
 
 const zedBundlePath = resolve(rootDir, "zed", ZED_EXTENSION_BUNDLE);

@@ -116,6 +116,8 @@ Version **${version}**. Pre-built files for VS Code, Cursor, and Zed.
 
 **Repository:** ${repoUrl}
 
+No clone or build tools required — download the artifacts below and install.
+
 ## Direct downloads (latest release)
 
 | Platform | Release URL |
@@ -125,6 +127,16 @@ Version **${version}**. Pre-built files for VS Code, Cursor, and Zed.
 | Zed user theme | [\`${zedUserThemeName}\`](${releaseUrl}/${zedUserThemeName}) |
 
 Files in this \`dist/\` folder match the release assets above.
+
+## Try these themes first
+
+| Theme | Zed search | VS Code label |
+|-------|------------|---------------|
+| NvChad Tokyonight | \`tokyonight\` | NvChad Tokyonight |
+| NvChad Kanagawa | \`kanagawa\` | NvChad Kanagawa |
+| NvChad Nord | \`nord\` | NvChad Nord |
+| NvChad Catppuccin | \`catppuccin\` | NvChad Catppuccin |
+| NvChad Rxyhn | \`rxyhn\` | NvChad Rxyhn |
 
 ## VS Code / Cursor / Devin Desktop
 
@@ -144,8 +156,13 @@ cursor --install-extension ${vsixName}
 **File:** [\`${zedExtensionZipName}\`](./${zedExtensionZipName})
 
 1. Download and extract
-2. **zed: install dev extension** → select extracted folder
+2. **zed: install dev extension** → select extracted folder (not the repo root)
 3. Theme picker → search **NvChad**
+
+\`\`\`bash
+# Optional: verify checksum after download
+sha256sum -c checksums.sha256
+\`\`\`
 
 ## Zed — User theme file
 
@@ -159,7 +176,9 @@ Copy to \`~/.config/zed/themes/\` (macOS: \`~/Library/Application Support/Zed/th
 sha256sum -c checksums.sha256
 \`\`\`
 
-## Rebuild
+## Rebuild (contributors only)
+
+Requires [Bun](https://bun.sh):
 
 \`\`\`bash
 bun run package

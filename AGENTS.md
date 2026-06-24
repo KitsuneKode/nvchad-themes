@@ -19,15 +19,24 @@
 ## Workflow
 
 - Palettes: `bun run import:base46` → `src/palettes/*.json`
-- Mappings: edit `src/builders/`, then `bun run build`
+- Derivation: edit `src/derive/`, `src/profiles/`, `src/integrations/`, then `bun run build`
+- Mappings: platform adapters in `src/builders/` consume `deriveThemeModel` output
 - Distribution: `bun run package` → `dist/`
-- Verify: `bun run verify`
+- Verify: `bun run verify` · `bun run goldens:check`
+- Previews: `bun run previews` or `bun run previews --heroes-only`
 - Publishing: see [PUBLISHING.md](./PUBLISHING.md)
 
 ## Commands
 
+| Audience | Commands |
+|----------|----------|
+| **User** | Download from [`dist/`](../dist/) or [Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest); install VSIX or Zed zip — see [INSTALL.md](../dist/INSTALL.md) |
+| **Contributor** | `import:base46`, `build`, `test`, `package`, `verify`, `previews` |
+| **Tuner** | Zed Theme Builder + `zed/golden/` workflow — see [plans/003-golden-workflow-ci.md](./plans/003-golden-workflow-ci.md) |
+
 - `bun run import:base46 [--check]`
-- `bun run build` · `bun test` · `bun run package` · `bun run verify`
+- `bun run build` · `bun test` · `bun run goldens` · `bun run goldens:check` · `bun run package` · `bun run verify`
+- `bun run previews` · `bun run previews --heroes-only`
 - `bun run publish:vscode` — Marketplace (requires `vsce login`)
 - `bun run install:zed-dev` · `bun run install:zed [--all] [id]`
 
