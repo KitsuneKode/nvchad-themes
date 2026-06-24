@@ -79,7 +79,7 @@ describe("generated theme outputs", () => {
       expect(vscodeTheme.type).toBe(theme.type);
       expect(vscodeTheme.colors.foreground).toBeString();
       expect(Object.keys(vscodeTheme.colors).length).toBeGreaterThan(100);
-      expect(vscodeTheme.tokenColors.length).toBeGreaterThan(10);
+      expect(vscodeTheme.tokenColors.length).toBeGreaterThan(80);
 
       for (const color of collectHexValues(vscodeTheme.colors)) {
         expect(isHexOrAlpha(color)).toBe(true);
@@ -118,9 +118,10 @@ describe("zed extension bundle", () => {
     expect(new Set(bundle.themes.map((theme) => theme.name)).size).toBe(94);
   });
 
-  test("zed extension output file contains single bundle", () => {
+  test("zed extension output includes bundle and per-theme files", () => {
     const files = readdirSync(resolve("zed-extension", "themes"));
-    expect(files).toEqual(["nvchad-themes.json"]);
+    expect(files).toContain("nvchad-themes.json");
+    expect(files.filter((f) => f.endsWith("-theme.json")).length).toBe(94);
     const bundle = JSON.parse(readFileSync(resolve("zed-extension", "themes", "nvchad-themes.json"), "utf8"));
     expect(bundle.themes.length).toBe(94);
   });

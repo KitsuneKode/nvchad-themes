@@ -1,29 +1,34 @@
 import type { OpenCodeThemeDefinition, ThemeSpec } from "../types.ts";
+import type { ResolvedThemeModel } from "../derive/types.ts";
+import { deriveThemeModel } from "../derive/theme-model.ts";
 
-const buildOpenCodeDefs = (theme: ThemeSpec): Record<string, string> => {
+const buildOpenCodeDefsFromModel = (model: ResolvedThemeModel): Record<string, string> => {
+  const theme = model.theme;
   const base = theme.base30;
   const syntax = theme.base16;
+  const ladder = model.surfaces.vscode;
+  const git = model.integrations.git;
 
   return {
-    bg: base.black,
-    bg_panel: base.black2,
-    bg_element: base.oneBg,
-    bg_element_alt: base.oneBg2,
+    bg: ladder.editor,
+    bg_panel: ladder.overlay,
+    bg_element: ladder.raised,
+    bg_element_alt: ladder.raisedHover,
     bg_element_strong: base.oneBg3,
     fg: base.white,
     fg_muted: base.lightGrey,
-    border: base.line,
+    border: model.ui.border,
     border_active: base.blue,
-    border_subtle: base.grey,
+    border_subtle: model.ui.borderSubtle,
     primary: base.blue,
     secondary: base.nordBlue,
     accent: base.teal,
-    error: base.red,
-    warning: base.yellow,
-    success: base.green,
-    info: base.blue,
-    diff_added: base.green,
-    diff_removed: base.red,
+    error: model.integrations.diagnostics.error,
+    warning: model.integrations.diagnostics.warning,
+    success: git.added,
+    info: model.integrations.diagnostics.info,
+    diff_added: git.added,
+    diff_removed: git.deleted,
     diff_context: base.greyFg,
     diff_hunk: base.greyFg2,
     diff_bg_added: base.oneBg2,
@@ -44,21 +49,22 @@ const buildOpenCodeDefs = (theme: ThemeSpec): Record<string, string> => {
     markdown_image_text: syntax.base0A,
     markdown_code_block: base.black2,
     syntax_comment: base.greyFg,
-    syntax_keyword: syntax.base0E,
-    syntax_function: syntax.base0D,
-    syntax_variable: syntax.base05,
-    syntax_string: syntax.base0B,
-    syntax_number: syntax.base09,
-    syntax_type: syntax.base0A,
-    syntax_operator: syntax.base05,
-    syntax_punctuation: syntax.base0F
+    syntax_keyword: model.syntax["@keyword"]?.color ?? syntax.base0E,
+    syntax_function: model.syntax["@function"]?.color ?? syntax.base0D,
+    syntax_variable: model.syntax["@variable"]?.color ?? syntax.base05,
+    syntax_string: model.syntax["@string"]?.color ?? syntax.base0B,
+    syntax_number: model.syntax["@number"]?.color ?? syntax.base09,
+    syntax_type: model.syntax["@type.builtin"]?.color ?? syntax.base0A,
+    syntax_operator: model.syntax["@operator"]?.color ?? syntax.base05,
+    syntax_punctuation: model.syntax["@punctuation.bracket"]?.color ?? syntax.base0F
   };
 };
 
 const openCodeColor = (name: string): { dark: string; light: string } => ({ dark: name, light: name });
 
-export const buildOpenCodeTheme = (theme: ThemeSpec): OpenCodeThemeDefinition => {
-  const defs = buildOpenCodeDefs(theme);
+export const buildOpenCodeThemeFromModel = (model: ResolvedThemeModel): OpenCodeThemeDefinition => {
+  const defs = buildOpenCodeDefsFromModel(model);
+  const theme = model.theme;
 
   return {
     $schema: "https://opencode.ai/theme.json",
@@ -117,3 +123,6 @@ export const buildOpenCodeTheme = (theme: ThemeSpec): OpenCodeThemeDefinition =>
     }
   };
 };
+
+export const buildOpenCodeTheme = (theme: ThemeSpec): OpenCodeThemeDefinition =>
+  buildOpenCodeThemeFromModel(deriveThemeModel(theme));
