@@ -140,18 +140,19 @@ Version **${version}**. All **94** NvChad base46 themes.
 
 **Repository:** ${REPO_URL} · **Latest release:** [${RELEASES_LATEST}](${RELEASES_LATEST})
 
-Each platform below has **automated** steps (download + one command) and **manual** steps (GUI or copy files yourself).
+Each platform below has a clear user install path. Zed’s gallery path applies after the registry PR is merged; until then, use the generated manual ZIP.
 
 ## What is on GitHub Releases vs repo only
 
 | Platform | Release asset? | Where to get it |
 |----------|----------------|-----------------|
 | VS Code / Cursor | Yes — \`.vsix\` | [Release download](${releaseDownloadUrl(vsixName)}) |
-| Zed (extension) | Yes — \`.zip\` | [Release download](${releaseDownloadUrl(zedExtensionZipName)}) |
+| Zed (published extension) | After registry publication | [Zed Extensions gallery](https://zed.dev/extensions) |
+| Zed (manual dev extension) | Yes — \`.zip\` | [Release download](${releaseDownloadUrl(zedExtensionZipName)}) |
 | Zed (user JSON) | Yes — \`.json\` | [Release download](${releaseDownloadUrl(zedUserThemeName)}) |
-| OpenCode | No — use repo | [\`opencode/\`](${REPO_URL}/tree/main/opencode) or [raw files](${rawRepoFile("opencode")}) |
-| Gemini CLI | No — use repo | [\`gemini/\`](${REPO_URL}/tree/main/gemini) or [raw files](${rawRepoFile("gemini")}) |
-| Codex | No — use repo | [\`codex/\`](${REPO_URL}/tree/main/codex) or [raw files](${rawRepoFile("codex")}) |
+| OpenCode | No — use repo | [\`opencode/\`](${REPO_URL}/tree/main/opencode) |
+| Gemini CLI | No — use repo | [\`gemini/\`](${REPO_URL}/tree/main/gemini) |
+| Codex | No — use repo | [\`codex/\`](${REPO_URL}/tree/main/codex) |
 
 Release checksums: [\`checksums.sha256\`](${releaseDownloadUrl("checksums.sha256")})
 
@@ -197,7 +198,13 @@ macOS uses the same paths under your home directory. After install: **Preference
 
 ---
 
-## Zed — Dev extension (all 94 themes, recommended)
+## Zed — Published extension (after registry publication)
+
+Open Zed’s Extensions view, search **NvChad Themes**, and choose **Install**. Then open the theme picker and select any **NvChad** variant.
+
+Until the registry PR is merged, use the manual dev-extension path below.
+
+## Zed — Dev extension fallback (all 94 themes)
 
 ### Automated (release + CLI)
 

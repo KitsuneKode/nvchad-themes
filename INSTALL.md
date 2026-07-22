@@ -4,18 +4,19 @@ Version **1.0.1**. All **94** NvChad base46 themes.
 
 **Repository:** https://github.com/KitsuneKode/nvchad-themes · **Latest release:** [https://github.com/KitsuneKode/nvchad-themes/releases/latest](https://github.com/KitsuneKode/nvchad-themes/releases/latest)
 
-Each platform below has **automated** steps (download + one command) and **manual** steps (GUI or copy files yourself).
+Each platform below has a clear user install path. Zed’s gallery path applies after the registry PR is merged; until then, use the generated manual ZIP.
 
 ## What is on GitHub Releases vs repo only
 
 | Platform | Release asset? | Where to get it |
 |----------|----------------|-----------------|
 | VS Code / Cursor | Yes — `.vsix` | [Release download](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-1.0.1.vsix) |
-| Zed (extension) | Yes — `.zip` | [Release download](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip) |
+| Zed (published extension) | After registry publication | [Zed Extensions gallery](https://zed.dev/extensions) |
+| Zed (manual dev extension) | Yes — `.zip` | [Release download](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip) |
 | Zed (user JSON) | Yes — `.json` | [Release download](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-user-1.0.1.json) |
-| OpenCode | No — use repo | [`opencode/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/opencode) or [raw files](https://raw.githubusercontent.com/KitsuneKode/nvchad-themes/main/opencode) |
-| Gemini CLI | No — use repo | [`gemini/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/gemini) or [raw files](https://raw.githubusercontent.com/KitsuneKode/nvchad-themes/main/gemini) |
-| Codex | No — use repo | [`codex/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/codex) or [raw files](https://raw.githubusercontent.com/KitsuneKode/nvchad-themes/main/codex) |
+| OpenCode | No — use repo | [`opencode/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/opencode) |
+| Gemini CLI | No — use repo | [`gemini/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/gemini) |
+| Codex | No — use repo | [`codex/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/codex) |
 
 Release checksums: [`checksums.sha256`](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/checksums.sha256)
 
@@ -43,14 +44,14 @@ code --install-extension nvchad-themes-1.0.1.vsix
 cursor --install-extension nvchad-themes-1.0.1.vsix
 ```
 
-The downloaded `.vsix` can stay wherever you saved it. Cursor/VS Code extract the extension into:
+The downloaded `.vsix` can stay in your current folder. The editor **extracts** it into its extensions directory — you do not need to copy the VSIX there manually.
 
 | Editor | Installed extension (Linux) |
 |--------|-----------------------------|
-| **Cursor** | `~/.cursor/extensions/kitsunekode.nvchad-themes-1.0.1/` |
-| **VS Code** | `~/.vscode/extensions/kitsunekode.nvchad-themes-1.0.1/` |
+| Cursor | `~/.cursor/extensions/kitsunekode.nvchad-themes-1.0.1/` |
+| VS Code | `~/.vscode/extensions/kitsunekode.nvchad-themes-1.0.1/` |
 
-Same paths under your home directory on macOS. Then **Preferences: Color Theme** → search **NvChad**.
+macOS uses the same paths under your home directory. After install: **Preferences: Color Theme** → search **NvChad**.
 
 ### Manual (GUI)
 
@@ -61,7 +62,13 @@ Same paths under your home directory on macOS. Then **Preferences: Color Theme**
 
 ---
 
-## Zed — Dev extension (all 94 themes, recommended)
+## Zed — Published extension (after registry publication)
+
+Open Zed’s Extensions view, search **NvChad Themes**, and choose **Install**. Then open the theme picker and select any **NvChad** variant.
+
+Until the registry PR is merged, use the manual dev-extension path below.
+
+## Zed — Dev extension fallback (all 94 themes)
 
 ### Automated (release + CLI)
 
@@ -251,7 +258,7 @@ Requires [Bun](https://bun.sh). `dist/` is gitignored — rebuild locally or pus
 bun run build
 bun run previews:nvchad   # optional: assets/previews/nvchad-official/*.webp
 bun run previews
-bun run package           # dist/nvchad-themes-<version>.* + INSTALL.md
+bun run package           # dist/nvchad-themes-<version>.{vsix,zip,json} + INSTALL.md
 bun run verify
 
 git tag vX.Y.Z

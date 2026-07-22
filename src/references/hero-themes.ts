@@ -57,4 +57,4 @@ export const ALL_HERO_THEME_IDS = [
 ] as readonly string[];
 
 /** Themes with upstream Zed reference extracts in `src/references/official/`. */
-export const REFERENCE_THEME_IDS = ["tokyonight"] as const;
+export const REFERENCE_THEME_IDS = ["tokyonight", "kanagawa"] as const;

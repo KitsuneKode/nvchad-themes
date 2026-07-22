@@ -23,6 +23,7 @@ jobs:
       - run: bun run goldens:check
       - run: bun run previews
       - run: bun run previews:check
+      - run: bun run docs:check
       - run: bun run package
       - run: bun run verify
       - name: Create GitHub Release

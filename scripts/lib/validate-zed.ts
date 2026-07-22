@@ -94,26 +94,43 @@ const validateThemeStyle = (themeName: string, appearance: string, style: Record
       errors.push(`Theme "${themeName}" background must equal editor.background`);
     }
 
-    if (appearance === "dark") {
-      if (lumSurface >= lumBg - 0.0002) {
-        errors.push(
-          `Theme "${themeName}" dark hierarchy: surface.background should be darker than background (editor well)`
-        );
+    const isFlatEditor =
+      typeof tabActive === "string" && typeof background === "string" && tabActive === background;
+
+    if (!isFlatEditor) {
+      if (appearance === "dark") {
+        if (lumSurface >= lumBg - 0.0002) {
+          errors.push(
+            `Theme "${themeName}" dark hierarchy: surface.background should be darker than background (editor well)`
+          );
+        }
+      } else if (appearance === "light") {
+        if (lumSurface >= lumBg - 0.0002) {
+          errors.push(
+            `Theme "${themeName}" light hierarchy: surface.background should be darker than background (editor well)`
+          );
+        }
       }
-    } else if (appearance === "light") {
-      if (lumSurface >= lumBg - 0.0002) {
-        errors.push(
-          `Theme "${themeName}" light hierarchy: surface.background should be darker than background (editor well)`
-        );
-      }
+    } else if (typeof tabActive === "string" && tabActive !== editor) {
+      errors.push(`Theme "${themeName}" flat-editor: tab.active_background must equal editor.background`);
     }
   }
 
-  if (typeof tabInactive === "string" && typeof surface === "string" && tabInactive !== surface) {
+  const panelBg = style["panel.background"];
+  const isFlatEditor =
+    typeof tabActive === "string" &&
+    typeof background === "string" &&
+    tabActive === background;
+
+  if (typeof tabInactive === "string" && typeof panelBg === "string" && isFlatEditor) {
+    if (tabInactive !== panelBg) {
+      errors.push(`Theme "${themeName}" flat-editor: tab.inactive_background should equal panel.background`);
+    }
+  } else if (typeof tabInactive === "string" && typeof surface === "string" && tabInactive !== surface) {
     errors.push(`Theme "${themeName}" tab.inactive_background should equal surface.background`);
   }
 
-  if (typeof tabActive === "string" && typeof background === "string") {
+  if (typeof tabActive === "string" && typeof background === "string" && !isFlatEditor) {
     const lumTab = relativeLuminance(tabActive);
     const lumBg = relativeLuminance(background);
     if (appearance === "dark" && lumTab <= lumBg + 0.008) {
@@ -136,6 +153,57 @@ const validateThemeStyle = (themeName: string, appearance: string, style: Record
   ] as const) {
     if (typeof value === "string" && value.length === 9) {
       errors.push(`Theme "${themeName}" ${key} must be a solid color (no alpha on separator lines)`);
+    }
+  }
+
+  const minSeparatorDelta = 0.02;
+  const editorBg = style["editor.background"];
+  const lineNumber = style["editor.line_number"];
+  const editorInvisible = style["editor.invisible"];
+
+  if (typeof editorInvisible === "string" && editorInvisible.length !== 9) {
+    errors.push(`Theme "${themeName}" editor.invisible must be #rrggbbaa when set`);
+  }
+
+  if (typeof lineNumber === "string" && typeof editorBg === "string") {
+    const delta = relativeLuminance(lineNumber) - relativeLuminance(editorBg);
+    if (appearance === "dark" && delta < minSeparatorDelta) {
+      errors.push(
+        `Theme "${themeName}" editor.line_number should be lighter than editor.background (relative lines invisible)`
+      );
+    }
+    if (appearance === "light" && delta > -minSeparatorDelta) {
+      errors.push(
+        `Theme "${themeName}" editor.line_number should be darker than editor.background (relative lines invisible)`
+      );
+    }
+  }
+
+  if (typeof indentGuide === "string" && typeof editorBg === "string") {
+    const delta = relativeLuminance(indentGuide) - relativeLuminance(editorBg);
+    if (appearance === "dark" && delta < minSeparatorDelta) {
+      errors.push(`Theme "${themeName}" editor.indent_guide lacks contrast against editor.background`);
+    }
+  }
+
+  if (typeof panelIndent === "string" && typeof panelBg === "string") {
+    const delta = relativeLuminance(panelIndent) - relativeLuminance(panelBg);
+    if (appearance === "dark" && delta < minSeparatorDelta) {
+      errors.push(`Theme "${themeName}" panel.indent_guide lacks contrast against panel.background`);
+    }
+  }
+
+  const panelIndentActive = style["panel.indent_guide_active"];
+  if (
+    typeof panelIndent === "string" &&
+    typeof panelIndentActive === "string" &&
+    appearance === "dark"
+  ) {
+    const activeStep = relativeLuminance(panelIndentActive) - relativeLuminance(panelIndent);
+    if (activeStep < 0.04) {
+      errors.push(
+        `Theme "${themeName}" panel.indent_guide_active should be brighter than panel.indent_guide (explorer depth highlight)`
+      );
     }
   }
 

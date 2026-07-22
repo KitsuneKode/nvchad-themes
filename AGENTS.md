@@ -40,6 +40,8 @@
 - `bun run import:base46 [--check]`
 - `bun run build` · `bun test` · `bun run goldens` · `bun run goldens:check` · `bun run package` · `bun run verify`
 - `bun run previews` · `bun run previews --heroes-only` · `bun run previews:sync` · `bun run previews:check`
+- `bun run references:sync` — maintainer: download `.reference/zed/` + refresh `src/references/official/`
+- `bun run references:audit` — compare hero themes vs upstream Zed ports
 - `bun run publish:vscode` — Marketplace (requires `vsce login`)
 - `bun run install:zed-dev` · `bun run install:zed [--all] [id]`
 

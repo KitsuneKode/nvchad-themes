@@ -4,7 +4,7 @@ All 94 [NvChad base46](https://github.com/NvChad/base46) themes in one Zed theme
 
 ## Screenshots
 
-Drop PNG/WebP files into [`../assets/screenshots/zed/`](../assets/screenshots/) (see [`../assets/screenshots/README.md`](../assets/screenshots/README.md)). `bun run previews` copies them here as `{id}.png` for the release zip.
+Drop current 1280×800 PNG editor captures into [`assets/screenshots/zed/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/assets/screenshots/zed/) (see the [capture matrix](https://github.com/KitsuneKode/nvchad-themes/blob/main/assets/screenshots/README.md)). `bun run previews` copies them here as `{id}.png` for the release zip.
 
 | Tokyonight | Kanagawa |
 | :---: | :---: |
@@ -22,18 +22,22 @@ Regenerate after theme changes (from repo root):
 bun run previews
 ```
 
-## Install (end users)
+## Install from the Zed Extensions gallery
+
+After the registry PR is merged, open Zed’s Extensions view, search **NvChad Themes**, and choose **Install**. Then open the theme picker and select any **NvChad** variant.
+
+## Install manually (dev extension)
 
 ### Download the extension zip
 
-Get [`nvchad-themes-zed-extension-1.0.1.zip`](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip) from [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest).
+Get the current Zed extension ZIP from [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest).
 
-Full steps (automated + manual): [INSTALL.md](../INSTALL.md)
+Full steps (automated + manual): [INSTALL.md](https://github.com/KitsuneKode/nvchad-themes/blob/main/INSTALL.md)
 
 1. **Extract** the zip. The folder you pick in Zed must contain **`extension.toml`** at its root:
 
    ```
-   nvchad-themes-zed-extension-1.0.1/
+   nvchad-themes-zed-extension-<version>/
      extension.toml
      LICENSE
      README.md
@@ -52,13 +56,12 @@ Verify checksum:
 
 ```bash
 curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/checksums.sha256
-curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip
 sha256sum -c checksums.sha256
 ```
 
 ### Alternative: user theme JSON only
 
-Download [`nvchad-themes-zed-user-1.0.1.json`](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-user-1.0.1.json) and copy to:
+Download the current user JSON from [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest) and copy it to:
 
 - Linux: `~/.config/zed/themes/`
 - macOS: `~/Library/Application Support/Zed/themes/`
@@ -141,4 +144,4 @@ bun run package           # release zip includes themes/ + screenshots/
 
 ## Publishing
 
-See [Developing Extensions — Publishing](https://zed.dev/docs/extensions/developing-extensions#publishing-your-extension) and the root [PUBLISHING.md](../PUBLISHING.md).
+See [Developing Extensions — Publishing](https://zed.dev/docs/extensions/developing-extensions#publishing-your-extension) and the root [PUBLISHING.md](https://github.com/KitsuneKode/nvchad-themes/blob/main/PUBLISHING.md).

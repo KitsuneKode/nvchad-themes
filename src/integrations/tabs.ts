@@ -20,6 +20,6 @@ export const tabsIntegration = (
     tabInactiveBg: vscode.overlay,
     tabModifiedBorder: theme.base30.yellow,
     zedTabActive: zed.raised,
-    zedTabInactive: zed.surface
+    zedTabInactive: zed.panel
   };
 };

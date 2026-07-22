@@ -1,6 +1,6 @@
 # Publishing Guide
 
-This repo ships two store-ready extensions from one source tree. **End-user downloads** come from [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest) — see [INSTALL.md](./INSTALL.md). The `dist/` folder is build output only (not committed).
+This repo ships two store-ready extensions from one source tree. **End-user downloads** come from the VS Code Marketplace, the Zed Extensions gallery, and [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest) for manual/offline artifacts. See [INSTALL.md](./INSTALL.md). The `dist/` folder is build output only (not committed).
 
 | Store | Artifact | Extension ID |
 |-------|----------|--------------|
@@ -21,6 +21,7 @@ bun test
 bun run goldens:check
 bun run previews
 bun run previews:check
+bun run docs:check
 bun run package
 bun run verify
 ```
@@ -69,16 +70,19 @@ bun run publish:vscode:ovsx
 
 Zed theme extensions are published via PR to [zed-industries/extensions](https://github.com/zed-industries/extensions).
 
-### Option A — Submodule from this repo (monorepo)
+### Recommended — Submodule from this repo (monorepo)
 
-If the whole repo stays public:
+The registry consumes a public Git submodule, not the GitHub release ZIP. The current repository is already structured for the supported `path` layout: the Zed extension lives under `zed-extension/` and has its own `LICENSE`.
 
 ```bash
-# In a fork of zed-industries/extensions
+# In a personal fork of zed-industries/extensions
+git clone https://github.com/YOUR_GITHUB_USER/extensions.git
+cd extensions
+git checkout -b add-nvchad-themes
 git submodule add https://github.com/KitsuneKode/nvchad-themes.git extensions/nvchad-themes
 ```
 
-Add to `extensions.toml` at the repo root:
+Add this entry to the alphabetically sorted `extensions.toml` at the registry repo root:
 
 ```toml
 [nvchad-themes]
@@ -87,21 +91,47 @@ path = "zed-extension"
 version = "1.0.1"
 ```
 
-The `path` field points at `zed-extension/` inside the submodule. `LICENSE` must exist at that path (already present).
+The `path` field points at `zed-extension/` inside the submodule. The extension ID and `extension.toml` version must match the registry entry. The submodule URL must use HTTPS, the repository must be public, and the checked-out submodule commit must exist on a branch rather than only as a detached commit.
 
-### Option B — Dedicated Zed repo
+Sort and verify the registry checkout before opening the PR:
 
-Some publishers split the Zed extension into its own repository containing only `zed-extension/` contents. Use the GitHub Release zip as the canonical layout.
+```bash
+git submodule update --init --recursive
+pnpm sort-extensions
+git diff --check
+git add .gitmodules extensions/nvchad-themes extensions.toml
+git commit -m "Add NvChad Themes extension"
+git push origin add-nvchad-themes
+```
+
+Open a pull request from your fork to `zed-industries/extensions`. Zed packages the extension after the PR is merged.
+
+### Alternative — Dedicated Zed repo
+
+Some publishers split the Zed extension into its own public repository containing only the contents of `zed-extension/`. This is optional; the monorepo subdirectory approach above avoids a second source repository.
 
 ### PR requirements
 
 - Extension ID `nvchad-themes` must be unique
 - MIT `LICENSE` at the extension root
 - `extension.toml` `version` matches `extensions.toml`
+- The extension repository is public and the registry submodule uses HTTPS
 - Theme-only — no Rust required
 - Test locally: **zed: install dev extension** → select `zed-extension/`
 
 See [Developing Extensions](https://zed.dev/docs/extensions/developing-extensions#publishing-your-extension).
+
+### Updating an existing registry entry
+
+For a new release, bump `package.json` and `zed-extension/extension.toml` together, regenerate and verify the outputs, then update the submodule commit and registry version in a new PR:
+
+```bash
+git submodule update --remote extensions/nvchad-themes
+pnpm sort-extensions
+git diff --check
+```
+
+The registry `version` must match the `extension.toml` at the checked-out submodule commit.
 
 ## After publishing
 

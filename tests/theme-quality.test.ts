@@ -17,20 +17,31 @@ const heroIds = HERO_THEME_IDS;
 
 describe("hero theme surface hierarchy", () => {
   for (const id of heroIds) {
-    test(`${id} zed ladder: surface chrome darker than editor well`, () => {
+    test(`${id} zed ladder matches surface model`, () => {
       const theme = getThemeById(id)!;
       const built = buildZedTheme(theme);
       const style = built.themes[0]!.style as Record<string, string>;
-
       const lumBg = relativeLuminance(style.background!);
-      const lumSurface = relativeLuminance(style["surface.background"]!);
+      const isFlatEditor = style["tab.active_background"] === style["editor.background"];
 
       expect(style.background).toBe(style["editor.background"]);
-      expect(lumSurface).toBeLessThan(lumBg);
-      expect(style["tab.inactive_background"]).toBe(style["surface.background"]);
-      expect(relativeLuminance(style["tab.active_background"]!)).toBeGreaterThan(lumBg);
-      expect(style["title_bar.background"]).toBe(style["surface.background"]);
-      expect(style["panel.background"]).toBe(style["surface.background"]);
+
+      if (isFlatEditor) {
+        expect(style["surface.background"]).toBe(style["editor.background"]);
+        expect(style["tab.active_background"]).toBe(style["editor.background"]);
+        expect(style["tab.inactive_background"]).toBe(style["panel.background"]);
+        expect(relativeLuminance(style["panel.background"]!)).toBeLessThan(lumBg);
+        expect(relativeLuminance(style["title_bar.background"]!)).toBeLessThan(
+          relativeLuminance(style["panel.background"]!)
+        );
+      } else {
+        const lumSurface = relativeLuminance(style["surface.background"]!);
+        expect(lumSurface).toBeLessThanOrEqual(lumBg);
+        expect(style["tab.inactive_background"]).toBe(style["panel.background"]);
+        expect(relativeLuminance(style["tab.active_background"]!)).toBeGreaterThan(lumBg);
+        expect(style["title_bar.background"]).toBe(style["panel.background"]);
+        expect(style["panel.background"]).toBe(style["surface.background"]);
+      }
     });
 
     test(`${id} vscode sidebar is darker than or equal to editor`, () => {
@@ -150,6 +161,74 @@ describe("separator lines", () => {
       }
     });
   }
+});
+
+describe("zed gutter and panel separator visibility", () => {
+  const minDelta = 0.02;
+
+  for (const id of heroIds) {
+    test(`${id} relative line numbers and indent guides contrast with backgrounds`, () => {
+      const theme = getThemeById(id)!;
+      const style = buildZedTheme(theme).themes[0]!.style as Record<string, string>;
+      const editorBg = style["editor.background"]!;
+      const panelBg = style["panel.background"]!;
+      const lineNumber = style["editor.line_number"]!;
+      const indentGuide = style["editor.indent_guide"]!;
+      const panelIndent = style["panel.indent_guide"]!;
+      const panelIndentActive = style["panel.indent_guide_active"]!;
+
+      const editorLum = relativeLuminance(editorBg);
+      const panelLum = relativeLuminance(panelBg);
+
+      if (theme.type === "dark") {
+        expect(relativeLuminance(lineNumber) - editorLum).toBeGreaterThanOrEqual(minDelta);
+        expect(relativeLuminance(indentGuide) - editorLum).toBeGreaterThanOrEqual(minDelta);
+        expect(relativeLuminance(panelIndent) - panelLum).toBeGreaterThanOrEqual(minDelta);
+        const activeStep = relativeLuminance(panelIndentActive) - relativeLuminance(panelIndent);
+        expect(activeStep).toBeGreaterThanOrEqual(0.04);
+      } else {
+        expect(editorLum - relativeLuminance(lineNumber)).toBeGreaterThanOrEqual(minDelta);
+        expect(editorLum - relativeLuminance(indentGuide)).toBeGreaterThanOrEqual(minDelta);
+        expect(panelLum - relativeLuminance(panelIndent)).toBeGreaterThanOrEqual(minDelta);
+      }
+    });
+  }
+
+  test("kanagawa line numbers use kanagawa-teal derivation", () => {
+    const style = buildZedTheme(getThemeById("kanagawa")!).themes[0]!.style as Record<string, string>;
+    expect(style["editor.line_number"]!.toLowerCase()).toBe("#6a8885");
+    const editorLum = relativeLuminance(style["editor.background"]!);
+    expect(relativeLuminance(style["editor.line_number"]!) - editorLum).toBeGreaterThanOrEqual(0.02);
+  });
+
+  test("tokyonight panel indent matches zed-tokyo-night active highlight tier", () => {
+    const style = buildZedTheme(getThemeById("tokyonight")!).themes[0]!.style as Record<string, string>;
+    expect(style["panel.indent_guide"]).toBe("#363a54");
+    expect(style["panel.indent_guide_active"]).toBe("#565f89");
+    expect(style["panel.indent_guide_hover"]).toBe("#565f89");
+    expect(style["element.selected"]).toBe("#565f89");
+  });
+
+  test("kanagawa flat-editor surface and focused pane borders", () => {
+    const style = buildZedTheme(getThemeById("kanagawa")!).themes[0]!.style as Record<string, string>;
+    expect(style["tab.active_background"]).toBe(style["editor.background"]);
+    expect(style["surface.background"]).toBe(style["editor.background"]);
+    expect(style["pane.focused_border"]).toBe("#DCD7BA");
+    expect(style["panel.focused_border"]).toBe("#DCD7BA");
+    expect(style["ghost_element.background"]).toBeNull();
+  });
+});
+
+describe("light theme panel muted text", () => {
+  test("onenord_light text.muted is darker than panel.background", () => {
+    const style = buildZedTheme(getThemeById("onenord_light")!).themes[0]!.style as Record<
+      string,
+      string
+    >;
+    expect(relativeLuminance(style["text.muted"]!)).toBeLessThan(
+      relativeLuminance(style["panel.background"]!)
+    );
+  });
 });
 
 describe("golden style extracts", () => {

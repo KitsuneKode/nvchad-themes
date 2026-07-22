@@ -47,10 +47,10 @@
         "editor.foreground": "#A6ACCD",
         "editor.gutter.background": "#1b1e28",
         "editor.highlighted_line.background": "#222633",
-        "editor.indent_guide": "#363b54",
-        "editor.indent_guide_active": "#363b54",
-        "editor.invisible": null,
-        "editor.line_number": "#191b24",
+        "editor.indent_guide": "#34394c",
+        "editor.indent_guide_active": "#515977",
+        "editor.invisible": "#4c506266",
+        "editor.line_number": "#34394c",
         "editor.subheader.background": "#1b1e28",
         "editor.wrap_guide": "#111218",
         "elevated_surface.background": "#15171f",
@@ -92,12 +92,12 @@
         "modified": "#FFFAC2",
         "modified.background": "#1b1e28",
         "modified.border": "#32384a",
-        "pane.focused_border": null,
+        "pane.focused_border": "#E4F0FB",
         "pane_group.border": "#111218",
         "panel.background": "#171922",
-        "panel.focused_border": null,
-        "panel.indent_guide": "#363b54",
-        "panel.indent_guide_active": "#363b54",
+        "panel.focused_border": "#E4F0FB",
+        "panel.indent_guide": "#34394c",
+        "panel.indent_guide_active": "#515977",
         "panel.indent_guide_hover": "#515977",
         "panel.overlay_background": "#15171f",
         "panel.overlay_hover": "#515977",
@@ -258,6 +258,11 @@
             "font_weight": null
           },
           "punctuation.special": {
+            "color": "#92e0ff",
+            "font_style": null,
+            "font_weight": null
+          },
+          "punctuation.special.symbol": {
             "color": "#92e0ff",
             "font_style": null,
             "font_weight": null
@@ -447,6 +452,11 @@
             "font_style": null,
             "font_weight": null
           },
+          "function.decorator": {
+            "color": "#5DE4C7",
+            "font_style": null,
+            "font_weight": null
+          },
           "constructor": {
             "color": "#515977",
             "font_style": null,
@@ -454,6 +464,41 @@
           },
           "keyword": {
             "color": "#91B4D5",
+            "font_style": null,
+            "font_weight": null
+          },
+          "keyword.export": {
+            "color": "#91B4D5",
+            "font_style": null,
+            "font_weight": null
+          },
+          "keyword.modifier": {
+            "color": "#91B4D5",
+            "font_style": null,
+            "font_weight": null
+          },
+          "keyword.type": {
+            "color": "#91B4D5",
+            "font_style": null,
+            "font_weight": null
+          },
+          "keyword.debug": {
+            "color": "#91B4D5",
+            "font_style": null,
+            "font_weight": null
+          },
+          "keyword.coroutine": {
+            "color": "#91B4D5",
+            "font_style": null,
+            "font_weight": null
+          },
+          "keyword.conditional.ternary": {
+            "color": "#91B4D5",
+            "font_style": null,
+            "font_weight": null
+          },
+          "keyword.directive.define": {
+            "color": "#89DDFF",
             "font_style": null,
             "font_weight": null
           },
@@ -465,6 +510,106 @@
           "comment.doc": {
             "color": "#5d678a",
             "font_style": "italic",
+            "font_weight": null
+          },
+          "comment.error": {
+            "color": "#D0679D",
+            "font_style": null,
+            "font_weight": null
+          },
+          "comment.warning": {
+            "color": "#FFFAC2",
+            "font_style": null,
+            "font_weight": null
+          },
+          "comment.todo": {
+            "color": "#FFFAC2",
+            "font_style": null,
+            "font_weight": null
+          },
+          "comment.note": {
+            "color": "#5DE4C7",
+            "font_style": null,
+            "font_weight": null
+          },
+          "comment.hint": {
+            "color": "#92e0ff",
+            "font_style": null,
+            "font_weight": null
+          },
+          "diff.plus": {
+            "color": "#5FB3A1",
+            "font_style": null,
+            "font_weight": null
+          },
+          "diff.minus": {
+            "color": "#D0679D",
+            "font_style": null,
+            "font_weight": null
+          },
+          "namespace": {
+            "color": "#A6ACCD",
+            "font_style": null,
+            "font_weight": null
+          },
+          "parameter": {
+            "color": "#A6ACCD",
+            "font_style": null,
+            "font_weight": null
+          },
+          "field": {
+            "color": "#A6ACCD",
+            "font_style": null,
+            "font_weight": null
+          },
+          "float": {
+            "color": "#D0679D",
+            "font_style": null,
+            "font_weight": null
+          },
+          "symbol": {
+            "color": "#5DE4C7",
+            "font_style": null,
+            "font_weight": null
+          },
+          "string.doc": {
+            "color": "#48506a",
+            "font_style": "italic",
+            "font_weight": null
+          },
+          "string.predoc": {
+            "color": "#48506a",
+            "font_style": "italic",
+            "font_weight": null
+          },
+          "predoc": {
+            "color": "#48506a",
+            "font_style": "italic",
+            "font_weight": null
+          },
+          "string.regexp": {
+            "color": "#5DE4C7",
+            "font_style": null,
+            "font_weight": null
+          },
+          "string.special.path": {
+            "color": "#5DE4C7",
+            "font_style": null,
+            "font_weight": null
+          },
+          "parent": {
+            "color": "#A6ACCD",
+            "font_style": null,
+            "font_weight": null
+          },
+          "predictive": {
+            "color": "#515977",
+            "font_style": null,
+            "font_weight": null
+          },
+          "type.class.definition": {
+            "color": "#5DE4C7",
+            "font_style": null,
             "font_weight": null
           },
           "module": {

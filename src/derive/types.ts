@@ -5,7 +5,7 @@ import type { SyntaxRule } from "../syntax/index.ts";
 import type { VsCodeSurfaceLadder, ZedSurfaceLadder } from "../surfaces.ts";
 import type { ThemeSpec } from "../types.ts";
 import type { ZedUiTokens } from "../zed-ui.ts";
-import type { ZedReferenceProfile } from "../profiles/types.ts";
+import type { ZedReferenceProfile, ZedSurfaceModel } from "../profiles/types.ts";
 
 export type DerivationOptions = {
   profileId?: ZedReferenceProfile;
@@ -15,6 +15,7 @@ export type DerivationOptions = {
 export type ResolvedThemeModel = {
   theme: ThemeSpec;
   profileId: ZedReferenceProfile;
+  surfaceModel: ZedSurfaceModel;
   surfaces: {
     vscode: VsCodeSurfaceLadder;
     zed: ZedSurfaceLadder;

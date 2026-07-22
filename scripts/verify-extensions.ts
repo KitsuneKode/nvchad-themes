@@ -1,6 +1,8 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { themeCatalog } from "../src/index.ts";
+import { themeCatalog, buildZedTheme, getThemeById } from "../src/index.ts";
+import { HERO_THEME_IDS } from "../src/references/hero-themes.ts";
+import { relativeLuminance } from "../src/surfaces.ts";
 import {
   validateZedExtensionDir,
   ZED_EXTENSION_BUNDLE
@@ -73,6 +75,33 @@ assert(existsSync(resolve(distDir, zedZipName)), `Missing Zed extension zip at d
 assert(existsSync(resolve(distDir, zedUserName)), `Missing Zed user theme at dist/${zedUserName}. Run bun run package.`);
 assert(existsSync(resolve(distDir, "INSTALL.md")), "Missing dist/INSTALL.md. Run bun run package.");
 assert(existsSync(resolve(distDir, "checksums.sha256")), "Missing dist/checksums.sha256. Run bun run package.");
+
+for (const id of HERO_THEME_IDS) {
+  const theme = getThemeById(id);
+  if (!theme) {
+    failures.push(`Hero theme missing from catalog: ${id}`);
+    continue;
+  }
+  const style = buildZedTheme(theme).themes[0]!.style as Record<string, string | null>;
+  const panelIndent = style["panel.indent_guide"];
+  const panelIndentActive = style["panel.indent_guide_active"];
+  if (typeof panelIndent === "string" && typeof panelIndentActive === "string" && theme.type === "dark") {
+    const step = relativeLuminance(panelIndentActive) - relativeLuminance(panelIndent);
+    if (step < 0.04) {
+      failures.push(
+        `Hero ${id}: panel.indent_guide_active should be brighter than panel.indent_guide (explorer depth)`
+      );
+    }
+  }
+  if (id === "kanagawa") {
+    if (style["tab.active_background"] !== style["editor.background"]) {
+      failures.push("Hero kanagawa: flat-editor tab.active_background must equal editor.background");
+    }
+    if (style["ghost_element.background"] !== null) {
+      failures.push("Hero kanagawa: ghost_element.background must be null");
+    }
+  }
+}
 
 if (failures.length > 0) {
   console.error("Verification failed:\n");

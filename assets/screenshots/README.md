@@ -1,6 +1,6 @@
 # Editor screenshots (drop zone)
 
-Drop real editor screenshots here to replace the bundled syntax placeholders. **`bun run previews`** (and **`bun run package`**) sync Zed shots into `zed-extension/screenshots/` for the release zip.
+Drop real editor screenshots here to provide the README and Zed extension gallery with current editor proof. **`bun run previews`** (and **`bun run package`**) sync Zed shots into `zed-extension/screenshots/` for the release zip.
 
 ## Folders
 
@@ -11,7 +11,7 @@ Drop real editor screenshots here to replace the bundled syntax placeholders. **
 
 ## Filename
 
-Use the theme id + extension:
+Use the theme id + extension. Capture PNG files at **1280×800** so the README gallery stays consistent:
 
 ```
 tokyonight.png
@@ -22,7 +22,7 @@ rxyhn.png
 onedark.png
 ```
 
-Also accepted: `.webp`, `.jpg`, `.jpeg` (converted to PNG for Zed on sync).
+PNG is the release-readiness format. Other raster formats may be useful while editing, but convert them to PNG before committing.
 
 ## README heroes (recommended)
 
@@ -32,8 +32,8 @@ Also accepted: `.webp`, `.jpg`, `.jpeg` (converted to PNG for Zed on sync).
 | `kanagawa` | ✓ | ✓ |
 | `nord` | ✓ | ✓ |
 | `catppuccin` | ✓ | ✓ |
-| `rxyhn` | ✓ | optional |
-| `onedark` | ✓ | optional |
+| `rxyhn` | ✓ | ✓ |
+| `onedark` | ✓ | ✓ |
 
 **Zed zip extras** (syntax fallback if no manual file): `gruvbox`, `everforest` — optional in `zed/`.
 
@@ -49,4 +49,21 @@ bun run previews        # sync Zed → zed-extension/screenshots/ + verify
 bun run previews:sync
 ```
 
-Until Cursor shots exist, `previews:check` accepts generated syntax PNGs in `assets/previews/` as fallback.
+`bun run previews:check` requires all six Cursor/VS Code and Zed hero screenshots to exist as valid 1280×800 PNGs. Generated syntax renders in `assets/previews/` remain useful for the full 94-theme gallery, but they are not substitutes for the README editor screenshots.
+
+## Capture checklist before release
+
+After changing theme generation or chrome mappings, recapture these six themes in both editors:
+
+```text
+tokyonight  kanagawa  nord  catppuccin  rxyhn  onedark
+```
+
+Save Cursor/VS Code captures under `assets/screenshots/cursor/`, Zed captures under `assets/screenshots/zed/`, then run:
+
+```bash
+bun run previews
+bun run previews:check
+```
+
+Do not claim the final visual state until the screenshots show the current generated themes in the actual editors.

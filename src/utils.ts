@@ -133,6 +133,60 @@ export const relativeLuminance = (hex: string): number => {
   return 0.2126 * channelLuminance(r) + 0.7152 * channelLuminance(g) + 0.0722 * channelLuminance(b);
 };
 
+const solidHex = (hex: string): string => (hex.length === 9 ? hex.slice(0, 7) : hex);
+
+/**
+ * Bump a separator color until it meets minimum luminance contrast vs a background.
+ * Used for line numbers, indent guides, wrap columns, and scrollbar thumbs.
+ */
+export const ensureSeparatorContrast = (
+  color: string,
+  background: string,
+  minDelta = 0.02,
+  direction: "lighter" | "darker" = "lighter"
+): string => {
+  let current = solidHex(color);
+  const bgLum = relativeLuminance(background);
+
+  const meets = (candidate: string): boolean => {
+    const delta = relativeLuminance(candidate) - bgLum;
+    return direction === "lighter" ? delta >= minDelta : delta <= -minDelta;
+  };
+
+  if (meets(current)) {
+    return current;
+  }
+
+  const lift = direction === "lighter" ? "#ffffff" : "#000000";
+  for (let step = 0.08; step <= 1; step += 0.08) {
+    const candidate = mixColors(current, lift, step);
+    if (meets(candidate)) {
+      return candidate;
+    }
+  }
+
+  return mixColors(background, lift, direction === "lighter" ? 0.35 : 0.2);
+};
+
+/**
+ * Tokyo Night pattern: active indent/hover lines use the element tier (#565f89),
+ * visibly brighter than inactive guides (#363b54).
+ */
+export const pickActiveSeparator = (
+  inactive: string,
+  candidates: string[],
+  minStep = 0.05
+): string => {
+  const inactiveLum = relativeLuminance(solidHex(inactive));
+  for (const candidate of candidates) {
+    const solid = solidHex(candidate);
+    if (relativeLuminance(solid) - inactiveLum >= minStep) {
+      return solid;
+    }
+  }
+  return ensureSeparatorContrast(candidates[candidates.length - 1] ?? inactive, inactive, minStep);
+};
+
 export const alphaFromHex = (hex: string): number => {
   if (hex.length !== 9) {
     return 1;

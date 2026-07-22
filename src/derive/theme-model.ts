@@ -1,15 +1,27 @@
 import type { ThemeSpec } from "../types.ts";
 import type { SyntaxRule } from "../syntax/index.ts";
 import { applyPolishHl, treesitterTemplate } from "../syntax/index.ts";
-import { vscodeLadder, zedLadder, type VsCodeSurfaceLadder, type ZedSurfaceLadder } from "../surfaces.ts";
-import { separatorColors } from "../separators.ts";
+import {
+  applySurfaceModel,
+  vscodeLadder,
+  zedLadder,
+  type VsCodeSurfaceLadder,
+  type ZedSurfaceLadder
+} from "../surfaces.ts";
+import {
+  activeGuideForInactive,
+  separatorColors,
+  zedIndentGuide,
+  zedLineNumber
+} from "../separators.ts";
 import { zedUiTokens } from "../zed-ui.ts";
 import { integrationHints } from "../integrations/index.ts";
 import { vscodeEnhancements, zedEnhancements } from "../enhancements.ts";
 import { loadProfile, profileForTheme } from "../profiles/index.ts";
-import type { ZedProfileOverride } from "../profiles/types.ts";
+import type { ZedProfileOverride, ZedSurfaceModel } from "../profiles/types.ts";
 import type { DerivationOptions, ResolvedThemeModel } from "./types.ts";
 import { resolveThemeColorOr } from "../resolve-color.ts";
+import { relativeLuminance } from "../utils.ts";
 
 const applyProfileSurfaces = (
   zed: ZedSurfaceLadder,
@@ -48,27 +60,95 @@ const applyProfileSyntax = (
   return merged;
 };
 
+const hasSeparatorContrast = (
+  theme: ThemeSpec,
+  color: string,
+  background: string,
+  minSeparatorDelta = 0.02
+): boolean => {
+  const delta = relativeLuminance(color) - relativeLuminance(background);
+  return theme.type === "dark" ? delta >= minSeparatorDelta : delta <= -minSeparatorDelta;
+};
+
 export const deriveThemeModel = (
   theme: ThemeSpec,
   options?: DerivationOptions
 ): ResolvedThemeModel => {
   const profileId = options?.profileId ?? profileForTheme(theme.id, theme.type);
   const profile = loadProfile(profileId);
+  const surfaceModel: ZedSurfaceModel = profile.surfaceModel ?? "tokyo-well";
+
+  let zedSurfaces = applyProfileSurfaces(zedLadder(theme), profile);
+  zedSurfaces = applySurfaceModel(zedSurfaces, theme, surfaceModel);
 
   const surfaces = {
     vscode: vscodeLadder(theme),
-    zed: applyProfileSurfaces(zedLadder(theme), profile)
+    zed: zedSurfaces
   };
 
-  const ui = separatorColors(theme);
-  let zedUi = zedUiTokens(theme);
-  zedUi = { ...zedUi, ladder: surfaces.zed };
+  const ui = separatorColors(theme, {
+    editorWell: zedSurfaces.background,
+    panelBg: zedSurfaces.panel
+  });
 
-  if (profile.ui?.indentGuide) {
+  let zedUi = zedUiTokens(theme, zedSurfaces);
+
+  const lineNumberStyle = profile.ui?.lineNumberStyle ?? "default";
+  const indentGuideStyle = profile.ui?.indentGuideStyle ?? "default";
+  const editorBg = zedSurfaces.background;
+  const panelBg = zedSurfaces.panel;
+
+  if (lineNumberStyle !== "default") {
+    const lineNumber = zedLineNumber(theme, editorBg, lineNumberStyle);
+    if (hasSeparatorContrast(theme, lineNumber, editorBg)) {
+      zedUi = { ...zedUi, lineNumber };
+    }
+  }
+
+  if (indentGuideStyle !== "default") {
+    const indentGuide = zedIndentGuide(theme, editorBg, indentGuideStyle);
+    const panelIndentGuide =
+      indentGuideStyle === "tokyo-muted"
+        ? indentGuide
+        : zedIndentGuide(theme, panelBg, indentGuideStyle);
+    if (hasSeparatorContrast(theme, indentGuide, editorBg)) {
+      zedUi = {
+        ...zedUi,
+        indentGuide,
+        indentGuideActive: activeGuideForInactive(theme, indentGuide),
+        panelIndentGuide,
+        panelIndentGuideActive: activeGuideForInactive(theme, panelIndentGuide)
+      };
+    }
+  }
+
+  if (profile.ui?.indentGuide || profile.ui?.indentGuideActive || profile.ui?.lineNumber) {
+    const indentGuide =
+      profile.ui.indentGuide && hasSeparatorContrast(theme, profile.ui.indentGuide, editorBg)
+        ? profile.ui.indentGuide
+        : undefined;
+    const lineNumber =
+      profile.ui.lineNumber && hasSeparatorContrast(theme, profile.ui.lineNumber, editorBg)
+        ? profile.ui.lineNumber
+        : indentGuide;
+
     zedUi = {
       ...zedUi,
-      indentGuide: profile.ui.indentGuide,
-      indentGuideActive: profile.ui.indentGuide ?? zedUi.indentGuideActive
+      ...(indentGuide
+        ? {
+            indentGuide,
+            panelIndentGuide: indentGuide,
+            indentGuideActive: activeGuideForInactive(theme, indentGuide),
+            panelIndentGuideActive: activeGuideForInactive(theme, indentGuide)
+          }
+        : {}),
+      ...(profile.ui.indentGuideActive
+        ? {
+            indentGuideActive: profile.ui.indentGuideActive,
+            panelIndentGuideActive: profile.ui.indentGuideActive
+          }
+        : {}),
+      ...(lineNumber ? { lineNumber } : {})
     };
   }
 
@@ -106,6 +186,7 @@ export const deriveThemeModel = (
   return {
     theme,
     profileId,
+    surfaceModel,
     surfaces,
     ui,
     zedUi,
