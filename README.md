@@ -12,8 +12,8 @@ The 94 NvChad base46 themes for VS Code, Cursor, and Zed, with matching theme fi
 |----------|--------------|
 | VS Code / Cursor | Download the `.vsix` from the [latest release](https://github.com/KitsuneKode/nvchad-themes/releases/latest), then use **Install from VSIX…** |
 | Zed, after registry publication | Open Zed Extensions, search **NvChad Themes**, and install it |
-| Zed, before registry publication | Download the Zed ZIP from the [latest release](https://github.com/KitsuneKode/nvchad-themes/releases/latest), extract it, and use **`zed: install dev extension`** |
-| Zed user theme | Download the user JSON from the [latest release](https://github.com/KitsuneKode/nvchad-themes/releases/latest) and copy it to `~/.config/zed/themes/` |
+| Zed, before registry publication | Download the Zed extension ZIP, extract the folder containing `extension.toml`, and use **`zed: install dev extension`** on that folder |
+| Zed user theme | Download the single user-theme JSON from the [latest release](https://github.com/KitsuneKode/nvchad-themes/releases/latest) and copy it to `~/.config/zed/themes/` |
 | OpenCode / Gemini CLI / Codex | Use the files and instructions in [INSTALL.md](./INSTALL.md) |
 
 Detailed automated and manual instructions: [INSTALL.md](./INSTALL.md).

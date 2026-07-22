@@ -4,16 +4,16 @@ Version **1.0.1**. All **94** NvChad base46 themes.
 
 **Repository:** https://github.com/KitsuneKode/nvchad-themes · **Latest release:** [https://github.com/KitsuneKode/nvchad-themes/releases/latest](https://github.com/KitsuneKode/nvchad-themes/releases/latest)
 
-Each platform below has a clear user install path. Zed’s gallery path applies after the registry PR is merged; until then, use the generated manual ZIP.
+Each platform below has a clear user install path. Zed has two different manual options: install the whole `zed-extension/` folder as a dev extension, or copy one generated JSON file into Zed’s themes directory. The gallery path applies after the registry PR is merged.
 
 ## What is on GitHub Releases vs repo only
 
-| Platform | Release asset? | Where to get it |
+| Platform | What you install | Source |
 |----------|----------------|-----------------|
-| VS Code / Cursor | Yes — `.vsix` | [Release download](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-1.0.1.vsix) |
+| VS Code / Cursor | The `.vsix` package | [Latest release](https://github.com/KitsuneKode/nvchad-themes/releases/latest) |
 | Zed (published extension) | After registry publication | [Zed Extensions gallery](https://zed.dev/extensions) |
-| Zed (manual dev extension) | Yes — `.zip` | [Release download](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip) |
-| Zed (user JSON) | Yes — `.json` | [Release download](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-user-1.0.1.json) |
+| Zed (manual dev extension) | The complete extension folder, with `extension.toml` | [Latest release ZIP](https://github.com/KitsuneKode/nvchad-themes/releases/latest) or cloned repo `zed-extension/` |
+| Zed (user theme) | One JSON file copied into Zed’s themes folder | [Latest user JSON](https://github.com/KitsuneKode/nvchad-themes/releases/latest) |
 | OpenCode | No — use repo | [`opencode/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/opencode) |
 | Gemini CLI | No — use repo | [`gemini/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/gemini) |
 | Codex | No — use repo | [`codex/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/codex) |
@@ -39,7 +39,7 @@ Replace `nord` in the CLI examples below with any theme ID from the [full list](
 ### Automated (release + CLI)
 
 ```bash
-curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-1.0.1.vsix
+gh release download --repo KitsuneKode/nvchad-themes --pattern 'nvchad-themes-*.vsix'
 code --install-extension nvchad-themes-1.0.1.vsix
 cursor --install-extension nvchad-themes-1.0.1.vsix
 ```
@@ -55,7 +55,7 @@ macOS uses the same paths under your home directory. After install: **Preference
 
 ### Manual (GUI)
 
-1. Download [`nvchad-themes-1.0.1.vsix`](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-1.0.1.vsix) from the release page.
+1. Download the VSIX from the [latest release](https://github.com/KitsuneKode/nvchad-themes/releases/latest).
 2. Command palette → **Extensions: Install from VSIX...** → select the file.
 3. **Preferences: Color Theme** → search **NvChad** → pick a variant (e.g. **NvChad Tokyonight**).
 4. Reload the window if themes do not appear.
@@ -70,20 +70,22 @@ Until the registry PR is merged, use the manual dev-extension path below.
 
 ## Zed — Dev extension fallback (all 94 themes)
 
-### Automated (release + CLI)
+This installs the complete Zed extension bundle. Select the folder containing `extension.toml`; do not select a single theme JSON or the `themes/` subfolder.
+
+### From the latest release
 
 ```bash
-curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip
+gh release download --repo KitsuneKode/nvchad-themes --pattern 'nvchad-themes-zed-extension-*.zip'
 curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/checksums.sha256
 unzip nvchad-themes-zed-extension-1.0.1.zip
 sha256sum -c checksums.sha256
 ```
 
-Then in Zed: **zed: install dev extension** → select the **extracted folder** (must contain `extension.toml`) → **zed: reload** → theme picker → **NvChad**.
+Then in Zed: **zed: install dev extension** → select the extracted folder containing `extension.toml` → **zed: reload** → theme picker → **NvChad**.
 
 ### Manual (GUI)
 
-1. Download [`nvchad-themes-zed-extension-1.0.1.zip`](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip) and extract it.
+1. Download the Zed extension ZIP from the [latest release](https://github.com/KitsuneKode/nvchad-themes/releases/latest) and extract it.
 2. Confirm the folder layout:
 
    ```
@@ -94,7 +96,7 @@ Then in Zed: **zed: install dev extension** → select the **extracted folder** 
      screenshots/
    ```
 
-3. **zed: install dev extension** → select that folder (not `themes/` alone).
+3. **zed: install dev extension** → select that extracted folder (not `themes/` alone and not a JSON file).
 4. **zed: reload** → search **NvChad** in the theme picker.
 
 Git status colors in the project panel need `project_panel.git_colors`: `true` (default).
@@ -113,20 +115,22 @@ bun run install:zed-dev
 
 ## Zed — User theme file (no extension.toml)
 
-### Automated (release + CLI)
+This is the lightweight alternative. It installs theme data directly and does not install a Zed extension. The release JSON contains all 94 variants; copy that one file into Zed’s themes directory.
+
+### From the latest release
 
 ```bash
-curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-user-1.0.1.json
+gh release download --repo KitsuneKode/nvchad-themes --pattern 'nvchad-themes-zed-user-*.json'
 mkdir -p ~/.config/zed/themes
 cp nvchad-themes-zed-user-1.0.1.json ~/.config/zed/themes/
 ```
 
 macOS: `~/Library/Application Support/Zed/themes/`
 
-### Manual
+### Manual (GUI/download)
 
-1. Download [`nvchad-themes-zed-user-1.0.1.json`](https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-user-1.0.1.json).
-2. Copy into `~/.config/zed/themes/` (macOS path above).
+1. Download the user theme JSON from the [latest release](https://github.com/KitsuneKode/nvchad-themes/releases/latest).
+2. Copy that single JSON file into `~/.config/zed/themes/` (macOS path above). Do not copy the ZIP or the `zed-extension/` directory here.
 3. Restart Zed or **zed: reload** → pick an **NvChad** variant.
 
 ### From a git clone
@@ -243,9 +247,9 @@ Use the filename stem (`nord`, not the display name) as the theme value. Browse 
 
 ```bash
 curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/checksums.sha256
-curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-1.0.1.vsix
-curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-extension-1.0.1.zip
-curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/nvchad-themes-zed-user-1.0.1.json
+gh release download --repo KitsuneKode/nvchad-themes --pattern 'nvchad-themes-*.vsix'
+gh release download --repo KitsuneKode/nvchad-themes --pattern 'nvchad-themes-zed-extension-*.zip'
+gh release download --repo KitsuneKode/nvchad-themes --pattern 'nvchad-themes-zed-user-*.json'
 sha256sum -c checksums.sha256
 ```
 

@@ -44,6 +44,9 @@ const packageJson = readPackageMeta(rootDir);
 const version = packageJson.version;
 const { vsix: vsixName, zedExtensionZip: zedExtensionZipName, zedUserTheme: zedUserThemeName } =
   artifactNames(version, packageJson.name);
+const vsixPattern = `${packageJson.name}-*.vsix`;
+const zedExtensionZipPattern = `${packageJson.name}-zed-extension-*.zip`;
+const zedUserThemePattern = `${packageJson.name}-zed-user-*.json`;
 
 const hashFile = (filePath: string): string => {
   const hash = createHash("sha256");
@@ -140,16 +143,16 @@ Version **${version}**. All **94** NvChad base46 themes.
 
 **Repository:** ${REPO_URL} · **Latest release:** [${RELEASES_LATEST}](${RELEASES_LATEST})
 
-Each platform below has a clear user install path. Zed’s gallery path applies after the registry PR is merged; until then, use the generated manual ZIP.
+Each platform below has a clear user install path. Zed has two different manual options: install the whole \`zed-extension/\` folder as a dev extension, or copy one generated JSON file into Zed’s themes directory. The gallery path applies after the registry PR is merged.
 
 ## What is on GitHub Releases vs repo only
 
-| Platform | Release asset? | Where to get it |
+| Platform | What you install | Source |
 |----------|----------------|-----------------|
-| VS Code / Cursor | Yes — \`.vsix\` | [Release download](${releaseDownloadUrl(vsixName)}) |
+| VS Code / Cursor | Yes — \`.vsix\` | [Latest release](${RELEASES_LATEST}) |
 | Zed (published extension) | After registry publication | [Zed Extensions gallery](https://zed.dev/extensions) |
-| Zed (manual dev extension) | Yes — \`.zip\` | [Release download](${releaseDownloadUrl(zedExtensionZipName)}) |
-| Zed (user JSON) | Yes — \`.json\` | [Release download](${releaseDownloadUrl(zedUserThemeName)}) |
+| Zed (manual dev extension) | The complete extension folder, with \`extension.toml\` | [Latest release ZIP](${RELEASES_LATEST}) or cloned repo \`zed-extension/\` |
+| Zed (user theme) | One JSON file copied into Zed’s themes folder | [Latest user JSON](${RELEASES_LATEST}) |
 | OpenCode | No — use repo | [\`opencode/\`](${REPO_URL}/tree/main/opencode) |
 | Gemini CLI | No — use repo | [\`gemini/\`](${REPO_URL}/tree/main/gemini) |
 | Codex | No — use repo | [\`codex/\`](${REPO_URL}/tree/main/codex) |
@@ -175,7 +178,7 @@ Replace \`nord\` in the CLI examples below with any theme ID from the [full list
 ### Automated (release + CLI)
 
 \`\`\`bash
-curl -LO ${releaseDownloadUrl(vsixName)}
+gh release download --repo KitsuneKode/nvchad-themes --pattern '${vsixPattern}'
 code --install-extension ${vsixName}
 cursor --install-extension ${vsixName}
 \`\`\`
@@ -191,7 +194,7 @@ macOS uses the same paths under your home directory. After install: **Preference
 
 ### Manual (GUI)
 
-1. Download [\`${vsixName}\`](${releaseDownloadUrl(vsixName)}) from the release page.
+1. Download the VSIX from the [latest release](${RELEASES_LATEST}).
 2. Command palette → **Extensions: Install from VSIX...** → select the file.
 3. **Preferences: Color Theme** → search **NvChad** → pick a variant (e.g. **NvChad Tokyonight**).
 4. Reload the window if themes do not appear.
@@ -206,20 +209,22 @@ Until the registry PR is merged, use the manual dev-extension path below.
 
 ## Zed — Dev extension fallback (all 94 themes)
 
-### Automated (release + CLI)
+This installs the complete Zed extension bundle. Select the folder containing \`extension.toml\`; do not select a single theme JSON or the \`themes/\` subfolder.
+
+### From the latest release
 
 \`\`\`bash
-curl -LO ${releaseDownloadUrl(zedExtensionZipName)}
+gh release download --repo KitsuneKode/nvchad-themes --pattern '${zedExtensionZipPattern}'
 curl -LO ${releaseDownloadUrl("checksums.sha256")}
 unzip ${zedExtensionZipName}
 sha256sum -c checksums.sha256
 \`\`\`
 
-Then in Zed: **zed: install dev extension** → select the **extracted folder** (must contain \`extension.toml\`) → **zed: reload** → theme picker → **NvChad**.
+Then in Zed: **zed: install dev extension** → select the extracted folder containing \`extension.toml\` → **zed: reload** → theme picker → **NvChad**.
 
 ### Manual (GUI)
 
-1. Download [\`${zedExtensionZipName}\`](${releaseDownloadUrl(zedExtensionZipName)}) and extract it.
+1. Download the Zed extension ZIP from the [latest release](${RELEASES_LATEST}) and extract it.
 2. Confirm the folder layout:
 
    \`\`\`
@@ -230,7 +235,7 @@ Then in Zed: **zed: install dev extension** → select the **extracted folder** 
      screenshots/
    \`\`\`
 
-3. **zed: install dev extension** → select that folder (not \`themes/\` alone).
+3. **zed: install dev extension** → select that extracted folder (not \`themes/\` alone and not a JSON file).
 4. **zed: reload** → search **NvChad** in the theme picker.
 
 Git status colors in the project panel need \`project_panel.git_colors\`: \`true\` (default).
@@ -249,20 +254,22 @@ bun run install:zed-dev
 
 ## Zed — User theme file (no extension.toml)
 
+This is the lightweight alternative. It installs theme data directly and does not install a Zed extension. The release JSON contains all 94 variants; copy that one file into Zed’s themes directory.
+
 ### Automated (release + CLI)
 
 \`\`\`bash
-curl -LO ${releaseDownloadUrl(zedUserThemeName)}
+gh release download --repo KitsuneKode/nvchad-themes --pattern '${zedUserThemePattern}'
 mkdir -p ~/.config/zed/themes
 cp ${zedUserThemeName} ~/.config/zed/themes/
 \`\`\`
 
 macOS: \`~/Library/Application Support/Zed/themes/\`
 
-### Manual
+### Manual (GUI/download)
 
-1. Download [\`${zedUserThemeName}\`](${releaseDownloadUrl(zedUserThemeName)}).
-2. Copy into \`~/.config/zed/themes/\` (macOS path above).
+1. Download the user theme JSON from the [latest release](${RELEASES_LATEST}).
+2. Copy that single JSON file into \`~/.config/zed/themes/\` (macOS path above). Do not copy the ZIP or the \`zed-extension/\` directory here.
 3. Restart Zed or **zed: reload** → pick an **NvChad** variant.
 
 ### From a git clone
@@ -379,9 +386,9 @@ Use the filename stem (\`nord\`, not the display name) as the theme value. Brows
 
 \`\`\`bash
 curl -LO ${releaseDownloadUrl("checksums.sha256")}
-curl -LO ${releaseDownloadUrl(vsixName)}
-curl -LO ${releaseDownloadUrl(zedExtensionZipName)}
-curl -LO ${releaseDownloadUrl(zedUserThemeName)}
+gh release download --repo KitsuneKode/nvchad-themes --pattern 'nvchad-themes-*.vsix'
+gh release download --repo KitsuneKode/nvchad-themes --pattern 'nvchad-themes-zed-extension-*.zip'
+gh release download --repo KitsuneKode/nvchad-themes --pattern 'nvchad-themes-zed-user-*.json'
 sha256sum -c checksums.sha256
 \`\`\`
 

@@ -61,12 +61,12 @@ sha256sum -c checksums.sha256
 
 ### Alternative: user theme JSON only
 
-Download the current user JSON from [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest) and copy it to:
+This is not a dev extension install. Download the single user-theme JSON from [GitHub Releases](https://github.com/KitsuneKode/nvchad-themes/releases/latest) and copy that file to:
 
 - Linux: `~/.config/zed/themes/`
 - macOS: `~/Library/Application Support/Zed/themes/`
 
-No `extension.toml` needed; Zed watches that directory for JSON theme families.
+No `extension.toml`, ZIP, or `themes/` folder is needed; Zed watches that directory for JSON theme families.
 
 ```bash
 bun run install:zed --all   # from a clone
