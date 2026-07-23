@@ -118,10 +118,9 @@ describe("zed extension bundle", () => {
     expect(new Set(bundle.themes.map((theme) => theme.name)).size).toBe(94);
   });
 
-  test("zed extension output includes bundle and per-theme files", () => {
+  test("zed extension output includes bundle only", () => {
     const files = readdirSync(resolve("zed-extension", "themes"));
-    expect(files).toContain("nvchad-themes.json");
-    expect(files.filter((f) => f.endsWith("-theme.json")).length).toBe(94);
+    expect(files).toEqual(["nvchad-themes.json"]);
     const bundle = JSON.parse(readFileSync(resolve("zed-extension", "themes", "nvchad-themes.json"), "utf8"));
     expect(bundle.themes.length).toBe(94);
   });

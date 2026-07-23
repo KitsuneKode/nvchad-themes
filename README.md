@@ -20,7 +20,7 @@ Detailed automated and manual instructions: [INSTALL.md](./INSTALL.md).
 
 ## Previews
 
-These are real 1280×800 editor screenshots for the six hero themes. The [screenshot guide](./assets/screenshots/README.md) explains how to refresh them after theme changes.
+These are real 1896×1018 editor screenshots for the six hero themes. The [screenshot guide](./assets/screenshots/README.md) explains how to refresh them after theme changes.
 
 ### Cursor / VS Code
 
@@ -45,6 +45,10 @@ These are real 1280×800 editor screenshots for the six hero themes. The [screen
 | NvChad Nord | NvChad Catppuccin |
 | :---: | :---: |
 | ![NvChad Nord](./assets/screenshots/zed/nord.png) | ![NvChad Catppuccin](./assets/screenshots/zed/catppuccin.png) |
+
+| NvChad Rxyhn | NvChad One Dark |
+| :---: | :---: |
+| ![NvChad Rxyhn](./assets/screenshots/zed/rxyhn.png) | ![NvChad One Dark](./assets/screenshots/zed/onedark.png) |
 
 **Generated syntax gallery:** [all 94 previews](./assets/gallery/vscode/) · **NvChad reference gallery:** [nvchad.com/themes](https://nvchad.com/themes/)
 

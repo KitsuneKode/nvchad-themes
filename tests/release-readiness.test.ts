@@ -14,13 +14,13 @@ const readPngDimensions = (filePath: string): { width: number; height: number } 
 };
 
 describe("release readiness", () => {
-  test("all README hero screenshots exist for both editors at 1280x800", () => {
+  test("all README hero screenshots exist for both editors at 1896x1018", () => {
     for (const themeId of README_HERO_THEME_IDS) {
       for (const kind of ["cursor", "zed"] as const) {
         const screenshot = findEditorScreenshot(kind, themeId);
         expect(screenshot, `${kind}/${themeId} screenshot`).toBeDefined();
         const dimensions = readPngDimensions(screenshot!);
-        expect(dimensions, `${kind}/${themeId} dimensions`).toEqual({ width: 1280, height: 800 });
+        expect(dimensions, `${kind}/${themeId} dimensions`).toEqual({ width: 1896, height: 1018 });
       }
     }
   });

@@ -45,9 +45,9 @@ for (const id of heroIds) {
       continue;
     }
 
-    if (dimensions.width !== 1280 || dimensions.height !== 800) {
+    if (dimensions.width !== 1896 || dimensions.height !== 1018) {
       failures.push(
-        `Screenshot must be 1280x800 for ${kind}/${id}, got ${dimensions.width}x${dimensions.height}: ${screenshotPath}`
+        `Screenshot must be 1896x1018 for ${kind}/${id}, got ${dimensions.width}x${dimensions.height}: ${screenshotPath}`
       );
     }
   }
@@ -61,4 +61,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`Preview check passed for ${heroIds.length} hero themes (Cursor/VS Code + Zed, 1280x800 PNGs).`);
+console.log(`Preview check passed for ${heroIds.length} hero themes (Cursor/VS Code + Zed, 1896x1018 PNGs).`);

@@ -27,7 +27,6 @@ const expectedOutputs = new Map<string, string>();
 for (const theme of themeCatalog) {
   expectedOutputs.set(resolve("themes", `${theme.id}-color-theme.json`), "vscode");
   expectedOutputs.set(resolve("zed", `${theme.id}-theme.json`), "zed");
-  expectedOutputs.set(resolve("zed-extension", "themes", `${theme.id}-theme.json`), "zed-extension-per-theme");
   expectedOutputs.set(resolve("opencode", `${theme.id}.json`), "opencode");
   expectedOutputs.set(resolve("gemini", `${theme.id}.json`), "gemini");
   expectedOutputs.set(resolve("codex", `${theme.id}.tmTheme`), "codex");
@@ -49,7 +48,6 @@ for (const model of models) {
   for (const path of [
     vscodeThemePath,
     zedThemePath,
-    resolve("zed-extension", "themes", `${theme.id}-theme.json`),
     openCodeThemePath,
     geminiThemePath,
     codexThemePath
@@ -61,7 +59,6 @@ for (const model of models) {
   const zedTheme = buildZedThemeFromModel(model);
   const zedThemeJson = `${JSON.stringify(zedTheme, null, 2)}\n`;
   await Bun.write(zedThemePath, zedThemeJson);
-  await Bun.write(resolve("zed-extension", "themes", `${theme.id}-theme.json`), zedThemeJson);
   await Bun.write(openCodeThemePath, `${JSON.stringify(buildOpenCodeThemeFromModel(model), null, 2)}\n`);
   await Bun.write(geminiThemePath, `${JSON.stringify(buildGeminiTheme(theme), null, 2)}\n`);
   await Bun.write(codexThemePath, `${buildCodexTheme(theme)}\n`);

@@ -308,8 +308,8 @@ export const validateZedExtensionDir = (extensionDir: string): ZedValidationResu
     errors.push(`Missing extension.toml at ${extensionToml}`);
   } else {
     const manifest = readFileSync(extensionToml, "utf8");
-    if (!manifest.includes('id = "nvchad-themes"')) {
-      errors.push('extension.toml must set id = "nvchad-themes"');
+    if (!manifest.includes('id = "nvchad-theme"')) {
+      errors.push('extension.toml must set id = "nvchad-theme"');
     }
     if (!manifest.includes("schema_version = 1")) {
       warnings.push("extension.toml should set schema_version = 1");

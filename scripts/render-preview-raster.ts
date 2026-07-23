@@ -22,7 +22,7 @@ const rasterizeSvg = async (svgPath: string, webpPath: string, pngPath: string):
 
 const run = async (): Promise<void> => {
   for (const id of heroIds) {
-    const svgPath = resolve("zed-extension", "screenshots", `${id}.svg`);
+    const svgPath = resolve("assets", "previews", `${id}.svg`);
     if (!existsSync(svgPath)) {
       console.warn(`Skip missing ${svgPath} — run generate-previews first`);
       continue;

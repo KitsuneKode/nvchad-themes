@@ -4,15 +4,19 @@ All 94 [NvChad base46](https://github.com/NvChad/base46) themes in one Zed theme
 
 ## Screenshots
 
-Drop current 1280×800 PNG editor captures into [`assets/screenshots/zed/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/assets/screenshots/zed/) (see the [capture matrix](https://github.com/KitsuneKode/nvchad-themes/blob/main/assets/screenshots/README.md)). `bun run previews` copies them here as `{id}.png` for the release zip.
+Real editor screenshots are kept in [`assets/screenshots/zed/`](https://github.com/KitsuneKode/nvchad-themes/tree/main/assets/screenshots/zed/) and synced here via `bun run previews` (see the [capture matrix](https://github.com/KitsuneKode/nvchad-themes/blob/main/assets/screenshots/README.md)).
 
 | Tokyonight | Kanagawa |
 | :---: | :---: |
-| ![NvChad Tokyonight](./screenshots/tokyonight.png) | ![NvChad Kanagawa](./screenshots/kanagawa.png) |
+| ![NvChad Tokyonight](../assets/screenshots/zed/tokyonight.png) | ![NvChad Kanagawa](../assets/screenshots/zed/kanagawa.png) |
 
 | Nord | Catppuccin |
 | :---: | :---: |
-| ![NvChad Nord](./screenshots/nord.png) | ![NvChad Catppuccin](./screenshots/catppuccin.png) |
+| ![NvChad Nord](../assets/screenshots/zed/nord.png) | ![NvChad Catppuccin](../assets/screenshots/zed/catppuccin.png) |
+
+| Rxyhn | One Dark |
+| :---: | :---: |
+| ![NvChad Rxyhn](../assets/screenshots/zed/rxyhn.png) | ![NvChad One Dark](../assets/screenshots/zed/onedark.png) |
 
 Hero ids: `tokyonight`, `kanagawa`, `nord`, `catppuccin`, `rxyhn`, `onedark`, `gruvbox`, `everforest`
 
@@ -41,10 +45,9 @@ Full steps (automated + manual): [INSTALL.md](https://github.com/KitsuneKode/nvc
      extension.toml
      LICENSE
      README.md
-     themes/
-       nvchad-themes.json    # all 94 variants
-       tokyonight-theme.json # per-theme imports
-     screenshots/
+      themes/
+        nvchad-themes.json    # all 94 variants
+      screenshots/
    ```
 
 2. In Zed: **`zed: install dev extension`**
@@ -56,7 +59,7 @@ Verify checksum:
 
 ```bash
 curl -LO https://github.com/KitsuneKode/nvchad-themes/releases/latest/download/checksums.sha256
-sha256sum -c checksums.sha256
+sha256sum --ignore-missing -c checksums.sha256
 ```
 
 ### Alternative: user theme JSON only
@@ -100,13 +103,12 @@ After updating themes: `bun run install:zed-dev` then **`zed: reload`**.
 
 ```
 zed-extension/
-  extension.toml          # id = "nvchad-themes"
+  extension.toml          # id = "nvchad-theme"
   LICENSE
   README.md
   screenshots/            # hero PNG previews (bundled in release zip)
   themes/
     nvchad-themes.json    # one family, 94 variants
-    {id}-theme.json       # Theme Builder import
 ```
 
 Zed auto-discovers every `.json` in `themes/`. Theme-only extensions need no Rust code.

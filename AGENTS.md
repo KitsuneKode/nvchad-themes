@@ -6,7 +6,7 @@
 
 - GitHub: `https://github.com/KitsuneKode/nvchad-themes`
 - VS Code extension ID: `kitsunekode.nvchad-themes`
-- Zed extension ID: `nvchad-themes`
+- Zed extension ID: `nvchad-theme`
 
 ## Generated outputs
 

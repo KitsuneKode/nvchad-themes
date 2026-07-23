@@ -11,7 +11,7 @@ Drop real editor screenshots here to provide the README and Zed extension galler
 
 ## Filename
 
-Use the theme id + extension. Capture PNG files at **1280×800** so the README gallery stays consistent:
+Use the theme id + extension. Capture PNG files at **1896×1018** (or a clean 16:10 size) so the README gallery stays consistent:
 
 ```
 tokyonight.png
@@ -39,7 +39,7 @@ PNG is the release-readiness format. Other raster formats may be useful while ed
 
 ## Other 94 themes
 
-No screenshots needed — see the [full theme list](../../README.md#full-theme-list), [NvChad gallery](https://nvchad.com/themes/), and [syntax gallery](../gallery/vscode/).
+No screenshots needed — see the [full theme list](../../README.md#theme-list), [NvChad gallery](https://nvchad.com/themes/), and [syntax gallery](../gallery/vscode/).
 
 ## After adding files
 
@@ -49,7 +49,7 @@ bun run previews        # sync Zed → zed-extension/screenshots/ + verify
 bun run previews:sync
 ```
 
-`bun run previews:check` requires all six Cursor/VS Code and Zed hero screenshots to exist as valid 1280×800 PNGs. Generated syntax renders in `assets/previews/` remain useful for the full 94-theme gallery, but they are not substitutes for the README editor screenshots.
+`bun run previews:check` requires all six Cursor/VS Code and Zed hero screenshots to exist as valid PNGs. Generated syntax renders in `assets/previews/` remain useful for the full 94-theme gallery, but they are not substitutes for the README editor screenshots.
 
 ## Capture checklist before release
 

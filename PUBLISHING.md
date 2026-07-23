@@ -6,7 +6,7 @@ This repo ships two store-ready extensions from one source tree. **End-user down
 |-------|----------|--------------|
 | VS Code Marketplace | `dist/nvchad-themes-<version>.vsix` (from `bun run package`) | `kitsunekode.nvchad-themes` |
 | Open VSX (Cursor, VSCodium, etc.) | same VSIX | `kitsunekode.nvchad-themes` |
-| Zed Extension Registry | `zed-extension/` or release zip | `nvchad-themes` |
+| Zed Extension Registry | `zed-extension/` or release zip | `nvchad-theme` |
 | GitHub Releases (canonical) | VSIX, Zed zip, user JSON, checksums, INSTALL.md | — |
 
 Palettes are synced from [NvChad/base46](https://github.com/NvChad/base46) v3.0. Bump `version` in `package.json` and `zed-extension/extension.toml` together before any release.
@@ -85,10 +85,10 @@ git submodule add https://github.com/KitsuneKode/nvchad-themes.git extensions/nv
 Add this entry to the alphabetically sorted `extensions.toml` at the registry repo root:
 
 ```toml
-[nvchad-themes]
+[nvchad-theme]
 submodule = "extensions/nvchad-themes"
 path = "zed-extension"
-version = "1.0.1"
+version = "1.0.2"
 ```
 
 The `path` field points at `zed-extension/` inside the submodule. The extension ID and `extension.toml` version must match the registry entry. The submodule URL must use HTTPS, the repository must be public, and the checked-out submodule commit must exist on a branch rather than only as a detached commit.
@@ -112,7 +112,7 @@ Some publishers split the Zed extension into its own public repository containin
 
 ### PR requirements
 
-- Extension ID `nvchad-themes` must be unique
+- Extension ID `nvchad-theme` must be unique
 - MIT `LICENSE` at the extension root
 - `extension.toml` `version` matches `extensions.toml`
 - The extension repository is public and the registry submodule uses HTTPS

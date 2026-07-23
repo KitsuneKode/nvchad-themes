@@ -169,7 +169,7 @@ Release checksums: [\`checksums.sha256\`](${releaseDownloadUrl("checksums.sha256
 | Catppuccin | \`catppuccin\` | \`catppuccin\` | NvChad Catppuccin |
 | Rxyhn | \`rxyhn\` | \`rxyhn\` | NvChad Rxyhn |
 
-Replace \`nord\` in the CLI examples below with any theme ID from the [full list](${REPO_URL}#full-theme-list).
+Replace \`nord\` in the CLI examples below with any theme ID from the [full list](${REPO_URL}#theme-list).
 
 ---
 
@@ -216,8 +216,9 @@ This installs the complete Zed extension bundle. Select the folder containing \`
 \`\`\`bash
 gh release download --repo KitsuneKode/nvchad-themes --pattern '${zedExtensionZipPattern}'
 curl -LO ${releaseDownloadUrl("checksums.sha256")}
-unzip ${zedExtensionZipName}
-sha256sum -c checksums.sha256
+mkdir -p nvchad-themes-zed-extension-${version}
+unzip ${zedExtensionZipName} -d nvchad-themes-zed-extension-${version}
+sha256sum --ignore-missing -c checksums.sha256
 \`\`\`
 
 Then in Zed: **zed: install dev extension** → select the extracted folder containing \`extension.toml\` → **zed: reload** → theme picker → **NvChad**.

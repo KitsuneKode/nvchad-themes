@@ -82,7 +82,6 @@ const run = async () => {
 
   for (const id of HERO_IDS) {
     await renderTheme(id, resolve("assets", "previews", `${id}.html`));
-    await renderTheme(id, resolve("zed-extension", "screenshots", `${id}.html`));
   }
 
   const galleryCount = heroesOnly ? 0 : themeCatalog.length;
