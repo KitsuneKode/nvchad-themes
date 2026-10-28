@@ -4,7 +4,8 @@ import { mixColors, relativeLuminance } from "../utils.ts";
 /**
  * T3 Code reads published themes from `<T3CODE_HOME>/userdata/themes/<id>.json`
  * (hot-reloaded) and caps the folder at 32 files / 32 KiB each / 192 KiB total,
- * so this target ships a curated set rather than the whole catalog. Dark/light
+ * so this target ships a short curated set — the themes that hold up as a whole
+ * app, not just as editor syntax — rather than the whole catalog. Dark/light
  * siblings are merged into one theme with a `variants` entry so "Follow system"
  * flips between them.
  */
@@ -21,37 +22,26 @@ export type T3CodeCuration = {
 
 export const T3CODE_CURATION: readonly T3CodeCuration[] = [
   // Paired: one card, follows the system appearance
-  { id: "catppuccin", name: "Catppuccin", variant: "catppuccin-latte", accent: "purple" },
   { id: "rosepine", name: "Rosé Pine", variant: "rosepine-dawn", accent: "purple" },
-  { id: "gruvbox", name: "Gruvbox", variant: "gruvbox_light", accent: "yellow" },
+  { id: "catppuccin", name: "Catppuccin", variant: "catppuccin-latte", accent: "purple" },
   { id: "everforest", name: "Everforest", variant: "everforest_light", accent: "green" },
+  { id: "gruvbox", name: "Gruvbox", variant: "gruvbox_light", accent: "yellow" },
+  { id: "flexoki", name: "Flexoki", variant: "flexoki-light", accent: "orange" },
   { id: "github_dark", name: "GitHub", variant: "github_light" },
   { id: "onedark", name: "One", variant: "one_light" },
-  { id: "ayu_dark", name: "Ayu", variant: "ayu_light", accent: "orange" },
   { id: "nord", name: "Nord", variant: "onenord_light" },
-  { id: "solarized_dark", name: "Solarized", variant: "solarized_light" },
-  { id: "flexoki", name: "Flexoki", variant: "flexoki-light", accent: "orange" },
-  { id: "material-darker", name: "Material", variant: "material-lighter", accent: "teal" },
-  { id: "seoul256_dark", name: "Seoul256", variant: "seoul256_light" },
+  { id: "ayu_dark", name: "Ayu", variant: "ayu_light", accent: "orange" },
   // Dark only
-  { id: "tokyonight", name: "Tokyo Night" },
   { id: "kanagawa", name: "Kanagawa" },
   { id: "kanagawa-dragon", name: "Kanagawa Dragon", accent: "orange" },
-  { id: "rxyhn", name: "Rxyhn" },
+  { id: "tokyonight", name: "Tokyo Night" },
   { id: "vesper", name: "Vesper", accent: "orange" },
+  { id: "rxyhn", name: "Rxyhn" },
   { id: "poimandres", name: "Poimandres", accent: "teal" },
   { id: "oxocarbon", name: "Oxocarbon", accent: "pink" },
-  { id: "carbonfox", name: "Carbonfox" },
   { id: "nightfox", name: "Nightfox" },
-  { id: "chadracula", name: "Dracula", accent: "purple" },
-  { id: "palenight", name: "Palenight", accent: "purple" },
-  { id: "eldritch", name: "Eldritch", accent: "green" },
-  { id: "embark", name: "Embark", accent: "purple" },
-  { id: "yoru", name: "Yoru" },
-  { id: "mountain", name: "Mountain" },
   { id: "melange", name: "Melange", accent: "orange" },
-  { id: "nightowl", name: "Night Owl" },
-  { id: "everblush", name: "Everblush" }
+  { id: "chadracula", name: "Dracula", accent: "purple" }
 ];
 
 /** Prefix keeps published ids clear of built-ins (`ocean`, `ember`…) and older imports. */
