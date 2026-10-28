@@ -57,6 +57,7 @@
     "install:codex": "bun run scripts/install-codex-theme.ts",
     "install:gemini": "bun run scripts/install-gemini-theme.ts",
     "install:opencode": "bun run scripts/install-opencode-theme.ts",
+    "install:t3code": "bun run scripts/install-t3code-theme.ts",
     "test": "bun test",
     "goldens": "bun run scripts/generate-golden-extracts.ts",
     "goldens:check": "bun run scripts/generate-golden-extracts.ts --check",

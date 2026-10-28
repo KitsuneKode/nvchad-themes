@@ -12,5 +12,10 @@ export {
   buildOpenCodeTheme,
   buildOpenCodeThemeFromModel,
   buildGeminiTheme,
-  buildCodexTheme
+  buildCodexTheme,
+  buildT3CodeTheme,
+  buildT3CodeColors,
+  t3codeThemeId,
+  T3CODE_CURATION
 } from "./builders/index.ts";
+export type { T3CodeCuration, T3CodeThemeFile } from "./builders/index.ts";
