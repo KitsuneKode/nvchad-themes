@@ -16,32 +16,42 @@ export type T3CodeCuration = {
   name: string;
   /** Palette id of the opposite-appearance sibling */
   variant?: string;
-  /** base30 key for the signature accent when `blue` isn't the theme's voice */
+  /**
+   * base30 key for the accent. Defaults to `pmenuBg` — NvChad's own selection
+   * color, the hue each theme is recognised by in the NvChad gallery. Override
+   * only where the upstream theme's identity is a different hue.
+   */
   accent?: keyof ThemeSpec["base30"];
 };
 
 export const T3CODE_CURATION: readonly T3CodeCuration[] = [
   // Paired: one card, follows the system appearance
-  { id: "rosepine", name: "Rosé Pine", variant: "rosepine-dawn", accent: "purple" },
+  { id: "rosepine", name: "Rosé Pine", variant: "rosepine-dawn" },
   { id: "catppuccin", name: "Catppuccin", variant: "catppuccin-latte", accent: "purple" },
-  { id: "everforest", name: "Everforest", variant: "everforest_light", accent: "green" },
-  { id: "gruvbox", name: "Gruvbox", variant: "gruvbox_light", accent: "yellow" },
-  { id: "flexoki", name: "Flexoki", variant: "flexoki-light", accent: "orange" },
+  { id: "everforest", name: "Everforest", variant: "everforest_light" },
+  { id: "gruvbox", name: "Gruvbox", variant: "gruvbox_light" },
+  { id: "flexoki", name: "Flexoki", variant: "flexoki-light" },
   { id: "github_dark", name: "GitHub", variant: "github_light" },
   { id: "onedark", name: "One", variant: "one_light" },
-  { id: "nord", name: "Nord", variant: "onenord_light" },
-  { id: "ayu_dark", name: "Ayu", variant: "ayu_light", accent: "orange" },
+  { id: "nord", name: "Nord", variant: "onenord_light", accent: "blue" },
+  { id: "ayu_dark", name: "Ayu", variant: "ayu_light" },
+  { id: "oceanic-next", name: "Oceanic", variant: "oceanic-light" },
   // Dark only
-  { id: "kanagawa", name: "Kanagawa" },
-  { id: "kanagawa-dragon", name: "Kanagawa Dragon", accent: "orange" },
+  { id: "tokyodark", name: "Tokyo Dark" },
   { id: "tokyonight", name: "Tokyo Night" },
-  { id: "vesper", name: "Vesper", accent: "orange" },
-  { id: "rxyhn", name: "Rxyhn" },
-  { id: "poimandres", name: "Poimandres", accent: "teal" },
-  { id: "oxocarbon", name: "Oxocarbon", accent: "pink" },
+  { id: "kanagawa", name: "Kanagawa" },
+  { id: "kanagawa-dragon", name: "Kanagawa Dragon" },
+  { id: "vesper", name: "Vesper" },
+  { id: "rxyhn", name: "Rxyhn", accent: "blue" },
+  { id: "tundra", name: "Tundra" },
+  { id: "bearded-arc", name: "Bearded Arc" },
+  { id: "solarized_osaka", name: "Solarized Osaka" },
+  { id: "falcon", name: "Falcon" },
+  { id: "poimandres", name: "Poimandres" },
+  { id: "oxocarbon", name: "Oxocarbon" },
   { id: "nightfox", name: "Nightfox" },
   { id: "melange", name: "Melange", accent: "orange" },
-  { id: "chadracula", name: "Dracula", accent: "purple" }
+  { id: "chadracula", name: "Dracula" }
 ];
 
 /** Prefix keeps published ids clear of built-ins (`ocean`, `ember`…) and older imports. */
@@ -80,6 +90,46 @@ const onFill = (fill: string, light: string, dark: string): string =>
 const hairline = (color: string, background: string, toward: string): string =>
   readable(color, background, 1.25, toward);
 
+const rgbDistance = (a: string, b: string): number => {
+  const channels = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  const [x, y] = [channels(a), channels(b)];
+  return Math.hypot(...x.map((c, i) => c - y[i]!));
+};
+
+/**
+ * Some palettes (tokyodark, tundra) select with their red, so the send button
+ * would read as an error. Fall back to the next signature hue in that case.
+ */
+const pickAccent = (b: ThemeSpec["base30"], accentKey?: keyof ThemeSpec["base30"]): string => {
+  const candidates = [b[accentKey ?? "pmenuBg"], b.purple, b.blue];
+  return candidates.find((color) => rgbDistance(color, b.red) > 60) ?? b.blue;
+};
+
+const HUE_KEYS = [
+  "blue", "nordBlue", "purple", "darkPurple", "teal", "cyan",
+  "green", "vibrantGreen", "orange", "yellow", "pink", "babyPink"
+] as const satisfies ReadonlyArray<keyof ThemeSpec["base30"]>;
+
+const hueOf = (hex: string): { hue: number; chroma: number } => {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255) as [number, number, number];
+  const max = Math.max(r, g, b);
+  const chroma = max - Math.min(r, g, b);
+  if (chroma === 0) return { hue: 0, chroma };
+  const hue = max === r ? ((g - b) / chroma) % 6 : max === g ? (b - r) / chroma + 2 : (r - g) / chroma + 4;
+  return { hue: (hue * 60 + 360) % 360, chroma };
+};
+
+/** The light half keeps the dark half's hue, using the light palette's own tuned shade of it. */
+const matchingHueKey = (theme: ThemeSpec, target: string): keyof ThemeSpec["base30"] => {
+  const want = hueOf(target).hue;
+  const gap = (key: (typeof HUE_KEYS)[number]) => {
+    const { hue, chroma } = hueOf(theme.base30[key]);
+    const delta = Math.abs(hue - want);
+    return chroma < 0.15 ? Infinity : Math.min(delta, 360 - delta);
+  };
+  return HUE_KEYS.reduce((best, key) => (gap(key) < gap(best) ? key : best));
+};
+
 export const buildT3CodeColors = (theme: ThemeSpec, accentKey?: keyof ThemeSpec["base30"]): T3CodeColors => {
   const b = theme.base30;
   const isLight = theme.type === "light";
@@ -87,7 +137,7 @@ export const buildT3CodeColors = (theme: ThemeSpec, accentKey?: keyof ThemeSpec[
 
   const canvas = b.black;
   const text = readable(theme.base16.base05, canvas, 7, ink);
-  const accent = readable(b[accentKey ?? "blue"], canvas, 3, ink);
+  const accent = readable(pickAccent(b, accentKey), canvas, 3, ink);
   const accentInk = onFill(accent, isLight ? b.black : text, isLight ? text : b.darkerBlack);
 
   // Depth ladder. Structure (sidebar) is the heavier material; things you act on
@@ -198,7 +248,8 @@ export const buildT3CodeTheme = (
     if (sibling.type === base.type) {
       throw new Error(`${entry.variant} must be the opposite appearance of ${entry.id}`);
     }
-    file.variants = { [sibling.type]: buildT3CodeColors(sibling, entry.accent) };
+    const siblingAccent = matchingHueKey(sibling, pickAccent(base.base30, entry.accent));
+    file.variants = { [sibling.type]: buildT3CodeColors(sibling, siblingAccent) };
   }
   return file;
 };
