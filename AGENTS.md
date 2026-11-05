@@ -19,6 +19,7 @@
 - `assets/previews/nvchad-official/*.webp` — official NvChad UI shots (`bun run previews:nvchad`)
 - `assets/previews/*.png` — syntax render fallbacks (`bun run previews`)
 - `assets/screenshots/cursor/`, `assets/screenshots/zed/` — **manual** editor screenshots (drop zone); `bun run previews:sync` → `zed-extension/screenshots/`
+- `assets/screenshots/t3/` — T3 Code chrome mocks from `t3code/nv-*.json` (`bun run t3:visuals`); see [`assets/t3-theme-comparison.html`](./assets/t3-theme-comparison.html)
 
 ## Workflow
 
@@ -44,6 +45,7 @@
 - `bun run references:sync` — maintainer: download `.reference/zed/` + refresh `src/references/official/`
 - `bun run references:audit` — compare hero themes vs upstream Zed ports
 - `bun run install:t3code [id...]` — copy curated themes into `$T3CODE_HOME/userdata/themes` (default `~/.t3`); a full install prunes stale `nv-*` files
+- `t3code.install.json` — per-theme toggles; `bun run install:t3code:pick` installs enabled only; `--list`, `--init`, `--preset famous`
 - `bun run publish:vscode` — Marketplace (requires `vsce login`)
 - `bun run install:zed-dev` · `bun run install:zed [--all] [id]`
 
