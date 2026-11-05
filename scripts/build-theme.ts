@@ -7,6 +7,10 @@ import {
   buildThemeFromModel,
   buildZedExtensionBundleFromModels,
   buildZedThemeFromModel,
+  buildT3CodeTheme,
+  getThemeById,
+  t3codeThemeId,
+  T3CODE_CURATION,
   themeCatalog
 } from "../src/index.ts";
 import { deriveThemeModel } from "../src/derive/index.ts";
@@ -19,6 +23,7 @@ const outputDirs = [
   resolve("opencode"),
   resolve("gemini"),
   resolve("codex"),
+  resolve("t3code"),
   resolve("zed-extension", "themes")
 ];
 
@@ -79,6 +84,20 @@ for (const path of zedBundlePaths) {
 }
 
 console.log(`Generated Zed extension bundle with ${zedBundle.themes.length} themes`);
+
+const requireTheme = (id: string) => {
+  const theme = getThemeById(id);
+  if (!theme) throw new Error(`T3 Code curation references unknown palette: ${id}`);
+  return theme;
+};
+
+for (const entry of T3CODE_CURATION) {
+  const path = resolve("t3code", `${t3codeThemeId(entry.id)}.json`);
+  expectedOutputs.set(path, "t3code");
+  await Bun.write(path, `${JSON.stringify(buildT3CodeTheme(entry, requireTheme), null, 2)}\n`);
+}
+
+console.log(`Generated ${T3CODE_CURATION.length} T3 Code themes`);
 
 const PRESERVE_PATHS = new Set([
   resolve("zed", "golden")

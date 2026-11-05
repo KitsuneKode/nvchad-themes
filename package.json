@@ -57,6 +57,8 @@
     "install:codex": "bun run scripts/install-codex-theme.ts",
     "install:gemini": "bun run scripts/install-gemini-theme.ts",
     "install:opencode": "bun run scripts/install-opencode-theme.ts",
+    "install:t3code": "bun run scripts/install-t3code-theme.ts",
+    "t3:visuals": "bun run scripts/generate-t3-visuals.ts",
     "test": "bun test",
     "goldens": "bun run scripts/generate-golden-extracts.ts",
     "goldens:check": "bun run scripts/generate-golden-extracts.ts --check",
@@ -71,7 +73,9 @@
     "verify": "bun run scripts/verify-extensions.ts",
     "publish:vscode": "bun run package && bunx @vscode/vsce publish",
     "publish:vscode:ovsx": "bun run package && bunx ovsx publish dist/*.vsix",
-    "vscode:prepublish": "bun run build"
+    "vscode:prepublish": "bun run build",
+    "install:t3code:pick": "bun run scripts/install-t3code-theme.ts --config t3code.install.json",
+    "install:t3code:list": "bun run scripts/install-t3code-theme.ts --list"
   },
   "contributes": {
     "themes": [

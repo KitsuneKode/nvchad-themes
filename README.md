@@ -18,6 +18,14 @@ The 94 NvChad base46 themes for VS Code, Cursor, and Zed, with matching theme fi
 
 Detailed automated and manual instructions: [INSTALL.md](./INSTALL.md).
 
+### T3 Code
+
+Thirty-two curated NvChad themes for [T3 Code](https://t3.chat) (`t3code/nv-*.json`). Install: `bun run install:t3code` (see [AGENTS.md](./AGENTS.md)). Chrome comparison (sidebar, chat, banners) vs native T3 dark:
+
+![T3 Code chrome — NvChad themes](./assets/screenshots/t3/overview.png)
+
+Regenerate: `bun run build && bun run t3:visuals`. Rankings: [`assets/t3-theme-ranked.json`](./assets/t3-theme-ranked.json).
+
 ## Previews
 
 These are real 1896×1018 editor screenshots for the six hero themes. The [screenshot guide](./assets/screenshots/README.md) explains how to refresh them after theme changes.
