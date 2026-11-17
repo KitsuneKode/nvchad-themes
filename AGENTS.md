@@ -20,6 +20,7 @@
 - `assets/previews/*.png` — syntax render fallbacks (`bun run previews`)
 - `assets/screenshots/cursor/`, `assets/screenshots/zed/` — **manual** editor screenshots (drop zone); `bun run previews:sync` → `zed-extension/screenshots/`
 - `assets/screenshots/t3/` — T3 Code chrome mocks from `t3code/nv-*.json` (`bun run t3:visuals`); see [`assets/t3-theme-comparison.html`](./assets/t3-theme-comparison.html)
+- `assets/screenshots/t3/live/` — **manual** real T3 Code captures (1280×800, private sidebar rows blurred); `t3:visuals` never writes here but links them into the comparison HTML
 
 ## Workflow
 

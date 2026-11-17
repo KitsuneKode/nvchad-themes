@@ -20,11 +20,11 @@ Detailed automated and manual instructions: [INSTALL.md](./INSTALL.md).
 
 ### T3 Code
 
-Thirty-two curated NvChad themes for [T3 Code](https://t3.chat) (`t3code/nv-*.json`). Install: `bun run install:t3code` (see [AGENTS.md](./AGENTS.md)). Chrome comparison (sidebar, chat, banners) vs native T3 dark:
+Thirty-two curated NvChad themes for [T3 Code](https://t3.chat) (`t3code/nv-*.json`). Install: `bun run install:t3code` (see [AGENTS.md](./AGENTS.md)). Live captures of T3 Code in eight NvChad themes, plus T3's built-in dark theme (top left):
 
-![T3 Code chrome — NvChad themes](./assets/screenshots/t3/overview.png)
+![T3 Code — live NvChad theme captures](./assets/screenshots/t3/live/overview.png)
 
-Regenerate: `bun run build && bun run t3:visuals`. Rankings: [`assets/t3-theme-ranked.json`](./assets/t3-theme-ranked.json).
+Chrome mocks of every surface role (sidebar rows, message bubble, banners, input) are in [`assets/screenshots/t3/overview.png`](./assets/screenshots/t3/overview.png) and [`assets/t3-theme-comparison.html`](./assets/t3-theme-comparison.html). Regenerate the mocks: `bun run build && bun run t3:visuals`. Rankings: [`assets/t3-theme-ranked.json`](./assets/t3-theme-ranked.json).
 
 ## Previews
 
