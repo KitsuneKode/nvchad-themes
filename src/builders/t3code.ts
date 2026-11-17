@@ -240,6 +240,17 @@ const terminalSelectionColor = (
   if (hueGapHex(sel, accent) < 15) {
     sel = greySnap(toAchromaticNeutral(canvas, isLight, need));
   }
+  // The hue swap can land back on the canvas. Step toward a neutral gray until the wash reads.
+  if (Math.abs(lum(sel) - lum(canvas)) < need) {
+    const ceiling = isLight ? "#6e6e6e" : "#a3a3a3";
+    for (let t = 0.08; t <= 0.72; t += 0.04) {
+      const candidate = greySnap(mixColors(canvas, ceiling, t));
+      if (Math.abs(lum(candidate) - lum(canvas)) >= need) {
+        sel = candidate;
+        break;
+      }
+    }
+  }
   return sel;
 };
 
@@ -280,26 +291,206 @@ const toAchromaticNeutral = (canvas: string, isLight: boolean, minLift = 0.012):
   return c;
 };
 
-/** Keep muted labels from washing out on very dark canvases (still ≥4.5:1). */
-const capDarkMuted = (muted: string, canvas: string, text: string): string => {
-  const ceiling = lum(canvas) + 0.14;
-  let target = greySnap(mixColors(toAchromaticNeutral(canvas, false, 0.01), muted, 0.18));
-  while (lum(target) > ceiling) {
-    const next = greySnap(mixColors(target, canvas, 0.12));
-    if (contrastRatio(next, canvas) < 3) break;
-    target = next;
+const srgbToLinear = (channel: number): number =>
+  channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+
+const linearToSrgb = (channel: number): number =>
+  channel <= 0.0031308 ? 12.92 * channel : 1.055 * channel ** (1 / 2.4) - 0.055;
+
+/** OKLCH lightness, chroma, and hue. Lightness matches the T3 Code ink targets. */
+const oklchOf = (hex: string): { l: number; c: number; h: number } => {
+  const [r, g, b] = [1, 3, 5].map((i) => srgbToLinear(parseInt(hex.slice(i, i + 2), 16) / 255));
+  const l = 0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b;
+  const m = 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b;
+  const s = 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b;
+  const l_ = Math.cbrt(l);
+  const m_ = Math.cbrt(m);
+  const s_ = Math.cbrt(s);
+  const L = 0.2104542553 * l_ + 0.793617785 * m_ - 0.0040720468 * s_;
+  const A = 1.9779984951 * l_ - 2.428592205 * m_ + 0.4505937099 * s_;
+  const B = 0.0259040371 * l_ + 0.7827717662 * m_ - 0.808675766 * s_;
+  return { l: L, c: Math.hypot(A, B), h: (Math.atan2(B, A) * 180) / Math.PI };
+};
+
+const inGamut = (l: number, c: number, h: number): [number, number, number] | null => {
+  const rad = (h * Math.PI) / 180;
+  const A = c * Math.cos(rad);
+  const B = c * Math.sin(rad);
+  const l_ = l + 0.3963377774 * A + 0.2158037573 * B;
+  const m_ = l - 0.1055613458 * A - 0.0638541728 * B;
+  const s_ = l - 0.0894841775 * A - 1.291485548 * B;
+  const ll = l_ ** 3;
+  const mm = m_ ** 3;
+  const ss = s_ ** 3;
+  const rgb: [number, number, number] = [
+    4.0767416621 * ll - 3.3077115913 * mm + 0.2309699292 * ss,
+    -1.2684380046 * ll + 2.6097574011 * mm - 0.3413193965 * ss,
+    -0.0041960863 * ll - 0.7034186147 * mm + 1.707614701 * ss
+  ];
+  return rgb.every((channel) => channel >= -0.0005 && channel <= 1.0005) ? rgb : null;
+};
+
+const hexFromOklch = (l: number, c: number, h: number): string => {
+  const lightness = Math.min(1, Math.max(0, l));
+  let lo = 0;
+  let hi = Math.max(0, c);
+  let rgb = inGamut(lightness, 0, h) ?? [lightness, lightness, lightness];
+  for (let step = 0; step < 24; step += 1) {
+    const mid = (lo + hi) / 2;
+    const hit = inGamut(lightness, mid, h);
+    if (hit) {
+      lo = mid;
+      rgb = hit;
+    } else hi = mid;
   }
-  if (contrastRatio(target, canvas) < 3) {
-    target = greySnap(readable(target, canvas, 3, text));
+  const hex = rgb
+    .map((channel) =>
+      Math.round(Math.min(1, Math.max(0, linearToSrgb(channel))) * 255)
+        .toString(16)
+        .padStart(2, "0")
+    )
+    .join("");
+  return `#${hex}`;
+};
+
+/**
+ * T3 paints sidebar timestamps at 55%, settled titles at 70%, and idle rows at 75%.
+ * The stored token has to be the pre-fade gray (neutral-400 / #8f8f8f / #737373),
+ * with only a trace of the surface hue. Capping lightness here makes the second fade unreadable.
+ */
+const whisper = (reference: string, hint: string): string => {
+  const tone = oklchOf(reference);
+  const surface = oklchOf(hint);
+  const chroma = surface.c >= 0.004 ? 0.006 : 0;
+  return hexFromOklch(tone.l, chroma, surface.h);
+};
+
+const over = (fg: string, bg: string, alpha: number): string => {
+  const channels = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  const [fr, fgG, fb] = channels(fg);
+  const [br, bgG, bb] = channels(bg);
+  const mix = (front: number, back: number) => Math.round(front * alpha + back * (1 - alpha));
+  return `#${[mix(fr, br), mix(fgG, bgG), mix(fb, bb)]
+    .map((channel) => channel.toString(16).padStart(2, "0"))
+    .join("")}`;
+};
+
+/** Raise lightness until the faded paint still clears `minContrast` on `background`. */
+const holdFade = (color: string, background: string, alpha: number, minContrast: number): string => {
+  let current = color;
+  for (let step = 0; step < 16; step += 1) {
+    if (contrastRatio(over(current, background, alpha), background) >= minContrast) return current;
+    const tone = oklchOf(current);
+    current = hexFromOklch(Math.min(0.9, tone.l + 0.02), tone.c, tone.h);
   }
-  if (lum(target) - lum(canvas) > 0.15) {
-    const tighter = greySnap(mixColors(target, canvas, 0.1));
-    if (contrastRatio(tighter, canvas) >= 3) target = tighter;
+  return current;
+};
+
+/** Near-white UI ink. Editor base05 is too dim for 14px titles; leave ink that is already there. */
+const liftDarkInk = (color: string): string => {
+  const tone = oklchOf(color);
+  if (tone.l >= 0.945) return color;
+  return hexFromOklch(0.96, Math.min(0.01, tone.c), tone.h);
+};
+
+/**
+ * Dark action color, pulled toward T3's button (lightness 0.55–0.62, chroma
+ * toward 0.19) so the label stays light. Hue stays. A step that leaves the
+ * palette, collides with red, or cannot hold light ink is refused.
+ */
+const settleDarkAccent = (
+  accent: string,
+  identity: string,
+  canvas: string,
+  red: string,
+  lightInk: string
+): string => {
+  const tone = oklchOf(accent);
+  const aimC = Math.min(0.2, Math.max(tone.c, Math.min(0.19, tone.c + 0.08)));
+  const targets: number[] = [];
+  const push = (l: number) => {
+    const next = Math.round(Math.min(tone.l, Math.max(0.5, l)) * 1000) / 1000;
+    if (targets.some((existing) => Math.abs(existing - next) < 0.007)) return;
+    targets.push(next);
+  };
+  if (tone.l > 0.62) {
+    for (const l of [0.58, 0.6, 0.56, 0.55]) push(l);
+    for (let l = 0.64; l <= tone.l + 0.001; l += 0.02) push(l);
+  } else if (tone.l > 0.55) {
+    push(tone.l);
+    for (let l = tone.l - 0.02; l >= 0.55; l -= 0.02) push(l);
+  } else {
+    push(tone.l);
   }
-  if (contrastRatio(target, canvas) < 3) {
-    target = greySnap(readable(target, canvas, 3, text));
+
+  const accepts = (candidate: string, minInk: number): boolean => {
+    if (contrastRatio(candidate, canvas) < 3) return false;
+    if (hueGapHex(candidate, red) < 12) return false;
+    if (!(hueGapHex(candidate, red) >= 15 || lum(candidate) - lum(red) > 0.05)) return false;
+    if (hueGapHex(candidate, identity) > 42) return false;
+    // Light ink has to clear the button. It does not have to beat near-black ink:
+    // a green at the same lightness is brighter to WCAG than a blue, and black would
+    // otherwise win while the label is still readable.
+    return contrastRatio(lightInk, candidate) >= minInk;
+  };
+
+  const chromaSteps = [aimC, Math.max(tone.c, aimC - 0.04), tone.c];
+  for (const l of targets) {
+    for (const c of chromaSteps) {
+      const candidate = hexFromOklch(l, c, tone.h);
+      if (accepts(candidate, 3)) return candidate;
+    }
   }
-  return target;
+
+  if (tone.c >= 0.16) return accent;
+  const nudged = hexFromOklch(tone.l, Math.min(0.16, tone.c + 0.08), tone.h);
+  if (
+    contrastRatio(nudged, canvas) >= 3 &&
+    hueGapHex(nudged, red) >= 12 &&
+    hueGapHex(nudged, identity) <= 45
+  ) {
+    return nudged;
+  }
+  return accent;
+};
+
+/** White wash on a dark surface. Starts at T3's 8% line and stops at the first mix that reads. */
+const darkHairline = (base: string, minContrast = 1.18): string => {
+  let chosen = mixColors(base, "#ffffff", 0.08);
+  for (let amount = 0.08; amount <= 0.2; amount += 0.005) {
+    chosen = mixColors(base, "#ffffff", Number(amount.toFixed(3)));
+    if (contrastRatio(chosen, base) >= minContrast) return chosen;
+  }
+  return chosen;
+};
+
+/**
+ * White wash that stays inside a contrast band on `base` and clears each neighbor.
+ * The composer field, the user bubble, and the header button all sit in one column.
+ * A wash that only clears the canvas lands on the bubble and reads as a second message.
+ */
+const washClear = (
+  base: string,
+  neighbors: ReadonlyArray<readonly [string, number]>,
+  minOnBase: number,
+  maxOnBase: number
+): string => {
+  let best = mixColors(base, "#ffffff", 0.12);
+  let bestRank = -1;
+  for (let amount = 0.08; amount <= 0.42; amount += 0.005) {
+    const candidate = mixColors(base, "#ffffff", Number(amount.toFixed(3)));
+    const onBase = contrastRatio(candidate, base);
+    if (onBase < minOnBase) continue;
+    if (onBase > maxOnBase) break;
+    const cleared = neighbors.filter(([color, min]) => contrastRatio(candidate, color) >= min).length;
+    const rank = cleared * 100 + onBase;
+    if (rank > bestRank) {
+      best = candidate;
+      bestRank = rank;
+    }
+    if (cleared === neighbors.length) return candidate;
+  }
+  return best;
 };
 
 /** Axis-neutral fill — grey-forward mix so hue stays off the accent on blue/cyan palettes. */
@@ -308,7 +499,8 @@ const neutralRaised = (canvas: string, isLight: boolean): string =>
 
 const isNeutralFill = (hex: string): boolean => hueOf(hex).chroma < 0.045;
 
-/** Neutral chat bubble — palette identity lives in accent/syntax, not a hazy accent wash. */
+/** Neutral chat bubble. A tinted fill can carry the palette; a grey floor uses T3's quiet 8% white step.
+ * The mid-grey snap sat on the menu selection and read as a second highlight. */
 const messageBubbleSurface = (
   accentSurface: string,
   accent: string,
@@ -318,7 +510,13 @@ const messageBubbleSurface = (
   if (!isNeutralFill(accentSurface) && hueGapHex(accentSurface, accent) >= 12) {
     return accentSurface;
   }
-  return neutralRaised(canvas, isLight);
+  if (isLight) {
+    // On a white canvas the raised neutral is white too and the bubble vanished.
+    // T3 light seats its bubble one quiet grey step below the page.
+    const raised = neutralRaised(canvas, true);
+    return contrastRatio(raised, canvas) >= 1.06 ? raised : mixColors(canvas, "#000000", 0.045);
+  }
+  return mixColors(canvas, "#ffffff", 0.08);
 };
 
 /**
@@ -364,7 +562,11 @@ export const buildT3CodeColors = (theme: ThemeSpec, accentKey?: keyof ThemeSpec[
 
   const canvas = b.black;
   const text = readable(theme.base16.base05, canvas, 7, ink);
-  let accent = readable(pickAccent(b, accentKey), canvas, isLight ? 3 : 4, ink);
+  const accentSource = pickAccent(b, accentKey);
+  let accent = readable(accentSource, canvas, isLight ? 3 : 4, ink);
+  if (!isLight) {
+    accent = settleDarkAccent(accent, accentSource, canvas, b.red, liftDarkInk(text));
+  }
   let accentInk = onFill(accent, isLight ? b.black : text, isLight ? text : b.darkerBlack);
 
   // Map NvChad base30 UI layers (statusline → oneBg → lightBg) onto T3 Code roles.
@@ -399,7 +601,8 @@ export const buildT3CodeColors = (theme: ThemeSpec, accentKey?: keyof ThemeSpec[
     ? deepenFrom(canvas, b.oneBg2, 0.006, b.oneBg3)
     : liftFrom(surface, b.oneBg2, 0.008, b.lightBg);
 
-  const accentSurface = isLight
+  // Dark selection is replaced once the cards are final. This first value only feeds the chat bubble.
+  let accentSurface = isLight
     ? deepenFrom(canvas, b.oneBg2, 0.012, b.oneBg3)
     : liftFrom(surface, b.lightBg, 0.005, b.oneBg);
 
@@ -411,18 +614,31 @@ export const buildT3CodeColors = (theme: ThemeSpec, accentKey?: keyof ThemeSpec[
   let borderFinal = contrastRatio(border, canvas) >= 1.15 ? border : hairlineBase;
 
   const textMutedRaw = readable(b.lightGrey, canvas, 4.5, text);
-  const textMuted = isLight ? textMutedRaw : capDarkMuted(textMutedRaw, canvas, text);
-  const quiet = isLight
-    ? readable(b.greyFg2, canvas, 3, text)
-    : capDarkMuted(readable(b.greyFg2, canvas, 3, text), canvas, text);
+  const quietRaw = readable(b.greyFg2, canvas, 3, text);
 
   // Tinted fills: a whisper of the status color over the canvas, ink kept legible.
-  const tint = (color: string, amount: number) => mixColors(canvas, color, amount);
-  const errorSurface = tint(b.red, isLight ? 0.1 : 0.14);
-  const warningSurface = tint(b.yellow, isLight ? 0.14 : 0.12);
-  const updateSurface = tint(accent, isLight ? 0.1 : 0.14);
-  const searchMatch = tint(b.yellow, isLight ? 0.4 : 0.32);
-  const sidebarRowHover = isLight
+  // Dark banners keep climbing until the wash clears the canvas. Solarized's red
+  // at 14% sat at 1.05:1 and the banner disappeared into the teal floor.
+  const statusTint = (color: string, start: number): string => {
+    let chosen = mixColors(canvas, color, start);
+    if (isLight) return chosen;
+    for (let amount = start; amount <= 0.4; amount += 0.02) {
+      chosen = mixColors(canvas, color, Number(amount.toFixed(2)));
+      if (contrastRatio(chosen, canvas) >= 1.16) return chosen;
+    }
+    return chosen;
+  };
+  const errorSurface = statusTint(b.red, isLight ? 0.1 : 0.14);
+  const warningSurface = statusTint(b.yellow, isLight ? 0.14 : 0.12);
+  const updateSurface = statusTint(accent, isLight ? 0.1 : 0.14);
+  // Pale palette yellows (Oceanic light) washed out at 40%; climb until the hit clears the page.
+  let searchMatch = mixColors(canvas, b.yellow, isLight ? 0.4 : 0.32);
+  for (let amount = isLight ? 0.4 : 0.32; contrastRatio(searchMatch, canvas) < 1.3 && amount <= 0.8; amount += 0.05) {
+    searchMatch = mixColors(canvas, b.yellow, amount);
+  }
+  if (contrastRatio(searchMatch, canvas) < 1.3) searchMatch = readable(searchMatch, canvas, 1.3, ink);
+  // Light rows stay a rising ladder. Dark rows are rewritten once the sidebar is final.
+  let sidebarRowHover = isLight
     ? liftFrom(sidebar, mixColors(sidebar, "#ffffff", 0.45), 0.003, "#ffffff")
     : liftFrom(sidebar, b.black2, 0.003, b.oneBg);
 
@@ -430,13 +646,9 @@ export const buildT3CodeColors = (theme: ThemeSpec, accentKey?: keyof ThemeSpec[
     ? liftFrom(sidebarRowHover, mixColors(canvas, "#ffffff", 0.92), 0.003, "#ffffff")
     : liftFrom(sidebarRowHover, b.oneBg, 0.003, b.lightBg);
 
-  const sidebarRowSelected = isLight
-    ? liftFrom(sidebarRowActive, mixColors(sidebarRowActive, accent, 0.06), 0.003, "#ffffff")
-    : liftFrom(sidebarRowActive, mixColors(sidebarRowActive, accent, 0.06), 0.003, "#ffffff");
-
-  const secondaryFg = text;
-  const mutedFg = textMuted;
-  const accentSurfaceFg = readable(text, accentSurface, 7, ink);
+  let sidebarRowSelected = isLight
+    ? liftFrom(sidebarRowActive, mixColors(sidebarRowActive, "#ffffff", 0.08), 0.003, "#ffffff")
+    : sidebarRowActive;
 
   let sidebarFinal = sidebar;
   let surfaceFinal = surface;
@@ -451,65 +663,108 @@ export const buildT3CodeColors = (theme: ThemeSpec, accentKey?: keyof ThemeSpec[
     sidebarFinal = deepenFrom(canvas, sidebar, 0.006, "#000000");
     surfaceFinal = liftFrom(canvas, surface, 0.006, b.oneBg);
     raisedFinal = liftFrom(surfaceFinal, surfaceRaisedFinal, 0.004, b.lightBg);
-    rowActiveFinal = liftFrom(sidebarFinal, sidebarRowActive, 0.004, b.oneBg);
     if (lum(canvas) - lum(sidebarFinal) < 0.0035) {
       sidebarFinal = mixColors(canvas, "#000000", 0.72);
     }
+    // T3's own stack: selected 7% white, hover 8%, active 11%. Selected sits under the active row.
+    sidebarRowHover = mixColors(sidebarFinal, "#ffffff", 0.08);
+    sidebarRowSelected = mixColors(sidebarFinal, "#ffffff", 0.07);
+    rowActiveFinal = mixColors(sidebarFinal, "#ffffff", 0.11);
+    borderFinal = darkHairline(canvas);
+    hairlineBase = borderFinal;
   }
 
   const messageSurface = messageBubbleSurface(accentSurface, accent, canvas, isLight);
-  const terminalSelection = terminalSelectionColor(canvas, accent, isLight, b);
+  if (!isLight) {
+    const seat = lum(overlay) >= lum(raisedFinal) ? overlay : raisedFinal;
+    // Menus, the model list, and hovers all paint this fill. A 7% white step on the
+    // lightest card matches a selected sidebar row, and stays above the card itself.
+    accentSurface = mixColors(seat, "#ffffff", 0.07);
+  }
+  const terminalSelection = readable(terminalSelectionColor(canvas, accent, isLight, b), canvas, 1.2, ink);
   const secondaryFinal = isLight ? deepenFrom(surfaceFinal, secondary, 0.006, b.oneBg3) : surfaceFinal;
   const codeBg = surfaceFinal;
-  const sidebarMuted = readable(b.lightGrey, sidebarFinal, 4.5, text);
-  accentInk = onFill(accent, isLight ? b.black : text, isLight ? text : b.darkerBlack);
+  const uiText = isLight ? text : liftDarkInk(text);
+  const textMuted = isLight
+    ? textMutedRaw
+    : holdFade(whisper("#a3a3a3", sidebarFinal), sidebarFinal, 0.55, 3);
+  const secondaryLabel = isLight
+    ? textMuted
+    : holdFade(whisper("#8f8f8f", sidebarFinal), sidebarFinal, 0.7, 3.45);
+  const sidebarMuted = isLight
+    ? readable(b.lightGrey, sidebarFinal, 4.5, text)
+    : holdFade(whisper("#a3a3a3", sidebarFinal), sidebarFinal, 0.75, 4.5);
+  const quiet = isLight ? quietRaw : holdFade(whisper("#737373", sidebarFinal), canvas, 1, 3);
+  const input = isLight
+    ? hairline(b.oneBg3, canvas, ink)
+    : washClear(
+        canvas,
+        [
+          [messageSurface, 1.14],
+          [accentSurface, 1.12],
+          [control, 1.1]
+        ],
+        1.22,
+        1.7
+      );
+  // Placeholder sits inside the field, so it is measured there (T3: 3.5:1 on its input).
+  const placeholder = readable(quiet, input, 3, isLight ? text : uiText);
+  const mutedForeground = readable(textMuted, muted, 4.5, isLight ? text : uiText);
+  // A pale yellow dot on a light page disappeared; keep the warning glyph at 3:1.
+  const warningTone = isLight ? readable(b.yellow, canvas, 3, ink) : b.yellow;
+  const lightLabel = !isLight && contrastRatio(uiText, accent) >= 3;
+  accentInk = lightLabel
+    ? uiText
+    : onFill(accent, isLight ? b.black : uiText, isLight ? uiText : b.darkerBlack);
 
   return {
     canvas,
     chrome: canvas,
     toolbar: canvas,
-    toolbarForeground: text,
+    toolbarForeground: uiText,
     toolbarBorder: hairlineBase,
     toolbarControl: control,
-    toolbarControlForeground: text,
+    toolbarControlForeground: uiText,
     toolbarControlHover: controlHover,
     surface: surfaceFinal,
     surfaceRaised: raisedFinal,
     surfaceOverlay: overlay,
-    text,
+    text: uiText,
     textMuted,
     border: borderFinal,
-    input: hairline(b.oneBg3, canvas, ink),
+    input,
     focus: accent,
     accent,
     accentForeground: accentInk,
     secondary: secondaryFinal,
-    secondaryForeground: secondaryFg,
+    secondaryForeground: uiText,
     muted,
-    mutedForeground: mutedFg,
-    placeholder: quiet,
-    secondaryLabel: textMuted,
+    mutedForeground,
+    placeholder,
+    secondaryLabel,
     iconMuted: quiet,
     error: b.red,
     errorForeground: statusForeground(b.red, errorSurface, isLight, ink),
     errorSurface,
-    warning: b.yellow,
+    warning: warningTone,
     warningForeground: statusForeground(b.yellow, warningSurface, isLight, ink),
     warningSurface,
     update: accent,
     updateForeground: statusForeground(accent, updateSurface, isLight, ink),
     updateSurface,
     accentSurface,
-    accentSurfaceForeground: accentSurfaceFg,
+    accentSurfaceForeground: readable(uiText, accentSurface, 7, ink),
     messageSurface,
-    messageForeground: text,
+    messageForeground: uiText,
     messageAction: accent,
     messageActionForeground: accentInk,
-    messageActionHover: mixColors(accent, isLight ? "#000000" : "#ffffff", isLight ? 0.14 : 0.16),
+    // Hover moves away from the label, like T3's blue-600 hover. Lightening under a
+    // white label dropped it to ~2.7:1 on every dark theme.
+    messageActionHover: mixColors(accent, lum(accentInk) > lum(accent) ? "#000000" : "#ffffff", 0.14),
     codeBackground: codeBg,
-    codeForeground: text,
+    codeForeground: uiText,
     searchMatchBackground: searchMatch,
-    searchMatchForeground: readable(text, searchMatch, 4.5, ink),
+    searchMatchForeground: readable(uiText, searchMatch, 4.5, ink),
     searchMatchActiveBackground: b.yellow,
     searchMatchActiveForeground: readable(
       onFill(b.yellow, isLight ? b.black : text, isLight ? text : b.darkerBlack),
@@ -518,15 +773,15 @@ export const buildT3CodeColors = (theme: ThemeSpec, accentKey?: keyof ThemeSpec[
       ink
     ),
     sidebar: sidebarFinal,
-    sidebarForeground: readable(text, sidebarFinal, 7, ink),
+    sidebarForeground: readable(uiText, sidebarFinal, 7, isLight ? ink : "#ffffff"),
     sidebarMutedForeground: sidebarMuted,
     sidebarControlSurface: isLight ? accentSurface : canvas,
     sidebarRowHover,
     sidebarRowActive: rowActiveFinal,
     sidebarRowSelected,
-    sidebarBorder: hairline(b.line, sidebarFinal, ink),
+    sidebarBorder: isLight ? hairline(b.line, sidebarFinal, ink) : darkHairline(sidebarFinal),
     terminalBackground: canvas,
-    terminalForeground: text,
+    terminalForeground: uiText,
     terminalCursor: terminalCursorColor(accent, canvas, isLight, b),
     terminalSelection,
     terminalScrollbar: readable(b.oneBg2, canvas, 1.25, isLight ? b.grey : ink),

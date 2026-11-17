@@ -114,15 +114,16 @@ export const scoreT3CodeColors = (
       ? 1
       : 0.5);
 
+  // Dark follows T3: selected and hover are quiet washes, and the active row is the loud one.
   const sidebarSteps = (isLight
     ? [
         lum(colors.sidebarRowHover) - lum(colors.sidebar),
         lum(colors.sidebarRowActive) - lum(colors.sidebarRowHover)
       ]
     : [
+        lum(colors.sidebarRowSelected) - lum(colors.sidebar),
         lum(colors.sidebarRowHover) - lum(colors.sidebar),
-        lum(colors.sidebarRowActive) - lum(colors.sidebarRowHover),
-        lum(colors.sidebarRowSelected) - lum(colors.sidebarRowActive)
+        lum(colors.sidebarRowActive) - Math.max(lum(colors.sidebarRowHover), lum(colors.sidebarRowSelected))
       ]
   ).filter((step) => step >= rowGap * 0.35);
 
